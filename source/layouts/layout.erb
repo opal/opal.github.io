@@ -1,0 +1,79 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+
+  <title><%= data.page.title || "Opal: Ruby to Javascript compiler" %></title>
+
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+
+  <style>
+    body {
+      padding-top: 92px;
+    }
+
+    .main-title {
+      padding-bottom: 32px;
+    }
+  </style>
+
+  <!-- GOOGLE ANALYTICS -->
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35688734-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+<body class="<%= page_classes %>">
+  <!-- nav -->
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <!-- github banner -->
+      <a href="https://github.com/opal/opal"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+      <div class="container">
+        <a class="brand" href="/">
+          <img height='22' width='22' style='margin-top:-10%;' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png'/>
+          Opal
+        </a>
+        <ul class="nav">
+          <li><a href="/features">Features</a></li>
+          <li><a href="/usage">Usage</a></li>
+          <li><a target="_blank" href="https://github.com/opal/opal-spec#readme">Specs</a></li>
+          <li><a target="_blank" href="https://github.com/opal/vienna#readme">Vienna</a></li>
+          <li><a href="/try"><span class="label">Try Opal now!</span></a></li>
+          <li class="divider-vertical"></li>
+          <li><p class="navbar-text"><span class="label label-info">integrations:</span></p></li>
+          <li><a target="_blank" href="https://github.com/opal/opal-jquery#readme">jQuery</a></li>
+          <li><a target="_blank" href="https://github.com/opal/opal-rails#readme">Rails</a></li>
+          <li><a target="_blank" href="https://github.com/opal/opal-node#readme">Nodejs / RVM</a></li>
+          <li><a target="_blank" href="https://github.com/opal/opal-todos#readme">TodoMVC</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+
+  <!-- body -->
+  <div class="container">
+    <%= yield %>
+  </div>
+   <footer style='padding: 70px 0;
+ margin-top: 70px;
+ border-top: 1px solid
+ #e5e5e5;
+ background-color:
+ #f5f5f5;text-align:center'>
+     <a style="color: #888;" href="/license">License</a> •
+     <a style="color: #888;" href="https://github.com/opal/opal/graphs/contributors">Contributors</a>
+   </footer>
+ </body>
+ </html>

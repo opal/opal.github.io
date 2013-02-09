@@ -1,0 +1,499 @@
+---
+title: Features
+---
+
+<div class="page-header"><h1>Features And Implementation</h1></div>
+
+<p>
+Opal is a source-to-source compiler, so there is no VM as such and the
+compiled code aims to be as fast and efficient as possible, mapping
+directly to underlying javascript features and objects where possible.
+</p>
+
+<h4>Literals</h4>
+
+<p>
+<strong>self</strong> is mostly compiled to <code>this</code>. Methods and blocks are implemented
+as javascript functions, so their <code>this</code> value will be the right
+<code>self</code> value. Class bodies and the top level scope use a <code>self</code> variable
+to improve readability.
+</p>
+
+<p>
+<strong>true</strong> and <strong>false</strong> are compiled directly into their native boolean
+equivalents. This makes interaction a lot easier as there is no need
+to convert values to opal specific values. It does mean that there is
+only a <strong>Boolean</strong> ruby class available, not seperate <strong>TrueClass</strong> and
+<strong>FalseClass</strong> classes.
+</p>
+
+<p>
+<strong>nil</strong> is compiled into a <code>nil</code> reference, which inside all generated
+files points to a special object which is just an instance of the ruby
+<code>NilClass</code> class. This object is available externally to javascript as
+<code>Opal.nil</code>.
+</p>
+
+<% code :ruby do %>
+nil         # => nil
+true        # => true
+false       # => false
+self        # => self
+<% end %>
+
+<h5>Strings</h5>
+
+<p>
+Ruby strings are compiled directly into javascript strings for
+performance as well as readability. This has the side effect that Opal
+does not support mutable strings - i.e. all strings are immutable.
+</p>
+
+<h5>Symbols</h5>
+
+<p>
+For performance reasons, symbols compile directly into strings. Opal
+supports all the symbol syntaxes, but does not have a real <code>Symbol</code>
+class. Symbols and Strings can therefore be used interchangeably.
+</p>
+
+<% code :ruby do %>
+"hello world!"    # => "hello world!"
+:foo              # => "foo"
+<<-EOS            # => "\nHello there.\n"
+Hello there.
+EOS
+<% end %>
+
+<h5>Numbers</h5>
+
+<p>
+In Opal there is a single class for numbers; <code>Numeric</code>. To keep opal
+as performant as possible, ruby numbers are mapped to native numbers.
+This has the side effect that all numbers must be of the same class.
+Most relevant methods from <code>Integer</code>, <code>Float</code> and <code>Numeric</code> are
+implemented on this class.
+</p>
+
+<% code :ruby do %>
+42        # => 42
+3.142     # => 3.142
+<% end %>
+
+<h5>Arrays</h5>
+
+<p>
+Ruby arrays are compiled directly into javascript arrays. Special
+ruby syntaxes for word arrays etc are also supported.
+</p>
+
+<% code :ruby do %>
+[1, 2, 3, 4]        # => [1, 2, 3, 4]
+%w[foo bar baz]     # => ["foo", "bar", "baz"]
+<% end %>
+
+<h5>Hash</h5>
+
+<p>
+Inside a generated ruby script, a function <code>__hash</code> is available which
+creates a new hash. This is also available in javascript as <code>Opal.hash</code>
+and simply returns a new instance of the <code>Hash</code> class.
+</p>
+
+<% code :ruby do %>
+{ :foo => 100, :baz => 700 }    # => __hash("foo", 100, "baz", 700)
+{ foo: 42, bar: [1, 2, 3] }     # => __hash("foo", 42, "bar", [1, 2, 3])
+<% end %>
+
+<h5>Range</h5>
+<p>
+Similar to hash, there is a function <code>__range</code> available to create
+range instances.
+</p>
+
+<% code :ruby do %>
+1..4        # => __range(1, 4, true)
+3...7       # => __range(3, 7, false)
+<% end %>
+
+<h5>Optimized Math Operators</h5>
+<p>
+In ruby, all math operators are method calls, but compiling this into
+javascript would end up being too slow. For this reason, math
+operators are optimized to test first if the receiver is a number, and
+if so then to just carry out the math call.
+</p>
+
+<% code :ruby do %>
+3 + 4
+<% end %>
+
+<p>
+This ruby code will then be compiled into the following javascript:
+</p>
+
+<% code :javascript do %>
+(a = 3, b = 4, typeof(a) === "number" ? a + b : /* method call */)
+<% end %>
+
+<p>
+This ternary statement falls back on sending a method to the receiver
+so all non-numeric receivers will still have the normal method call
+being sent. This optimization makes math operators a <strong>lot faster</strong>.
+Currently, the optimized method calls are <code>+</code>, <code>-</code>, <code>*</code> and <code>/</code>.
+</p>
+
+<h4>Logic and conditionals</h4>
+
+<p>
+As per ruby, Opal treats only <code>false</code> and <code>nil</code> as falsy, everything
+else is a truthy value including <code>""</code>, <code>0</code> and <code>[]</code>. This differs from
+javascript as these values are also treated as false.
+</p>
+
+<o>
+For this reason, most truthy tests must check if values are <code>false</code> or
+<code>nil</code>.
+</p>
+
+<p>
+Taking the following test:
+</p>
+
+<% code :ruby do %>
+val = 42
+
+if val
+  return 3.142;
+end
+<% end %>
+
+<p>
+This would be compiled into:
+</p>
+
+<% code :javascript do %>
+var val = 42;
+
+if (val !== false && val !== nil) {
+  return 3.142;
+}
+<% end %>
+
+<p>
+This makes the generated truthy tests (<coee>if</code> statements, <code>and</code> checks and
+<code>or</code> statements) a litle more verbose in the generated code.
+</p>
+
+<h4>Instance variables</h4>
+
+<p>
+Instance variables in Opal work just as expected. When ivars are set or
+retrieved on an object, they are set natively without the <code>@</code> prefix.
+This allows real javascript identifiers to be used which is more
+efficient then accessing variables by string name.
+</p>
+
+<% code :ruby do %>
+@foo = 200
+@foo  # => 200
+
+@bar  # => nil
+<% end %>
+
+<p>
+This gets compiled into:
+</p>
+
+<% code :javascript do %>
+this.foo = 200;
+this.foo;   // => 200
+
+this.bar;   // => nil
+<% end %>
+
+<p>
+The only point of warning is that when variables are used for the
+first time in ruby, they default to <code>nil</code>. In javascript, they default
+to <code>undefined</code>/<code>null</code>.
+</p>
+
+<p>
+To keep things working in opal, ivars must be preset to <code>nil</code> before
+they can be used. In the top scope and other corner cases, this needs
+to be done on a per scope basis, which can add overhead.
+</p>
+
+<p>
+To improve performance, once a class body is compiled, all ivars used
+within methods in that class are preset on the prototype of the class
+to be <code>nil</code>. This means that all known ivars are already set to nil,
+and this is done just once during the lifespan of the app.
+</p>
+
+<% code :ruby do %>
+class Foo
+  def bar
+    @lol
+  end
+
+  def woosh
+    @kapow
+  end
+end
+<% end %>
+
+<p>
+This example gets compiled into something similar to:
+</p>
+
+<% code :javascript do %>
+(function() {
+  function Foo(){}
+  // ...
+
+  Foo.prototype.lol = Foo.prototype.woosh = nil;
+
+  Foo.prototype.$bar = function() {
+    return this.lol;
+  };
+
+  Foo.prototype.$woosh = function() {
+    return this.kapow;
+  };
+
+  // etc ...
+})()
+<% end %>
+
+<h4>Interacting with javascript</h4>
+
+<p>
+Opal tries to interact as cleanly with javascript and its api as much
+as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
+are just javascript native equivalents. The only boxed core features are
+hashes and nil.
+</p>
+
+<p>
+As most of the corelib deals with these low level details, opal provides
+a special syntax for inlining javascript code. This is done with
+x-strings or "backticks", as their ruby use has no useful translation
+in the browser.
+</p>
+
+<% code :ruby do %>
+`window.title`
+# => "Opal: ruby to javascript compiler"
+
+%x{
+  console.log("ruby version is:");
+  console.log(#{ OPAL_VERSION });
+}
+
+# => ruby version is:
+# => 0.3.19
+<% end %>
+
+<p>
+Even interpolations are supported, as seen here.
+</p>
+
+<p>
+This feature of inlining code is used extensively, for example in
+Array#length:
+</p>
+
+<% code :ruby do %>
+class Array
+  def length
+    `this.length`
+  end
+end
+<% end %>
+
+<p>
+X-Strings also have the ability to automatically return their value,
+as used by this example.
+</p>
+
+<h4>Javascript interacting with Opal</h4>
+
+<p>
+Accessing classes and methods defined in Opal from the javascript runtime is
+possible via the Opal js object. The following class:
+</p>
+
+<% code :ruby do %>
+class Foo
+  def bar
+    puts "called bar on class Foo defined in ruby code"
+  end
+end
+<% end %>
+
+<p>
+Can be accessed from javascript like this:
+</p>
+
+<% code :javascript do %>
+Opal.Foo.$new().$bar();
+// => "called bar on class Foo defined in ruby code"
+<% end %>
+
+<p>
+Remember that all ruby methods are prefixed with a <code>$</code>.
+</p>
+
+<h4>Compiled Files</h4>
+
+<p>
+As described above, a compiled ruby source gets generated into a string
+of javascript code that is wrapped inside an anonymous function. This
+looks similar to the following:
+</p>
+
+<% code :javascript do %>
+(function() {
+  var nil = Opal.nil, self = Opal.top;
+  // generated code
+})();
+<% end %>
+
+<p>
+Inside the function, <code>nil</code> is assigned to ensure a local copy is
+available, as well as all the helper methods used within the
+generated file. There is no return value from these functions as they
+are not used anywhere.
+</p>
+
+<p>
+As a complete example, assuming the following code:
+</p>
+
+<% code :ruby do %>
+puts "foo"
+<% end %>
+
+<p>
+This would compile directly into:
+</p>
+
+<% code :javascript do %>
+(function() {
+  var nil = Opal.nil, self = Opal.top;
+  self.$puts("foo");
+})();
+<% end %>
+
+<p>
+Most of the helpers are no longer present as they are not used in this
+example.
+</p>
+
+<h4>Using compiled sources</h4>
+
+<p>
+If you write the generated code as above into a file <code>app.js</code> and add
+that to your HTML page, then it is obvious that <code>"foo"</code> would be
+written to the browser's console.
+</p>
+
+<h4>JSON</h4>
+
+<p>
+The opal corelib includes JSON support instead of treating it as an
+external lib. The <code>JSON</code> module provides the usual parsing methods.
+</p>
+
+<% code :ruby do %>
+JSON.parse '{"a": 10, "b": [1, 2, 3], "c": null}'
+# => { "a" => 10, "b" => [1, 2, 3], "c" => nil }
+<% end %>
+
+<p>
+Opal expects <code>JSON</code> to be present in the browser, so older browsers
+may require a shim (json2.js) to work with opal. Most mobile browsers
+and modern desktop browsers include json support natively.
+</p>
+
+<h4>Debugging and finding errors</h4>
+
+<p>
+Because Opal does not aim to be fully compatible with ruby, there are
+some instances where things can break and it may not be entirely
+obvious what went wrong.
+</p>
+
+<h5>Undefined methods</h5>
+
+<p>
+By default, opal aims to be as fast as possible, so <code>method_missing</code> is
+not turned on by default. Instead, when calling a method that doesn't
+exist, a native error will be raised.
+</p>
+
+<% code :ruby do %>
+self.do_something()
+<% end %>
+
+<p>
+Might raise an error similar to:
+</p>
+
+<% code :text do %>
+Error: 'undefined' is not a function (evaluating 'this.$do_something()')
+<% end %>
+
+<p>
+As described above, all ruby methods will have a <code>$</code> prefix which gives
+a good indication that it is a opal method that doesnt exist, and most
+js engines output the missing function name.
+</p>
+
+<h5>Undefined constants</h5>
+
+<p>
+If trying to access a constant that doesn't exist, there is no runtime
+error. Instead, the value of that expression is just <code>undefined</code> as
+constants are retrieved from objects that hold all constants in the
+scope. Trying to send a method to an undefined constant will therefore
+just raise an ugly javascript <code>TypeError</code>.
+</p>
+
+<p>
+If you are using the constant as a reference, it may not be until much
+later that the error occurs.
+</p>
+
+<h5>Using javascript debuggers</h5>
+<p>
+As opal just generates javascript, it is useful to use a native
+debugger to work through javascript code. To use a debugger, simply
+add an x-string similar to the following at the place you wish to
+debug:
+</p>
+
+<% code :ruby do %>
+# .. code
+`debugger`
+# .. more code
+<% end %>
+
+<p>
+The x-strings just pass the debugger statement straight through to the
+javascript output.
+</p>
+
+<p>
+Inside methods and blocks, the current <code>self</code> value is always the
+native <code>this</code> value. You will not see <code>self</code> inside debuggers as it is
+never used to refer to the actual ruby self value.
+</p>
+
+<p>
+All local variables and method/block arguments also keep their ruby
+names except in the rare cases when the name is reserved in javascript.
+In these cases, a <code>$</code> suffix is added to the name (e.g. <code>try</code> =>
+<code>try$</code>).
+</p>
