@@ -47,6 +47,11 @@
 #   end
 # end
 
+set :markdown_engine, :redcarpet
+set :markdown, :layout_engine => :erb,
+               :fenced_code_blocks => true,
+                :lax_html_blocks => true
+
 activate :syntax
 
 activate :directory_indexes
