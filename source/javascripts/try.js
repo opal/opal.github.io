@@ -1,9 +1,9 @@
 //= require _vendor/codemirror
 //= require _vendor/ruby
 //= require _vendor/javascript
-//= require _vendor/opal
-//= require _vendor/opal-parser
-//= require _vendor/opal-jquery
+//= require opal
+//= require opal-parser
+//= require opal-jquery
 
 $(function() {
   var output = CodeMirror(document.getElementById("output"), {

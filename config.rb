@@ -57,6 +57,10 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+# Add all Opal load paths to sprockets, so we can access opal.js,
+# opal-parser.js and opal-jquery.js
+set :js_assets_paths, Opal.paths.clone
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
