@@ -6,44 +6,38 @@ title: "Using Opal"
   <h1>Usage</h1>
 </div>
 
-<h2>Rails</h2>
-<p>
-<a href="https://github.com/opal/opal-rails#readme">opal-rails</a> is available
-to make opal work directly inside rails applications.
-</p>
+## Rails
 
-<h2>Simple Apps</h2>
-<p>
-If you have an example file <code>app.rb</code>:
-</p>
+[opal-rails](https://github.com/opal/opal-rails#readme) is available to make
+opal work directly inside rails applications.
 
-<% code :ruby do %>
+## Simple Apps
+
+If you have an example file `app.rb`:
+
+```ruby
 [1, 2, 3, 4].each do |n|
   puts n
 end
-<% end %>
+```
 
-<p>
 You can write a rake task to compile the code:
-</p>
 
-<% code :ruby do %>
+```ruby
 task :compile do
   src = File.read 'app.rb'
   js = Opal.parse src
 
   File.open('app.js', 'w+') { |o| o.puts js }
 end
-<% end %>
+```
 
-<h3>Running compiled code</h3>
+### Running compiled code
 
-<p>
 The opal runtime is required for running compiled ruby, which can be downloaded
-<a href="http://opalrb.org/opal.js">opal.js</a>. Setup your HTML file:
-</p>
+[opal.js](http://opalrb.org/opal.js). Setup your HTML file:
 
-<% code :html do %>
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,4 +47,4 @@ The opal runtime is required for running compiled ruby, which can be downloaded
 </head>
   <body></body>
 </html>
-<% end %>
+```

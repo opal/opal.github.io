@@ -20,11 +20,11 @@ title: "Opal: Ruby to Javascript Compiler"
   </p>
 </div>
 
-<h3>Getting Started</h3>
+### Getting Started
 
-<h4>Overview</h4>
+#### Overview
 
-<% code 'ruby' do %>
+```ruby
 [1, 2, 3, 4].each do |a|
   puts a
 end
@@ -37,27 +37,27 @@ adam = Foo.new
 adam.name = 'Adam Beynon'
 puts adam.name
 
-# Output (in your browser console):
-#
-#   1
-#   2
-#   3
-#   4
-#   Adam Beynon
-<% end %>
+  # Output (in your browser console):
+  #
+  #   1
+  #   2
+  #   3
+  #   4
+  #   Adam Beynon
+```
 
-<a href="/try">Try this code in your browser!</a>
+[Try this code in your browser!](/try)
 
-<h4>Installation</h4>
+#### Installation
 
 Install Opal from RubyGems:
 
-<% code do %>
+```text
 $ gem install opal
-<% end %>
+```
 
-Or include it in your <code>Gemfile</code> for Bundler:
+Or include it in your `Gemfile` for Bundler:
 
-<% code 'ruby' do %>
+```ruby
 gem 'opal'
-<% end %>
+```
