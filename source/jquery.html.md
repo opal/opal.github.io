@@ -11,11 +11,10 @@ and providing a nice ruby syntax for dealing with jQuery instances.
 opal-jquery is [hosted on github](http://github.com/opal/opal-jquery).
 
 jQuery instances are toll-free bridged to instances of the ruby class
-`JQuery`, so they can be used interchangeably. The `Document` module also
-exists, which provides the simple top level css selector method:
+`JQuery`, so they can be used interchangeably.
 
 ```ruby
-elements = Document['.foo']
+elements = Element.find('.foo')
 # => [<div class="foo">, ...]
 
 elements.class
@@ -46,25 +45,31 @@ gem 'opal-jquery'
 
 #### Finding elements
 
-opal-jquery provides the `Document` module, which is the best way to
-find elements by CSS selector:
+opal-jquery provides the `Element` class, which can be used to find elements in
+the current document:
 
 ```ruby
-Document['#header']
+Element.find('#header')
 ```
 
-This method acts just like `$('selector')`, and can use any jQuery
+`Element.find` is aliased to `Element[]`:
+
+```ruby
+Element['.my-class']
+```
+
+These methods acts just like `$('selector')`, and can use any jQuery
 compatible selector:
 
 ```ruby
-Document['#navigation li:last']
+Element.find('#navigation li:last')
 ```
 
 The result is just a jQuery instance, which is toll-free bridged to
 instances of the `Element` class in ruby:
 
 ```ruby
-Document['.foo'].class
+Element.find('.foo').class
 # => Element
 ```
 
@@ -73,7 +78,7 @@ finding elements within the scope of each DOM node represented by
 the instance:
 
 ```ruby
-el = Document['#header']
+el = Element.find('#header')
 el.find '.foo'
 # => #<Element .... >
 ```
@@ -97,7 +102,7 @@ The `Kernel#alert` method is shown above too.
 The `Element#on` method is used to attach event handlers to elements:
 
 ```ruby
-Document['#header'].on :click do
+Element.find('#header').on :click do
   puts "The header was clicked!"
 end
 ```
@@ -106,7 +111,7 @@ Selectors can also be passed as a second argument to handle events
 on certain children:
 
 ```ruby
-Document['#header'].on(:click, '.foo') do
+Element.find('#header').on(:click, '.foo') do
   puts "An element with a 'foo' class was clicked"
 end
 ```
@@ -115,7 +120,7 @@ An `Event` instance is optionally passed to block handlers as well,
 which is toll-free bridged to jquery events:
 
 ```ruby
-Document['#my_link'].on(:click) do |evt|
+Element.find('#my_link').on(:click) do |evt|
   evt.stop_propagation
   puts "stopped the event!"
 end
@@ -126,7 +131,7 @@ end
 The various jQuery methods are available on `Element` instances:
 
 ```ruby
-foo = Document['.foo']
+foo = Element.find('.foo')
 
 foo.add_class 'blue'
 foo.remove_class 'foo'
@@ -136,7 +141,7 @@ foo.toggle_class 'selected'
 There are also added convenience methods for opal-jquery:
 
 ```ruby
-foo = Document['#header']
+foo = Element.find('#header')
 
 foo.class_name
 # => 'red lorry'
@@ -150,7 +155,7 @@ foo.class_name
 `Element#css` also exists for getting/setting css styles:
 
 ```ruby
-el = Document['#container']
+el = Element.find('#container')
 el.css 'color', 'blue'
 el.css 'color'
 # => 'blue'
