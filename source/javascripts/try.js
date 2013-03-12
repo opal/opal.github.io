@@ -27,9 +27,11 @@ $(function() {
   var run = document.getElementById('run_code');
   var link = document.getElementById('link_code');
 
-  if (run.addEventListener) {
+  // Add Event Handlers
+  if (document.addEventListener) {
     run.addEventListener('click', compile, false);
   }
+  // Support for older IE versions
   else {
     run.attachEvent('onclick', compile);
   }
