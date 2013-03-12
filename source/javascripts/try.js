@@ -1,6 +1,6 @@
-//= require _vendor/codemirror
-//= require _vendor/ruby
-//= require _vendor/javascript
+//= require _vendor/codemirror/codemirror
+//= require _vendor/codemirror/ruby
+//= require _vendor/codemirror/javascript
 //= require opal
 //= require opal-parser
 //= require opal-jquery
