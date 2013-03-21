@@ -31,11 +31,16 @@ end
 
 class Foo
   attr_accessor :name
+
+  def method_missing(sym, *args, &block)
+    puts "You tried to call: #{sym}"
+  end
 end
 
 adam = Foo.new
 adam.name = 'Adam Beynon'
 puts adam.name
+adam.do_task
 
   # Output (in your browser console):
   #
@@ -44,6 +49,7 @@ puts adam.name
   #   3
   #   4
   #   Adam Beynon
+  #   You tried to call: do_task
 ```
 
 [Try this code in your browser!](/try)

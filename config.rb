@@ -1,3 +1,6 @@
+require 'bundler'
+Bundler.require
+
 ###
 # Compass
 ###

@@ -64,7 +64,7 @@ $(function() {
     editor.setValue(hash.substr(6));
   }
   else {
-    editor.setValue("class Foo\n  attr_accessor :name\nend\n\nadam = Foo.new\nadam.name = 'Adam Beynon'\nputs adam.name");
+    editor.setValue("class Foo\n  attr_accessor :name\n\n  def method_missing(sym, *args, &block)\n    puts \"You tried to call: #{sym}\"\n  end\nend\n\nadam = Foo.new\nadam.name = 'Adam Beynon'\nputs adam.name\nadam.do_task");
   }
 
   compile();
