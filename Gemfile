@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'opal', '~> 0.3.42'
+gem 'opal', :git => 'git://github.com/opal/opal.git'
 gem 'opal-sprockets'
 gem 'opal-jquery'
 
