@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require
 
+require 'middleman-gh-pages'
+
 task :opal_jquery do
   path = Opal.paths.find { |p| p =~ /opal-jquery/ }
 
@@ -30,10 +32,4 @@ end
 
 desc "Build opal, opal-parser and opal-jquery to source/"
 task :opals => [:opal, :opal_jquery]
-
-desc "Build"
-task :build do
-  sh 'bundle exec middleman build'
-  Rake::Task[:opals].invoke
-end
 
