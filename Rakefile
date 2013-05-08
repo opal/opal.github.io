@@ -10,7 +10,7 @@ task :opal_jquery do
     Opal.parse File.read a
   }
 
-  File.open("build/opal-jquery.js", "w") { |f|
+  File.open("source/opal-jquery.js", "w") { |f|
     f << sources.join("\n")
   }
 end
@@ -21,11 +21,11 @@ task :opal do
   env = Sprockets::Environment.new
   Opal.paths.each { |p| env.append_path p }
 
-  File.open("build/opal.js", "w") { |f|
+  File.open("source/opal.js", "w") { |f|
     f << env['opal'].to_s
   }
 
-  File.open("build/opal-parser.js", "w") { |f|
+  File.open("source/opal-parser.js", "w") { |f|
     f << env['opal-parser'].to_s
   }
 end
@@ -33,6 +33,3 @@ end
 desc "Build opal, opal-parser and opal-jquery to source/"
 task :opals => [:opal, :opal_jquery]
 
-task :build do
-  Rake::Task[:opals].invoke
-end
