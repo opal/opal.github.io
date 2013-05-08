@@ -20,6 +20,58 @@ title: "Opal: Ruby to Javascript Compiler"
   </p>
 </div>
 
+<div class="row-fluid">
+  <div class="span4">
+    <h2>Ruby in the Browser</h2>
+    <p>
+      Opal compiles ruby ahead of time into javascript to run on the
+      client. Opal supports blocks, procs, classes, modules and more!
+    </p>
+  </div>
+
+  <div class="span4">
+    <h2>method_missing</h2>
+    <p>
+      Opal fully supports `method_missing` on all objects and classes to
+      allow full metaprogramming on the client.
+    </p>
+  </div>
+
+  <div class="span4">
+    <h2>Native class</h2>
+    <p>
+      `Native` is a class provided to wrap native objects so that their
+      properties and methods can be called directly from ruby code.
+    </p>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span4">
+    <h2>Inline Javascript</h2>
+    <p>
+      X-Strings in opal are used to write javascript within ruby code,
+      making it easier to call and wrap javascript code within your code.
+    </p>
+  </div>
+
+  <div class="span4">
+    <h2>opal-parser</h2>
+    <p>
+      `opal-parser.js` allows you to compile and run ruby code directly
+      from script tags or strings for runtime `eval()` support.
+    </p>
+  </div>
+
+  <div class="span4">
+    <h2>Easy Debugging</h2>
+    <p>
+      Opal compiles into clean, readable code to help with debugging.
+      Variables, ivars and method names are preserved in the output.
+    </p>
+  </div>
+</div>
+
 ### Getting Started
 
 #### Overview
