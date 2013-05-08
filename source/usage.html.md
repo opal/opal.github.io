@@ -11,7 +11,7 @@ title: "Using Opal"
 [opal-rails](https://github.com/opal/opal-rails#readme) is available to make
 opal work directly inside rails applications.
 
-## Simple Apps
+## Simple Applications
 
 If you have an example file `app.rb`:
 
