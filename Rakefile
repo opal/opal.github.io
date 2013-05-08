@@ -33,3 +33,6 @@ end
 desc "Build opal, opal-parser and opal-jquery to source/"
 task :opals => [:opal, :opal_jquery]
 
+task :build do
+  Rake::Task[:opals].invoke
+end
