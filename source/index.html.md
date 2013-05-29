@@ -38,10 +38,11 @@ title: "Opal: Ruby to Javascript Compiler"
   </div>
 
   <div class="span4">
-    <h2>Native class</h2>
+    <h2>Call JS functions</h2>
     <p>
-      `Native` is a class provided to wrap native objects so that their
-      properties and methods can be called directly from ruby code.
+      Native objects and functions can be called directly from ruby,
+      allowing seamless access to properties and methods of javascript
+      objects.
     </p>
   </div>
 </div>
