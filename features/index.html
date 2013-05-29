@@ -87,11 +87,11 @@ only a <code>Boolean</code> ruby class available, not seperate <code>TrueClass</
 files points to a special object which is just an instance of the ruby
 <code>NilClass</code> class. This object is available externally to javascript as
 <code>Opal.nil</code>.</p>
-<div class="highlight"><pre><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
+<pre class="highlight ruby"><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
 <span class="kp">true</span>        <span class="c1"># =&gt; true</span>
 <span class="kp">false</span>       <span class="c1"># =&gt; false</span>
 <span class="nb">self</span>        <span class="c1"># =&gt; self</span>
-</pre></div>
+</pre>
 <h5>Strings</h5>
 
 <p>Ruby strings are compiled directly into javascript strings for
@@ -103,12 +103,12 @@ does not support mutable strings - i.e. all strings are immutable.</p>
 <p>For performance reasons, symbols compile directly into strings. Opal
 supports all the symbol syntaxes, but does not have a real <code>Symbol</code>
 class. Symbols and Strings can therefore be used interchangeably.</p>
-<div class="highlight"><pre><span class="s2">&quot;hello world!&quot;</span>    <span class="c1"># =&gt; &quot;hello world!&quot;</span>
+<pre class="highlight ruby"><span class="s2">&quot;hello world!&quot;</span>    <span class="c1"># =&gt; &quot;hello world!&quot;</span>
 <span class="ss">:foo</span>              <span class="c1"># =&gt; &quot;foo&quot;</span>
-<span class="o">&lt;&lt;-</span><span class="no">EOS</span>            <span class="c1"># =&gt; &quot;\nHello there.\n&quot;</span>
-<span class="sh">Hello there.</span>
-<span class="no">EOS</span>
-</pre></div>
+<span class="o">&lt;&lt;-</span><span class="no">EOS</span>            <span class="c1"># =&gt; &quot;\nHello there.\n&quot;</span><span class="sh">
+Hello there.
+</span><span class="no">EOS</span>
+</pre>
 <h5>Numbers</h5>
 
 <p>In Opal there is a single class for numbers; <code>Numeric</code>. To keep opal
@@ -116,42 +116,42 @@ as performant as possible, ruby numbers are mapped to native numbers.
 This has the side effect that all numbers must be of the same class.
 Most relevant methods from <code>Integer</code>, <code>Float</code> and <code>Numeric</code> are
 implemented on this class.</p>
-<div class="highlight"><pre><span class="mi">42</span>        <span class="c1"># =&gt; 42</span>
+<pre class="highlight ruby"><span class="mi">42</span>        <span class="c1"># =&gt; 42</span>
 <span class="mi">3</span><span class="o">.</span><span class="mi">142</span>     <span class="c1"># =&gt; 3.142</span>
-</pre></div>
+</pre>
 <h5>Arrays</h5>
 
 <p>Ruby arrays are compiled directly into javascript arrays. Special
 ruby syntaxes for word arrays etc are also supported.</p>
-<div class="highlight"><pre><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">]</span>        <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+<pre class="highlight ruby"><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">]</span>        <span class="c1"># =&gt; [1, 2, 3, 4]</span>
 <span class="sx">%w[foo bar baz]</span>     <span class="c1"># =&gt; [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]</span>
-</pre></div>
+</pre>
 <h5>Hash</h5>
 
 <p>Inside a generated ruby script, a function <code>__hash</code> is available which
 creates a new hash. This is also available in javascript as <code>Opal.hash</code>
 and simply returns a new instance of the <code>Hash</code> class.</p>
-<div class="highlight"><pre><span class="p">{</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:baz</span> <span class="o">=&gt;</span> <span class="mi">700</span> <span class="p">}</span>    <span class="c1"># =&gt; __hash(&quot;foo&quot;, 100, &quot;baz&quot;, 700)</span>
-<span class="p">{</span> <span class="ss">foo</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="ss">bar</span><span class="p">:</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span> <span class="p">}</span>     <span class="c1"># =&gt; __hash(&quot;foo&quot;, 42, &quot;bar&quot;, [1, 2, 3])</span>
-</pre></div>
+<pre class="highlight ruby"><span class="p">{</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:baz</span> <span class="o">=&gt;</span> <span class="mi">700</span> <span class="p">}</span>    <span class="c1"># =&gt; __hash(&quot;foo&quot;, 100, &quot;baz&quot;, 700)</span>
+<span class="p">{</span> <span class="ss">foo: </span><span class="mi">42</span><span class="p">,</span> <span class="ss">bar: </span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span> <span class="p">}</span>     <span class="c1"># =&gt; __hash(&quot;foo&quot;, 42, &quot;bar&quot;, [1, 2, 3])</span>
+</pre>
 <h5>Range</h5>
 
 <p>Similar to hash, there is a function <code>__range</code> available to create
 range instances.</p>
-<div class="highlight"><pre><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
-<span class="mi">3</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">7</span>       <span class="c1"># =&gt; __range(3, 7, false)</span>
-</pre></div>
+<pre class="highlight ruby"><span class="mi">1</span><span class="nf">..</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
+<span class="mi">3</span><span class="nf">..</span><span class="o">.</span><span class="mi">7</span>       <span class="c1"># =&gt; __range(3, 7, false)</span>
+</pre>
 <h5>Optimized Math Operators</h5>
 
 <p>In ruby, all math operators are method calls, but compiling this into
 javascript would end up being too slow. For this reason, math
 operators are optimized to test first if the receiver is a number, and
 if so then to just carry out the math call.</p>
-<div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
-</pre></div>
+<pre class="highlight ruby"><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
+</pre>
 <p>This ruby code will then be compiled into the following javascript:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;number&quot;</span> <span class="o">?</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">:</span> <span class="cm">/* method call */</span><span class="p">)</span>
-</pre></div>
+<pre class="highlight javascript"><span class="p">(</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;number&quot;</span> <span class="p">?</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">:</span> <span class="cm">/* method call */</span><span class="p">)</span>
+</pre>
 <p>This ternary statement falls back on sending a method to the receiver
 so all non-numeric receivers will still have the normal method call
 being sent. This optimization makes math operators a <strong>lot faster</strong>.
@@ -167,19 +167,19 @@ javascript as these values are also treated as false.</p>
 <code>nil</code>.</p>
 
 <p>Taking the following test:</p>
-<div class="highlight"><pre><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
+<pre class="highlight ruby"><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
 
 <span class="k">if</span> <span class="n">val</span>
   <span class="k">return</span> <span class="mi">3</span><span class="o">.</span><span class="mi">142</span><span class="p">;</span>
 <span class="k">end</span>
-</pre></div>
+</pre>
 <p>This would be compiled into:</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<pre class="highlight javascript"><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nx">val</span> <span class="o">!==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">val</span> <span class="o">!==</span> <span class="nx">nil</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="mf">3.142</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</pre>
 <p>This makes the generated truthy tests (<code>if</code> statements, <code>and</code> checks and
 <code>or</code> statements) a litle more verbose in the generated code.</p>
 
@@ -189,17 +189,17 @@ javascript as these values are also treated as false.</p>
 retrieved on an object, they are set natively without the <code>@</code> prefix.
 This allows real javascript identifiers to be used which is more
 efficient then accessing variables by string name.</p>
-<div class="highlight"><pre><span class="vi">@foo</span> <span class="o">=</span> <span class="mi">200</span>
+<pre class="highlight ruby"><span class="vi">@foo</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="vi">@foo</span>  <span class="c1"># =&gt; 200</span>
 
 <span class="vi">@bar</span>  <span class="c1"># =&gt; nil</span>
-</pre></div>
+</pre>
 <p>This gets compiled into:</p>
-<div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span>   <span class="c1">// =&gt; 200</span>
-
-<span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>   <span class="c1">// =&gt; nil</span>
-</pre></div>
+<pre class="highlight javascript"><span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span>   <span class="c1">// =&gt; 200
+</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>   <span class="c1">// =&gt; nil
+</span></pre>
 <p>The only point of warning is that when variables are used for the
 first time in ruby, they default to <code>nil</code>. In javascript, they default
 to <code>undefined</code>/<code>null</code>.</p>
@@ -212,21 +212,21 @@ to be done on a per scope basis, which can add overhead.</p>
 within methods in that class are preset on the prototype of the class
 to be <code>nil</code>. This means that all known ivars are already set to nil,
 and this is done just once during the lifespan of the app.</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span>
-  <span class="k">def</span> <span class="nf">bar</span>
+<pre class="highlight ruby"><span class="k">class </span><span class="nc">Foo</span>
+  <span class="k">def </span><span class="nf">bar</span>
     <span class="vi">@lol</span>
   <span class="k">end</span>
 
-  <span class="k">def</span> <span class="nf">woosh</span>
+  <span class="k">def </span><span class="nf">woosh</span>
     <span class="vi">@kapow</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre></div>
+</pre>
 <p>This example gets compiled into something similar to:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<pre class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">function</span> <span class="nx">Foo</span><span class="p">(){}</span>
-  <span class="c1">// ...</span>
-
+  <span class="c1">// ...
+</span>
   <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">lol</span> <span class="o">=</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">woosh</span> <span class="o">=</span> <span class="nx">nil</span><span class="p">;</span>
 
   <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">$bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -237,9 +237,9 @@ and this is done just once during the lifespan of the app.</p>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">kapow</span><span class="p">;</span>
   <span class="p">};</span>
 
-  <span class="c1">// etc ...</span>
-<span class="p">})()</span>
-</pre></div>
+  <span class="c1">// etc ...
+</span><span class="p">})()</span>
+</pre>
 <h4>Interacting with javascript</h4>
 
 <p>Opal tries to interact as cleanly with javascript and its api as much
@@ -251,27 +251,27 @@ hashes and nil.</p>
 a special syntax for inlining javascript code. This is done with
 x-strings or &quot;backticks&quot;, as their ruby use has no useful translation
 in the browser.</p>
-<div class="highlight"><pre><span class="sb">`window.title`</span>
+<pre class="highlight ruby"><span class="sb">`window.title`</span>
 <span class="c1"># =&gt; &quot;Opal: ruby to javascript compiler&quot;</span>
 
-<span class="sx">%x{</span>
-<span class="sx">  console.log(&quot;ruby version is:&quot;);</span>
-<span class="sx">  console.log(</span><span class="si">#{</span> <span class="no">OPAL_VERSION</span> <span class="si">}</span><span class="sx">);</span>
-<span class="sx">}</span>
+<span class="sx">%x{
+  console.log(&quot;ruby version is:&quot;);
+  console.log(</span><span class="si">#{</span> <span class="no">OPAL_VERSION</span> <span class="si">}</span><span class="sx">);
+}</span>
 
 <span class="c1"># =&gt; ruby version is:</span>
 <span class="c1"># =&gt; 0.3.19</span>
-</pre></div>
+</pre>
 <p>Even interpolations are supported, as seen here.</p>
 
 <p>This feature of inlining code is used extensively, for example in
 Array#length:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Array</span>
-  <span class="k">def</span> <span class="nf">length</span>
+<pre class="highlight ruby"><span class="k">class </span><span class="nc">Array</span>
+  <span class="k">def </span><span class="nf">length</span>
     <span class="sb">`this.length`</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre></div>
+</pre>
 <p>X-Strings also have the ability to automatically return their value,
 as used by this example.</p>
 
@@ -279,16 +279,16 @@ as used by this example.</p>
 
 <p>Accessing classes and methods defined in Opal from the javascript runtime is
 possible via the Opal js object. The following class:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span>
-  <span class="k">def</span> <span class="nf">bar</span>
+<pre class="highlight ruby"><span class="k">class </span><span class="nc">Foo</span>
+  <span class="k">def </span><span class="nf">bar</span>
     <span class="nb">puts</span> <span class="s2">&quot;called bar on class Foo defined in ruby code&quot;</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre></div>
+</pre>
 <p>Can be accessed from javascript like this:</p>
-<div class="highlight"><pre><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
-<span class="c1">// =&gt; &quot;called bar on class Foo defined in ruby code&quot;</span>
-</pre></div>
+<pre class="highlight javascript"><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
+<span class="c1">// =&gt; &quot;called bar on class Foo defined in ruby code&quot;
+</span></pre>
 <p>Remember that all ruby methods are prefixed with a &#39;$&#39;.</p>
 
 <h4>Compiled Files</h4>
@@ -296,25 +296,25 @@ possible via the Opal js object. The following class:</p>
 <p>As described above, a compiled ruby source gets generated into a string
 of javascript code that is wrapped inside an anonymous function. This
 looks similar to the following:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<pre class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">nil</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">nil</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
-  <span class="c1">// generated code</span>
-<span class="p">})();</span>
-</pre></div>
+  <span class="c1">// generated code
+</span><span class="p">})();</span>
+</pre>
 <p>Inside the function, <code>nil</code> is assigned to ensure a local copy is
 available, as well as all the helper methods used within the
 generated file. There is no return value from these functions as they
 are not used anywhere.</p>
 
 <p>As a complete example, assuming the following code:</p>
-<div class="highlight"><pre><span class="nb">puts</span> <span class="s2">&quot;foo&quot;</span>
-</pre></div>
+<pre class="highlight ruby"><span class="nb">puts</span> <span class="s2">&quot;foo&quot;</span>
+</pre>
 <p>This would compile directly into:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<pre class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">nil</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">nil</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
   <span class="nx">self</span><span class="p">.</span><span class="nx">$puts</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
 <span class="p">})();</span>
-</pre></div>
+</pre>
 <p>Most of the helpers are no longer present as they are not used in this
 example.</p>
 
@@ -328,9 +328,9 @@ written to the browser&#39;s console.</p>
 
 <p>The opal corelib includes JSON support instead of treating it as an
 external lib. The <code>JSON</code> module provides the usual parsing methods.</p>
-<div class="highlight"><pre><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span> <span class="s1">&#39;{&quot;a&quot;: 10, &quot;b&quot;: [1, 2, 3], &quot;c&quot;: null}&#39;</span>
+<pre class="highlight ruby"><span class="no">JSON</span><span class="nf">.parse</span> <span class="s1">'{&quot;a&quot;: 10, &quot;b&quot;: [1, 2, 3], &quot;c&quot;: null}'</span>
 <span class="c1"># =&gt; { &quot;a&quot; =&gt; 10, &quot;b&quot; =&gt; [1, 2, 3], &quot;c&quot; =&gt; nil }</span>
-</pre></div>
+</pre>
 <p>Opal expects <code>JSON</code> to be present in the browser, so older browsers
 may require a shim (json2.js) to work with opal. Most mobile browsers
 and modern desktop browsers include json support natively.</p>
@@ -346,11 +346,11 @@ obvious what went wrong.</p>
 <p>By default, opal aims to be as fast as possible, so <code>method_missing</code> is
 not turned on by default. Instead, when calling a method that doesn&#39;t
 exist, a native error will be raised.</p>
-<div class="highlight"><pre><span class="nb">self</span><span class="o">.</span><span class="n">do_something</span><span class="p">()</span>
-</pre></div>
+<pre class="highlight ruby"><span class="nb">self</span><span class="nf">.do_something</span><span class="p">()</span>
+</pre>
 <p>Might raise an error similar to:</p>
-<div class="highlight"><pre>Error: &#39;undefined&#39; is not a function (evaluating &#39;this.$do_something()&#39;)
-</pre></div>
+<pre class="highlight text">Error: 'undefined' is not a function (evaluating 'this.$do_something()')
+</pre>
 <p>As described above, all ruby methods will have a <code>$</code> prefix which gives
 a good indication that it is a opal method that doesnt exist, and most
 js engines output the missing function name.</p>
@@ -372,10 +372,10 @@ later that the error occurs.</p>
 debugger to work through javascript code. To use a debugger, simply
 add an x-string similar to the following at the place you wish to
 debug:</p>
-<div class="highlight"><pre><span class="c1"># .. code</span>
+<pre class="highlight ruby"><span class="c1"># .. code</span>
 <span class="sb">`debugger`</span>
 <span class="c1"># .. more code</span>
-</pre></div>
+</pre>
 <p>The x-strings just pass the debugger statement straight through to the
 javascript output.</p>
 

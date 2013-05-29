@@ -76,23 +76,23 @@ opal work directly inside rails applications.</p>
 <h2>Simple Applications</h2>
 
 <p>If you have an example file <code>app.rb</code>:</p>
-<div class="highlight"><pre><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+<pre class="highlight ruby"><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">]</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="n">n</span>
 <span class="k">end</span>
-</pre></div>
+</pre>
 <p>You can write a rake task to compile the code:</p>
-<div class="highlight"><pre><span class="n">task</span> <span class="ss">:compile</span> <span class="k">do</span>
-  <span class="n">src</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span> <span class="s1">&#39;app.rb&#39;</span>
-  <span class="n">js</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">.</span><span class="n">parse</span> <span class="n">src</span>
+<pre class="highlight ruby"><span class="n">task</span> <span class="ss">:compile</span> <span class="k">do</span>
+  <span class="n">src</span> <span class="o">=</span> <span class="no">File</span><span class="nf">.read</span> <span class="s1">'app.rb'</span>
+  <span class="n">js</span> <span class="o">=</span> <span class="no">Opal</span><span class="nf">.parse</span> <span class="n">src</span>
 
-  <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;app.js&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">o</span><span class="o">|</span> <span class="n">o</span><span class="o">.</span><span class="n">puts</span> <span class="n">js</span> <span class="p">}</span>
+  <span class="no">File</span><span class="nf">.open</span><span class="p">(</span><span class="s1">'app.js'</span><span class="p">,</span> <span class="s1">'w+'</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">o</span><span class="o">|</span> <span class="n">o</span><span class="nf">.puts</span> <span class="n">js</span> <span class="p">}</span>
 <span class="k">end</span>
-</pre></div>
+</pre>
 <h3>Running compiled code</h3>
 
 <p>The opal runtime is required for running compiled ruby, which can be downloaded
 <a href="http://opalrb.org/opal.js">opal.js</a>. Setup your HTML file:</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<pre class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;title&gt;</span>My first Opal application<span class="nt">&lt;/title&gt;</span>
@@ -101,7 +101,7 @@ opal work directly inside rails applications.</p>
 <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre></div>
+</pre>
   </div>
    <footer style='padding: 70px 0;
  margin-top: 70px;

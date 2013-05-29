@@ -100,10 +100,11 @@
   </div>
 
   <div class="span4">
-    <h2>Native class</h2>
+    <h2>Call JS functions</h2>
     <p>
-      `Native` is a class provided to wrap native objects so that their
-      properties and methods can be called directly from ruby code.
+      Native objects and functions can be called directly from ruby,
+      allowing seamless access to properties and methods of javascript
+      objects.
     </p>
   </div>
 </div>
@@ -137,22 +138,22 @@
 <h3>Getting Started</h3>
 
 <h4>Overview</h4>
-<div class="highlight"><pre><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
+<pre class="highlight ruby"><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">]</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="n">a</span>
 <span class="k">end</span>
 
-<span class="k">class</span> <span class="nc">Foo</span>
+<span class="k">class </span><span class="nc">Foo</span>
   <span class="kp">attr_accessor</span> <span class="ss">:name</span>
 
-  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="k">def </span><span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
     <span class="nb">puts</span> <span class="s2">&quot;You tried to call: </span><span class="si">#{</span><span class="n">sym</span><span class="si">}</span><span class="s2">&quot;</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">adam</span> <span class="o">=</span> <span class="no">Foo</span><span class="o">.</span><span class="n">new</span>
-<span class="n">adam</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Adam Beynon&#39;</span>
-<span class="nb">puts</span> <span class="n">adam</span><span class="o">.</span><span class="n">name</span>
-<span class="n">adam</span><span class="o">.</span><span class="n">do_task</span>
+<span class="n">adam</span> <span class="o">=</span> <span class="no">Foo</span><span class="nf">.new</span>
+<span class="n">adam</span><span class="nf">.name</span> <span class="o">=</span> <span class="s1">'Adam Beynon'</span>
+<span class="nb">puts</span> <span class="n">adam</span><span class="nf">.name</span>
+<span class="n">adam</span><span class="nf">.do_task</span>
 
   <span class="c1"># Output (in your browser console):</span>
   <span class="c1">#</span>
@@ -162,17 +163,17 @@
   <span class="c1">#   4</span>
   <span class="c1">#   Adam Beynon</span>
   <span class="c1">#   You tried to call: do_task</span>
-</pre></div>
+</pre>
 <p><a href="/try">Try this code in your browser!</a></p>
 
 <h4>Installation</h4>
 
 <p>Install Opal from RubyGems:</p>
-<div class="highlight"><pre>$ gem install opal
-</pre></div>
+<pre class="highlight text">$ gem install opal
+</pre>
 <p>Or include it in your <code>Gemfile</code> for Bundler:</p>
-<div class="highlight"><pre><span class="n">gem</span> <span class="s1">&#39;opal&#39;</span>
-</pre></div>
+<pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'opal'</span>
+</pre>
   </div>
    <footer style='padding: 70px 0;
  margin-top: 70px;
