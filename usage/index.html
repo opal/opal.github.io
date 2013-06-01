@@ -73,35 +73,56 @@
 <p><a href="https://github.com/opal/opal-rails#readme">opal-rails</a> is available to make
 opal work directly inside rails applications.</p>
 
-<h2>Simple Applications</h2>
+<h2>Build a static application</h2>
 
-<p>If you have an example file <code>app.rb</code>:</p>
-<pre class="highlight ruby"><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">]</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
-  <span class="nb">puts</span> <span class="n">n</span>
+<p>If you wish to build a standalone application, you can use a simple rake
+task to help. Opal uses a set of load paths internally to resolve code
+dependencies, so it is always a good idea to keep your ruby code inside
+a directory.</p>
+
+<p>Start by making a <code>app/application.rb</code> file to hold our demo code:</p>
+<pre class="highlight ruby"><span class="c1"># app/application.rb</span>
+
+<span class="nb">require</span> <span class="s2">&quot;opal&quot;</span>
+
+<span class="nb">puts</span> <span class="s2">&quot;Wow, running in Opal!&quot;</span>
+</pre>
+<p>You will notice the <code>require &quot;opal&quot;</code> line which will automatically
+include the opal runtime and corelib into our output, giving us access
+to the <code>puts()</code> method.</p>
+
+<p>To build this, we need a rake task to load a new opal environment, add
+our <code>app/</code> directory to the load path, and then to build our target file
+<code>application.rb</code> which will be found because it is inside our added load
+path.</p>
+<pre class="highlight ruby"><span class="c1"># Rakefile</span>
+
+<span class="n">desc</span> <span class="s2">&quot;Build our app to build.js&quot;</span>
+<span class="n">task</span> <span class="ss">:build</span> <span class="k">do</span>
+  <span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="nf">.new</span>
+  <span class="n">env</span><span class="nf">.append_path</span> <span class="s2">&quot;app&quot;</span>
+
+  <span class="no">File</span><span class="nf">.open</span><span class="p">(</span><span class="s2">&quot;build.js&quot;</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">out</span><span class="o">|</span>
+    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="n">env</span><span class="o">[</span><span class="s2">&quot;application&quot;</span><span class="o">]</span><span class="nf">.to_s</span>
+  <span class="k">end</span>
 <span class="k">end</span>
 </pre>
-<p>You can write a rake task to compile the code:</p>
-<pre class="highlight ruby"><span class="n">task</span> <span class="ss">:compile</span> <span class="k">do</span>
-  <span class="n">src</span> <span class="o">=</span> <span class="no">File</span><span class="nf">.read</span> <span class="s1">'app.rb'</span>
-  <span class="n">js</span> <span class="o">=</span> <span class="no">Opal</span><span class="nf">.parse</span> <span class="n">src</span>
+<p>Now, if you run <code>rake build</code> you will get the <code>build.js</code> output file
+with our application compiled, with the opal runtime included as well.</p>
 
-  <span class="no">File</span><span class="nf">.open</span><span class="p">(</span><span class="s1">'app.js'</span><span class="p">,</span> <span class="s1">'w+'</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">o</span><span class="o">|</span> <span class="n">o</span><span class="nf">.puts</span> <span class="n">js</span> <span class="p">}</span>
-<span class="k">end</span>
-</pre>
-<h3>Running compiled code</h3>
-
-<p>The opal runtime is required for running compiled ruby, which can be downloaded
-<a href="http://opalrb.org/opal.js">opal.js</a>. Setup your HTML file:</p>
+<p>To run the application, lets create a very simple html file:</p>
 <pre class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;title&gt;</span>My first Opal application<span class="nt">&lt;/title&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;opal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;&lt;/body&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;build.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre>
+<p>Now, open this html file and check the browsers console. You should see
+our message printed in the console.</p>
+
   </div>
    <footer style='padding: 70px 0;
  margin-top: 70px;
