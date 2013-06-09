@@ -83,11 +83,11 @@ to convert values to opal specific values. It does mean that there is
 only a <code>Boolean</code> ruby class available, not seperate <code>TrueClass</code> and
 <code>FalseClass</code> classes.</p>
 
-<p><strong>nil</strong> is compiled into a <code>nil</code> reference, which inside all generated
-files points to a special object which is just an instance of the ruby
-<code>NilClass</code> class. This object is available externally to javascript as
-<code>Opal.nil</code>.</p>
-<pre class="highlight ruby"><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
+<p><em>nil</em> is compiled to <code>null</code>, so it can easily be passed between ruby and
+javascript code. <code>undefined</code> is also a valid value for <code>nil</code>, and both
+can be passed seamlessly. You can still call methods on <code>nil</code> as it is
+treated as an instance of <code>NilClass</code>.</p>
+<pre class="highlight ruby"><span class="kp">nil</span>         <span class="c1"># =&gt; null</span>
 <span class="kp">true</span>        <span class="c1"># =&gt; true</span>
 <span class="kp">false</span>       <span class="c1"># =&gt; false</span>
 <span class="nb">self</span>        <span class="c1"># =&gt; self</span>
@@ -141,6 +141,12 @@ range instances.</p>
 <pre class="highlight ruby"><span class="mi">1</span><span class="nf">..</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
 <span class="mi">3</span><span class="nf">..</span><span class="o">.</span><span class="mi">7</span>       <span class="c1"># =&gt; __range(3, 7, false)</span>
 </pre>
+<h4>Method missing (method_missing)</h4>
+
+<p>Opal fully supports <code>method_missing</code> and it is turned on by default.
+Opal can also send methods to <code>nil</code>, and the receiver is checked inline
+to be able to dispatch calls to native <code>null</code> or <code>undefined</code>.</p>
+
 <h5>Optimized Math Operators</h5>
 
 <p>In ruby, all math operators are method calls, but compiling this into
@@ -164,7 +170,8 @@ else is a truthy value including <code>&quot;&quot;</code>, <code>0</code> and <
 javascript as these values are also treated as false.</p>
 
 <p>For this reason, most truthy tests must check if values are <code>false</code> or
-<code>nil</code>.</p>
+<code>nil</code>. Note: as <code>nil</code> compiles to <code>null</code>, the truthyness tests will
+check <code>null</code> and <code>undefined</code> as both values are valid <code>nil</code>.</p>
 
 <p>Taking the following test:</p>
 <pre class="highlight ruby"><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
@@ -176,7 +183,7 @@ javascript as these values are also treated as false.</p>
 <p>This would be compiled into:</p>
 <pre class="highlight javascript"><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nx">val</span> <span class="o">!==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">val</span> <span class="o">!==</span> <span class="nx">nil</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">val</span> <span class="o">!==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">val</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="mf">3.142</span><span class="p">;</span>
 <span class="p">}</span>
 </pre>
@@ -200,52 +207,12 @@ efficient then accessing variables by string name.</p>
 </span>
 <span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>   <span class="c1">// =&gt; nil
 </span></pre>
-<p>The only point of warning is that when variables are used for the
-first time in ruby, they default to <code>nil</code>. In javascript, they default
-to <code>undefined</code>/<code>null</code>.</p>
-
-<p>To keep things working in opal, ivars must be preset to <code>nil</code> before
-they can be used. In the top scope and other corner cases, this needs
-to be done on a per scope basis, which can add overhead.</p>
-
-<p>To improve performance, once a class body is compiled, all ivars used
-within methods in that class are preset on the prototype of the class
-to be <code>nil</code>. This means that all known ivars are already set to nil,
-and this is done just once during the lifespan of the app.</p>
-<pre class="highlight ruby"><span class="k">class </span><span class="nc">Foo</span>
-  <span class="k">def </span><span class="nf">bar</span>
-    <span class="vi">@lol</span>
-  <span class="k">end</span>
-
-  <span class="k">def </span><span class="nf">woosh</span>
-    <span class="vi">@kapow</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</pre>
-<p>This example gets compiled into something similar to:</p>
-<pre class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">function</span> <span class="nx">Foo</span><span class="p">(){}</span>
-  <span class="c1">// ...
-</span>
-  <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">lol</span> <span class="o">=</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">woosh</span> <span class="o">=</span> <span class="nx">nil</span><span class="p">;</span>
-
-  <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">$bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">lol</span><span class="p">;</span>
-  <span class="p">};</span>
-
-  <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">$woosh</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">kapow</span><span class="p">;</span>
-  <span class="p">};</span>
-
-  <span class="c1">// etc ...
-</span><span class="p">})()</span>
-</pre>
 <h4>Interacting with javascript</h4>
 
 <p>Opal tries to interact as cleanly with javascript and its api as much
 as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
 are just javascript native equivalents. The only boxed core features are
-hashes and nil.</p>
+hashes.</p>
 
 <p>As most of the corelib deals with these low level details, opal provides
 a special syntax for inlining javascript code. This is done with
@@ -297,21 +264,16 @@ possible via the Opal js object. The following class:</p>
 of javascript code that is wrapped inside an anonymous function. This
 looks similar to the following:</p>
 <pre class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">nil</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">nil</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">_klass</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
   <span class="c1">// generated code
 </span><span class="p">})();</span>
 </pre>
-<p>Inside the function, <code>nil</code> is assigned to ensure a local copy is
-available, as well as all the helper methods used within the
-generated file. There is no return value from these functions as they
-are not used anywhere.</p>
-
 <p>As a complete example, assuming the following code:</p>
 <pre class="highlight ruby"><span class="nb">puts</span> <span class="s2">&quot;foo&quot;</span>
 </pre>
 <p>This would compile directly into:</p>
 <pre class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">nil</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">nil</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">_klass</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
   <span class="nx">self</span><span class="p">.</span><span class="nx">$puts</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
 <span class="p">})();</span>
 </pre>
@@ -340,31 +302,6 @@ and modern desktop browsers include json support natively.</p>
 <p>Because Opal does not aim to be fully compatible with ruby, there are
 some instances where things can break and it may not be entirely
 obvious what went wrong.</p>
-
-<h5>Undefined methods</h5>
-
-<p>By default, opal aims to be as fast as possible, so <code>method_missing</code> is
-not turned on by default. Instead, when calling a method that doesn&#39;t
-exist, a native error will be raised.</p>
-<pre class="highlight ruby"><span class="nb">self</span><span class="nf">.do_something</span><span class="p">()</span>
-</pre>
-<p>Might raise an error similar to:</p>
-<pre class="highlight text">Error: 'undefined' is not a function (evaluating 'this.$do_something()')
-</pre>
-<p>As described above, all ruby methods will have a <code>$</code> prefix which gives
-a good indication that it is a opal method that doesnt exist, and most
-js engines output the missing function name.</p>
-
-<h5>Undefined constants</h5>
-
-<p>If trying to access a constant that doesn&#39;t exist, there is no runtime
-error. Instead, the value of that expression is just <code>undefined</code> as
-constants are retrieved from objects that hold all constants in the
-scope. Trying to send a method to an undefined constant will therefore
-just raise an ugly javascript <code>TypeError</code>.</p>
-
-<p>If you are using the constant as a reference, it may not be until much
-later that the error occurs.</p>
 
 <h5>Using javascript debuggers</h5>
 
