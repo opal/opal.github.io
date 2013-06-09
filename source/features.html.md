@@ -21,13 +21,13 @@ to convert values to opal specific values. It does mean that there is
 only a `Boolean` ruby class available, not seperate `TrueClass` and
 `FalseClass` classes.
 
-**nil** is compiled into a `nil` reference, which inside all generated
-files points to a special object which is just an instance of the ruby
-`NilClass` class. This object is available externally to javascript as
-`Opal.nil`.
+*nil* is compiled to `null`, so it can easily be passed between ruby and
+javascript code. `undefined` is also a valid value for `nil`, and both
+can be passed seamlessly. You can still call methods on `nil` as it is
+treated as an instance of `NilClass`.
 
 ```ruby
-nil         # => nil
+nil         # => null
 true        # => true
 false       # => false
 self        # => self
@@ -97,6 +97,12 @@ range instances.
 3...7       # => __range(3, 7, false)
 ```
 
+#### Method missing (method_missing)
+
+Opal fully supports `method_missing` and it is turned on by default.
+Opal can also send methods to `nil`, and the receiver is checked inline
+to be able to dispatch calls to native `null` or `undefined`.
+
 ##### Optimized Math Operators
 
 In ruby, all math operators are method calls, but compiling this into
@@ -126,7 +132,8 @@ else is a truthy value including `""`, `0` and `[]`. This differs from
 javascript as these values are also treated as false.
 
 For this reason, most truthy tests must check if values are `false` or
-`nil`.
+`nil`. Note: as `nil` compiles to `null`, the truthyness tests will
+check `null` and `undefined` as both values are valid `nil`.
 
 Taking the following test:
 
@@ -143,7 +150,7 @@ This would be compiled into:
 ```javascript
 var val = 42;
 
-if (val !== false && val !== nil) {
+if (val !== false && val != null) {
   return 3.142;
 }
 ```
@@ -174,58 +181,12 @@ this.foo;   // => 200
 this.bar;   // => nil
 ```
 
-The only point of warning is that when variables are used for the
-first time in ruby, they default to `nil`. In javascript, they default
-to `undefined`/`null`.
-
-To keep things working in opal, ivars must be preset to `nil` before
-they can be used. In the top scope and other corner cases, this needs
-to be done on a per scope basis, which can add overhead.
-
-To improve performance, once a class body is compiled, all ivars used
-within methods in that class are preset on the prototype of the class
-to be `nil`. This means that all known ivars are already set to nil,
-and this is done just once during the lifespan of the app.
-
-```ruby
-class Foo
-  def bar
-    @lol
-  end
-
-  def woosh
-    @kapow
-  end
-end
-```
-
-This example gets compiled into something similar to:
-
-```javascript
-(function() {
-  function Foo(){}
-  // ...
-
-  Foo.prototype.lol = Foo.prototype.woosh = nil;
-
-  Foo.prototype.$bar = function() {
-    return this.lol;
-  };
-
-  Foo.prototype.$woosh = function() {
-    return this.kapow;
-  };
-
-  // etc ...
-})()
-```
-
 #### Interacting with javascript
 
 Opal tries to interact as cleanly with javascript and its api as much
 as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
 are just javascript native equivalents. The only boxed core features are
-hashes and nil.
+hashes.
 
 As most of the corelib deals with these low level details, opal provides
 a special syntax for inlining javascript code. This is done with
@@ -282,7 +243,6 @@ Opal.Foo.$new().$bar();
 
 Remember that all ruby methods are prefixed with a '$'.
 
-
 #### Compiled Files
 
 As described above, a compiled ruby source gets generated into a string
@@ -291,15 +251,10 @@ looks similar to the following:
 
 ```javascript
 (function() {
-  var nil = Opal.nil, self = Opal.top;
+  var _klass = Opal.klass, self = Opal.top;
   // generated code
 })();
 ```
-
-Inside the function, `nil` is assigned to ensure a local copy is
-available, as well as all the helper methods used within the
-generated file. There is no return value from these functions as they
-are not used anywhere.
 
 As a complete example, assuming the following code:
 
@@ -311,7 +266,7 @@ This would compile directly into:
 
 ```javascript
 (function() {
-  var nil = Opal.nil, self = Opal.top;
+  var _klass = Opal.klass, self = Opal.top;
   self.$puts("foo");
 })();
 ```
@@ -344,37 +299,6 @@ and modern desktop browsers include json support natively.
 Because Opal does not aim to be fully compatible with ruby, there are
 some instances where things can break and it may not be entirely
 obvious what went wrong.
-
-##### Undefined methods
-
-By default, opal aims to be as fast as possible, so `method_missing` is
-not turned on by default. Instead, when calling a method that doesn't
-exist, a native error will be raised.
-
-```ruby
-self.do_something()
-```
-
-Might raise an error similar to:
-
-```text
-Error: 'undefined' is not a function (evaluating 'this.$do_something()')
-```
-
-As described above, all ruby methods will have a `$` prefix which gives
-a good indication that it is a opal method that doesnt exist, and most
-js engines output the missing function name.
-
-##### Undefined constants
-
-If trying to access a constant that doesn't exist, there is no runtime
-error. Instead, the value of that expression is just `undefined` as
-constants are retrieved from objects that hold all constants in the
-scope. Trying to send a method to an undefined constant will therefore
-just raise an ugly javascript `TypeError`.
-
-If you are using the constant as a reference, it may not be until much
-later that the error occurs.
 
 ##### Using javascript debuggers
 
