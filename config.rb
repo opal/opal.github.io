@@ -7,6 +7,7 @@ set :markdown, :layout_engine => :erb,
                 :lax_html_blocks => true
 
 activate :syntax
+activate :sprockets
 
 activate :directory_indexes
 
@@ -16,9 +17,12 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
-# Add all Opal load paths to sprockets, so we can access opal.js,
-# opal-parser.js and opal-jquery.js
-set :js_assets_paths, Opal.paths.clone
+
+after_configuration do
+  Opal.paths.each do |p|
+    sprockets.append_path p
+  end
+end
 
 configure :build do
   activate :minify_css

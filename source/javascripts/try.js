@@ -46,7 +46,7 @@ $(function() {
     output.setValue('');
 
     try {
-      var code = Opal.Opal.Parser.$new().$parse(editor.getValue());
+      var code = Opal.Opal.Parser.$new().$parse(editor.getValue(), Opal.hash("source_map_enabled", false));
       viewer.setValue(code);
       eval(code);
     }
