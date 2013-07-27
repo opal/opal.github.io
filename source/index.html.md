@@ -15,9 +15,11 @@ title: "Opal: Ruby to Javascript Compiler"
   </p>
   <p>
     Opal is <a href="http://github.com/opal/opal">hosted on github</a>,
-    has a Freenode IRC channel at <code>#opal</code>, and on twitter
+    has a Freenode IRC channel at <code>#opal</code>, a <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list</a>, and on twitter
     <a href="http://twitter.com/opalrb">@opalrb</a>.
   </p>
+
+  <p>More documentation can be found on the <a href="https://github.com/opal/opal/wiki">Opal wiki</a>.
 </div>
 
 <div class="row-fluid">
