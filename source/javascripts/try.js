@@ -34,15 +34,22 @@ $(function() {
     run.attachEvent('onclick', compile);
   }
 
+  var flush = [];
+
+  var puts = function(str) {
+    flush.push(str);
+    output.setValue(flush.join("\n"));
+  };
+
+  Opal.gvars.stdout.$puts = function() {
+    for (var i = 0; i < arguments.length; i++) {
+      puts(arguments[i]);
+    }
+  };
+
   // Functions to update editor and viewer content
   function compile() {
-    var old_puts = Opal.puts;
-    var flush   = [];
-    Opal.puts = function(a) {
-      flush.push(a);
-      output.setValue(flush.join("\n"));
-    };
-
+    flush   = [];
     output.setValue('');
 
     try {
@@ -51,10 +58,9 @@ $(function() {
       eval(code);
     }
     catch (err) {
-      Opal.puts('' + err + "\n" + err.stack);
+      puts('' + err + "\n" + err.stack);
     }
 
-    Opal.puts = old_puts;
     link.href = '#code:' + encodeURIComponent(editor.getValue());
     return false;
   }
