@@ -19,7 +19,7 @@ title: "Opal: Ruby to Javascript Compiler"
     <a href="http://twitter.com/opalrb">@opalrb</a>.
   </p>
 
-  <p>More documentation can be found on the <a href="https://github.com/opal/opal/wiki">Opal wiki</a>.
+  <p><a><a href="https://github.com/opal/opal/blob/master/doc/home.md">Opal Documentation</a>.
 </div>
 
 ### Getting Started
@@ -43,15 +43,6 @@ adam = Foo.new
 adam.name = 'Adam Beynon'
 puts adam.name
 adam.do_task
-
-  # Output (in your browser console):
-  #
-  #   1
-  #   2
-  #   3
-  #   4
-  #   Adam Beynon
-  #   You tried to call: do_task
 ```
 
 [Try this code in your browser!](/try)
