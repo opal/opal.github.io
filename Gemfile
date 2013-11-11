@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'middleman-gh-pages'
 
-gem 'opal', :github => 'opal/opal'
-gem 'opal-jquery', '>= 0.0.12'
+gem 'opal', '0.5.1'
+gem 'opal-jquery'
 gem 'opal-sprockets'
 
 gem "middleman"
