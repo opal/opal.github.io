@@ -4,11 +4,6 @@ title: Getting started with Opal
 
 # Getting started with Opal
 
-[Opal](http://github.com/opal/opal) is a source-to-source, ruby to javascript
-compiler. It includes an implementation of the ruby corelib, as well as
-various extensions for browser interactions, testing and client mvc, supplied
-as gems.
-
 At its very core, opal provides a simple method of compiling a string of ruby
 into javascript that can run on top of the opal runtime, provided by opal.js:
 
@@ -16,15 +11,6 @@ into javascript that can run on top of the opal runtime, provided by opal.js:
 Opal.compile("[1, 2, 3].each { |a| puts a }")
 # => "(function() { ... })()"
 ```
-
-The produced javascript can then run in any browser. This only half solves the
-problem. Opal was built to run larger client side applications, and to replace
-javascript as the implementation language of these rich web applications. Where
-opal provides the compiler, [opal-sprockets](http://github.com/opal/opal-sprockets)
-provides the build system to combine multiple ruby source files into one output
-file to run in the browser.
-
-## Using opal-sprockets
 
 `opal-sprockets` adds support to sprockets for compiling ruby (and erb) assets,
 and treating them as first class javascript citizens. It works in a similar way
@@ -55,31 +41,24 @@ require 'bundler'
 Bundler.require
 
 run Opal::Server.new { |s|
+  # the entry-point (main) to the app
   s.main = 'application'
+
+  # add additional dirs to opal/sprockets load path
   s.append_path 'app'
 }
 ```
 
-The server configuration has two options set. Firstly, `main` is the top-level
-file that should be included by default as the application entry-point. It is
-`application` purely to mirror `rails`, but it can be replaced with any target
-file you wish. Secondly, the `append_path()` call adds a custom directory to the
-opal and sprockets load paths. Again, rails adds various `app/assets/javascripts`
-directories for you, but in a custom application this is left to the user.
-
-Next, we must make our top level `app/application.rb` file:
+Next, we must make our main app file `app/application.rb`:
 
 ```ruby
 # app/application.rb
+
+# when using sprockets/rails, we must include the corelib
 require 'opal'
 
 [1, 2, 3].each { |a| puts a }
 ```
-
-The `require "opal"` line is needed as it includes the opal runtime and corelib.
-Sprockets treats opal just as any other asset, so it is necessary to inlcude the
-corelib in this manner. Once loaded, we will be able to run any ruby code as
-seen below that line.
 
 To run the application, start the rack server:
 
@@ -121,3 +100,52 @@ puts user.admin?
 ```
 
 Simply refresh the page in the browser, and view the console.
+
+## Custom html
+
+`Opal::Server` provides a default html page for content. You can just create
+an `index.html` or `index.html.erb` page to have custom html content. The
+`javascript_include_tag` helpers acts just like in rails:
+
+```erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>opal demo</title>
+
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+## Using jQuery with Opal
+
+`opal-jquery` provides a nice clean wrapper around jquery for dom interaction.
+Add the gem to your Gemfile:
+
+```ruby
+# Gemfile
+source 'https://rubygems.org'
+
+gem 'opal'
+gem 'opal-sprockets'
+gem 'opal-jquery'
+```
+
+Also, add some jquery code:
+
+```ruby
+# app/application.rb
+
+require 'opal'
+require 'opal-jquery'
+
+Document.ready? do
+  alert "jquery is ready!"
+end
+```
+
+Restart the server, and visit the page! Go to the
+[opal-jquery homepage](http://github.com/opal/opal-jquery) for more documentation.
