@@ -19,7 +19,7 @@ title: "Opal: Ruby to Javascript Compiler"
     <a href="http://twitter.com/opalrb">@opalrb</a>.
   </p>
 
-  <p><a><a href="https://github.com/opal/opal/blob/master/doc/home.md">Opal Documentation</a>.
+  <p><a href="/docs">Opal Documentation</a>.
 </div>
 
 ### Getting Started

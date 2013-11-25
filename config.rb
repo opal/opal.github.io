@@ -4,7 +4,7 @@ Bundler.require
 set :markdown_engine, :redcarpet
 set :markdown, :layout_engine => :erb,
                :fenced_code_blocks => true,
-                :lax_html_blocks => true
+               :lax_html_blocks => true
 
 activate :syntax
 
@@ -22,6 +22,7 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+page "/docs/*", :layout => "docs"
 
 after_configuration do
   Opal.paths.each do |p|

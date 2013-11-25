@@ -1,7 +1,5 @@
 ---
 title: Getting started with Opal
-author: Adam Beynon
-tags: Opal, Sprockets
 ---
 
 # Getting started with Opal
