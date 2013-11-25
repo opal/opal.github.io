@@ -1,6 +1,11 @@
 //= require _vendor/bootstrap
-//= require _vendor/pygment_solarized_light
+//= require _vendor/pygment_manni
 //= require _vendor/codemirror-solarized
+
+.highlight {
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
 
 .main-title {
   padding-bottom: 32px;
