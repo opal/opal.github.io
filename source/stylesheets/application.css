@@ -11,6 +11,10 @@
   background-color: #428bca;
   border-color: #428bca;
   box-shadow: 0 1px 0 rgba(255,255,255,.1);
+
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 .opal-nav .navbar-collapse {

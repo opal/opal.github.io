@@ -27,22 +27,21 @@ title: "Opal: Ruby to Javascript Compiler"
 #### Overview
 
 ```ruby
-[1, 2, 3, 4].each do |a|
-  puts a
-end
-
-class Foo
+class User
   attr_accessor :name
 
-  def method_missing(sym, *args, &block)
-    puts "You tried to call: #{sym}"
+  def initialize(name)
+    @name = name
+  end
+
+  def admin?
+    @name == 'Admin'
   end
 end
 
-adam = Foo.new
-adam.name = 'Adam Beynon'
-puts adam.name
-adam.do_task
+user = User.new('Bob')
+puts user
+puts user.admin?
 ```
 
 [Try this code in your browser!](/try)
