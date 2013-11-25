@@ -11,7 +11,7 @@ title: "Opal: Ruby to Javascript Compiler"
     <b>Opal is a ruby to javascript compiler.</b> It is source-to-source, making it
     <b>fast</b> as a runtime. Opal <b>includes a compiler</b> (which can be run in any
     browser), a corelib and runtime implementation. The corelib/runtime is
-    also <b>very small</b> (10.8kb gzipped).
+    also <b>very small</b>.
   </p>
   <p>
     Opal is <a href="http://github.com/opal/opal">hosted on github</a>,

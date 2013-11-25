@@ -9,12 +9,40 @@
   <%= javascript_include_tag "application" %>
 
   <style>
-    body {
-      padding-top: 92px;
-    }
-
     .main-title {
       padding-bottom: 32px;
+    }
+
+    .opal-nav {
+      text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+      background-color: #428bca;
+      border-color: #428bca;
+      box-shadow: 0 1px 0 rgba(255,255,255,.1);
+    }
+    .opal-nav .navbar-collapse {
+      border-color: #463265;
+    }
+    .opal-nav .navbar-brand {
+      color: #fff;
+    }
+    .opal-nav .navbar-nav > li > a {
+      color: #eeeeee;
+    }
+    .opal-nav .navbar-nav > li > a:hover {
+      color: #fff;
+    }
+    .opal-nav .navbar-nav > .active > a,
+    .opal-nav .navbar-brand:hover,
+    .opal-nav .navbar-nav > .active > a:hover {
+      color: #fff;
+      background-color: #428bca;
+    }
+    .opal-nav .navbar-toggle {
+      border-color: #428bca;
+    }
+    .opal-nav .navbar-toggle:hover {
+      background-color: #428bca;
+      border-color: #428bca;
     }
   </style>
 
@@ -34,19 +62,21 @@
   </script>
 </head>
 <body class="<%= page_classes %>">
-  <!-- nav -->
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <!-- github banner -->
-      <a href="https://github.com/opal/opal"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-      <div class="container">
-        <a class="brand" href="/">
+
+  <nav class="navbar navbar-default opal-nav">
+    <div class="container">
+
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
           <img height='22' width='22' style='margin-top:-10%;' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png'/>
           Opal
         </a>
-        <ul class="nav">
+      </div>
+
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
           <li><a href="https://github.com/opal/opal/blob/master/doc/home.md">Documentation</a></li>
-          <li><a href="/try"><span class="label">Try Opal now!</span></a></li>
+          <li><a href="/try">Try Opal now!</a></li>
           <li class="divider-vertical"></li>
           <li><p class="navbar-text"><span class="label label-info">integrations:</span></p></li>
           <li><a href="http://github.com/opal/opal-jquery">jQuery</a></li>
@@ -57,8 +87,10 @@
           <li><a href="https://github.com/opal/opal-todos#readme">TodoMVC</a></li>
         </ul>
       </div>
+
     </div>
-  </div>
+  </nav>
+
   <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <!-- body -->
