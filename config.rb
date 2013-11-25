@@ -7,7 +7,12 @@ set :markdown, :layout_engine => :erb,
                 :lax_html_blocks => true
 
 activate :syntax
+
 activate :sprockets
+
+activate :blog do |blog|
+  blog.prefix = "blog"
+end
 
 activate :directory_indexes
 
