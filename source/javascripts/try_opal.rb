@@ -3,18 +3,21 @@ require 'opal-parser'
 require 'opal-jquery'
 
 DEFAULT_TRY_CODE = <<-RUBY
-class Foo
+class User
   attr_accessor :name
 
-  def method_missing(sym, *args, &block)
-    puts "You tried to call: \#{sym}"
+  def initialize(name)
+    @name = name
+  end
+
+  def admin?
+    @name == 'Admin'
   end
 end
 
-adam = Foo.new
-adam.name = 'Adam Beynon'
-puts adam.name
-adam.do_task
+user = User.new('Bob')
+puts user
+puts user.admin?
 RUBY
 
 class TryOpal
@@ -40,8 +43,8 @@ class TryOpal
     @flush = []
 
     @output = Editor.new :output, lineNumbers: false, mode: 'javascript', readOnly: true
-    @viewer = Editor.new :viewer, lineNumbers: true, mode: 'javascript', readOnly: true
-    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift'
+    @viewer = Editor.new :viewer, lineNumbers: true, mode: 'javascript', readOnly: true, theme: 'solarized light'
+    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift', theme: 'solarized light'
 
     @link = Element.find('#link_code')
     Element.find('#run_code').on(:click) { run_code }

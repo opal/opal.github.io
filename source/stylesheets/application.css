@@ -1,2 +1,46 @@
 //= require _vendor/bootstrap
 //= require _vendor/pygment_solarized_light
+//= require _vendor/codemirror-solarized
+
+.main-title {
+  padding-bottom: 32px;
+}
+
+.opal-nav {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+  background-color: #428bca;
+  border-color: #428bca;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+
+.opal-nav .navbar-collapse {
+  border-color: #463265;
+}
+
+.opal-nav .navbar-brand {
+  color: #fff;
+}
+
+.opal-nav .navbar-nav > li > a {
+  color: #eeeeee;
+}
+
+.opal-nav .navbar-nav > li > a:hover {
+  color: #fff;
+}
+
+.opal-nav .navbar-nav > .active > a,
+.opal-nav .navbar-brand:hover,
+.opal-nav .navbar-nav > .active > a:hover {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.opal-nav .navbar-toggle {
+  border-color: #428bca;
+}
+
+.opal-nav .navbar-toggle:hover {
+  background-color: #428bca;
+  border-color: #428bca;
+}
