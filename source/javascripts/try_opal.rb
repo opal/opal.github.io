@@ -44,7 +44,9 @@ class TryOpal
 
     @output = Editor.new :output, lineNumbers: false, mode: 'javascript', readOnly: true
     @viewer = Editor.new :viewer, lineNumbers: true, mode: 'javascript', readOnly: true, theme: 'solarized light'
-    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift', theme: 'solarized light'
+    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift', theme: 'solarized light', extraKeys: {
+      'Cmd-Enter' => -> { run_code }
+    }
 
     @link = Element.find('#link_code')
     Element.find('#run_code').on(:click) { run_code }
