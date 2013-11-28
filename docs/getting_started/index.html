@@ -72,30 +72,30 @@ paths when running sprockets instances. For rails applications,
 building a simple application, we have to do this manually. So add opal-sprockets
 to a <code>Gemfile</code> to get started:</p>
 <pre class="highlight ruby"><span class="c1"># Gemfile</span>
-<span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
+<span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
 
-<span class="n">gem</span> <span class="s1">'opal'</span>
-<span class="n">gem</span> <span class="s1">'opal-sprockets'</span>
+<span class="n">gem</span> <span class="s1">&#39;opal&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;opal-sprockets&#39;</span>
 </pre>
 <p>Next, we can use sprockets inside a simple rack app to get assets automatically
 re-compiling between page loads. Add this to a <code>config.ru</code>:</p>
 <pre class="highlight ruby"><span class="c1"># config.ru</span>
-<span class="nb">require</span> <span class="s1">'bundler'</span>
+<span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
 <span class="no">Bundler</span><span class="nf">.require</span>
 
 <span class="n">run</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Server</span><span class="nf">.new</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
   <span class="c1"># the entry-point (main) to the app</span>
-  <span class="n">s</span><span class="nf">.main</span> <span class="o">=</span> <span class="s1">'application'</span>
+  <span class="n">s</span><span class="nf">.main</span> <span class="o">=</span> <span class="s1">&#39;application&#39;</span>
 
   <span class="c1"># add additional dirs to opal/sprockets load path</span>
-  <span class="n">s</span><span class="nf">.append_path</span> <span class="s1">'app'</span>
+  <span class="n">s</span><span class="nf">.append_path</span> <span class="s1">&#39;app&#39;</span>
 <span class="p">}</span>
 </pre>
 <p>Next, we must make our main app file <code>app/application.rb</code>:</p>
 <pre class="highlight ruby"><span class="c1"># app/application.rb</span>
 
 <span class="c1"># when using sprockets/rails, we must include the corelib</span>
-<span class="nb">require</span> <span class="s1">'opal'</span>
+<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
 
 <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="nf">.each</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">a</span> <span class="p">}</span>
 </pre>
@@ -122,10 +122,10 @@ an <code>app/user.rb</code> file to the mix:</p>
 </pre>
 <p>And include it in your application:</p>
 <pre class="highlight ruby"><span class="c1"># app/application.rb</span>
-<span class="nb">require</span> <span class="s1">'opal'</span>
-<span class="nb">require</span> <span class="s1">'user'</span>
+<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;user&#39;</span>
 
-<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="nf">.new</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="nf">.new</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">user</span><span class="nf">.admin?</span>
 <span class="c1"># =&gt; false</span>
 </pre>
@@ -141,7 +141,7 @@ an <code>index.html</code> or <code>index.html.erb</code> page to have custom ht
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;title&gt;</span>opal demo<span class="nt">&lt;/title&gt;</span>
 
-    <span class="cp">&lt;%=</span> <span class="n">javascript_include_tag</span> <span class="s1">'application'</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">javascript_include_tag</span> <span class="s1">&#39;application&#39;</span> <span class="cp">%&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
@@ -152,22 +152,27 @@ an <code>index.html</code> or <code>index.html.erb</code> page to have custom ht
 <p><code>opal-jquery</code> provides a nice clean wrapper around jquery for dom interaction.
 Add the gem to your Gemfile:</p>
 <pre class="highlight ruby"><span class="c1"># Gemfile</span>
-<span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
+<span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
 
-<span class="n">gem</span> <span class="s1">'opal'</span>
-<span class="n">gem</span> <span class="s1">'opal-sprockets'</span>
-<span class="n">gem</span> <span class="s1">'opal-jquery'</span>
+<span class="n">gem</span> <span class="s1">&#39;opal&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;opal-sprockets&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;opal-jquery&#39;</span>
 </pre>
 <p>Also, add some jquery code:</p>
 <pre class="highlight ruby"><span class="c1"># app/application.rb</span>
 
-<span class="nb">require</span> <span class="s1">'opal'</span>
-<span class="nb">require</span> <span class="s1">'opal-jquery'</span>
+<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;jquery&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;opal-jquery&#39;</span>
 
 <span class="no">Document</span><span class="nf">.ready?</span> <span class="k">do</span>
   <span class="n">alert</span> <span class="s2">&quot;jquery is ready!&quot;</span>
 <span class="k">end</span>
 </pre>
+<p><strong>Note</strong>: you must supply your own version of jquery, as opal-jquery just wraps
+and existing instance. Place <code>jquery.js</code> into <code>app/</code> for the require system to
+find it. You can also use <code>Zepto</code> instead.</p>
+
 <p>Restart the server, and visit the page! Go to the
 <a href="http://github.com/opal/opal-jquery">opal-jquery homepage</a> for more documentation.</p>
 

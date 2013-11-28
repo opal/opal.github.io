@@ -61,17 +61,17 @@
 
 <p>Add <code>opal</code> and <code>opal-sprockets</code> to a <code>Gemfile</code>:</p>
 <pre class="highlight ruby"><span class="c1">#Gemfile</span>
-<span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
+<span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
 
-<span class="n">gem</span> <span class="s1">'opal'</span><span class="p">,</span> <span class="s1">'&gt;= 0.4.3'</span>
-<span class="n">gem</span> <span class="s1">'opal-sprockets'</span>
+<span class="n">gem</span> <span class="s1">&#39;opal&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 0.4.3&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;opal-sprockets&#39;</span>
 </pre>
 <p>And install with <code>bundle install</code>.</p>
 
 <p>We need a directory to hold our opal code, so create <code>app/</code> and add a simple demo script to <code>app/application.rb</code>:</p>
 <pre class="highlight ruby"><span class="c1"># app/application.rb</span>
 
-<span class="nb">require</span> <span class="s1">'opal'</span>
+<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
 
 <span class="nb">puts</span> <span class="s2">&quot;hello world&quot;</span>
 </pre>
@@ -92,13 +92,13 @@
 <p><code>Opal::Server</code> can be run like any rack app, so just add a <code>config.ru</code> file:</p>
 <pre class="highlight ruby"><span class="c1"># config.ru</span>
 
-<span class="nb">require</span> <span class="s1">'bundler'</span>
+<span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
 <span class="no">Bundler</span><span class="nf">.require</span>
 
 <span class="n">run</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Server</span><span class="nf">.new</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
-  <span class="n">s</span><span class="nf">.append_path</span> <span class="s1">'app'</span>
+  <span class="n">s</span><span class="nf">.append_path</span> <span class="s1">&#39;app&#39;</span>
 
-  <span class="n">s</span><span class="nf">.main</span> <span class="o">=</span> <span class="s1">'application'</span>
+  <span class="n">s</span><span class="nf">.main</span> <span class="o">=</span> <span class="s1">&#39;application&#39;</span>
 <span class="p">}</span>
 </pre>
 <p>This rack app simply adds our <code>app/</code> directory to opal load path, and sets our main file to <code>application</code>, which will be found inside <code>app/</code>.</p>

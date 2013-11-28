@@ -77,8 +77,8 @@
 <p>To build this, we need a rake task to load a new opal environment, add our <code>app/</code> directory to the load path, and then to build our target file <code>application.rb</code> which will be found because it is inside our added load path.</p>
 <pre class="highlight ruby"><span class="c1"># Rakefile</span>
 
-<span class="nb">require</span> <span class="s1">'opal'</span>
-<span class="nb">require</span> <span class="s1">'opal-sprockets'</span>
+<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;opal-sprockets&#39;</span>
 
 <span class="n">desc</span> <span class="s2">&quot;Build our app to build.js&quot;</span>
 <span class="n">task</span> <span class="ss">:build</span> <span class="k">do</span>
