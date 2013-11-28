@@ -140,12 +140,17 @@ Also, add some jquery code:
 # app/application.rb
 
 require 'opal'
+require 'jquery'
 require 'opal-jquery'
 
 Document.ready? do
   alert "jquery is ready!"
 end
 ```
+
+**Note**: you must supply your own version of jquery, as opal-jquery just wraps
+and existing instance. Place `jquery.js` into `app/` for the require system to
+find it. You can also use `Zepto` instead.
 
 Restart the server, and visit the page! Go to the
 [opal-jquery homepage](http://github.com/opal/opal-jquery) for more documentation.
