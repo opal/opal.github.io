@@ -22,9 +22,9 @@ title: "Opal: Ruby to Javascript Compiler"
   <p><a href="/docs">Opal Documentation</a>.
 </div>
 
-### Getting Started
+## Getting Started
 
-#### Overview
+### Overview
 
 ```ruby
 class User
@@ -44,9 +44,9 @@ puts user
 puts user.admin?
 ```
 
-[Try this code in your browser!](/try)
+<a href="/try" class="btn btn-default">Try this code in your browser »</a>
 
-#### Installation
+### Installation
 
 Install Opal from RubyGems:
 
