@@ -1,0 +1,79 @@
+//= require _vendor/bootstrap
+//= require _vendor/pygment_manni
+//= require _vendor/codemirror-solarized
+
+$background: #428bca;
+
+.highlight {
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+
+.main-title {
+  padding-bottom: 32px;
+}
+
+.opal-nav {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+  background-color: $background;
+  border-color: $background;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
+
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+
+  .navbar-collapse {
+    border-color: #463265;
+  }
+
+  .navbar-brand {
+    color: #fff;
+  }
+
+  .navbar-nav > li > a {
+    color: rgba(white, 0.8);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .navbar-nav > .active > a,
+  .navbar-brand:hover,
+  .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: $background;
+  }
+
+  .navbar-toggle {
+    border-color: $background;
+
+    &:hover {
+      background-color: $background;
+      border-color: $background;
+    }
+  }
+
+}
+
+
+body > footer {
+  padding: 20px 0;
+//  padding-bottom: 50%;
+//  margin-bottom: -50%;
+  margin-top: 70px;
+  border-top: 1px solid #e5e5e5;
+  background-color: $background;
+  text-align: center;
+  color: white;
+  word-spacing: 0.3em;
+  a {
+    color: inherit;
+  }
+}
+
+html {
+  min-height: 100%;
+  background-color: $background;
+}
