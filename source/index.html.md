@@ -20,7 +20,7 @@ title: "Opal: Ruby to Javascript Compiler"
   </p>
 
   <br>
-  <a class="btn btn-default" href="/docs">Opal Documentation</a>.
+  <a class="btn btn-default" href="/docs">Opal Documentation</a>
 </div>
 
 ## Getting Started
