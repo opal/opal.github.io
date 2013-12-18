@@ -12,13 +12,13 @@ Opal.compile("[1, 2, 3].each { |a| puts a }")
 # => "(function() { ... })()"
 ```
 
-`opal-sprockets` adds support to sprockets for compiling ruby (and erb) assets,
+opal includes `sprockets` support to sprockets for compiling ruby (and erb) assets,
 and treating them as first class javascript citizens. It works in a similar way
 to coffeescript, where javascript files can simply `require` ruby sources, and
 ruby sources can `require` javascript and other ruby files.
 
 This relies on the opal load path. Any gem containing opal code registers that
-directory to the opal load path. `opal-sprockets` will then use all opal load
+directory to the opal load path. `opal` will then use all opal load
 paths when running sprockets instances. For rails applications,
 [opal-rails](http://github.com/opal/opal-rails) does this automatically. For
 building a simple application, we have to do this manually. So add opal-sprockets
@@ -28,8 +28,8 @@ to a `Gemfile` to get started:
 # Gemfile
 source 'https://rubygems.org'
 
-gem 'opal'
-gem 'opal-sprockets'
+# tutorial based on opal v0.6.0
+gem 'opal', '>= 0.6.0'
 ```
 
 Next, we can use sprockets inside a simple rack app to get assets automatically
@@ -54,7 +54,7 @@ Next, we must make our main app file `app/application.rb`:
 ```ruby
 # app/application.rb
 
-# when using sprockets/rails, we must include the corelib
+# include the corelib/runtime
 require 'opal'
 
 [1, 2, 3].each { |a| puts a }
@@ -130,7 +130,6 @@ Add the gem to your Gemfile:
 source 'https://rubygems.org'
 
 gem 'opal'
-gem 'opal-sprockets'
 gem 'opal-jquery'
 ```
 
@@ -138,7 +137,6 @@ Also, add some jquery code:
 
 ```ruby
 # app/application.rb
-
 require 'opal'
 require 'jquery'
 require 'opal-jquery'
