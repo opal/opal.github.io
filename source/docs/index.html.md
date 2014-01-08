@@ -1,4 +1,24 @@
-# Opal
+# Opal Documentation
+
+Opal is a ruby to javascript compiler, an implementation of the ruby corelib
+and stdlib, and associated gems for building fast client side web applications
+in ruby.
+
+## Installation
+
+Opal is available as a gem, and can be installed via:
+
+```sh
+$ gem install opal
+```
+
+Or added to your Gemfile as:
+
+```ruby
+gem 'opal'
+```
+
+## Quick overview
 
 [Generated Javascript](/docs/generated_javascript) An overview of the compiler output
 
