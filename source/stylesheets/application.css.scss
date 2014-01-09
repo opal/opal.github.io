@@ -4,9 +4,19 @@
 
 $background: #428bca;
 
+code {
+  color: #444444;
+  background-color: #f8f8f8;
+  border: 1px solid #dddddd;
+  margin: 0 2px;
+  padding: 0px 5px;
+  font-family: Menlo, Consolas, "Courier New", monospace;
+}
+
 .highlight {
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+  font-family: Menlo, Consolas, "Courier New", monospace;
 }
 
 .main-title {
