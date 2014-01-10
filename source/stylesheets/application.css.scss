@@ -4,6 +4,13 @@
 
 $background: #428bca;
 
+blockquote p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+}
+
 code {
   color: #444444;
   background-color: #f8f8f8;
@@ -14,7 +21,8 @@ code {
 }
 
 .highlight {
-  border: 0px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
   font-family: Menlo, Consolas, "Courier New", monospace;
 }
 
