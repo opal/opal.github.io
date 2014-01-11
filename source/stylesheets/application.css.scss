@@ -4,6 +4,37 @@
 
 $background: #428bca;
 
+.nav.opal-sidebar {
+  background-color: #f4f8fa;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  a {
+    color: #5D6B72;
+  }
+
+  > li > a {
+    padding: 5px 20px;
+  }
+
+  .nav > li > a {
+    padding-left: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 90%;
+  }
+
+  li.active > a {
+    font-weight: bold;
+  }
+
+  li.active > a {
+    color: #34789a;
+  }
+}
+
+
 blockquote p {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;

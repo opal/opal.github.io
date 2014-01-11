@@ -1,0 +1,29 @@
+- title: Getting Started
+  url: '/docs'
+  children:
+    - title: Rails
+      url: '/docs/rails'
+    - title: Sinatra
+      url: '/docs/sinatra'
+    - title: Sprockets
+      url: '/docs/using_sprockets'
+    - title: Static Applications
+      url: '/docs/static_applications'
+- title: Features
+  url: '/docs/features'
+  children:
+    - title: Generated Code
+      url: '/docs/generated_javascript'
+    - title: '<tt>#method_missing</tt> support'
+      url: '/docs/method_missing'
+    - title: Interacting with javascript
+      url: '/docs/interacting_with_javascript'
+    - title: Accessing Ruby methods
+      url: '/docs/using_ruby_from_javascript'
+- title: Libraries
+  url: '/docs/libraries'
+  children:
+    - title: Templates (Haml and ERB)
+      url: '/docs/templates'
+    - title: JQuery
+      url: '/docs/jquery'
