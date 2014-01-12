@@ -18,20 +18,23 @@ Or added to your Gemfile as:
 gem 'opal'
 ```
 
-## Quick overview
+## Getting started with Opal
 
-[Generated Javascript](/docs/generated_javascript) An overview of the compiler output
+At its very core, opal provides a simple method of compiling a string of ruby
+into javascript that can run on top of the opal runtime, provided by opal.js:
 
-[Method Missing](/docs/method_missing) How Opal implements method_missing
+```ruby
+Opal.compile("[1, 2, 3].each { |a| puts a }")
+# => "(function() { ... })()"
+```
 
-[Using Ruby from Javascript](/docs/using_ruby_from_javascript) How to access ruby methods from JS
+opal includes `sprockets` support to sprockets for compiling ruby (and erb) assets,
+and treating them as first class javascript citizens. It works in a similar way
+to coffeescript, where javascript files can simply `require` ruby sources, and
+ruby sources can `require` javascript and other ruby files.
 
-## Usage
-
-[Static Application](/docs/static_applications) Just build your app and dependencies to a build.js file
-
-[Using Sprockets](/docs/using_sprockets) Use rack/sprockets to auto-recompile an opal application
-
-## Compiler
-
-[Opal Compiler](/docs/compiler) An overview of how the compiler works
+This relies on the opal load path. Any gem containing opal code registers that
+directory to the opal load path. `opal` will then use all opal load
+paths when running sprockets instances. For rails applications,
+[opal-rails](http://github.com/opal/opal-rails) does this automatically. For
+building a simple application, we have to do this manually.

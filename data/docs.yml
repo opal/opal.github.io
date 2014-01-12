@@ -29,3 +29,7 @@
       url: '/docs/jquery'
     - title: RSpec
       url: '/docs/rspec'
+- title: Compiler
+  url: '/docs/compiler'
+- title: FAQ
+  url: '/docs/faq'
