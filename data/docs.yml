@@ -27,3 +27,5 @@
       url: '/docs/templates'
     - title: JQuery
       url: '/docs/jquery'
+    - title: RSpec
+      url: '/docs/rspec'
