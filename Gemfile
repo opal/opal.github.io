@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'opal'
-gem 'opal-jquery'
-gem 'opal-sprockets'
+gem "opal", ">= 0.6.0"
+gem "opal-jquery", :github => "opal/opal-jquery"
 
 gem "middleman"
 gem "middleman-syntax"
