@@ -42,14 +42,67 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="/docs">Opal</a></li>
-          <li><a href="/docs/getting_started">Getting Started</a></li>
-          <li><a href="/docs/generated_javascript">Generated Code</a></li>
-          <li><a href="/docs/method_missing"><tt>#method_missing </tt> support</a></li>
-          <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-          <li><a href="/docs/using_sprockets">Sprockets Integration</a></li>
-          <li><a href="/docs/static_applications">Building Static Apps</a></li>
+        <ul class="nav opal-sidebar">
+        
+          <li>
+            <a href="/docs">Getting Started</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/rails">Rails</a></li>
+              
+                <li><a href="/docs/sinatra">Sinatra</a></li>
+              
+                <li><a href="/docs/using_sprockets">Sprockets</a></li>
+              
+                <li><a href="/docs/static_applications">Static Applications</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/features">Features</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/generated_javascript">Generated Code</a></li>
+              
+                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
+              
+                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
+              
+                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/libraries">Libraries</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
+              
+                <li><a href="/docs/jquery">JQuery</a></li>
+              
+                <li><a href="/docs/rspec">RSpec</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/compiler">Compiler</a>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/faq">FAQ</a>
+            
+          </li>
+        
         </ul>
       </div>
 
@@ -127,7 +180,7 @@
 
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
   </script>
 </body>
 </html>

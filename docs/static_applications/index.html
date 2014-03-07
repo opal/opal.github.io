@@ -42,44 +42,100 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="/docs">Opal</a></li>
-          <li><a href="/docs/getting_started">Getting Started</a></li>
-          <li><a href="/docs/generated_javascript">Generated Code</a></li>
-          <li><a href="/docs/method_missing"><tt>#method_missing </tt> support</a></li>
-          <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-          <li><a href="/docs/using_sprockets">Sprockets Integration</a></li>
-          <li><a href="/docs/static_applications">Building Static Apps</a></li>
+        <ul class="nav opal-sidebar">
+        
+          <li>
+            <a href="/docs">Getting Started</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/rails">Rails</a></li>
+              
+                <li><a href="/docs/sinatra">Sinatra</a></li>
+              
+                <li><a href="/docs/using_sprockets">Sprockets</a></li>
+              
+                <li><a href="/docs/static_applications">Static Applications</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/features">Features</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/generated_javascript">Generated Code</a></li>
+              
+                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
+              
+                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
+              
+                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/libraries">Libraries</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
+              
+                <li><a href="/docs/jquery">JQuery</a></li>
+              
+                <li><a href="/docs/rspec">RSpec</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/compiler">Compiler</a>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/faq">FAQ</a>
+            
+          </li>
+        
         </ul>
       </div>
 
       <div class="col-md-9">
         <h1>Static Building</h1>
 
-<p><code>opal-sprockets</code> makes it easy to build static opal applications. Opal uses internal load paths to make it easy to handle resolving requirements during building. <code>opal-sprockets</code> forms the basis of rails support, so anything you can do there, you can do standalone as well.</p>
+<p><code>opal</code> makes it easy to build static opal applications. Opal uses internal load
+paths to make it easy to handle resolving requirements during building. <code>opal</code>
+forms the basis of rails support, so anything you can do there, you can do
+standalone as well.</p>
 
 <h2>Overview</h2>
 
-<p>First, install <code>opal</code> and <code>opal-sprockets</code> by simply adding to a <code>Gemfile</code>:</p>
+<p>First, install <code>opal</code> adding them to a <code>Gemfile</code>:</p>
 <pre class="highlight ruby"><span class="c1"># Gemfile</span>
-
-<span class="n">gem</span> <span class="s2">&quot;opal&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;= 0.4.3&quot;</span>
-<span class="n">gem</span> <span class="s2">&quot;opal-sprockets&quot;</span>
+<span class="n">gem</span> <span class="s2">&quot;opal&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;= 0.6.0&quot;</span>
 </pre>
-<p>Next, we want to add our main app code. Keep all opal code inside <code>app/</code> directory, and edit <code>app/application.rb</code>:</p>
+<p>Next, we want to add our main app code. Keep all opal code inside <code>app/</code>
+directory, and edit <code>app/application.rb</code>:</p>
 <pre class="highlight ruby"><span class="c1"># app/application.rb</span>
-
 <span class="nb">require</span> <span class="s2">&quot;opal&quot;</span>
 
 <span class="nb">puts</span> <span class="s2">&quot;Wow, running opal!&quot;</span>
 </pre>
-<p>You will notice the <code>require &quot;opal&quot;</code> line which will automatically include the opal runtime and corelib into our output, giving us access to the <code>puts()</code> method.</p>
+<p>You will notice the <code>require &quot;opal&quot;</code> line which will automatically include the
+opal runtime and corelib into our output, giving us access to the <code>puts()</code>
+method.</p>
 
-<p>To build this, we need a rake task to load a new opal environment, add our <code>app/</code> directory to the load path, and then to build our target file <code>application.rb</code> which will be found because it is inside our added load path.</p>
+<p>To build this, we need a rake task to load a new opal environment, add our
+<code>app/</code> directory to the load path, and then to build our target file
+<code>application.rb</code> which will be found because it is inside our added load path.</p>
 <pre class="highlight ruby"><span class="c1"># Rakefile</span>
-
 <span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;opal-sprockets&#39;</span>
 
 <span class="n">desc</span> <span class="s2">&quot;Build our app to build.js&quot;</span>
 <span class="n">task</span> <span class="ss">:build</span> <span class="k">do</span>
@@ -91,7 +147,8 @@
   <span class="k">end</span>
 <span class="k">end</span>
 </pre>
-<p>Now, if you run <code>rake build</code> you will get the <code>build.js</code> output file with our application compiled, with the opal runtime included as well.</p>
+<p>Now, if you run <code>rake build</code> you will get the <code>build.js</code> output file with our
+application compiled, with the opal runtime included as well.</p>
 
 <p>To run the application, lets create a very simple html file:</p>
 <pre class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -103,7 +160,8 @@
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre>
-<p>Now, open this html file and check the browsers console. You should see our message printed in the console.</p>
+<p>Now, open this html file and check the browsers console. You should see our
+message printed in the console.</p>
 
       </div>
     </div>
@@ -129,7 +187,7 @@
 
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
   </script>
 </body>
 </html>

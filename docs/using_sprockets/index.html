@@ -42,57 +42,111 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="/docs">Opal</a></li>
-          <li><a href="/docs/getting_started">Getting Started</a></li>
-          <li><a href="/docs/generated_javascript">Generated Code</a></li>
-          <li><a href="/docs/method_missing"><tt>#method_missing </tt> support</a></li>
-          <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-          <li><a href="/docs/using_sprockets">Sprockets Integration</a></li>
-          <li><a href="/docs/static_applications">Building Static Apps</a></li>
+        <ul class="nav opal-sidebar">
+        
+          <li>
+            <a href="/docs">Getting Started</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/rails">Rails</a></li>
+              
+                <li><a href="/docs/sinatra">Sinatra</a></li>
+              
+                <li><a href="/docs/using_sprockets">Sprockets</a></li>
+              
+                <li><a href="/docs/static_applications">Static Applications</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/features">Features</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/generated_javascript">Generated Code</a></li>
+              
+                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
+              
+                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
+              
+                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/libraries">Libraries</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
+              
+                <li><a href="/docs/jquery">JQuery</a></li>
+              
+                <li><a href="/docs/rspec">RSpec</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/compiler">Compiler</a>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/faq">FAQ</a>
+            
+          </li>
+        
         </ul>
       </div>
 
       <div class="col-md-9">
         <h1>Opal &amp; Sprockets</h1>
 
-<p><code>opal-sprockets</code> provides a simple <code>Opal::Server</code> class to make it easy to get a rack server up and running for trying out opal. This server will automatically recompile ruby sources when they change, meaning you just need to refresh your page to autorun.</p>
+<p>Opal comes with built-in sprockets support, and provides a simple <code>Opal::Server</code>
+class to make it easy to get a rack server up and running for trying out opal.
+This server will automatically recompile ruby sources when they change, meaning
+you just need to refresh your page to autorun.</p>
 
 <h2>Getting setup</h2>
 
-<p>Add <code>opal</code> and <code>opal-sprockets</code> to a <code>Gemfile</code>:</p>
+<p>Add <code>opal</code> to a <code>Gemfile</code>:</p>
 <pre class="highlight ruby"><span class="c1">#Gemfile</span>
 <span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
 
-<span class="n">gem</span> <span class="s1">&#39;opal&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 0.4.3&#39;</span>
-<span class="n">gem</span> <span class="s1">&#39;opal-sprockets&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;opal&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 0.6.0&#39;</span>
 </pre>
 <p>And install with <code>bundle install</code>.</p>
 
-<p>We need a directory to hold our opal code, so create <code>app/</code> and add a simple demo script to <code>app/application.rb</code>:</p>
+<p>We need a directory to hold our opal code, so create <code>app/</code> and add a simple
+demo script to <code>app/application.rb</code>:</p>
 <pre class="highlight ruby"><span class="c1"># app/application.rb</span>
-
 <span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
 
 <span class="nb">puts</span> <span class="s2">&quot;hello world&quot;</span>
 </pre>
 <p>Finally, we need a html page to run, so create <code>index.html</code>:</p>
-<pre class="highlight html"><span class="cp">&lt;!doctype html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;title&gt;</span>opal server example<span class="nt">&lt;/title&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/assets/application.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
+<pre class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>opal server example<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/assets/application.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre>
 <h2>Using Opal::Server</h2>
 
 <p><code>Opal::Server</code> can be run like any rack app, so just add a <code>config.ru</code> file:</p>
 <pre class="highlight ruby"><span class="c1"># config.ru</span>
-
 <span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
 <span class="no">Bundler</span><span class="nf">.require</span>
 
@@ -100,13 +154,17 @@
   <span class="n">s</span><span class="nf">.append_path</span> <span class="s1">&#39;app&#39;</span>
 
   <span class="n">s</span><span class="nf">.main</span> <span class="o">=</span> <span class="s1">&#39;application&#39;</span>
+
+  <span class="n">s</span><span class="nf">.index_path</span> <span class="o">=</span> <span class="s1">&#39;index.html&#39;</span>
 <span class="p">}</span>
 </pre>
-<p>This rack app simply adds our <code>app/</code> directory to opal load path, and sets our main file to <code>application</code>, which will be found inside <code>app/</code>.</p>
+<p>This rack app simply adds our <code>app/</code> directory to opal load path, and sets our
+main file to <code>application</code>, which will be found inside <code>app/</code>.</p>
 
 <h2>Running the app</h2>
 
-<p>Run <code>bundle exec rackup</code> and visit the page <code>http://127.0.0.1:9292</code> in any browser. Observe the console to see the printed statement.</p>
+<p>Run <code>bundle exec rackup</code> and visit the page <code>http://localhost:9292</code> in any
+browser. Observe the console to see the printed statement.</p>
 
 <p>You can just change <code>app/application.rb</code> and refresh the page to see any changes.</p>
 
@@ -134,7 +192,7 @@
 
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
   </script>
 </body>
 </html>

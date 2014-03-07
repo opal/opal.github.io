@@ -42,35 +42,102 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="/docs">Opal</a></li>
-          <li><a href="/docs/getting_started">Getting Started</a></li>
-          <li><a href="/docs/generated_javascript">Generated Code</a></li>
-          <li><a href="/docs/method_missing"><tt>#method_missing </tt> support</a></li>
-          <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-          <li><a href="/docs/using_sprockets">Sprockets Integration</a></li>
-          <li><a href="/docs/static_applications">Building Static Apps</a></li>
+        <ul class="nav opal-sidebar">
+        
+          <li>
+            <a href="/docs">Getting Started</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/rails">Rails</a></li>
+              
+                <li><a href="/docs/sinatra">Sinatra</a></li>
+              
+                <li><a href="/docs/using_sprockets">Sprockets</a></li>
+              
+                <li><a href="/docs/static_applications">Static Applications</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/features">Features</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/generated_javascript">Generated Code</a></li>
+              
+                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
+              
+                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
+              
+                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/libraries">Libraries</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
+              
+                <li><a href="/docs/jquery">JQuery</a></li>
+              
+                <li><a href="/docs/rspec">RSpec</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/compiler">Compiler</a>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/faq">FAQ</a>
+            
+          </li>
+        
         </ul>
       </div>
 
       <div class="col-md-9">
-        <h1>Opal</h1>
+        <h1>Opal Documentation</h1>
 
-<p><a href="/docs/generated_javascript">Generated Javascript</a> An overview of the compiler output</p>
+<p>Opal is a ruby to javascript compiler, an implementation of the ruby corelib
+and stdlib, and associated gems for building fast client side web applications
+in ruby.</p>
 
-<p><a href="/docs/method_missing">Method Missing</a> How Opal implements method_missing</p>
+<h2>Installation</h2>
 
-<p><a href="/docs/using_ruby_from_javascript">Using Ruby from Javascript</a> How to access ruby methods from JS</p>
+<p>Opal is available as a gem, and can be installed via:</p>
+<pre class="highlight shell"><span class="gp">$ </span>gem install opal
+</pre>
+<p>Or added to your Gemfile as:</p>
+<pre class="highlight ruby"><span class="n">gem</span> <span class="s1">&#39;opal&#39;</span>
+</pre>
+<h2>Getting started with Opal</h2>
 
-<h2>Usage</h2>
+<p>At its very core, opal provides a simple method of compiling a string of ruby
+into javascript that can run on top of the opal runtime, provided by opal.js:</p>
+<pre class="highlight ruby"><span class="no">Opal</span><span class="nf">.compile</span><span class="p">(</span><span class="s2">&quot;[1, 2, 3].each { |a| puts a }&quot;</span><span class="p">)</span>
+<span class="c1"># =&gt; &quot;(function() { ... })()&quot;</span>
+</pre>
+<p>opal includes <code>sprockets</code> support to sprockets for compiling ruby (and erb) assets,
+and treating them as first class javascript citizens. It works in a similar way
+to coffeescript, where javascript files can simply <code>require</code> ruby sources, and
+ruby sources can <code>require</code> javascript and other ruby files.</p>
 
-<p><a href="/docs/static_applications">Static Application</a> Just build your app and dependencies to a build.js file</p>
-
-<p><a href="/docs/using_sprockets">Using Sprockets</a> Use rack/sprockets to auto-recompile an opal application</p>
-
-<h2>Compiler</h2>
-
-<p><a href="/docs/compiler">Opal Compiler</a> An overview of how the compiler works</p>
+<p>This relies on the opal load path. Any gem containing opal code registers that
+directory to the opal load path. <code>opal</code> will then use all opal load
+paths when running sprockets instances. For rails applications,
+<a href="http://github.com/opal/opal-rails">opal-rails</a> does this automatically. For
+building a simple application, we have to do this manually.</p>
 
       </div>
     </div>
@@ -96,7 +163,7 @@
 
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
   </script>
 </body>
 </html>

@@ -42,14 +42,67 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="/docs">Opal</a></li>
-          <li><a href="/docs/getting_started">Getting Started</a></li>
-          <li><a href="/docs/generated_javascript">Generated Code</a></li>
-          <li><a href="/docs/method_missing"><tt>#method_missing </tt> support</a></li>
-          <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-          <li><a href="/docs/using_sprockets">Sprockets Integration</a></li>
-          <li><a href="/docs/static_applications">Building Static Apps</a></li>
+        <ul class="nav opal-sidebar">
+        
+          <li>
+            <a href="/docs">Getting Started</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/rails">Rails</a></li>
+              
+                <li><a href="/docs/sinatra">Sinatra</a></li>
+              
+                <li><a href="/docs/using_sprockets">Sprockets</a></li>
+              
+                <li><a href="/docs/static_applications">Static Applications</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/features">Features</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/generated_javascript">Generated Code</a></li>
+              
+                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
+              
+                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
+              
+                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/libraries">Libraries</a>
+            
+              <ul class="nav">
+              
+                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
+              
+                <li><a href="/docs/jquery">JQuery</a></li>
+              
+                <li><a href="/docs/rspec">RSpec</a></li>
+              
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/compiler">Compiler</a>
+            
+          </li>
+        
+          <li>
+            <a href="/docs/faq">FAQ</a>
+            
+          </li>
+        
         </ul>
       </div>
 
@@ -173,41 +226,6 @@ efficient then accessing variables by string name.</p>
 </span>
 <span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>   <span class="c1">// =&gt; nil
 </span></pre>
-<h2>Interacting with javascript</h2>
-
-<p>Opal tries to interact as cleanly with javascript and its api as much
-as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
-are just javascript native equivalents. The only boxed core features are
-hashes.</p>
-
-<p>As most of the corelib deals with these low level details, opal provides
-a special syntax for inlining javascript code. This is done with
-x-strings or &quot;backticks&quot;, as their ruby use has no useful translation
-in the browser.</p>
-<pre class="highlight ruby"><span class="sb">`window.title`</span>
-<span class="c1"># =&gt; &quot;Opal: ruby to javascript compiler&quot;</span>
-
-<span class="sx">%x{
-  console.log(&quot;ruby version is:&quot;);
-  console.log(</span><span class="si">#{</span> <span class="no">OPAL_VERSION</span> <span class="si">}</span><span class="sx">);
-}</span>
-
-<span class="c1"># =&gt; ruby version is:</span>
-<span class="c1"># =&gt; 0.3.19</span>
-</pre>
-<p>Even interpolations are supported, as seen here.</p>
-
-<p>This feature of inlining code is used extensively, for example in
-Array#length:</p>
-<pre class="highlight ruby"><span class="k">class </span><span class="nc">Array</span>
-  <span class="k">def </span><span class="nf">length</span>
-    <span class="sb">`this.length`</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</pre>
-<p>X-Strings also have the ability to automatically return their value,
-as used by this example.</p>
-
 <h2>Compiled Files</h2>
 
 <p>As described above, a compiled ruby source gets generated into a string
@@ -284,7 +302,7 @@ In these cases, a <code>$</code> suffix is added to the name (e.g. <code>try</co
 
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
   </script>
 </body>
 </html>
