@@ -107,7 +107,93 @@
       </div>
 
       <div class="col-md-9">
-        
+        <h2>Opal in a Rails application</h2>
+
+<p>Add Opal to your Gemfile:</p>
+<pre class="highlight ruby"><span class="n">gem</span> <span class="s1">&#39;opal-rails&#39;</span>
+</pre>
+<p>Or to start off with Opal when you build your new Rails app:</p>
+<pre class="highlight shell">rails new &lt;app-name&gt; --javascript<span class="o">=</span>opal
+</pre>
+<h2>Basic usage through the asset pipeline</h2>
+<pre class="highlight javascript"><span class="c1">// app/assets/application.js.rb
+</span>
+<span class="c1">//= require opal
+//= require opal_ujs
+//= require turbolinks
+//= require_tree .
+</span></pre>
+<p>Opal requires are forwarded to the Asset Pipeline at compile time (similarly to what happens for RubyMotion). You can use either the <code>.rb</code> or <code>.opal</code> extension:</p>
+<pre class="highlight ruby"><span class="c1"># app/assets/javascripts/greeter.js.rb</span>
+
+<span class="nb">puts</span> <span class="s2">&quot;G&#39;day world!&quot;</span> <span class="c1"># check the console!</span>
+
+<span class="c1"># Dom manipulation</span>
+<span class="nb">require</span> <span class="s1">&#39;opal-jquery&#39;</span>
+
+<span class="no">Document</span><span class="nf">.ready?</span> <span class="k">do</span>
+  <span class="no">Element</span><span class="nf">.find</span><span class="p">(</span><span class="s1">&#39;body &gt; header&#39;</span><span class="p">)</span><span class="nf">.html</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1&gt;Hi there!&lt;/h1&gt;&#39;</span>
+<span class="k">end</span>
+</pre>
+<h3>As a template</h3>
+
+<p>You can use it for your views too, it even inherits instance and local variables from actions:</p>
+<pre class="highlight ruby"><span class="c1"># app/controllers/posts_controller.rb</span>
+
+<span class="k">def </span><span class="nf">create</span>
+  <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="nf">.create!</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:post</span><span class="o">]</span><span class="p">)</span>
+  <span class="n">render</span> <span class="ss">type: :js</span><span class="p">,</span> <span class="ss">locals: </span><span class="p">{</span><span class="ss">comments_html: </span><span class="n">render_to_string</span><span class="p">(</span><span class="vi">@post</span><span class="nf">.comments</span><span class="p">)}</span>
+<span class="k">end</span>
+</pre>
+<p>Each assign is filtered through JSON so it&#39;s reduced to basic types:</p>
+<pre class="highlight ruby"><span class="c1"># app/views/posts/create.js.opal</span>
+
+<span class="n">post</span> <span class="o">=</span> <span class="no">Element</span><span class="nf">.find</span><span class="p">(</span><span class="s1">&#39;.post&#39;</span><span class="p">)</span>
+<span class="n">post</span><span class="nf">.find</span><span class="p">(</span><span class="s1">&#39;.title&#39;</span><span class="p">)</span><span class="nf">.html</span>    <span class="o">=</span> <span class="vi">@post</span><span class="o">[</span><span class="ss">:title</span><span class="o">]</span>
+<span class="n">post</span><span class="nf">.find</span><span class="p">(</span><span class="s1">&#39;.body&#39;</span><span class="p">)</span><span class="nf">.html</span>     <span class="o">=</span> <span class="vi">@post</span><span class="o">[</span><span class="ss">:body</span><span class="o">]</span>
+<span class="n">post</span><span class="nf">.find</span><span class="p">(</span><span class="s1">&#39;.comments&#39;</span><span class="p">)</span><span class="nf">.html</span> <span class="o">=</span> <span class="n">comments_html</span>
+</pre>
+<h3>As a Haml filter (optional)</h3>
+
+<p>Of course you need to require <code>haml-rails</code> separately since its presence is not assumed</p>
+<pre class="highlight haml"><span class="c">-# app/views/posts/show.html.haml
+</span>
+<span class="nt">%article</span><span class="nc">.post</span>
+  <span class="nt">%h1</span><span class="nc">.title</span><span class="p">=</span> <span class="n">post</span><span class="nf">.title</span>
+  <span class="nc">.body</span><span class="p">=</span> <span class="n">post</span><span class="nf">.body</span>
+
+<span class="nt">%a</span><span class="nf">#show-comments</span> Display Comments!
+
+<span class="nc">.comments</span><span class="p">(</span><span class="na">style=</span><span class="s">&quot;display:none;&quot;</span>)
+  <span class="p">-</span> <span class="n">post</span><span class="nf">.comments.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">comment</span><span class="o">|</span>
+    <span class="nc">.comment</span><span class="p">=</span> <span class="n">comment</span><span class="nf">.body</span>
+
+<span class="nd">:opal
+</span>  <span class="nd">Document.ready? do</span>
+    <span class="nd">Element.find(&#39;#show-comments&#39;).on :click do |click|</span>
+      <span class="nd">click.prevent_default</span>
+      <span class="nd">click.current_target.hide</span>
+      <span class="nd">Element.find(&#39;.comments&#39;).effect(:fade_in)</span>
+    <span class="nd">end</span>
+  <span class="nd">end</span>
+</pre>
+<h3>Spec!</h3>
+
+<p>Add specs into <code>app/assets/javascripts/spec</code>:</p>
+
+<p>and then a spec folder with you specs!</p>
+<pre class="highlight ruby"><span class="c1"># app/assets/javascripts/spec/example_spec.js.rb</span>
+
+<span class="n">describe</span> <span class="s1">&#39;a spec&#39;</span> <span class="k">do</span>
+  <span class="n">it</span> <span class="s1">&#39;has successful examples&#39;</span> <span class="k">do</span>
+    <span class="s1">&#39;I run&#39;</span><span class="nf">.should</span> <span class="o">=~</span> <span class="sr">/run/</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+<p>Then visit <code>/opal_spec</code> from your app and <strong>reload at will</strong>.</p>
+
+<p><img alt="1 examples, 0 failures" src="http://f.cl.ly/items/001n0V0g0u0v14160W2G/Schermata%2007-2456110%20alle%201.06.29%20am.png" /></p>
+
       </div>
     </div>
   </div>

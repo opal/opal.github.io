@@ -22739,7 +22739,7 @@ if (name == null) name = nil;if (value == null) value = nil;
 
     self.$expose("after", "before", "parent", "parents", "prepend", "prev", "remove");
 
-    self.$expose("hide", "show", "toggle", "children", "blur", "closest");
+    self.$expose("hide", "show", "toggle", "children", "blur", "closest", "detach");
 
     self.$expose("focus", "find", "next", "siblings", "text", "trigger", "append");
 
