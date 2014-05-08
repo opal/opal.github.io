@@ -19,7 +19,8 @@
 
       .row
         .col-sm-8
-          = yield
+          = preserve do
+            = yield
 
     = partial "footer"
 

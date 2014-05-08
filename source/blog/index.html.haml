@@ -14,5 +14,6 @@ layout: layout
 
       .blog-post-meta
         = "Posted by #{article.data.author} on #{article.date.strftime "%-a, %d %b %Y"}"
-      = article.body
+      = preserve do
+        = article.body
   .col-sm-4
