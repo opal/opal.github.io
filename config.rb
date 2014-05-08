@@ -23,6 +23,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 page "/docs/*", :layout => "docs"
+page "/blog/*", :layout => :blog
 
 after_configuration do
   Opal.paths.each do |p|

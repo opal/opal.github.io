@@ -1,13 +1,12 @@
 ---
 title: "Promises: Handling asynchronous code in Opal"
+date: 2014/05/07
 author: Adam Beynon
 ---
 
-# Promises: Handling asynchronous code in Opal
-
 When using Opal, one large omission from the stdlib are Threads. This is because javascript does not have threads, which makes asyncronous programming difficult in ruby. As javascript has increased in popularity with DOM libraries and web frameworks, callback hell was the standard way to handle asynchronous events in javascript. This was also the way events were handled in Opal applications. Until now.
 
-## What is so great about promises?
+### What is so great about promises?
 
 When looking at a simple example, the benefits of promises may not be obvious:
 
@@ -25,7 +24,7 @@ end
 
 Initially the method call using a `Promise` looks just a more verbose version of the standard callback approach. The benefit of promises come through when promises are chained together. The result of the `#then` call actually returns a new `Promise` instance, which will not be resolved until the result of the first block resolves itself.
 
-## Callback hell
+#### Callback hell
 
 Lets take a slightly more complex example where an initial HTTP request is made for some user details, and then a second request is made using the result of the first json response:
 
@@ -53,7 +52,7 @@ end.then do
 end
 ```
 
-## Handling errors
+#### Handling errors
 
 Handling `HTTP` requests is a great example of where error handling in promises becomes really useful. Imagine we wanted to present an alert to the user when an error occurs with any of the above requests. We would need to check the response on each http request, which becomes very verbose. Using promises, errors get chained through each promise until a `fail` handler is detected. This can usally just come at the end of the chain. Promises are used to represent chunks of some procedure, so an error handler usually applies to any stage.
 
@@ -69,7 +68,7 @@ end.fail do
 end
 ```
 
-## Composing promises
+### Composing promises
 
 The previous example shows the case where one part of the promise chain relies on the previous part. Another common case is waiting for multiple parts to resolve before either performing an action, or showing an error. Lets assume we have three models which we must save to the server, and the `#save` method returns a promise. Reacting to these promises is easy to read, and avoids callback hell.
 

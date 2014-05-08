@@ -1,0 +1,27 @@
+!!! 5
+%html(style="background-color: #f5f5f5; min-height: 100%")
+  %head
+    %meta(charset="utf-8")
+    %title= data.page.title || "Opal: Ruby to Javascript Compiler"
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+
+  %body(class="#{page_classes}")
+    = partial "header"
+
+    .container
+      %legend
+        %h2.blog-post-title
+          %a.blog-title(href="#{data.page.url}")= data.page.title
+
+      .blog-post-meta
+        %ul
+          %li= Date.parse(data.page.date).inspect
+          %li= data.page.author
+
+      .row
+        .col-sm-8
+          = yield
+
+    = partial "footer"
+

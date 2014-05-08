@@ -10,3 +10,4 @@ gem "middleman-blog"
 gem 'middleman-gh-pages'
 
 gem "redcarpet"
+gem "nokogiri"
