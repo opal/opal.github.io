@@ -2,25 +2,21 @@
 title: "Opal: Ruby to Javascript Compiler"
 ---
 
-<div class="page-header">
+<div class="jumbotron opal-front-jumbo">
   <img src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' alt='' style='float:right;margin-top:-24px' width='128' height='128' />
-  <h1>
-    Opal
-  </h1>
-  <p>
-    <b>Opal is a ruby to javascript compiler.</b> It is source-to-source, making it
-    <b>fast</b> as a runtime. Opal <b>includes a compiler</b> (which can be run in any
-    browser), a corelib and runtime implementation. The corelib/runtime is
-    also <b>very small</b>.
-  </p>
+  <div class="page-header">
+    <h1>Opal <small>Ruby to Javascript Compiler</small></h1>
+    <p>It is source-to-source, making it fast as a runtime. Opal includes a compiler (which can be run in any browser), a corelib and runtime implementation. The corelib/runtime is also very small.</p>
+    <p><a href="/docs" class="btn btn-primary btn-lg" role="button">Opal Documentation</a></p>
+  </div>
+</div>
+
+<div class="page-header">
   <p>
     Opal is <a href="http://github.com/opal/opal">hosted on github</a>,
     has a Freenode IRC channel at <code>#opal</code>, a <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list</a>, and on twitter
     <a href="http://twitter.com/opalrb">@opalrb</a>.
   </p>
-
-  <br>
-  <a class="btn btn-default" href="/docs">Opal Documentation</a>
 </div>
 
 ## Getting Started

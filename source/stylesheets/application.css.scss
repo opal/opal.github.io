@@ -2,6 +2,7 @@
 //= require _vendor/pygment_solarized_light
 //= require _vendor/codemirror-solarized
 //= require blog
+//= require index
 
 $background: #1c7cbe;
 $background-active: #0e436b;
@@ -134,4 +135,7 @@ body > footer {
 html {
   min-height: 100%;
   background-color: $background;
+}
+
+.jumbotron.opal-front-jumbo {
 }

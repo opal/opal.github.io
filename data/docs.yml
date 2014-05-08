@@ -12,7 +12,7 @@
     - title: CDN Distribution
       url: '/docs/cdn_distribution'
 - title: Digging Deeper
-  url: /docs/digging-deeper
+  url: /docs/digging_deeper
   children:
     - title: Interacting with javascript
       url: '/docs/interacting_with_javascript'
