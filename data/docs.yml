@@ -9,17 +9,19 @@
       url: '/docs/using_sprockets'
     - title: Static Applications
       url: '/docs/static_applications'
-- title: Features
-  url: '/docs/features'
+- title: Digging Deeper
+  url: /docs/digging-deeper
   children:
+    - title: Interacting with javascript
+      url: '/docs/interacting_with_javascript'
     - title: Generated Code
       url: '/docs/generated_javascript'
     - title: '<tt>#method_missing</tt> support'
       url: '/docs/method_missing'
-    - title: Interacting with javascript
-      url: '/docs/interacting_with_javascript'
     - title: Accessing Ruby methods
       url: '/docs/using_ruby_from_javascript'
+    - title: Compiler
+      url: '/docs/compiler'
 - title: Libraries
   url: '/docs/libraries'
   children:
@@ -29,7 +31,5 @@
       url: '/docs/jquery'
     - title: RSpec
       url: '/docs/rspec'
-- title: Compiler
-  url: '/docs/compiler'
 - title: FAQ
   url: '/docs/faq'
