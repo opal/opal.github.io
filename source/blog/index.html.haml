@@ -11,7 +11,8 @@ layout: layout
   .col-sm-8
     - blog.articles.each do |article|
       %h2= link_to article.title, article
-      %p Posted
-      = article.date
+
+      .blog-post-meta
+        = "Posted by #{article.data.author} on #{article.date.strftime "%-a, %d %b %Y"}"
       = article.body
   .col-sm-4

@@ -15,9 +15,7 @@
           %a.blog-title(href="#{data.page.url}")= data.page.title
 
       .blog-post-meta
-        %ul
-          %li= Date.parse(data.page.date).inspect
-          %li= data.page.author
+        = "Posted by #{data.page.author} on #{Date.parse(data.page.date).inspect}"
 
       .row
         .col-sm-8
