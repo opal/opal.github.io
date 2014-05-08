@@ -7,7 +7,7 @@ title: "Opal: Ruby to Javascript Compiler"
   <div class="page-header">
     <h1>Opal <small>Ruby to Javascript Compiler</small></h1>
     <p>It is source-to-source, making it fast as a runtime. Opal includes a compiler (which can be run in any browser), a corelib and runtime implementation. The corelib/runtime is also very small.</p>
-    <p><a href="/docs" class="btn btn-primary btn-lg" role="button">Opal Documentation</a></p>
+    <p><a href="/docs" class="btn btn-primary btn-lg" role="button">Opal Documentation »</a></p>
   </div>
 </div>
 
