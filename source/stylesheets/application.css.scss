@@ -3,7 +3,8 @@
 //= require _vendor/codemirror-solarized
 //= require blog
 
-$background: #428bca;
+$background: #1c7cbe;
+$background-active: #0e436b;
 
 body {
   color: #444444;
@@ -89,18 +90,18 @@ code {
   }
 
   .navbar-nav > li > a {
-    color: rgba(white, 0.8);
+    color: #ffffff;
 
     &:hover {
       color: #fff;
     }
   }
 
-  .navbar-nav > .active > a,
+  .navbar-nav > li.active > a,
   .navbar-brand:hover,
-  .navbar-nav > .active > a:hover {
+  .navbar-nav > li.active > a:hover {
     color: #fff;
-    background-color: $background;
+    background-color: $background-active;
   }
 
   .navbar-toggle {
