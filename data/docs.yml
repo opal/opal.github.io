@@ -9,6 +9,8 @@
       url: '/docs/using_sprockets'
     - title: Static Applications
       url: '/docs/static_applications'
+    - title: CDN Distribution
+      url: '/docs/cdn_distribution'
 - title: Digging Deeper
   url: /docs/digging-deeper
   children:
