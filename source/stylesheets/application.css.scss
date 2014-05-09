@@ -83,13 +83,22 @@ code {
   border-radius: 0 !important;
 
   .navbar-collapse {
-    border-color: #463265;
+    // border-color: #463265;
+    border-color: lighten($background, 15%);
+    border-width: .5px
   }
 
   .navbar-brand {
     color: #fff;
   }
 
+  .navbar-nav > li.divider > a {
+    color: lighten($background, 30%);
+  }
+
+  .navbar-toggle .icon-bar {
+      background-color: #fff;
+  }
   .navbar-nav > li > a {
     color: #ffffff;
 
