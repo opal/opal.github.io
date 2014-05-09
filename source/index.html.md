@@ -19,15 +19,17 @@ title: "Opal: Ruby to Javascript Compiler"
 
 <div class="page-header">
   <p>
-    Opal is <a href="http://github.com/opal/opal">hosted on github</a>,
-    has a Freenode IRC channel at <code>#opal</code>, a <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list</a>, and on twitter
-    <a href="http://twitter.com/opalrb">@opalrb</a>.
+    Opal is <a href="http://github.com/opal/opal#readme">hosted on GitHub <i class="ion-social-github"></i></a>,
+    has a Freenode IRC <i class="ion-chatbubbles"></i> channel at <code>#opal</code>, a <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list <i class="ion-email"></i></a>, and on twitter
+    <a href="http://twitter.com/opalrb">@opalrb <i class="ion-social-twitter"></i></a>.
   </p>
 </div>
 
 ## Getting Started
 
 ### Overview
+
+<a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios7-play"></i></a>
 
 ```ruby
 class User
@@ -46,8 +48,6 @@ user = User.new('Bob')
 puts user
 puts user.admin?
 ```
-
-<a href="/try" class="btn btn-default">Try this code in your browser »</a>
 
 ### Installation
 
