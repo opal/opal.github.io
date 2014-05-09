@@ -6,6 +6,8 @@
 
 $background: #1c7cbe;
 $background-active: #0e436b;
+$color: #fff;
+$color-secondary: lighten(desaturate($background, 20%), 40%);
 
 body {
   color: #444444;
@@ -103,6 +105,7 @@ code {
     color: #ffffff;
 
     &:hover {
+      background-color: lighten($background-active, 10%);
       color: #fff;
     }
   }
@@ -134,10 +137,13 @@ body > footer {
   border-top: 1px solid #e5e5e5;
   background-color: $background;
   text-align: center;
-  color: white;
+  color: $color;
   word-spacing: 0.3em;
   a {
-    color: inherit;
+    color: $color-secondary;;
+    &:hover {
+      color: $color;
+    }
   }
 }
 
@@ -147,4 +153,15 @@ html {
 }
 
 .jumbotron.opal-front-jumbo {
+}
+
+.btn-code {
+  float: right;
+  border-top-left-radius: 0;
+//  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  i {
+    font-size: 1.4em;
+    vertical-align: top;
+  }
 }
