@@ -36,5 +36,5 @@ ruby sources can `require` javascript and other ruby files.
 This relies on the opal load path. Any gem containing opal code registers that
 directory to the opal load path. `opal` will then use all opal load
 paths when running sprockets instances. For rails applications,
-[opal-rails](http://github.com/opal/opal-rails) does this automatically. For
+[opal-rails](http://github.com/opal/opal-rails#readme) does this automatically. For
 building a simple application, we have to do this manually.

@@ -18,7 +18,7 @@ This page is a list of libraries built for opal
 
 opal-jquery provides DOM access to opal by wrapping jQuery (or zepto)
 and providing a nice ruby syntax for dealing with jQuery instances.
-opal-jquery is [hosted on github](http://github.com/opal/opal-jquery).
+opal-jquery is [hosted on github](http://github.com/opal/opal-jquery#readme).
 
 jQuery instances are toll-free bridged to instances of the ruby class
 `JQuery`, so they can be used interchangeably.
