@@ -1,8 +1,18 @@
 ---
-title: "Opal Wrappers"
+title: "Libraries"
 ---
 
+# Libraries
+
 This page is a list of libraries built for opal
+
+- [opal-jquery (jQuery)](http://github.com/opal/opal-jquery#readme)
+- [opal-rails (Rails)](http://github.com/opal/opal-rails#readme)
+- [opal-rspec (RSpec)](http://github.com/opal/opal-rspec#readme)
+- [opal-vienna (Vienna)](http://github.com/opal/vienna#readme)
+- [opal-nodejs (Nodejs / RVM)](http://github.com/opal/opal-node#readme)
+- [opal-todomvc (TodoMVC)](http://github.com/opal/opal-todos#readme)
+
 
 ## opal-jquery
 
