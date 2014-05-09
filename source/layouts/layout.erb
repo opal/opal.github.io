@@ -18,5 +18,9 @@
   </div>
 
   <%= partial 'footer' %>
+
+  <script>
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+  </script>
 </body>
 </html>
