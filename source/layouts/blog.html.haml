@@ -1,27 +1,13 @@
-!!! 5
-%html(style="background-color: #f5f5f5; min-height: 100%")
-  %head
-    %meta(charset="utf-8")
-    %title= data.page.title || "Opal: Ruby to Javascript Compiler"
-    = stylesheet_link_tag "application"
-    = stylesheet_link_tag "http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css"
-    = javascript_include_tag "application"
+- wrap_layout :layout do
+  .container
+    .blog-post-title
+      %h2.blog-title
+        %a.blog-title(href="#{data.page.url}")= data.page.title
 
-  %body(class="#{page_classes}")
-    = partial "header"
+    .blog-post-meta
+      = "Posted by #{data.page.author} on #{Date.parse(data.page.date).inspect}"
 
-    .container
-      .blog-post-title
-        %h2.blog-title
-          %a.blog-title(href="#{data.page.url}")= data.page.title
-
-      .blog-post-meta
-        = "Posted by #{data.page.author} on #{Date.parse(data.page.date).inspect}"
-
-      .row
-        .col-sm-8
-          = preserve do
-            = yield
-
-    = partial "footer"
-
+    .row
+      .col-sm-8
+        = preserve do
+          = yield
