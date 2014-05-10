@@ -1,0 +1,21 @@
+<% wrap_layout :layout do %>
+  <div class="container">
+    <div class="blog-post-title">
+      <h2 class="blog-title">
+        <a class="blog-title" href="<%= data.page.url %>">
+          <%= data.page.title %>
+        </a>
+      </h2>
+    </div>
+
+    <div class="blog-post-meta">
+      <%= "Posted by #{data.page.author} on #{Date.parse(data.page.date).inspect}" %>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>
