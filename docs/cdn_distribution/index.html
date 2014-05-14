@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Opal FAQ</title>
+  <title>CDN Distribution</title>
 
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="docs docs_faq docs_faq_index">
+<body class="docs docs_cdn_distribution docs_cdn_distribution_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -102,23 +102,21 @@
       </div>
 
       <div class="col-md-9">
-        <h1>FAQ</h1>
+        <h1>CDN Distribution</h1>
 
-<h3>Why does Opal exist?</h3>
+<p>Opal prebuilt <del>binaries</del>, err… compiled JavaScript files are available on:</p>
 
-<p>To try and keep ruby relevant in a world where client-side apps are making javascript the primary development platform.</p>
+<p><a href="http://cdn.opalrb.org" class="btn btn-lg">http://cdn.opalrb.org</a></p>
 
-<h3>How compatible is Opal?</h3>
+<p><em>Visit the link to have more detailed instructions</em></p>
 
-<p>We run opal against <a href="https://github.com/rubyspec/rubyspec">rubyspec</a> as our primary testing setup. We try to make Opal as compatible as possible, whilst also taking into account restrictions of Javascript when applicable. Opal supports the majority of ruby syntax features, as well as a very large part of the corelib implementation. We support method_missing, modules, classes, instance_exec, blocks, procs and lots lots more. Opal can compile and run Rspec unmodified, as well as self hosting the compiler at runtime.</p>
-
-<h3>What version of ruby does Opal target?</h3>
-
-<p>We are running tests under ruby 2.0.0 conditions, but are mostly compatible with 1.9 level features.</p>
-
-<h3>Why doesn&#39;t Opal support mutable strings?</h3>
-
-<p>All strings in Opal are immutable because ruby strings just get compiled direclty into javascript strings, which are immutable. Wrapping ruby strings as a custom Javascript object would add a lot of overhead as well as making interaction between ruby and javascript libraries more difficult.</p>
+<h2>Example</h2>
+<pre class="highlight html"><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.opalrb.org/opal/current/opal.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.opalrb.org/opal/current/opal-parser.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</pre>
 
       </div>
     </div>

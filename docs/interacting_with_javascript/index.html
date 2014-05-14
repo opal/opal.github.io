@@ -1,108 +1,103 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
 <head>
   <meta charset="utf-8">
 
   <title>Opal: Ruby to Javascript compiler</title>
 
-  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body>
-  <nav class="navbar navbar-default opal-nav" role="navigation">
-  <a href="https://github.com/opal/opal"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-  <div class="container">
-
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">
-        <img height='22' width='22' style='margin-top:-10%;' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png'/>
+<body class="docs docs_interacting_with_javascript docs_interacting_with_javascript_index">
+  <nav class='navbar navbar-default opal-nav' role='navigation'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <a class='navbar-brand' href='/'>
+        <img height='22' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' style='margin-top:-10%;' width='22'>
         Opal
       </a>
+      <button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
     </div>
-
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="/docs">Documentation</a></li>
-        <li><a href="/try">Try Opal online!</a></li>
-        <li class="divider-vertical"></li>
-        <li><p class="navbar-text"><span class="label">integrations:</span></p></li>
-        <li><a href="http://github.com/opal/opal-jquery">jQuery</a></li>
-        <li><a href="https://github.com/opal/opal-rails#readme">Rails</a></li>
-        <li><a href="https://github.com/opal/opal-rspec#readme">RSpec</a></li>
-        <li><a href="https://github.com/opal/vienna#readme">Vienna</a></li>
-        <li><a href="https://github.com/opal/opal-node#readme">Nodejs / RVM</a></li>
-        <li><a href="https://github.com/opal/opal-todos#readme">TodoMVC</a></li>
+    <div class='navbar-collapse collapse' id='opal-navbar'>
+      <ul class='nav navbar-nav'>
+        <li>
+          <a href='/try'>
+            <i class='ion-ios7-compose'></i>
+            Try
+          </a>
+        </li>
+        <li>
+          <a href='/blog'>
+            <i class='ion-ios7-chatboxes'></i>
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href='/docs'>
+            <i class='ion-ios7-copy'></i>
+            Documentation
+          </a>
+        </li>
+        <li>
+          <a href='/libraries'>
+            <i class='ion-android-developer'></i>
+            Libraries
+          </a>
+        </li>
+        <li>
+          <a href='https://github.com/opal/opal#readme'>
+            <i class='ion-social-github'></i>
+            GitHub
+          </a>
+        </li>
       </ul>
     </div>
-
   </div>
 </nav>
 
+  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
+      <div class="container">
     <div class="row">
       <div class="col-md-3">
         <ul class="nav opal-sidebar">
-        
           <li>
             <a href="/docs">Getting Started</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/rails">Rails</a></li>
-              
                 <li><a href="/docs/sinatra">Sinatra</a></li>
-              
                 <li><a href="/docs/using_sprockets">Sprockets</a></li>
-              
                 <li><a href="/docs/static_applications">Static Applications</a></li>
-              
+                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
               </ul>
-            
           </li>
-        
           <li>
-            <a href="/docs/features">Features</a>
-            
+            <a href="/docs/digging_deeper">Digging Deeper</a>
               <ul class="nav">
-              
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-              
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-              
                 <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-              
+                <li><a href="/docs/generated_javascript">Generated Code</a></li>
+                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
                 <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-              
+                <li><a href="/docs/compiler">Compiler</a></li>
               </ul>
-            
           </li>
-        
           <li>
             <a href="/docs/libraries">Libraries</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-              
                 <li><a href="/docs/jquery">JQuery</a></li>
-              
                 <li><a href="/docs/rspec">RSpec</a></li>
-              
               </ul>
-            
           </li>
-        
-          <li>
-            <a href="/docs/compiler">Compiler</a>
-            
-          </li>
-        
           <li>
             <a href="/docs/faq">FAQ</a>
-            
           </li>
-        
         </ul>
       </div>
 
@@ -114,36 +109,83 @@ as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
 are just javascript native equivalents. The only boxed core features are
 hashes.</p>
 
+<h2>x-strings</h2>
+
 <p>As most of the corelib deals with these low level details, opal provides
 a special syntax for inlining javascript code. This is done with
 x-strings or &quot;backticks&quot;, as their ruby use has no useful translation
 in the browser.</p>
 <pre class="highlight ruby"><span class="sb">`window.title`</span>
-<span class="c1"># =&gt; &quot;Opal: Ruby to Javascript compiler&quot;</span>
+<span class="c1"># =&gt; "Opal: Ruby to Javascript compiler"</span>
 
 <span class="sx">%x{
-  console.log(&quot;opal version is:&quot;);
+  console.log("opal version is:");
   console.log(</span><span class="si">#{</span> <span class="no">RUBY_ENGINE_VERSION</span> <span class="si">}</span><span class="sx">);
 }</span>
 
 <span class="c1"># =&gt; opal version is:</span>
 <span class="c1"># =&gt; 0.6.0</span>
 </pre>
+
 <p>Even interpolations are supported, as seen here.</p>
 
 <p>This feature of inlining code is used extensively, for example in
 Array#length:</p>
-<pre class="highlight ruby"><span class="k">class </span><span class="nc">Array</span>
-  <span class="k">def </span><span class="nf">length</span>
+<pre class="highlight ruby"><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">length</span>
     <span class="sb">`this.length`</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre>
+
 <p>X-Strings also have the ability to automatically return their value,
 as used by this example.</p>
 
+<h2>Native</h2>
+
+<p><em>Reposted from: <a href="http://dev.mikamai.com/post/79398725537/using-native-javascript-objects-from-opal">Mikamayhem</a></em></p>
+
+<p>Opal standard lib (stdlib) includes a <code>native</code> module, let’s see how it works and wrap <code>window</code>:</p>
+<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'native'</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="no">Native</span><span class="p">(</span><span class="sb">`window`</span><span class="p">)</span> <span class="c1"># equivalent to Native::Object.new(`window`)</span>
+</pre>
+
+<p>Now what if we want to access one of its properties?</p>
+<pre class="highlight ruby"><span class="n">window</span><span class="o">[</span><span class="ss">:location</span><span class="o">][</span><span class="ss">:href</span><span class="o">]</span>                         <span class="c1"># =&gt; "http://dev.mikamai.com/"</span>
+<span class="n">window</span><span class="o">[</span><span class="ss">:location</span><span class="o">][</span><span class="ss">:href</span><span class="o">]</span> <span class="o">=</span> <span class="s2">"http://mikamai.com/"</span> <span class="c1"># will bring you to mikamai.com</span>
+</pre>
+
+<p>And what about methods?</p>
+<pre class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s1">'hey there!'</span><span class="p">)</span>
+</pre>
+
+<p>So let’s do something more interesting:</p>
+<pre class="highlight ruby"><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">window</span>
+  <span class="c1"># A cross-browser window close method (works in IE!)</span>
+  <span class="k">def</span> <span class="nf">close!</span>
+    <span class="sx">%x{
+      return (</span><span class="si">#@native</span><span class="sx">.open('', '_self', '') &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close()) ||
+             (</span><span class="si">#@native</span><span class="sx">.opener = null &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close()) ||
+             (</span><span class="si">#@native</span><span class="sx">.opener = '' &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close());
+    }</span>
+  <span class="k">end</span>
+
+  <span class="c1"># let's assign href directly</span>
+  <span class="k">def</span> <span class="nf">href</span><span class="o">=</span> <span class="n">url</span>
+    <span class="nb">self</span><span class="o">[</span><span class="ss">:location</span><span class="o">][</span><span class="ss">:href</span><span class="o">]</span> <span class="o">=</span> <span class="n">url</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+
+<p>That’s all for now, bye!</p>
+<pre class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">close!</span>
+</pre>
+
       </div>
     </div>
+  </div>
+
   </div>
 
   <!-- GOOGLE ANALYTICS -->
@@ -160,8 +202,8 @@ as used by this example.</p>
 </script>
 
 <footer>
-  <a href="/license">License</a> ·
-  <a href="https://github.com/opal/opal/graphs/contributors">Contributors</a>
+  <a href="/license"><i class="ion-unlocked"></i> License</a> ·
+  <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
 </footer>
 
 

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Opal FAQ</title>
+  <title>Opal: Ruby to Javascript compiler</title>
 
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="docs docs_faq docs_faq_index">
+<body class="docs docs_digging_deeper docs_digging_deeper_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -102,23 +102,7 @@
       </div>
 
       <div class="col-md-9">
-        <h1>FAQ</h1>
-
-<h3>Why does Opal exist?</h3>
-
-<p>To try and keep ruby relevant in a world where client-side apps are making javascript the primary development platform.</p>
-
-<h3>How compatible is Opal?</h3>
-
-<p>We run opal against <a href="https://github.com/rubyspec/rubyspec">rubyspec</a> as our primary testing setup. We try to make Opal as compatible as possible, whilst also taking into account restrictions of Javascript when applicable. Opal supports the majority of ruby syntax features, as well as a very large part of the corelib implementation. We support method_missing, modules, classes, instance_exec, blocks, procs and lots lots more. Opal can compile and run Rspec unmodified, as well as self hosting the compiler at runtime.</p>
-
-<h3>What version of ruby does Opal target?</h3>
-
-<p>We are running tests under ruby 2.0.0 conditions, but are mostly compatible with 1.9 level features.</p>
-
-<h3>Why doesn&#39;t Opal support mutable strings?</h3>
-
-<p>All strings in Opal are immutable because ruby strings just get compiled direclty into javascript strings, which are immutable. Wrapping ruby strings as a custom Javascript object would add a lot of overhead as well as making interaction between ruby and javascript libraries more difficult.</p>
+        <h1>Digging Deeper</h1>
 
       </div>
     </div>

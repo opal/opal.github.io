@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Opal: Ruby to Javascript compiler</title>
+  <title>Libraries</title>
 
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="docs docs_using_ruby_from_javascript docs_using_ruby_from_javascript_index">
+<body class="libraries libraries_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -63,66 +63,37 @@
   <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
-      <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
-      </div>
+    <h1>Libraries</h1>
 
-      <div class="col-md-9">
-        <h1>Using Ruby methods from Javascript</h1>
+<p>This page is a list of libraries built for opal</p>
 
-<p>Accessing classes and methods defined in Opal from the javascript runtime is
-possible via the <code>Opal</code> js object. The following class:</p>
-<pre class="highlight ruby"><span class="k">class</span> <span class="nc">Foo</span>
-  <span class="k">def</span> <span class="nf">bar</span>
-    <span class="nb">puts</span> <span class="s2">"called bar on class Foo defined in ruby code"</span>
-  <span class="k">end</span>
+<ul>
+<li><a href="http://github.com/opal/opal-jquery#readme">opal-jquery (jQuery)</a></li>
+<li><a href="http://github.com/opal/opal-rails#readme">opal-rails (Rails)</a></li>
+<li><a href="http://github.com/opal/opal-rspec#readme">opal-rspec (RSpec)</a></li>
+<li><a href="http://github.com/opal/vienna#readme">opal-vienna (Vienna)</a></li>
+<li><a href="http://github.com/opal/opal-node#readme">opal-nodejs (Nodejs / RVM)</a></li>
+<li><a href="http://github.com/opal/opal-todos#readme">opal-todomvc (TodoMVC)</a></li>
+</ul>
+
+<h2>opal-jquery</h2>
+
+<p>opal-jquery provides DOM access to opal by wrapping jQuery (or zepto)
+and providing a nice ruby syntax for dealing with jQuery instances.
+opal-jquery is <a href="http://github.com/opal/opal-jquery#readme">hosted on github</a>.</p>
+
+<p>jQuery instances are toll-free bridged to instances of the ruby class
+<code>JQuery</code>, so they can be used interchangeably.</p>
+<pre class="highlight ruby"><span class="n">elements</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
+<span class="c1"># =&gt; [&lt;div class="foo"&gt;, ...]</span>
+
+<span class="n">elements</span><span class="p">.</span><span class="nf">class</span>
+<span class="c1"># =&gt; JQuery</span>
+
+<span class="n">elements</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="ss">:click</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">alert</span> <span class="s2">"element was clicked"</span>
 <span class="k">end</span>
 </pre>
-
-<p>Can be accessed from javascript like this:</p>
-<pre class="highlight javascript"><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
-<span class="c1">// =&gt; "called bar on class Foo defined in ruby code"
-</span></pre>
-
-<p>Remember that all ruby methods are prefixed with a <code>$</code>.</p>
-
-      </div>
-    </div>
-  </div>
 
   </div>
 
