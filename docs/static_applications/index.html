@@ -137,6 +137,7 @@ method.</p>
 
 <span class="n">desc</span> <span class="s2">"Build our app to build.js"</span>
 <span class="n">task</span> <span class="ss">:build</span> <span class="k">do</span>
+  <span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">false</span>
   <span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
   <span class="n">env</span><span class="p">.</span><span class="nf">append_path</span> <span class="s2">"app"</span>
 
