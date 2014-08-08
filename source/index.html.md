@@ -20,8 +20,10 @@ title: "Opal: Ruby to Javascript Compiler"
 <div class="page-header">
   <p>
     Opal is <a href="http://github.com/opal/opal#readme">hosted on GitHub <i class="ion-social-github"></i></a>,
-    has a Freenode IRC <i class="ion-chatbubbles"></i> channel at <code>#opal</code>, a <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list <i class="ion-email"></i></a>, and on twitter
-    <a href="http://twitter.com/opalrb">@opalrb <i class="ion-social-twitter"></i></a>.
+    has a Freenode IRC <i class="ion-chatbubbles"></i> channel at <code>#opal</code>,
+    the <a href="http://stackoverflow.com/questions/ask?tags=opalrb">#opalrb stackoverflow tag <i class="ion-navicon"></i></a> for questions,
+    a <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list <i class="ion-email"></i></a>
+    and on twitter <a href="http://twitter.com/opalrb">@opalrb <i class="ion-social-twitter"></i></a>.
   </p>
 </div>
 
