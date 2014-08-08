@@ -15,3 +15,8 @@ The website is built using middleman.
     $ bundle exec middleman server
 
 Then visit `http://localhost:4567`.
+
+## Publishing
+
+    $ rake publish
+
