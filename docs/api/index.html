@@ -10,7 +10,7 @@
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="docs docs_using_ruby_from_javascript docs_using_ruby_from_javascript_index">
+<body class="docs docs_api docs_api_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -106,23 +106,21 @@
       </div>
 
       <div class="col-md-9">
-        <h1>Using Ruby methods from Javascript</h1>
+        <h1>API Documentation</h1>
 
-<p>Accessing classes and methods defined in Opal from the javascript runtime is
-possible via the <code>Opal</code> js object. The following class:</p>
-<pre class="highlight ruby"><span class="k">class</span> <span class="nc">Foo</span>
-  <span class="k">def</span> <span class="nf">bar</span>
-    <span class="nb">puts</span> <span class="s2">"called bar on class Foo defined in ruby code"</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</pre>
+<h3>Latest Stable Release</h3>
 
-<p>Can be accessed from javascript like this:</p>
-<pre class="highlight javascript"><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
-<span class="c1">// =&gt; "called bar on class Foo defined in ruby code"
-</span></pre>
+<ul>
+<li><a href="http://opal.github.io/opal/doc/0-6-stable/corelib/frames.html#!file.README.html">corelib</a></li>
+<li><a href="http://opal.github.io/opal/doc/0-6-stable/stdlib/frames.html#!file.README.html">stdlib</a></li>
+</ul>
 
-<p>Remember that all ruby methods are prefixed with a <code>$</code>.</p>
+<h3>Master</h3>
+
+<ul>
+<li><a href="http://opal.github.io/opal/doc/master/corelib/frames.html#!file.README.html">corelib</a></li>
+<li><a href="http://opal.github.io/opal/doc/master/stdlib/frames.html#!file.README.html">stdlib</a></li>
+</ul>
 
       </div>
     </div>
