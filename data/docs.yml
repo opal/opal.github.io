@@ -11,6 +11,8 @@
       url: '/docs/static_applications'
     - title: CDN Distribution
       url: '/docs/cdn_distribution'
+- title: API documentation
+  url: /docs/api
 - title: Digging Deeper
   url: /docs/digging_deeper
   children:
