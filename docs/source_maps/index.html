@@ -131,7 +131,7 @@
 
 <h2>Enable source maps</h2>
 
-<h3>in Rails</h3>
+<h3>Rails</h3>
 
 <p>Rails has debug mode already enabled in development environment with the following line from <code>config/environments/development.rb</code>:</p>
 <pre class="highlight ruby"><span class="c1"># Debug mode disables concatenation and preprocessing of assets.</span>
@@ -142,9 +142,17 @@
 
 <p><code>opal-rails</code> also enables sourcemaps in development so with the standard setup you ready to go.</p>
 
-<h3>in Opal::Server / Opal::Environment</h3>
+<h3>Sinatra</h3>
 
-<p>Debug mode should be on by default.</p>
+<p>You can add <code>Opal::Server</code> as in the official example: <a href="https://github.com/opal/opal/blob/0-6-stable/examples/sinatra/config.ru">sinatra/config.ru</a>.</p>
+
+<h3>Opal::Server</h3>
+
+<p><code>Opal::Server</code> implements sourcemaps and can be used alone or with <code>Rack::Cascade</code> in conjunction with other apps.</p>
+
+<h3>Opal::Environment</h3>
+
+<p><code>Opal::Environment</code> is a bit lower level and doesn&#39;t support source maps by itself.</p>
 
       </div>
     </div>
