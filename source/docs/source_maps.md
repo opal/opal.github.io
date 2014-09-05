@@ -23,7 +23,7 @@ The  sourcemaps only work with Sprockets in debug mode because they are generate
 
 ## Enable source maps
 
-### in Rails
+### Rails
 
 Rails has debug mode already enabled in development environment with the following line from `config/environments/development.rb`:
 
@@ -36,8 +36,16 @@ config.assets.debug = true
 
 `opal-rails` also enables sourcemaps in development so with the standard setup you ready to go.
 
-### in Opal::Server / Opal::Environment
 
-Debug mode should be on by default.
+### Sinatra
 
+You can add `Opal::Server` as in the official example: [sinatra/config.ru](https://github.com/opal/opal/blob/0-6-stable/examples/sinatra/config.ru).
+
+### Opal::Server
+
+`Opal::Server` implements sourcemaps and can be used alone or with `Rack::Cascade` in conjunction with other apps.
+
+### Opal::Environment
+
+`Opal::Environment` is a bit lower level and doesn't support source maps by itself.
 
