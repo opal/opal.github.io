@@ -26,6 +26,8 @@
       url: '/docs/using_ruby_from_javascript'
     - title: Compiler
       url: '/docs/compiler'
+    - title: Source Maps
+      url: '/docs/source_maps'
 - title: Libraries
   url: '/docs/libraries'
   children:
