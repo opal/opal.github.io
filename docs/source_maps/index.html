@@ -10,7 +10,7 @@
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="docs docs_interacting_with_javascript docs_interacting_with_javascript_index">
+<body class="docs docs_source_maps docs_source_maps_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -107,85 +107,44 @@
       </div>
 
       <div class="col-md-9">
-        <h1>Interacting with Javascript from Ruby</h1>
+        <h1>Source maps</h1>
 
-<p>Opal tries to interact as cleanly with javascript and its api as much
-as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
-are just javascript native equivalents. The only boxed core features are
-hashes.</p>
+<p>Source maps are available (on current stable release, v0.6.x) even without explicit support from Sprockets in a sort of hackish way.</p>
 
-<h2>x-strings</h2>
+<p><em>As such even if they generally work fine there are some limitations and edge case issues.</em></p>
 
-<p>As most of the corelib deals with these low level details, opal provides
-a special syntax for inlining javascript code. This is done with
-x-strings or &quot;backticks&quot;, as their ruby use has no useful translation
-in the browser.</p>
-<pre class="highlight ruby"><span class="sb">`window.title`</span>
-<span class="c1"># =&gt; "Opal: Ruby to Javascript compiler"</span>
+<blockquote>
+<h3>Note on <code>master</code> branch</h3>
 
-<span class="sx">%x{
-  console.log("opal version is:");
-  console.log(</span><span class="si">#{</span> <span class="no">RUBY_ENGINE_VERSION</span> <span class="si">}</span><span class="sx">);
-}</span>
+<p>Currently on master sourcemaps are work-in-progress and probably will integrate with the upcoming Sprockets 4 that has integrated support for them.</p>
+</blockquote>
 
-<span class="c1"># =&gt; opal version is:</span>
-<span class="c1"># =&gt; 0.6.0</span>
+<h4>Processor <code>source_map_enabled</code> flag</h4>
+
+<p>To enable sourcemaps in the Sprockets processor you need to turn on the relative flag:</p>
+<pre class="highlight ruby"><span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">true</span> <span class="c1"># default</span>
 </pre>
 
-<p>Even interpolations are supported, as seen here.</p>
+<h4>Sprockets debug mode</h4>
 
-<p>This feature of inlining code is used extensively, for example in
-Array#length:</p>
-<pre class="highlight ruby"><span class="k">class</span> <span class="nc">Array</span>
-  <span class="k">def</span> <span class="nf">length</span>
-    <span class="sb">`this.length`</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<p>The  sourcemaps only work with Sprockets in debug mode because they are generated just for single files.</p>
+
+<h2>Enable source maps</h2>
+
+<h3>in Rails</h3>
+
+<p>Rails has debug mode already enabled in development environment with the following line from <code>config/environments/development.rb</code>:</p>
+<pre class="highlight ruby"><span class="c1"># Debug mode disables concatenation and preprocessing of assets.</span>
+<span class="c1"># This option may cause significant delays in view rendering with a large</span>
+<span class="c1"># number of complex assets.</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">debug</span> <span class="o">=</span> <span class="kp">true</span>
 </pre>
 
-<p>X-Strings also have the ability to automatically return their value,
-as used by this example.</p>
+<p><code>opal-rails</code> also enables sourcemaps in development so with the standard setup you ready to go.</p>
 
-<h2>Native</h2>
+<h3>in Opal::Server / Opal::Environment</h3>
 
-<p><em>Reposted from: <a href="http://dev.mikamai.com/post/79398725537/using-native-javascript-objects-from-opal">Mikamayhem</a></em></p>
-
-<p>Opal standard lib (stdlib) includes a <code>native</code> module, let’s see how it works and wrap <code>window</code>:</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'native'</span>
-
-<span class="n">window</span> <span class="o">=</span> <span class="no">Native</span><span class="p">(</span><span class="sb">`window`</span><span class="p">)</span> <span class="c1"># equivalent to Native::Object.new(`window`)</span>
-</pre>
-
-<p>Now what if we want to access one of its properties?</p>
-<pre class="highlight ruby"><span class="n">window</span><span class="o">[</span><span class="ss">:location</span><span class="o">][</span><span class="ss">:href</span><span class="o">]</span>                         <span class="c1"># =&gt; "http://dev.mikamai.com/"</span>
-<span class="n">window</span><span class="o">[</span><span class="ss">:location</span><span class="o">][</span><span class="ss">:href</span><span class="o">]</span> <span class="o">=</span> <span class="s2">"http://mikamai.com/"</span> <span class="c1"># will bring you to mikamai.com</span>
-</pre>
-
-<p>And what about methods?</p>
-<pre class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s1">'hey there!'</span><span class="p">)</span>
-</pre>
-
-<p>So let’s do something more interesting:</p>
-<pre class="highlight ruby"><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">window</span>
-  <span class="c1"># A cross-browser window close method (works in IE!)</span>
-  <span class="k">def</span> <span class="nf">close!</span>
-    <span class="sx">%x{
-      return (</span><span class="si">#@native</span><span class="sx">.open('', '_self', '') &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close()) ||
-             (</span><span class="si">#@native</span><span class="sx">.opener = null &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close()) ||
-             (</span><span class="si">#@native</span><span class="sx">.opener = '' &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close());
-    }</span>
-  <span class="k">end</span>
-
-  <span class="c1"># let's assign href directly</span>
-  <span class="k">def</span> <span class="nf">href</span><span class="o">=</span> <span class="n">url</span>
-    <span class="nb">self</span><span class="o">[</span><span class="ss">:location</span><span class="o">][</span><span class="ss">:href</span><span class="o">]</span> <span class="o">=</span> <span class="n">url</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</pre>
-
-<p>That’s all for now, bye!</p>
-<pre class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">close!</span>
-</pre>
+<p>Debug mode should be on by default.</p>
 
       </div>
     </div>
