@@ -9,7 +9,7 @@ Add Opal to your Gemfile (or install using `gem`):
 ```ruby
 # Gemfile
 gem 'sinatra'
-gem 'opal'
+gem 'opal', '~> 0.6.2'
 ```
 
 Opal uses `sprockets` as its default build system, so the asset-pipeline
@@ -20,13 +20,20 @@ path to be compiled using opal.
 
 ```ruby
 # config.ru
-require 'sinatra'
 require 'opal'
+require 'sinatra'
+
+opal = Opal::Server.new {|s|
+  s.append_path 'app'
+  s.main = 'application'
+}
+
+map opal.source_maps.prefix do
+  run opal.source_maps
+end
 
 map '/assets' do
-  env = Opal::Environment.new
-  env.append_path 'opal'
-  run env
+  run opal.sprockets
 end
 
 get '/' do
