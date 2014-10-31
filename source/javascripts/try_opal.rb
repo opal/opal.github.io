@@ -43,8 +43,8 @@ class TryOpal
     @flush = []
 
     @output = Editor.new :output, lineNumbers: false, mode: 'text', readOnly: true
-    @viewer = Editor.new :viewer, lineNumbers: true, mode: 'javascript', readOnly: true, theme: 'solarized light'
-    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift', theme: 'solarized light', extraKeys: {
+    @viewer = Editor.new :viewer, lineNumbers: true, mode: 'javascript', readOnly: true, theme: 'tomorrow-night-eighties'
+    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift', theme: 'tomorrow-night-eighties', extraKeys: {
       'Cmd-Enter' => -> { run_code }
     }
 
