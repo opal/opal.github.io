@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <title>Libraries</title>
+  <title>RSpec Playground</title>
 
   <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" media="screen" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="libraries libraries_index">
+<body class="rspec rspec_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -64,37 +64,31 @@
   <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
-    <h1>Libraries</h1>
+    <script src="/javascripts/rspec-playground.js" type="text/javascript"></script>
+<link href="/stylesheets/codemirror.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/_vendor/codemirror-solarized.css" media="screen" rel="stylesheet" type="text/css" />
+<style>
+  .CodeMirror { height: 100% !important; }
+  .CodeMirror-scroll { height: 100% !important; }
+</style>
+<div class='row'>
+  <div class='col-md-12' style='margin-bottom: 20px'>
+    <button class='btn btn-primary' id='run-code'>
+      Run Code (Cmd+Enter)
+    </button>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-md-6' style='height: 100%'>
+    <div class='top-pane' id='ruby_pane' style='height: 100%'></div>
+  </div>
+  <div class='col-md-6'>
+    <div class='top-pane' id='result_pane' style='height: 100%'>
+      <iframe class='result-frame' frameborder='0' style='width: 100%; height: 100%'></iframe>
+    </div>
+  </div>
+</div>
 
-<p>This page is a list of libraries built for opal</p>
-
-<ul>
-<li><a href="http://github.com/opal/opal-jquery#readme">opal-jquery (jQuery)</a></li>
-<li><a href="http://github.com/opal/opal-rails#readme">opal-rails (Rails)</a></li>
-<li><a href="http://github.com/opal/opal-rspec#readme">opal-rspec (RSpec)</a></li>
-<li><a href="http://github.com/opal/vienna#readme">opal-vienna (Vienna)</a></li>
-<li><a href="http://github.com/opal/opal-node#readme">opal-nodejs (Nodejs / RVM)</a></li>
-<li><a href="http://github.com/opal/opal-todos#readme">opal-todomvc (TodoMVC)</a></li>
-</ul>
-
-<h2>opal-jquery</h2>
-
-<p>opal-jquery provides DOM access to opal by wrapping jQuery (or zepto)
-and providing a nice ruby syntax for dealing with jQuery instances.
-opal-jquery is <a href="http://github.com/opal/opal-jquery#readme">hosted on github</a>.</p>
-
-<p>jQuery instances are toll-free bridged to instances of the ruby class
-<code>JQuery</code>, so they can be used interchangeably.</p>
-<pre class="highlight ruby"><span class="n">elements</span> <span class="o">=</span> <span class="no">Element</span><span class="nf">.find</span><span class="p">(</span><span class="s1">&#39;.foo&#39;</span><span class="p">)</span>
-<span class="c1"># =&gt; [&lt;div class=&quot;foo&quot;&gt;, ...]</span>
-
-<span class="n">elements</span><span class="nf">.class</span>
-<span class="c1"># =&gt; JQuery</span>
-
-<span class="n">elements</span><span class="nf">.on</span><span class="p">(</span><span class="ss">:click</span><span class="p">)</span> <span class="k">do</span>
-  <span class="n">alert</span> <span class="s2">&quot;element was clicked&quot;</span>
-<span class="k">end</span>
-</pre>
   </div>
 
   <!-- GOOGLE ANALYTICS -->

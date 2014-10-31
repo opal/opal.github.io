@@ -6,8 +6,8 @@
 
   <title>Opal: Ruby to Javascript Compiler</title>
 
-  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
-  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" media="screen" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
 <body class="index">
@@ -94,33 +94,30 @@
 <h3>Overview</h3>
 
 <p><a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios7-play"></i></a></p>
-<pre class="highlight ruby"><span class="k">class</span> <span class="nc">User</span>
+<pre class="highlight ruby"><span class="k">class </span><span class="nc">User</span>
   <span class="kp">attr_accessor</span> <span class="ss">:name</span>
 
-  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="k">def </span><span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
     <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
   <span class="k">end</span>
 
-  <span class="k">def</span> <span class="nf">admin?</span>
-    <span class="vi">@name</span> <span class="o">==</span> <span class="s1">'Admin'</span>
+  <span class="k">def </span><span class="nf">admin?</span>
+    <span class="vi">@name</span> <span class="o">==</span> <span class="s1">&#39;Admin&#39;</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="nf">.new</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">user</span>
-<span class="nb">puts</span> <span class="n">user</span><span class="p">.</span><span class="nf">admin?</span>
+<span class="nb">puts</span> <span class="n">user</span><span class="nf">.admin?</span>
 </pre>
-
 <h3>Installation</h3>
 
 <p>Install Opal from RubyGems:</p>
-<pre class="highlight plaintext">$ gem install opal
+<pre class="highlight text">$ gem install opal
 </pre>
-
 <p>Or include it in your <code>Gemfile</code> for Bundler:</p>
-<pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'opal'</span>
+<pre class="highlight ruby"><span class="n">gem</span> <span class="s1">&#39;opal&#39;</span>
 </pre>
-
   </div>
 
   <!-- GOOGLE ANALYTICS -->
