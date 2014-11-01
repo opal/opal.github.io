@@ -6,8 +6,8 @@
 
   <title>Libraries</title>
 
-  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
 <body class="libraries libraries_index">
@@ -85,16 +85,17 @@ opal-jquery is <a href="http://github.com/opal/opal-jquery#readme">hosted on git
 
 <p>jQuery instances are toll-free bridged to instances of the ruby class
 <code>JQuery</code>, so they can be used interchangeably.</p>
-<pre class="highlight ruby"><span class="n">elements</span> <span class="o">=</span> <span class="no">Element</span><span class="nf">.find</span><span class="p">(</span><span class="s1">&#39;.foo&#39;</span><span class="p">)</span>
-<span class="c1"># =&gt; [&lt;div class=&quot;foo&quot;&gt;, ...]</span>
+<pre><code class="highlight ruby"><span class="n">elements</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
+<span class="c1"># =&gt; [&lt;div class="foo"&gt;, ...]</span>
 
-<span class="n">elements</span><span class="nf">.class</span>
+<span class="n">elements</span><span class="p">.</span><span class="nf">class</span>
 <span class="c1"># =&gt; JQuery</span>
 
-<span class="n">elements</span><span class="nf">.on</span><span class="p">(</span><span class="ss">:click</span><span class="p">)</span> <span class="k">do</span>
-  <span class="n">alert</span> <span class="s2">&quot;element was clicked&quot;</span>
+<span class="n">elements</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="ss">:click</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">alert</span> <span class="s2">"element was clicked"</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
+
   </div>
 
   <!-- GOOGLE ANALYTICS -->

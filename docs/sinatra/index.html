@@ -6,8 +6,8 @@
 
   <title>Using Opal with Sinatra</title>
 
-  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
 <body class="docs docs_sinatra docs_sinatra_index">
@@ -68,72 +68,41 @@
     <div class="row">
       <div class="col-md-3">
         <ul class="nav opal-sidebar">
-        
           <li>
             <a href="/docs">Getting Started</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/rails">Rails</a></li>
-              
                 <li><a href="/docs/sinatra">Sinatra</a></li>
-              
                 <li><a href="/docs/using_sprockets">Sprockets</a></li>
-              
                 <li><a href="/docs/static_applications">Static Applications</a></li>
-              
                 <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              
               </ul>
-            
           </li>
-        
           <li>
             <a href="/docs/api">API documentation</a>
-            
           </li>
-        
           <li>
             <a href="/docs/digging_deeper">Digging Deeper</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-              
                 <li><a href="/docs/generated_javascript">Generated Code</a></li>
-              
                 <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-              
                 <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-              
                 <li><a href="/docs/compiler">Compiler</a></li>
-              
                 <li><a href="/docs/source_maps">Source Maps</a></li>
-              
               </ul>
-            
           </li>
-        
           <li>
             <a href="/docs/libraries">Libraries</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-              
                 <li><a href="/docs/jquery">JQuery</a></li>
-              
                 <li><a href="/docs/rspec">RSpec</a></li>
-              
               </ul>
-            
           </li>
-        
           <li>
             <a href="/docs/faq">FAQ</a>
-            
           </li>
-        
         </ul>
       </div>
 
@@ -141,45 +110,47 @@
         <h1>Opal in a Sinatra application</h1>
 
 <p>Add Opal to your Gemfile (or install using <code>gem</code>):</p>
-<pre class="highlight ruby"><span class="c1"># Gemfile</span>
-<span class="n">gem</span> <span class="s1">&#39;sinatra&#39;</span>
-<span class="n">gem</span> <span class="s1">&#39;opal&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.6.2&#39;</span>
-</pre>
+<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
+<span class="n">gem</span> <span class="s1">'sinatra'</span>
+<span class="n">gem</span> <span class="s1">'opal'</span><span class="p">,</span> <span class="s1">'~&gt; 0.6.2'</span>
+</code></pre>
+
 <p>Opal uses <code>sprockets</code> as its default build system, so the asset-pipeline
 from rails can be mimicked here to map all ruby assets in the <code>/assets</code>
 path to be compiled using opal.</p>
 
 <h2>Basic Application</h2>
-<pre class="highlight ruby"><span class="c1"># config.ru</span>
-<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
+<pre><code class="highlight ruby"><span class="c1"># config.ru</span>
+<span class="nb">require</span> <span class="s1">'opal'</span>
+<span class="nb">require</span> <span class="s1">'sinatra'</span>
 
-<span class="n">opal</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Server</span><span class="nf">.new</span> <span class="p">{</span><span class="o">|</span><span class="n">s</span><span class="o">|</span>
-  <span class="n">s</span><span class="nf">.append_path</span> <span class="s1">&#39;app&#39;</span>
-  <span class="n">s</span><span class="nf">.main</span> <span class="o">=</span> <span class="s1">&#39;application&#39;</span>
+<span class="n">opal</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Server</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span><span class="o">|</span><span class="n">s</span><span class="o">|</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'app'</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">main</span> <span class="o">=</span> <span class="s1">'application'</span>
 <span class="p">}</span>
 
-<span class="n">map</span> <span class="n">opal</span><span class="nf">.source_maps.prefix</span> <span class="k">do</span>
-  <span class="n">run</span> <span class="n">opal</span><span class="nf">.source_maps</span>
+<span class="n">map</span> <span class="n">opal</span><span class="p">.</span><span class="nf">source_maps</span><span class="p">.</span><span class="nf">prefix</span> <span class="k">do</span>
+  <span class="n">run</span> <span class="n">opal</span><span class="p">.</span><span class="nf">source_maps</span>
 <span class="k">end</span>
 
-<span class="n">map</span> <span class="s1">&#39;/assets&#39;</span> <span class="k">do</span>
-  <span class="n">run</span> <span class="n">opal</span><span class="nf">.sprockets</span>
+<span class="n">map</span> <span class="s1">'/assets'</span> <span class="k">do</span>
+  <span class="n">run</span> <span class="n">opal</span><span class="p">.</span><span class="nf">sprockets</span>
 <span class="k">end</span>
 
-<span class="n">get</span> <span class="s1">&#39;/&#39;</span> <span class="k">do</span>
+<span class="n">get</span> <span class="s1">'/'</span> <span class="k">do</span>
   <span class="o">&lt;&lt;-</span><span class="no">HTML</span><span class="sh">
     &lt;!doctype html&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;script src=&quot;/assets/application.js&quot;&gt;&lt;/script&gt;
+        &lt;script src="/assets/application.js"&gt;&lt;/script&gt;
       &lt;/head&gt;
     &lt;/html&gt;
 </span><span class="no">  HTML</span>
 <span class="k">end</span>
 
 <span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
-</pre>
+</code></pre>
+
 <p>This creates a simple sprockets instance under the <code>/assets</code> path. Opal
 uses a set of load paths to compile assets using sprockets. The
 <code>Opal::Environment</code> instance is a simple subclass of <code>Sprockets::Environment</code>
@@ -189,11 +160,12 @@ with all the custom opal paths added automatically.</p>
 any custom application directories, you must add them to the load path using
 <code>env.append_path</code>. You can now add an <code>opal/application.rb</code> file into this
 added path with some basic content:</p>
-<pre class="highlight ruby"><span class="c1"># opal/application.rb</span>
-<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
+<pre><code class="highlight ruby"><span class="c1"># opal/application.rb</span>
+<span class="nb">require</span> <span class="s1">'opal'</span>
 
-<span class="nb">puts</span> <span class="s2">&quot;wow, running ruby!&quot;</span>
-</pre>
+<span class="nb">puts</span> <span class="s2">"wow, running ruby!"</span>
+</code></pre>
+
 <p>It is necessary to require the opal corelib (seen in the <code>require</code> call) above.
 This just makes the Opal runtime and corelib available. Then it is possible to
 use all the corelib methods and classes, e.g. <code>Kernel#puts</code> as seen above.</p>
@@ -201,8 +173,9 @@ use all the corelib methods and classes, e.g. <code>Kernel#puts</code> as seen a
 <h3>Running Application</h3>
 
 <p>As this is just a simple sinatra application, you can run it:</p>
-<pre class="highlight shell"><span class="gp">$ </span>bundle <span class="nb">exec </span>rackup
-</pre>
+<pre><code class="highlight shell"><span class="gp">$ </span>bundle <span class="nb">exec </span>rackup
+</code></pre>
+
 <p>And point your browser towards <code>http://localhost:9292/</code> and view the browser
 debug console. You should see this message printed.</p>
 

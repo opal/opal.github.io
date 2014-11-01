@@ -6,8 +6,8 @@
 
   <title>Opal: Ruby to Javascript compiler</title>
 
-  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
 <body class="docs docs_static_applications docs_static_applications_index">
@@ -68,72 +68,41 @@
     <div class="row">
       <div class="col-md-3">
         <ul class="nav opal-sidebar">
-        
           <li>
             <a href="/docs">Getting Started</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/rails">Rails</a></li>
-              
                 <li><a href="/docs/sinatra">Sinatra</a></li>
-              
                 <li><a href="/docs/using_sprockets">Sprockets</a></li>
-              
                 <li><a href="/docs/static_applications">Static Applications</a></li>
-              
                 <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              
               </ul>
-            
           </li>
-        
           <li>
             <a href="/docs/api">API documentation</a>
-            
           </li>
-        
           <li>
             <a href="/docs/digging_deeper">Digging Deeper</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-              
                 <li><a href="/docs/generated_javascript">Generated Code</a></li>
-              
                 <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-              
                 <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-              
                 <li><a href="/docs/compiler">Compiler</a></li>
-              
                 <li><a href="/docs/source_maps">Source Maps</a></li>
-              
               </ul>
-            
           </li>
-        
           <li>
             <a href="/docs/libraries">Libraries</a>
-            
               <ul class="nav">
-              
                 <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-              
                 <li><a href="/docs/jquery">JQuery</a></li>
-              
                 <li><a href="/docs/rspec">RSpec</a></li>
-              
               </ul>
-            
           </li>
-        
           <li>
             <a href="/docs/faq">FAQ</a>
-            
           </li>
-        
         </ul>
       </div>
 
@@ -148,16 +117,18 @@ standalone as well.</p>
 <h2>Overview</h2>
 
 <p>First, install <code>opal</code> adding them to a <code>Gemfile</code>:</p>
-<pre class="highlight ruby"><span class="c1"># Gemfile</span>
-<span class="n">gem</span> <span class="s2">&quot;opal&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;= 0.6.0&quot;</span>
-</pre>
+<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
+<span class="n">gem</span> <span class="s2">"opal"</span><span class="p">,</span> <span class="s2">"&gt;= 0.6.0"</span>
+</code></pre>
+
 <p>Next, we want to add our main app code. Keep all opal code inside <code>app/</code>
 directory, and edit <code>app/application.rb</code>:</p>
-<pre class="highlight ruby"><span class="c1"># app/application.rb</span>
-<span class="nb">require</span> <span class="s2">&quot;opal&quot;</span>
+<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
+<span class="nb">require</span> <span class="s2">"opal"</span>
 
-<span class="nb">puts</span> <span class="s2">&quot;Wow, running opal!&quot;</span>
-</pre>
+<span class="nb">puts</span> <span class="s2">"Wow, running opal!"</span>
+</code></pre>
+
 <p>You will notice the <code>require &quot;opal&quot;</code> line which will automatically include the
 opal runtime and corelib into our output, giving us access to the <code>puts()</code>
 method.</p>
@@ -165,33 +136,35 @@ method.</p>
 <p>To build this, we need a rake task to load a new opal environment, add our
 <code>app/</code> directory to the load path, and then to build our target file
 <code>application.rb</code> which will be found because it is inside our added load path.</p>
-<pre class="highlight ruby"><span class="c1"># Rakefile</span>
-<span class="nb">require</span> <span class="s1">&#39;opal&#39;</span>
+<pre><code class="highlight ruby"><span class="c1"># Rakefile</span>
+<span class="nb">require</span> <span class="s1">'opal'</span>
 
-<span class="n">desc</span> <span class="s2">&quot;Build our app to build.js&quot;</span>
-<span class="n">task</span> <span class="ss">:build</span> <span class="k">do</span>
-  <span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="nf">.source_map_enabled</span> <span class="o">=</span> <span class="kp">false</span>
-  <span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="nf">.new</span>
-  <span class="n">env</span><span class="nf">.append_path</span> <span class="s2">&quot;app&quot;</span>
+<span class="n">desc</span> <span class="s2">"Build our app to build.js"</span>
+<span class="n">task</span> <span class="p">:</span><span class="n">build</span> <span class="k">do</span>
+  <span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">false</span>
+  <span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
+  <span class="n">env</span><span class="p">.</span><span class="nf">append_path</span> <span class="s2">"app"</span>
 
-  <span class="no">File</span><span class="nf">.open</span><span class="p">(</span><span class="s2">&quot;build.js&quot;</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">out</span><span class="o">|</span>
-    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="n">env</span><span class="o">[</span><span class="s2">&quot;application&quot;</span><span class="o">]</span><span class="nf">.to_s</span>
+  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"build.js"</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">out</span><span class="o">|</span>
+    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="n">env</span><span class="p">[</span><span class="s2">"application"</span><span class="p">].</span><span class="nf">to_s</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
+
 <p>Now, if you run <code>rake build</code> you will get the <code>build.js</code> output file with our
 application compiled, with the opal runtime included as well.</p>
 
 <p>To run the application, lets create a very simple html file:</p>
-<pre class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<pre><code class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;build.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"build.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre>
+</code></pre>
+
 <p>Now, open this html file and check the browsers console. You should see our
 message printed in the console.</p>
 
