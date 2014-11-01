@@ -65,10 +65,14 @@ code {
   font-family: Menlo, Consolas, "Courier New", monospace;
 }
 
-.highlight {
+pre {
   background-color: #f7f7f9;
   border: 0px;
   font-family: Menlo, Consolas, "Courier New", monospace;
+
+  .highlight {
+    background-color: #f7f7f9;
+  }
 }
 
 .main-title {
