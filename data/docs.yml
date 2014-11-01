@@ -28,6 +28,8 @@
       url: '/docs/compiler'
     - title: Source Maps
       url: '/docs/source_maps'
+    - title: Unsupported Features
+      url: '/docs/unsupported_features'
 - title: Libraries
   url: '/docs/libraries'
   children:
