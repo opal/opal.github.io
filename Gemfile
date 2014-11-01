@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "opal", ">= 0.6.0"
+gem "opal",        :github => 'opal/opal'
 gem "opal-jquery", :github => "opal/opal-jquery"
 gem 'opal-rspec', '~> 0.4.0.beta3'
 
