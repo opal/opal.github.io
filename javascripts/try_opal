@@ -3084,12 +3084,23 @@ Opal.modules["corelib/error"] = function(Opal) {
         message = ""
       }
       
-      var err = new Error(message);
-      err.$$class = self;
+      var err = new self.$$alloc(message);
+
+      if (Error.captureStackTrace) {
+        Error.captureStackTrace(err, self.$$alloc);
+      }
+
       err.name = self.$$name;
+      err.$initialize(message);
       return err;
     
     });
+
+    def.$initialize = function(message) {
+      var self = this;
+
+      return self.message = message;
+    };
 
     def.$backtrace = function() {
       var self = this;
@@ -3295,7 +3306,7 @@ Opal.modules["corelib/regexp"] = function(Opal) {
   Opal.dynamic_require_severity = "warning";
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $gvars = Opal.gvars;
 
-  Opal.add_stubs(['$respond_to?', '$to_str', '$to_s', '$coerce_to', '$new', '$raise', '$class', '$call']);
+  Opal.add_stubs(['$nil?', '$[]', '$respond_to?', '$to_str', '$to_s', '$coerce_to', '$new', '$raise', '$class', '$call']);
   return (function($base, $super) {
     function $Regexp(){};
     var self = $Regexp = $klass($base, $super, 'Regexp', $Regexp);
@@ -3317,6 +3328,19 @@ Opal.modules["corelib/regexp"] = function(Opal) {
                      .replace(/[\f]/g, '\\f')
                      .replace(/[\t]/g, '\\t');
       
+      };
+      self.$$proto.$last_match = function(n) {
+        var $a, self = this;
+        if ($gvars["~"] == null) $gvars["~"] = nil;
+
+        if (n == null) {
+          n = nil
+        }
+        if ((($a = n['$nil?']()) !== nil && (!$a.$$is_boolean || $a == true))) {
+          return $gvars["~"]
+          } else {
+          return $gvars["~"]['$[]'](n)
+        };
       };
       self.$$proto.$quote = self.$$proto.$escape;
       self.$$proto.$union = function(parts) {
@@ -3358,7 +3382,7 @@ Opal.modules["corelib/regexp"] = function(Opal) {
       var $a, self = this;
 
       if ((($a = string === nil) !== nil && (!$a.$$is_boolean || $a == true))) {
-        $gvars["~"] = $gvars["`"] = $gvars["'"] = nil;
+        $gvars["~"] = nil;
         return nil;};
       string = $scope.get('Opal').$coerce_to(string, $scope.get('String'), "to_str").$to_s();
       
@@ -3378,14 +3402,10 @@ Opal.modules["corelib/regexp"] = function(Opal) {
       if (result) {
         $gvars["~"] = $scope.get('MatchData').$new(re, result);
 
-        for (var i = 1, ii = result.length; i < ii; i++) {
-          Opal.gvars[String(i)] = result[i];
-        }
-
         return result.index;
       }
       else {
-        $gvars["~"] = $gvars["`"] = $gvars["'"] = nil;
+        $gvars["~"] = nil;
         return nil;
       }
     
@@ -3404,7 +3424,7 @@ Opal.modules["corelib/regexp"] = function(Opal) {
 
       TMP_1.$$p = null;
       if ((($a = string === nil) !== nil && (!$a.$$is_boolean || $a == true))) {
-        $gvars["~"] = $gvars["`"] = $gvars["'"] = nil;
+        $gvars["~"] = nil;
         return nil;};
       if ((($a = string.$$is_string == null) !== nil && (!$a.$$is_boolean || $a == true))) {
         if ((($a = string['$respond_to?']("to_str")) !== nil && (!$a.$$is_boolean || $a == true))) {
@@ -3436,7 +3456,7 @@ Opal.modules["corelib/regexp"] = function(Opal) {
         }
       }
       else {
-        return $gvars["~"] = $gvars["`"] = $gvars["'"] = nil;
+        return $gvars["~"] = nil;
       }
     
     };
@@ -4936,7 +4956,7 @@ Opal.modules["corelib/enumerator"] = function(Opal) {
         return self.$enum_for("with_index", offset)
       };
       
-      var result
+      var result, index = 0;
 
       self.$each.$$p = function() {
         var param = $scope.get('Opal').$destructure(arguments),
@@ -4955,7 +4975,9 @@ Opal.modules["corelib/enumerator"] = function(Opal) {
       if (result !== undefined) {
         return result;
       }
-    ;
+
+      return nil;
+    
     };
 
     Opal.defn(self, '$with_object', def.$each_with_object);
@@ -9722,30 +9744,20 @@ Opal.modules["corelib/match_data"] = function(Opal) {
   Opal.dynamic_require_severity = "warning";
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $gvars = Opal.gvars;
 
-  Opal.add_stubs(['$attr_reader', '$pre_match', '$post_match', '$[]', '$===', '$!', '$==', '$raise', '$inspect']);
+  Opal.add_stubs(['$attr_reader', '$[]', '$===', '$!', '$==', '$raise', '$inspect']);
   return (function($base, $super) {
     function $MatchData(){};
     var self = $MatchData = $klass($base, $super, 'MatchData', $MatchData);
 
-    var def = self.$$proto, $scope = self.$$scope, TMP_1;
+    var def = self.$$proto, $scope = self.$$scope;
 
     def.string = def.matches = def.begin = nil;
     self.$attr_reader("post_match", "pre_match", "regexp", "string");
 
-    Opal.defs(self, '$new', TMP_1 = function(regexp, match_groups) {
-      var self = this, $iter = TMP_1.$$p, $yield = $iter || nil, data = nil;
-
-      TMP_1.$$p = null;
-      data = Opal.find_super_dispatcher(self, 'new', TMP_1, null, $MatchData).apply(self, [regexp, match_groups]);
-      $gvars["`"] = data.$pre_match();
-      $gvars["'"] = data.$post_match();
-      $gvars["~"] = data;
-      return data;
-    });
-
     def.$initialize = function(regexp, match_groups) {
       var self = this;
 
+      $gvars["~"] = self;
       self.regexp = regexp;
       self.begin = match_groups.index;
       self.string = match_groups.input;
@@ -10337,10 +10349,16 @@ Opal.modules["corelib/numeric"] = function(Opal) {
       return self - 1;
     };
 
-    def.$round = function() {
+    def.$round = function(ndigits) {
       var self = this;
 
-      return Math.round(self);
+      if (ndigits == null) {
+        ndigits = 0
+      }
+      
+      var scale = Math.pow(10, ndigits);
+      return Math.round(self * scale) / scale;
+    
     };
 
     def.$step = TMP_4 = function(limit, step) {
@@ -17260,7 +17278,7 @@ if (_opt == null) _opt = nil;
           return self.$s("nil")
         };
         $case = str.$type();if ("str"['$===']($case)) {(($a = ["sym"]), $b = str, $b['$type='].apply($b, $a), $a[$a.length-1]);
-        str['$[]='](1, str['$[]'](1).$to_sym());}else if ("dstr"['$===']($case)) {(($a = ["dsym"]), $b = str, $b['$type='].apply($b, $a), $a[$a.length-1])};
+        str['$[]='](1, str['$[]'](1).$to_sym());}else if ("dstr"['$===']($case)) {(($a = ["dsym"]), $b = str, $b['$type='].apply($b, $a), $a[$a.length-1])}else if ("evstr"['$===']($case)) {str = self.$s("dsym", str)};
         return str;
       };
 
@@ -18170,7 +18188,7 @@ Opal.modules["opal/nodes/variables"] = function(Opal) {
   Opal.dynamic_require_severity = "warning";
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $range = Opal.range;
 
-  Opal.add_stubs(['$require', '$handle', '$children', '$irb?', '$compiler', '$top?', '$scope', '$using_irb?', '$push', '$variable', '$to_s', '$var_name', '$with_temp', '$property', '$wrap', '$expr', '$value', '$add_local', '$recv?', '$[]', '$name', '$add_ivar', '$helper', '$add_gvar']);
+  Opal.add_stubs(['$require', '$handle', '$children', '$irb?', '$compiler', '$top?', '$scope', '$using_irb?', '$push', '$variable', '$to_s', '$var_name', '$with_temp', '$property', '$wrap', '$expr', '$value', '$add_local', '$recv?', '$[]', '$name', '$add_ivar', '$helper', '$==', '$handle_global_match', '$handle_post_match', '$handle_pre_match', '$add_gvar', '$index']);
   self.$require("opal/nodes/base");
   return (function($base) {
     var self = $module($base, 'Opal');
@@ -18313,14 +18331,44 @@ if (tmp == null) tmp = nil;
           return self.$name().$to_s()['$[]']($range(1, -1, false));
         };
 
-        return (def.$compile = function() {
+        def.$compile = function() {
           var self = this, name = nil;
 
           self.$helper("gvars");
+          if (self.$var_name()['$==']("&")) {
+            return self.$handle_global_match()
+          } else if (self.$var_name()['$==']("'")) {
+            return self.$handle_post_match()
+          } else if (self.$var_name()['$==']("`")) {
+            return self.$handle_pre_match()};
           name = self.$property(self.$var_name());
           self.$add_gvar(name);
           return self.$push("$gvars" + (name));
-        }, nil) && 'compile';
+        };
+
+        def.$handle_global_match = function() {
+          var $a, $b, TMP_2, self = this;
+
+          return ($a = ($b = self).$with_temp, $a.$$p = (TMP_2 = function(tmp){var self = TMP_2.$$s || this;
+if (tmp == null) tmp = nil;
+          return self.$push("((" + (tmp) + " = $gvars['~']) === nil ? nil : " + (tmp) + "['$[]'](0))")}, TMP_2.$$s = self, TMP_2), $a).call($b);
+        };
+
+        def.$handle_pre_match = function() {
+          var $a, $b, TMP_3, self = this;
+
+          return ($a = ($b = self).$with_temp, $a.$$p = (TMP_3 = function(tmp){var self = TMP_3.$$s || this;
+if (tmp == null) tmp = nil;
+          return self.$push("((" + (tmp) + " = $gvars['~']) === nil ? nil : " + (tmp) + ".$pre_match())")}, TMP_3.$$s = self, TMP_3), $a).call($b);
+        };
+
+        return (def.$handle_post_match = function() {
+          var $a, $b, TMP_4, self = this;
+
+          return ($a = ($b = self).$with_temp, $a.$$p = (TMP_4 = function(tmp){var self = TMP_4.$$s || this;
+if (tmp == null) tmp = nil;
+          return self.$push("((" + (tmp) + " = $gvars['~']) === nil ? nil : " + (tmp) + ".$post_match())")}, TMP_4.$$s = self, TMP_4), $a).call($b);
+        }, nil) && 'handle_post_match';
       })(self, $scope.get('Base'));
 
       (function($base, $super) {
@@ -18357,10 +18405,15 @@ if (tmp == null) tmp = nil;
 
         self.$handle("nth_ref");
 
-        return (def.$compile = function() {
-          var self = this;
+        self.$children("index");
 
-          return self.$push("nil");
+        return (def.$compile = function() {
+          var $a, $b, TMP_5, self = this;
+
+          self.$helper("gvars");
+          return ($a = ($b = self).$with_temp, $a.$$p = (TMP_5 = function(tmp){var self = TMP_5.$$s || this;
+if (tmp == null) tmp = nil;
+          return self.$push("((" + (tmp) + " = $gvars['~']) === nil ? nil : " + (tmp) + "['$[]'](" + (self.$index()) + "))")}, TMP_5.$$s = self, TMP_5), $a).call($b);
         }, nil) && 'compile';
       })(self, $scope.get('Base'));
 
@@ -18375,11 +18428,11 @@ if (tmp == null) tmp = nil;
         self.$children("name");
 
         return (def.$compile = function() {
-          var $a, $b, TMP_2, self = this;
+          var $a, $b, TMP_6, self = this;
 
-          return ($a = ($b = self).$with_temp, $a.$$p = (TMP_2 = function(tmp){var self = TMP_2.$$s || this;
+          return ($a = ($b = self).$with_temp, $a.$$p = (TMP_6 = function(tmp){var self = TMP_6.$$s || this;
 if (tmp == null) tmp = nil;
-          return self.$push("((" + (tmp) + " = Opal.cvars['" + (self.$name()) + "']) == null ? nil : " + (tmp) + ")")}, TMP_2.$$s = self, TMP_2), $a).call($b);
+          return self.$push("((" + (tmp) + " = Opal.cvars['" + (self.$name()) + "']) == null ? nil : " + (tmp) + ")")}, TMP_6.$$s = self, TMP_6), $a).call($b);
         }, nil) && 'compile';
       })(self, $scope.get('Base'));
 
@@ -22667,7 +22720,7 @@ if (s == null) s = nil;
 /* Generated by Opal 0.7.0.beta2 */
 Opal.modules["opal/erb"] = function(Opal) {
   Opal.dynamic_require_severity = "warning";
-  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass;
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $gvars = Opal.gvars;
 
   Opal.add_stubs(['$require', '$compile', '$new', '$fix_quotes', '$find_contents', '$find_code', '$wrap_compiled', '$require_erb', '$prepared_source', '$gsub', '$+', '$=~', '$sub']);
   self.$require("opal/compiler");
@@ -22743,7 +22796,7 @@ Opal.modules["opal/erb"] = function(Opal) {
 
           return ($a = ($b = result).$gsub, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $a, inner = nil;
 
-          inner = nil.$gsub(/\\'/, "'").$gsub(/\\"/, "\"");
+          inner = (($a = $gvars['~']) === nil ? nil : $a['$[]'](1)).$gsub(/\\'/, "'").$gsub(/\\"/, "\"");
             if ((($a = inner['$=~']($scope.get('BLOCK_EXPR'))) !== nil && (!$a.$$is_boolean || $a == true))) {
               return "\")\noutput_buffer.append= " + (inner) + "\noutput_buffer.append(\""
               } else {
@@ -22754,9 +22807,9 @@ Opal.modules["opal/erb"] = function(Opal) {
         def.$find_code = function(result) {
           var $a, $b, TMP_2, self = this;
 
-          return ($a = ($b = result).$gsub, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
+          return ($a = ($b = result).$gsub, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $a;
 
-          return "\")\n" + (nil) + "\noutput_buffer.append(\""}, TMP_2.$$s = self, TMP_2), $a).call($b, /<%([\s\S]+?)%>/);
+          return "\")\n" + ((($a = $gvars['~']) === nil ? nil : $a['$[]'](1))) + "\noutput_buffer.append(\""}, TMP_2.$$s = self, TMP_2), $a).call($b, /<%([\s\S]+?)%>/);
         };
 
         return (def.$wrap_compiled = function(result) {
