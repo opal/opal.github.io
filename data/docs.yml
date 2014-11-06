@@ -39,5 +39,7 @@
       url: '/docs/jquery'
     - title: RSpec
       url: '/docs/rspec'
+    - title: Promises
+      url: '/docs/promises'
 - title: FAQ
   url: '/docs/faq'
