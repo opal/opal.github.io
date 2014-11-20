@@ -150,6 +150,14 @@ Element.find('#my_link').on(:click) do |evt|
 end
 ```
 
+You can access the element which triggered the event by `#current_target`.
+
+```ruby
+Document.on :click do |evt|
+  puts "clicked on: #{evt.current_target}"
+end
+```
+
 #### CSS styles and classnames
 
 The various jQuery methods are available on `Element` instances:
