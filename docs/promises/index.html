@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <title>Opal: Ruby to Javascript compiler</title>
+  <title>Promise</title>
 
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="docs docs_static_applications docs_static_applications_index">
+<body class="docs docs_promises docs_promises_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -109,66 +109,62 @@
       </div>
 
       <div class="col-md-9">
-        <h1>Static Building</h1>
+        <h1>Promise</h1>
 
-<p><code>opal</code> makes it easy to build static opal applications. Opal uses internal load
-paths to make it easy to handle resolving requirements during building. <code>opal</code>
-forms the basis of rails support, so anything you can do there, you can do
-standalone as well.</p>
+<p><code>Promise</code> is a class available in the Opal stdlib for helping structure asynchronous code.</p>
 
-<h2>Overview</h2>
-
-<p>First, install <code>opal</code> adding them to a <code>Gemfile</code>:</p>
-<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
-<span class="n">gem</span> <span class="s2">"opal"</span><span class="p">,</span> <span class="s2">"&gt;= 0.6.0"</span>
+<p>It can be required inside any Opal applicaton:</p>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'promise'</span>
 </code></pre>
 
-<p>Next, we want to add our main app code. Keep all opal code inside <code>app/</code>
-directory, and edit <code>app/application.rb</code>:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
-<span class="nb">require</span> <span class="s2">"opal"</span>
+<h2>Usage</h2>
 
-<span class="nb">puts</span> <span class="s2">"Wow, running opal!"</span>
-</code></pre>
+<p>This example shows how to use a <code>HTTP</code> request from <code>opal-jquery</code> from a callback style, into a promise style handler.</p>
+<pre><code class="highlight ruby"><span class="k">def</span> <span class="nf">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="n">promise</span> <span class="o">=</span> <span class="no">Promise</span><span class="p">.</span><span class="nf">new</span>
 
-<p>You will notice the <code>require &quot;opal&quot;</code> line which will automatically include the
-opal runtime and corelib into our output, giving us access to the <code>puts()</code>
-method.</p>
-
-<p>To build this, we need a rake task to load a new opal environment, add our
-<code>app/</code> directory to the load path, and then to build our target file
-<code>application.rb</code> which will be found because it is inside our added load path.</p>
-<pre><code class="highlight ruby"><span class="c1"># Rakefile</span>
-<span class="nb">require</span> <span class="s1">'opal'</span>
-
-<span class="n">desc</span> <span class="s2">"Build our app to build.js"</span>
-<span class="n">task</span> <span class="p">:</span><span class="n">build</span> <span class="k">do</span>
-  <span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">false</span>
-  <span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
-  <span class="n">env</span><span class="p">.</span><span class="nf">append_path</span> <span class="s2">"app"</span>
-
-  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"build.js"</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">out</span><span class="o">|</span>
-    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="n">env</span><span class="p">[</span><span class="s2">"application"</span><span class="p">].</span><span class="nf">to_s</span>
+  <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">.</span><span class="nf">ok?</span>
+      <span class="n">promise</span><span class="p">.</span><span class="nf">resolve</span> <span class="n">response</span><span class="p">.</span><span class="nf">json</span>
+    <span class="k">else</span>
+      <span class="n">promise</span><span class="p">.</span><span class="nf">reject</span> <span class="n">response</span>
+    <span class="k">end</span>
   <span class="k">end</span>
+
+  <span class="n">promise</span>
+<span class="k">end</span>
+
+<span class="n">get_json</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">json</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"Got data: </span><span class="si">#{</span><span class="n">json</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">fail</span> <span class="k">do</span> <span class="o">|</span><span class="n">res</span><span class="o">|</span>
+  <span class="n">alert</span> <span class="s2">"It didn't work :( </span><span class="si">#{</span><span class="n">res</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
 </code></pre>
 
-<p>Now, if you run <code>rake build</code> you will get the <code>build.js</code> output file with our
-application compiled, with the opal runtime included as well.</p>
+<p>A promise can only be resolved or rejected once.</p>
 
-<p>To run the application, lets create a very simple html file:</p>
-<pre><code class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"build.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<h3>Chaining Promises</h3>
+
+<p>Promises become useful when chained together. The prevous example could be extended to get another object from the result of the first request.</p>
+<pre><code class="highlight ruby"><span class="n">get_json</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">json</span><span class="o">|</span>
+  <span class="n">get_json</span><span class="p">(</span><span class="s2">"/posts/</span><span class="si">#{</span><span class="n">json</span><span class="p">[</span><span class="ss">:post_id</span><span class="p">]</span><span class="si">}</span><span class="s2">.json"</span><span class="p">)</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"got post: </span><span class="si">#{</span><span class="n">post</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
 </code></pre>
 
-<p>Now, open this html file and check the browsers console. You should see our
-message printed in the console.</p>
+<h3>Composing Promises</h3>
+
+<p><code>Promise.when</code> can be used to wait for more than 1 promise to resolve (or reject). Lets assume we wanted to get 2 different users:</p>
+<pre><code class="highlight ruby"><span class="n">first</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/1.json'</span>
+<span class="n">second</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/2.json'</span>
+
+<span class="no">Promise</span><span class="p">.</span><span class="nf">when</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">user1</span><span class="p">,</span> <span class="n">user2</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"got users: </span><span class="si">#{</span><span class="n">user1</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">user2</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">fail</span> <span class="k">do</span>
+  <span class="n">alert</span> <span class="s2">"Something bad happened"</span>
+<span class="k">end</span>
+</code></pre>
 
       </div>
     </div>

@@ -99,6 +99,7 @@
                 <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
                 <li><a href="/docs/jquery">JQuery</a></li>
                 <li><a href="/docs/rspec">RSpec</a></li>
+                <li><a href="/docs/promises">Promises</a></li>
               </ul>
           </li>
           <li>
@@ -231,6 +232,12 @@ which is toll-free bridged to jquery events:</p>
 <pre><code class="highlight ruby"><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#my_link'</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="ss">:click</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">evt</span><span class="o">|</span>
   <span class="n">evt</span><span class="p">.</span><span class="nf">stop_propagation</span>
   <span class="nb">puts</span> <span class="s2">"stopped the event!"</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>You can access the element which triggered the event by <code>#current_target</code>.</p>
+<pre><code class="highlight ruby"><span class="no">Document</span><span class="p">.</span><span class="nf">on</span> <span class="ss">:click</span> <span class="k">do</span> <span class="o">|</span><span class="n">evt</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"clicked on: </span><span class="si">#{</span><span class="n">evt</span><span class="p">.</span><span class="nf">current_target</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
 </code></pre>
 
