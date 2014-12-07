@@ -4,11 +4,11 @@
 //= require blog
 //= require index
 
-$background: #fafafa;
-$background-border: #e5e5e5;
-$background-active: darken($background, 10%);
-$color: #444444;
-$color-secondary: #1a1a1a;
+$background: #1c7cbe;
+$background-border: $background;
+$background-active: #0e436b;
+$color: #fff;
+$color-secondary: lighten(desaturate($background, 20%), 40%);
 
 body {
   color: #444444;
