@@ -114,13 +114,13 @@
 <p><code>Promise</code> is a class available in the Opal stdlib for helping structure asynchronous code.</p>
 
 <p>It can be required inside any Opal applicaton:</p>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'promise'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'promise'</span>
 </code></pre>
 
 <h2>Usage</h2>
 
 <p>This example shows how to use a <code>HTTP</code> request from <code>opal-jquery</code> from a callback style, into a promise style handler.</p>
-<pre><code class="highlight ruby"><span class="k">def</span> <span class="nf">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
   <span class="n">promise</span> <span class="o">=</span> <span class="no">Promise</span><span class="p">.</span><span class="nf">new</span>
 
   <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
@@ -146,7 +146,7 @@
 <h3>Chaining Promises</h3>
 
 <p>Promises become useful when chained together. The prevous example could be extended to get another object from the result of the first request.</p>
-<pre><code class="highlight ruby"><span class="n">get_json</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">json</span><span class="o">|</span>
+<pre class="highlight ruby"><code><span class="n">get_json</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">json</span><span class="o">|</span>
   <span class="n">get_json</span><span class="p">(</span><span class="s2">"/posts/</span><span class="si">#{</span><span class="n">json</span><span class="p">[</span><span class="ss">:post_id</span><span class="p">]</span><span class="si">}</span><span class="s2">.json"</span><span class="p">)</span>
 <span class="k">end</span><span class="p">.</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">"got post: </span><span class="si">#{</span><span class="n">post</span><span class="si">}</span><span class="s2">"</span>
@@ -156,7 +156,7 @@
 <h3>Composing Promises</h3>
 
 <p><code>Promise.when</code> can be used to wait for more than 1 promise to resolve (or reject). Lets assume we wanted to get 2 different users:</p>
-<pre><code class="highlight ruby"><span class="n">first</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/1.json'</span>
+<pre class="highlight ruby"><code><span class="n">first</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/1.json'</span>
 <span class="n">second</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/2.json'</span>
 
 <span class="no">Promise</span><span class="p">.</span><span class="nf">when</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">user1</span><span class="p">,</span> <span class="n">user2</span><span class="o">|</span>

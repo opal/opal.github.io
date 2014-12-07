@@ -122,7 +122,7 @@ instance of <code>Template</code>, which provides a basic standard rendering api
 rendering a uniform method on the client.</p>
 
 <p>For example, to access a template named <code>user</code>:</p>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'template'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'template'</span>
 
 <span class="n">template</span> <span class="o">=</span> <span class="no">Template</span><span class="p">[</span><span class="s1">'user'</span><span class="p">]</span>
 <span class="n">context</span>  <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'Ford Prefect'</span><span class="p">)</span>
@@ -138,12 +138,12 @@ content.</p>
 <h3>Registered Templates</h3>
 
 <p>You can get a quick list of all registered templates using <code>.paths</code>:</p>
-<pre><code class="highlight ruby"><span class="no">Template</span><span class="p">.</span><span class="nf">paths</span>
+<pre class="highlight ruby"><code><span class="no">Template</span><span class="p">.</span><span class="nf">paths</span>
 <span class="c1"># =&gt; [#&lt;Template: 'views/user'&gt;, #&lt;Template: 'login'&gt;]</span>
 </code></pre>
 
 <p>These names are the keys used to access a template:</p>
-<pre><code class="highlight ruby"><span class="no">Template</span><span class="p">[</span><span class="s1">'login'</span><span class="p">]</span>
+<pre class="highlight ruby"><code><span class="no">Template</span><span class="p">[</span><span class="s1">'login'</span><span class="p">]</span>
 <span class="c1"># =&gt; #&lt;Template: 'login'&gt;</span>
 </code></pre>
 
@@ -153,7 +153,7 @@ content.</p>
 ruby code, ready to run on the client.</p>
 
 <p>To get started, add to your Gemfile:</p>
-<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
+<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s1">'opal'</span>
 <span class="n">gem</span> <span class="s1">'opal-haml'</span>
 </code></pre>
@@ -162,7 +162,7 @@ ruby code, ready to run on the client.</p>
 This means, that you can simply <code>require()</code> a haml template in your code.</p>
 
 <p>Lets say you have the following simple opal app:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/application.rb</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 
 <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">Struct</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span><span class="p">)</span>
@@ -171,7 +171,7 @@ This means, that you can simply <code>require()</code> a haml template in your c
 
 <p>We want to create an instance of the <code>User</code> class and render it using a haml
 template. Lets first create that template as <code>app/views/user.haml</code>:</p>
-<pre><code class="highlight haml"><span class="c">-# app/views/user.haml
+<pre class="highlight haml"><code><span class="c">-# app/views/user.haml
 </span><span class="nc">.row</span>
   <span class="nc">.col-md-6</span>
     <span class="p">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">name</span>
@@ -181,7 +181,7 @@ template. Lets first create that template as <code>app/views/user.haml</code>:</
 
 <p>You are nearly ready to go. Lets create a user instance and render the template
 in the context of that user:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/application.rb</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 <span class="nb">require</span> <span class="s1">'views/user'</span>
 
@@ -197,7 +197,7 @@ in the context of that user:</p>
 <p>Note, when requiring haml templates you do not need to specify the <code>.haml</code>
 extension. This code will print the rendered html to the console. If you
 check it out, you should see it compiled into something like the following:</p>
-<pre><code class="highlight html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+<pre class="highlight html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
     Ford Prefect
   <span class="nt">&lt;/div&gt;</span>
@@ -216,20 +216,20 @@ built in handler for <code>.erb</code> files.</p>
 
 <p>If we have the same user class as above, create an <code>app/views/user.opalerb</code>
 file:</p>
-<pre><code class="highlight erb"><span class="c">&lt;!-- app/views/user.opalerb --&gt;</span>
+<pre class="highlight erb"><code><span class="c">&lt;!-- app/views/user.opalerb --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3"</span><span class="nt">&gt;</span><span class="cp">&lt;%=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">name</span> <span class="cp">%&gt;</span><span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
 
 <p>Again, you must then require the template (without the <code>.opalerb</code> extension):</p>
-<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/application.rb</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 <span class="nb">require</span> <span class="s1">'views/user'</span>
 </code></pre>
 
 <p>And then you can access and render the template:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/application.rb</span>
 
 <span class="n">template</span> <span class="o">=</span> <span class="no">Template</span><span class="p">[</span><span class="s1">'views/user'</span><span class="p">]</span>
 <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'Ford Prefect'</span><span class="p">)</span>

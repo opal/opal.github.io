@@ -112,15 +112,15 @@
         <h2>Opal in a Rails application</h2>
 
 <p>Add Opal to your Gemfile:</p>
-<pre><code class="highlight ruby"><span class="n">gem</span> <span class="s1">'opal-rails'</span>
+<pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal-rails'</span>
 </code></pre>
 
 <p>Or to start off with Opal when you build your new Rails app:</p>
-<pre><code class="highlight shell">rails new &lt;app-name&gt; --javascript<span class="o">=</span>opal
+<pre class="highlight shell"><code>rails new &lt;app-name&gt; --javascript<span class="o">=</span>opal
 </code></pre>
 
 <h2>Basic usage through the asset pipeline</h2>
-<pre><code class="highlight javascript"><span class="c1">// app/assets/application.js.rb</span>
+<pre class="highlight javascript"><code><span class="c1">// app/assets/application.js.rb</span>
 
 <span class="c1">//= require opal</span>
 <span class="c1">//= require opal_ujs</span>
@@ -129,7 +129,7 @@
 </code></pre>
 
 <p>Opal requires are forwarded to the Asset Pipeline at compile time (similarly to what happens for RubyMotion). You can use either the <code>.rb</code> or <code>.opal</code> extension:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/assets/javascripts/greeter.js.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/assets/javascripts/greeter.js.rb</span>
 
 <span class="nb">puts</span> <span class="s2">"G'day world!"</span> <span class="c1"># check the console!</span>
 
@@ -144,7 +144,7 @@
 <h3>As a template</h3>
 
 <p>You can use it for your views too, it even inherits instance and local variables from actions:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/controllers/posts_controller.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/controllers/posts_controller.rb</span>
 
 <span class="k">def</span> <span class="nf">create</span>
   <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:post</span><span class="p">])</span>
@@ -153,7 +153,7 @@
 </code></pre>
 
 <p>Each assign is filtered through JSON so it&#39;s reduced to basic types:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/views/posts/create.js.opal</span>
+<pre class="highlight ruby"><code><span class="c1"># app/views/posts/create.js.opal</span>
 
 <span class="n">post</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.post'</span><span class="p">)</span>
 <span class="n">post</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.title'</span><span class="p">).</span><span class="nf">html</span>    <span class="o">=</span> <span class="vi">@post</span><span class="p">[</span><span class="ss">:title</span><span class="p">]</span>
@@ -164,7 +164,7 @@
 <h3>As a Haml filter (optional)</h3>
 
 <p>Of course you need to require <code>haml-rails</code> separately since its presence is not assumed</p>
-<pre><code class="highlight haml"><span class="c">-# app/views/posts/show.html.haml
+<pre class="highlight haml"><code><span class="c">-# app/views/posts/show.html.haml
 </span>
 <span class="nt">%article</span><span class="nc">.post</span>
   <span class="nt">%h1</span><span class="nc">.title</span><span class="p">=</span> <span class="n">post</span><span class="p">.</span><span class="nf">title</span>
@@ -191,7 +191,7 @@
 <p>Add specs into <code>app/assets/javascripts/spec</code>:</p>
 
 <p>and then a spec folder with you specs!</p>
-<pre><code class="highlight ruby"><span class="c1"># app/assets/javascripts/spec/example_spec.js.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/assets/javascripts/spec/example_spec.js.rb</span>
 
 <span class="n">describe</span> <span class="s1">'a spec'</span> <span class="k">do</span>
   <span class="n">it</span> <span class="s1">'has successful examples'</span> <span class="k">do</span>

@@ -122,7 +122,7 @@ hashes.</p>
 a special syntax for inlining javascript code. This is done with
 x-strings or &quot;backticks&quot;, as their ruby use has no useful translation
 in the browser.</p>
-<pre><code class="highlight ruby"><span class="sb">`window.title`</span>
+<pre class="highlight ruby"><code><span class="sb">`window.title`</span>
 <span class="c1"># =&gt; "Opal: Ruby to Javascript compiler"</span>
 
 <span class="sx">%x{
@@ -138,7 +138,7 @@ in the browser.</p>
 
 <p>This feature of inlining code is used extensively, for example in
 Array#length:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="nc">Array</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Array</span>
   <span class="k">def</span> <span class="nf">length</span>
     <span class="sb">`this.length`</span>
   <span class="k">end</span>
@@ -153,22 +153,22 @@ as used by this example.</p>
 <p><em>Reposted from: <a href="http://dev.mikamai.com/post/79398725537/using-native-javascript-objects-from-opal">Mikamayhem</a></em></p>
 
 <p>Opal standard lib (stdlib) includes a <code>native</code> module, let’s see how it works and wrap <code>window</code>:</p>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'native'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'native'</span>
 
 <span class="n">window</span> <span class="o">=</span> <span class="no">Native</span><span class="p">(</span><span class="sb">`window`</span><span class="p">)</span> <span class="c1"># equivalent to Native::Object.new(`window`)</span>
 </code></pre>
 
 <p>Now what if we want to access one of its properties?</p>
-<pre><code class="highlight ruby"><span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span>                         <span class="c1"># =&gt; "http://dev.mikamai.com/"</span>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span>                         <span class="c1"># =&gt; "http://dev.mikamai.com/"</span>
 <span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"http://mikamai.com/"</span> <span class="c1"># will bring you to mikamai.com</span>
 </code></pre>
 
 <p>And what about methods?</p>
-<pre><code class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s1">'hey there!'</span><span class="p">)</span>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s1">'hey there!'</span><span class="p">)</span>
 </code></pre>
 
 <p>So let’s do something more interesting:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">window</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">window</span>
   <span class="c1"># A cross-browser window close method (works in IE!)</span>
   <span class="k">def</span> <span class="nf">close!</span>
     <span class="sx">%x{
@@ -186,7 +186,7 @@ as used by this example.</p>
 </code></pre>
 
 <p>That’s all for now, bye!</p>
-<pre><code class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">close!</span>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">.</span><span class="nf">close!</span>
 </code></pre>
 
       </div>

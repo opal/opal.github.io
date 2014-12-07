@@ -116,7 +116,7 @@
 <h2>Method dispatches</h2>
 
 <p>Firstly, a ruby call <code>foo.bar 1, 2, 3</code> is compiled into the following javascript:</p>
-<pre><code class="highlight javascript"><span class="nx">foo</span><span class="p">.</span><span class="nx">$bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<pre class="highlight javascript"><code><span class="nx">foo</span><span class="p">.</span><span class="nx">$bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre>
 
 <p>This should be pretty easy to read. The <code>bar</code> method has a <code>$</code> prefix just to distinguish it from underlying javascript properties, as well as ruby ivars. Methods are compiled like this to make the generated code really readable.</p>
@@ -128,12 +128,12 @@
 <p>To get around this, we make use of our compiler. During parsing, we collect a list of all method calls made inside a ruby file, and this gives us a list of all possible method calls. We then add stub methods to the root object prototype (an opal object, not the global javascript Object) which will proxy our method missing calls for us.</p>
 
 <p>For example, assume the following ruby script:</p>
-<pre><code class="highlight ruby"><span class="n">first</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<pre class="highlight ruby"><code><span class="n">first</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="n">second</span> <span class="s2">"wow"</span><span class="p">.</span><span class="nf">to_sym</span>
 </code></pre>
 
 <p>After parsing, we know we only ever call 3 methods: <code>[:first, :second, :to_sym]</code>. So, imagine we could just add these 3 methods to <code>BasicObject</code> in ruby, we would get something like this:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="nc">BasicObject</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">BasicObject</span>
   <span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
     <span class="nb">method_missing</span><span class="p">(</span><span class="ss">:first</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
   <span class="k">end</span>
@@ -153,7 +153,7 @@
 <h2>Optimising generated code</h2>
 
 <p>To optimise the generated code slightly, we reduce the code output from the compiler into the following javascript:</p>
-<pre><code class="highlight javascript"><span class="nx">Opal</span><span class="p">.</span><span class="nx">add_stubs</span><span class="p">([</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"second"</span><span class="p">,</span> <span class="s2">"to_sym"</span><span class="p">]);</span>
+<pre class="highlight javascript"><code><span class="nx">Opal</span><span class="p">.</span><span class="nx">add_stubs</span><span class="p">([</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"second"</span><span class="p">,</span> <span class="s2">"to_sym"</span><span class="p">]);</span>
 </code></pre>
 
 <p>You will see this at the top of all your generated javascript files. This will add a stub method for all methods used in your file.</p>

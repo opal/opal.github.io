@@ -131,7 +131,7 @@ only a <code>Boolean</code> ruby class available, not seperate <code>TrueClass</
 <p><strong>nil</strong> is compiled to a <code>nil</code> javascript variable. <code>nil</code> is a real object
 which allows methods to be called on it. Opal cannot send methods to <code>null</code>
 or <code>undefined</code>, and they are considered bad values to be inside ruby code.</p>
-<pre><code class="highlight ruby"><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
+<pre class="highlight ruby"><code><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
 <span class="kp">true</span>        <span class="c1"># =&gt; true</span>
 <span class="kp">false</span>       <span class="c1"># =&gt; false</span>
 <span class="nb">self</span>        <span class="c1"># =&gt; self</span>
@@ -148,7 +148,7 @@ does not support mutable strings - i.e. all strings are immutable.</p>
 <p>For performance reasons, symbols compile directly into strings. Opal
 supports all the symbol syntaxes, but does not have a real <code>Symbol</code>
 class. Symbols and Strings can therefore be used interchangeably.</p>
-<pre><code class="highlight ruby"><span class="s2">"hello world!"</span>    <span class="c1"># =&gt; "hello world!"</span>
+<pre class="highlight ruby"><code><span class="s2">"hello world!"</span>    <span class="c1"># =&gt; "hello world!"</span>
 <span class="ss">:foo</span>              <span class="c1"># =&gt; "foo"</span>
 <span class="o">&lt;&lt;-</span><span class="no">EOS</span>            <span class="c1"># =&gt; "\nHello there.\n"</span><span class="sh">
 Hello there.
@@ -162,7 +162,7 @@ as performant as possible, ruby numbers are mapped to native numbers.
 This has the side effect that all numbers must be of the same class.
 Most relevant methods from <code>Integer</code>, <code>Float</code> and <code>Numeric</code> are
 implemented on this class.</p>
-<pre><code class="highlight ruby"><span class="mi">42</span>        <span class="c1"># =&gt; 42</span>
+<pre class="highlight ruby"><code><span class="mi">42</span>        <span class="c1"># =&gt; 42</span>
 <span class="mi">3</span><span class="o">.</span><span class="mi">142</span>     <span class="c1"># =&gt; 3.142</span>
 </code></pre>
 
@@ -170,7 +170,7 @@ implemented on this class.</p>
 
 <p>Ruby arrays are compiled directly into javascript arrays. Special
 ruby syntaxes for word arrays etc are also supported.</p>
-<pre><code class="highlight ruby"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>        <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+<pre class="highlight ruby"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>        <span class="c1"># =&gt; [1, 2, 3, 4]</span>
 <span class="sx">%w[foo bar baz]</span>     <span class="c1"># =&gt; ["foo", "bar", "baz"]</span>
 </code></pre>
 
@@ -179,7 +179,7 @@ ruby syntaxes for word arrays etc are also supported.</p>
 <p>Inside a generated ruby script, a function <code>__hash</code> is available which
 creates a new hash. This is also available in javascript as <code>Opal.hash</code>
 and simply returns a new instance of the <code>Hash</code> class.</p>
-<pre><code class="highlight ruby"><span class="p">{</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:baz</span> <span class="o">=&gt;</span> <span class="mi">700</span> <span class="p">}</span>    <span class="c1"># =&gt; __hash("foo", 100, "baz", 700)</span>
+<pre class="highlight ruby"><code><span class="p">{</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:baz</span> <span class="o">=&gt;</span> <span class="mi">700</span> <span class="p">}</span>    <span class="c1"># =&gt; __hash("foo", 100, "baz", 700)</span>
 <span class="p">{</span> <span class="ss">foo: </span><span class="mi">42</span><span class="p">,</span> <span class="ss">bar: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="p">}</span>     <span class="c1"># =&gt; __hash("foo", 42, "bar", [1, 2, 3])</span>
 </code></pre>
 
@@ -187,7 +187,7 @@ and simply returns a new instance of the <code>Hash</code> class.</p>
 
 <p>Similar to hash, there is a function <code>__range</code> available to create
 range instances.</p>
-<pre><code class="highlight ruby"><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
+<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
 <span class="mi">3</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">7</span>       <span class="c1"># =&gt; __range(3, 7, false)</span>
 </code></pre>
 
@@ -201,7 +201,7 @@ javascript as these values are also treated as false.</p>
 <code>nil</code>.</p>
 
 <p>Taking the following test:</p>
-<pre><code class="highlight ruby"><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
+<pre class="highlight ruby"><code><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
 
 <span class="k">if</span> <span class="n">val</span>
   <span class="k">return</span> <span class="mi">3</span><span class="o">.</span><span class="mi">142</span><span class="p">;</span>
@@ -209,7 +209,7 @@ javascript as these values are also treated as false.</p>
 </code></pre>
 
 <p>This would be compiled into:</p>
-<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nx">val</span> <span class="o">!==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">val</span> <span class="o">!==</span> <span class="nx">nil</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="mf">3.142</span><span class="p">;</span>
@@ -225,14 +225,14 @@ javascript as these values are also treated as false.</p>
 retrieved on an object, they are set natively without the <code>@</code> prefix.
 This allows real javascript identifiers to be used which is more
 efficient then accessing variables by string name.</p>
-<pre><code class="highlight ruby"><span class="vi">@foo</span> <span class="o">=</span> <span class="mi">200</span>
+<pre class="highlight ruby"><code><span class="vi">@foo</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="vi">@foo</span>  <span class="c1"># =&gt; 200</span>
 
 <span class="vi">@bar</span>  <span class="c1"># =&gt; nil</span>
 </code></pre>
 
 <p>This gets compiled into:</p>
-<pre><code class="highlight javascript"><span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<pre class="highlight javascript"><code><span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span>   <span class="c1">// =&gt; 200</span>
 
 <span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>   <span class="c1">// =&gt; nil</span>
@@ -243,18 +243,18 @@ efficient then accessing variables by string name.</p>
 <p>As described above, a compiled ruby source gets generated into a string
 of javascript code that is wrapped inside an anonymous function. This
 looks similar to the following:</p>
-<pre><code class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">$klass</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
   <span class="c1">// generated code</span>
 <span class="p">})(</span><span class="nx">Opal</span><span class="p">);</span>
 </code></pre>
 
 <p>As a complete example, assuming the following code:</p>
-<pre><code class="highlight ruby"><span class="nb">puts</span> <span class="s2">"foo"</span>
+<pre class="highlight ruby"><code><span class="nb">puts</span> <span class="s2">"foo"</span>
 </code></pre>
 
 <p>This would compile directly into:</p>
-<pre><code class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">$klass</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
   <span class="nx">self</span><span class="p">.</span><span class="nx">$puts</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">);</span>
 <span class="p">})(</span><span class="nx">Opal</span><span class="p">);</span>
@@ -281,7 +281,7 @@ obvious what went wrong.</p>
 debugger to work through javascript code. To use a debugger, simply
 add an x-string similar to the following at the place you wish to
 debug:</p>
-<pre><code class="highlight ruby"><span class="c1"># .. code</span>
+<pre class="highlight ruby"><code><span class="c1"># .. code</span>
 <span class="sb">`debugger`</span>
 <span class="c1"># .. more code</span>
 </code></pre>

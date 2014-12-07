@@ -113,7 +113,7 @@
 
 <p>Accessing classes and methods defined in Opal from the javascript runtime is
 possible via the <code>Opal</code> js object. The following class:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="nc">Foo</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Foo</span>
   <span class="k">def</span> <span class="nf">bar</span>
     <span class="nb">puts</span> <span class="s2">"called bar on class Foo defined in ruby code"</span>
   <span class="k">end</span>
@@ -121,7 +121,7 @@ possible via the <code>Opal</code> js object. The following class:</p>
 </code></pre>
 
 <p>Can be accessed from javascript like this:</p>
-<pre><code class="highlight javascript"><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
+<pre class="highlight javascript"><code><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
 <span class="c1">// =&gt; "called bar on class Foo defined in ruby code"</span>
 </code></pre>
 
@@ -132,7 +132,7 @@ possible via the <code>Opal</code> js object. The following class:</p>
 <h2>Hash</h2>
 
 <p>Since ruby hashes are implemented directly with an Opal class, there&#39;s no &quot;toll-free&quot; bridging available (unlike with strings and arrays, for example). However, it&#39;s quite possible to interact with hashes from Javascript:</p>
-<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">myHash</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">hash</span><span class="p">({</span><span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">});</span>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">myHash</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">hash</span><span class="p">({</span><span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">});</span>
 <span class="c1">// output of $inspect: {"a"=&gt;1, "b"=&gt;2}</span>
 <span class="nx">myHash</span><span class="p">.</span><span class="nx">$store</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="c1">// output of $inspect: {"a"=&gt;10, "b"=&gt;2}</span>

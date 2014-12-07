@@ -118,18 +118,18 @@ in ruby.</p>
 <h2>Installation</h2>
 
 <p>Opal is available as a gem, and can be installed via:</p>
-<pre><code class="highlight shell"><span class="gp">$ </span>gem install opal
+<pre class="highlight shell"><code><span class="gp">$ </span>gem install opal
 </code></pre>
 
 <p>Or added to your Gemfile as:</p>
-<pre><code class="highlight ruby"><span class="n">gem</span> <span class="s1">'opal'</span>
+<pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal'</span>
 </code></pre>
 
 <h2>Getting started with Opal</h2>
 
 <p>At its very core, opal provides a simple method of compiling a string of ruby
 into javascript that can run on top of the opal runtime, provided by opal.js:</p>
-<pre><code class="highlight ruby"><span class="no">Opal</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="s2">"[1, 2, 3].each { |a| puts a }"</span><span class="p">)</span>
+<pre class="highlight ruby"><code><span class="no">Opal</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="s2">"[1, 2, 3].each { |a| puts a }"</span><span class="p">)</span>
 <span class="c1"># =&gt; "(function() { ... })()"</span>
 </code></pre>
 
