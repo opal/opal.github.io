@@ -66,89 +66,65 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>RSpec</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#installation">Installation</a></li>
+</ul>
+<li class="toc-list-chapter"><a href="#running-specs">Running specs</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#phantomjs">phantomjs</a>
+<li class="toc-list-subchapter"><a href="#in-a-browser">In a Browser</a></li>
+</ul>
+<li class="toc-list-chapter"><a href="#async-examples">Async examples</a></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>RSpec</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="rspec">RSpec</h1>
 
 <p><code>opal-rspec</code> allows opal to use rspec for running specs in javascript
 environments. It comes with built-in support for running rspec with custom
 <code>phantomjs</code> and standard web browser formatters. Also, async spec examples
 are supported to reflect browser usage of ruby applications.</p>
-<pre class="highlight ruby"><code><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+<pre><code class="highlight ruby"><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
   <span class="n">it</span> <span class="s2">"can be created with a name"</span> <span class="k">do</span>
     <span class="n">expect</span><span class="p">(</span><span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">).</span><span class="nf">to_not</span> <span class="n">be_persisted</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
 
-<h3>Installation</h3>
+<h3 id="installation">Installation</h3>
 
 <p>Add the <code>opal-rspec</code> gem to your Gemfile:</p>
-<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
+<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s1">'opal'</span>
 <span class="n">gem</span> <span class="s1">'opal-rspec'</span>
 </code></pre>
 
-<h2>Running specs</h2>
+<h2 id="running-specs">Running specs</h2>
 
-<h3>phantomjs</h3>
+<h3 id="phantomjs">phantomjs</h3>
 
 <p>To run specs, a rake task can be added which will load all spec files
 from <code>spec/</code>:</p>
-<pre class="highlight ruby"><code><span class="c1"># Rakefile</span>
+<pre><code class="highlight ruby"><span class="c1"># Rakefile</span>
 <span class="nb">require</span> <span class="s1">'opal/rspec/rake_task'</span>
 <span class="no">Opal</span><span class="o">::</span><span class="no">RSpec</span><span class="o">::</span><span class="no">RakeTask</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:default</span><span class="p">)</span>
 </code></pre>
 
 <p>Then, to run your specs inside phantomjs, just run the rake task:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>rake
+<pre><code class="highlight shell"><span class="gp">$ </span>bundle <span class="nb">exec </span>rake
 </code></pre>
 
-<h3>In a Browser</h3>
+<h3 id="in-a-browser">In a Browser</h3>
 
 <p><code>opal-rspec</code> can use sprockets to build and serve specs over a simple rack server. Add the following to a <code>config.ru</code> file:</p>
-<pre class="highlight ruby"><code><span class="c1"># config.ru</span>
+<pre><code class="highlight ruby"><span class="c1"># config.ru</span>
 <span class="nb">require</span> <span class="s1">'bundler'</span>
 <span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span>
 
@@ -161,11 +137,11 @@ from <code>spec/</code>:</p>
 
 <p>Then run the rack server bundle exec rackup and visit <code>http://localhost:9292</code> in any web browser.</p>
 
-<h2>Async examples</h2>
+<h2 id="async-examples">Async examples</h2>
 
 <p><code>opal-rspec</code> adds support for async specs to rspec. These specs are defined using
 <code>#async</code> instead of <code>#it</code>:</p>
-<pre class="highlight ruby"><code><span class="n">describe</span> <span class="no">MyClass</span> <span class="k">do</span>
+<pre><code class="highlight ruby"><span class="n">describe</span> <span class="no">MyClass</span> <span class="k">do</span>
   <span class="c1"># normal example</span>
   <span class="n">it</span> <span class="s1">'does something'</span> <span class="k">do</span>
     <span class="n">expect</span><span class="p">(</span><span class="ss">:foo</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span>
@@ -180,7 +156,7 @@ from <code>spec/</code>:</p>
 
 <p>This just marks the example as running async. To actually handle the async result,
 you also need to use a <code>run_async</code> call inside some future handler:</p>
-<pre class="highlight ruby"><code><span class="n">async</span> <span class="s1">'HTTP requests should work'</span> <span class="k">do</span>
+<pre><code class="highlight ruby"><span class="n">async</span> <span class="s1">'HTTP requests should work'</span> <span class="k">do</span>
   <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">res</span><span class="o">|</span>
     <span class="n">run_async</span> <span class="p">{</span>
       <span class="n">expect</span><span class="p">(</span><span class="n">res</span><span class="p">).</span><span class="nf">to</span> <span class="n">be_ok</span>

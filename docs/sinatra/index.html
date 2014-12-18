@@ -66,53 +66,24 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>Using Opal with Sinatra</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<li class="toc-list-chapter"><a href="#basic-application">Basic Application</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#running-application">Running Application</a></li>
+</ul></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>Opal in a Sinatra application</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="opal-in-a-sinatra-application">Opal in a Sinatra application</h1>
 
 <p>Add Opal to your Gemfile (or install using <code>gem</code>):</p>
-<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
+<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s1">'sinatra'</span>
 <span class="n">gem</span> <span class="s1">'opal'</span><span class="p">,</span> <span class="s1">'~&gt; 0.6.2'</span>
 </code></pre>
@@ -121,8 +92,8 @@
 from rails can be mimicked here to map all ruby assets in the <code>/assets</code>
 path to be compiled using opal.</p>
 
-<h2>Basic Application</h2>
-<pre class="highlight ruby"><code><span class="c1"># config.ru</span>
+<h2 id="basic-application">Basic Application</h2>
+<pre><code class="highlight ruby"><span class="c1"># config.ru</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 <span class="nb">require</span> <span class="s1">'sinatra'</span>
 
@@ -162,7 +133,7 @@ with all the custom opal paths added automatically.</p>
 any custom application directories, you must add them to the load path using
 <code>env.append_path</code>. You can now add an <code>opal/application.rb</code> file into this
 added path with some basic content:</p>
-<pre class="highlight ruby"><code><span class="c1"># opal/application.rb</span>
+<pre><code class="highlight ruby"><span class="c1"># opal/application.rb</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 
 <span class="nb">puts</span> <span class="s2">"wow, running ruby!"</span>
@@ -172,10 +143,10 @@ added path with some basic content:</p>
 This just makes the Opal runtime and corelib available. Then it is possible to
 use all the corelib methods and classes, e.g. <code>Kernel#puts</code> as seen above.</p>
 
-<h3>Running Application</h3>
+<h3 id="running-application">Running Application</h3>
 
 <p>As this is just a simple sinatra application, you can run it:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>rackup
+<pre><code class="highlight shell"><span class="gp">$ </span>bundle <span class="nb">exec </span>rackup
 </code></pre>
 
 <p>And point your browser towards <code>http://localhost:9292/</code> and view the browser

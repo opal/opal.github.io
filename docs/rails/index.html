@@ -66,61 +66,35 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>Rails</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<li class="toc-list-chapter"><a href="#opal-in-a-rails-application">Opal in a Rails application</a></li>
+<li class="toc-list-chapter"><a href="#basic-usage-through-the-asset-pipeline">Basic usage through the asset pipeline</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#as-a-template">As a template</a>
+<li class="toc-list-subchapter"><a href="#as-a-haml-filter-(optional)">As a Haml filter (optional)</a>
+<li class="toc-list-subchapter"><a href="#spec!">Spec!</a></li>
+</ul></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h2>Opal in a Rails application</h2>
+      <div class="col-md-8 col-md-pull-4">
+        <h2 id="opal-in-a-rails-application">Opal in a Rails application</h2>
 
 <p>Add Opal to your Gemfile:</p>
-<pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal-rails'</span>
+<pre><code class="highlight ruby"><span class="n">gem</span> <span class="s1">'opal-rails'</span>
 </code></pre>
 
 <p>Or to start off with Opal when you build your new Rails app:</p>
-<pre class="highlight shell"><code>rails new &lt;app-name&gt; --javascript<span class="o">=</span>opal
+<pre><code class="highlight shell">rails new &lt;app-name&gt; --javascript<span class="o">=</span>opal
 </code></pre>
 
-<h2>Basic usage through the asset pipeline</h2>
-<pre class="highlight javascript"><code><span class="c1">// app/assets/application.js.rb</span>
+<h2 id="basic-usage-through-the-asset-pipeline">Basic usage through the asset pipeline</h2>
+<pre><code class="highlight javascript"><span class="c1">// app/assets/application.js.rb</span>
 
 <span class="c1">//= require opal</span>
 <span class="c1">//= require opal_ujs</span>
@@ -129,7 +103,7 @@
 </code></pre>
 
 <p>Opal requires are forwarded to the Asset Pipeline at compile time (similarly to what happens for RubyMotion). You can use either the <code>.rb</code> or <code>.opal</code> extension:</p>
-<pre class="highlight ruby"><code><span class="c1"># app/assets/javascripts/greeter.js.rb</span>
+<pre><code class="highlight ruby"><span class="c1"># app/assets/javascripts/greeter.js.rb</span>
 
 <span class="nb">puts</span> <span class="s2">"G'day world!"</span> <span class="c1"># check the console!</span>
 
@@ -141,10 +115,10 @@
 <span class="k">end</span>
 </code></pre>
 
-<h3>As a template</h3>
+<h3 id="as-a-template">As a template</h3>
 
 <p>You can use it for your views too, it even inherits instance and local variables from actions:</p>
-<pre class="highlight ruby"><code><span class="c1"># app/controllers/posts_controller.rb</span>
+<pre><code class="highlight ruby"><span class="c1"># app/controllers/posts_controller.rb</span>
 
 <span class="k">def</span> <span class="nf">create</span>
   <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:post</span><span class="p">])</span>
@@ -153,7 +127,7 @@
 </code></pre>
 
 <p>Each assign is filtered through JSON so it&#39;s reduced to basic types:</p>
-<pre class="highlight ruby"><code><span class="c1"># app/views/posts/create.js.opal</span>
+<pre><code class="highlight ruby"><span class="c1"># app/views/posts/create.js.opal</span>
 
 <span class="n">post</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.post'</span><span class="p">)</span>
 <span class="n">post</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.title'</span><span class="p">).</span><span class="nf">html</span>    <span class="o">=</span> <span class="vi">@post</span><span class="p">[</span><span class="ss">:title</span><span class="p">]</span>
@@ -161,10 +135,10 @@
 <span class="n">post</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.comments'</span><span class="p">).</span><span class="nf">html</span> <span class="o">=</span> <span class="n">comments_html</span>
 </code></pre>
 
-<h3>As a Haml filter (optional)</h3>
+<h3 id="as-a-haml-filter-(optional)">As a Haml filter (optional)</h3>
 
 <p>Of course you need to require <code>haml-rails</code> separately since its presence is not assumed</p>
-<pre class="highlight haml"><code><span class="c">-# app/views/posts/show.html.haml
+<pre><code class="highlight haml"><span class="c">-# app/views/posts/show.html.haml
 </span>
 <span class="nt">%article</span><span class="nc">.post</span>
   <span class="nt">%h1</span><span class="nc">.title</span><span class="p">=</span> <span class="n">post</span><span class="p">.</span><span class="nf">title</span>
@@ -186,12 +160,12 @@
   <span class="nd">end</span>
 </code></pre>
 
-<h3>Spec!</h3>
+<h3 id="spec!">Spec!</h3>
 
 <p>Add specs into <code>app/assets/javascripts/spec</code>:</p>
 
 <p>and then a spec folder with you specs!</p>
-<pre class="highlight ruby"><code><span class="c1"># app/assets/javascripts/spec/example_spec.js.rb</span>
+<pre><code class="highlight ruby"><span class="c1"># app/assets/javascripts/spec/example_spec.js.rb</span>
 
 <span class="n">describe</span> <span class="s1">'a spec'</span> <span class="k">do</span>
   <span class="n">it</span> <span class="s1">'has successful examples'</span> <span class="k">do</span>

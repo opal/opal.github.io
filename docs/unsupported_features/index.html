@@ -66,74 +66,41 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
-        <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+      <div class="col-sm-12">
+        <h1></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
+        <ul class="nav opal-sidebar"></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>Unsupported Features</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="unsupported-features">Unsupported Features</h1>
 
 <p>Opal does not support some language/runtime features of ruby. These are documented here when possible, as well as the reasons why they are not supported.</p>
 
-<h4>Mutable Strings</h4>
+<h4 id="mutable-strings">Mutable Strings</h4>
 
 <p>For performance and ease of runtime features, all strings in Opal are immutable, i.e. <code>#&lt;&lt;</code>, <code>#gsub!</code>, etc. do not exist. Also, symbols are just strings. There is no class, runtime or feature difference between Symbols and Strings. Their syntaxes can be used interchangeably.</p>
 
-<h4>Encodings</h4>
+<h4 id="encodings">Encodings</h4>
 
 <p>Encodings only have a very small implementation inside Opal.</p>
 
-<h4>Threads</h4>
+<h4 id="threads">Threads</h4>
 
 <p>Javascript does not have a native <code>Thread</code> implementation, so they are not present inside Opal. There is a placeholder <code>Thread</code> class just to provide some small level of compatibility with libraries that expect it. It does not have any function.</p>
 
-<h4>Frozen Objects</h4>
+<h4 id="frozen-objects">Frozen Objects</h4>
 
 <p>Opal does not currently support frozen objects, but has placeholder methods to prevent other libraries breaking when expecting these methods. Opal could support frozen objects in the future once a similar implementation becomes available across Javascript runtimes.</p>
 
-<h4><code>method_added</code> and <code>method_removed</code> hooks</h4>
+<h4 id="method_added-and-method_removed-hooks"><code>method_added</code> and <code>method_removed</code> hooks</h4>
 
 <p>These are not <em>currently</em> supported by Opal, but this is considered a bug and will be implemented soon.</p>
 
-<h4>Private, Public and Protected methods</h4>
+<h4 id="private,-public-and-protected-methods">Private, Public and Protected methods</h4>
 
 <p>All methods in Opal are defined as <code>public</code> to avoid additional runtime overhead. <code>Module#private</code> and <code>Module#protected</code> exist as just placeholder methods and are no-op methods.</p>
 

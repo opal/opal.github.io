@@ -66,57 +66,30 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<li class="toc-list-chapter"><a href="#compiler-stages">Compiler stages</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#lexer">Lexer</a>
+<li class="toc-list-subchapter"><a href="#parser">Parser</a>
+<li class="toc-list-subchapter"><a href="#code-generation">Code generation</a></li>
+</ul></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>Opal Compiler</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="opal-compiler">Opal Compiler</h1>
 
 <p>Opal is a source to source compiler. It accepts ruby code as a string and
 generates javascript code which can be run in any environment. Generated
 code relies on the opal runtime which provides the class system and some
 other runtime helpers.</p>
 
-<h2>Compiler stages</h2>
+<h2 id="compiler-stages">Compiler stages</h2>
 
 <p>The compiler can be broken down into 3 separate stages:</p>
 
@@ -126,7 +99,7 @@ other runtime helpers.</p>
 <li>code generation</li>
 </ul>
 
-<h3>Lexer</h3>
+<h3 id="lexer">Lexer</h3>
 
 <p>The <a href="https://github.com/opal/opal/tree/master/lib/opal/parser/lexer.rb">opal lexer</a> is implemented in pure ruby using
 the <code>StringScanner</code> class from the opal stdlib. The source code is scanned
@@ -134,7 +107,7 @@ and tokens are then provided to the parser. This process simply converts
 the ruby code given as a string, into a list of tokens representing the
 parts of the ruby code.</p>
 
-<h3>Parser</h3>
+<h3 id="parser">Parser</h3>
 
 <p>The <a href="https://github.com/opal/opal/tree/master/lib/opal/parser/grammar.y">opal parser</a> is implemented using a standard
 bison like syntax, but relies on <code>racc</code>, a ruby implementation of yacc/bison
@@ -144,7 +117,7 @@ This syntax tree is represented by <a href="https://github.com/opal/opal/tree/ma
 ruby is such a complex and dynamic language, there is a lot of interaction
 between the parser and the lexer, namely through a preserved <code>lex_state</code>.</p>
 
-<h3>Code generation</h3>
+<h3 id="code-generation">Code generation</h3>
 
 <p>The <a href="https://github.com/opal/opal/tree/master/lib/opal/compiler.rb">opal compiler</a> takes these sexps from the parser
 and generates ruby code from them. Each type of sexp has <a href="https://github.com/opal/opal/tree/master/lib/opal/nodes/base.rb">its own node type</a>

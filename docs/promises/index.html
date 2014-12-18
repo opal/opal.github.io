@@ -66,61 +66,33 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>Promise</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<li class="toc-list-chapter"><a href="#usage">Usage</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#chaining-promises">Chaining Promises</a>
+<li class="toc-list-subchapter"><a href="#composing-promises">Composing Promises</a></li>
+</ul></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>Promise</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="promise">Promise</h1>
 
 <p><code>Promise</code> is a class available in the Opal stdlib for helping structure asynchronous code.</p>
 
 <p>It can be required inside any Opal applicaton:</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'promise'</span>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'promise'</span>
 </code></pre>
 
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 
 <p>This example shows how to use a <code>HTTP</code> request from <code>opal-jquery</code> from a callback style, into a promise style handler.</p>
-<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="k">def</span> <span class="nf">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
   <span class="n">promise</span> <span class="o">=</span> <span class="no">Promise</span><span class="p">.</span><span class="nf">new</span>
 
   <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
@@ -143,20 +115,20 @@
 
 <p>A promise can only be resolved or rejected once.</p>
 
-<h3>Chaining Promises</h3>
+<h3 id="chaining-promises">Chaining Promises</h3>
 
 <p>Promises become useful when chained together. The prevous example could be extended to get another object from the result of the first request.</p>
-<pre class="highlight ruby"><code><span class="n">get_json</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">json</span><span class="o">|</span>
+<pre><code class="highlight ruby"><span class="n">get_json</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">json</span><span class="o">|</span>
   <span class="n">get_json</span><span class="p">(</span><span class="s2">"/posts/</span><span class="si">#{</span><span class="n">json</span><span class="p">[</span><span class="ss">:post_id</span><span class="p">]</span><span class="si">}</span><span class="s2">.json"</span><span class="p">)</span>
 <span class="k">end</span><span class="p">.</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">"got post: </span><span class="si">#{</span><span class="n">post</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
 </code></pre>
 
-<h3>Composing Promises</h3>
+<h3 id="composing-promises">Composing Promises</h3>
 
 <p><code>Promise.when</code> can be used to wait for more than 1 promise to resolve (or reject). Lets assume we wanted to get 2 different users:</p>
-<pre class="highlight ruby"><code><span class="n">first</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/1.json'</span>
+<pre><code class="highlight ruby"><span class="n">first</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/1.json'</span>
 <span class="n">second</span> <span class="o">=</span> <span class="n">get_json</span> <span class="s1">'/users/2.json'</span>
 
 <span class="no">Promise</span><span class="p">.</span><span class="nf">when</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span> <span class="o">|</span><span class="n">user1</span><span class="p">,</span> <span class="n">user2</span><span class="o">|</span>

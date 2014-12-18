@@ -66,79 +66,52 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>Libraries</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#global-environment">Global Environment</a>
+<li class="toc-list-subchapter"><a href="#sprockets-instances">Sprockets instances</a></li>
+</ul>
+<li class="toc-list-chapter"><a href="#with-opal::builder">with Opal::Builder</a></li>
+<li class="toc-list-chapter"><a href="#with-opal-sprockets">With opal-sprockets</a></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>Using external libraries in your opal app</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="using-external-libraries-in-your-opal-app">Using external libraries in your opal app</h1>
 
 <p>As described in the getting started docs, opal uses a load path which works
 with sprockets to create a set of locations which opal can require files
 from. If you want to add a directory to this load path, you can add it to
 either the global environment, or a sprockets instance.</p>
 
-<h3>Global Environment</h3>
+<h3 id="global-environment">Global Environment</h3>
 
 <p>In the <code>Opal</code> module, a property <code>paths</code> is used to hold the load paths which
 <code>Opal</code> uses to require files from. You can add a directory to this:</p>
-<pre class="highlight ruby"><code><span class="no">Opal</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'../my_lib'</span>
+<pre><code class="highlight ruby"><span class="no">Opal</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'../my_lib'</span>
 </code></pre>
 
 <p>Now, any ruby files in this directory can be discovered.</p>
 
-<h3>Sprockets instances</h3>
+<h3 id="sprockets-instances">Sprockets instances</h3>
 
 <p><code>Opal::Environment</code> is a subclass of the sprockets environment class which
 can have instance specific paths added to it. This class will inherit all
 global paths, but you can also add your instance paths as:</p>
-<pre class="highlight ruby"><code><span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
+<pre><code class="highlight ruby"><span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
 <span class="n">env</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'../my_lib'</span>
 </code></pre>
 
-<h2>with Opal::Builder</h2>
+<h2 id="with-opal::builder">with Opal::Builder</h2>
 
 <p><em>WIP</em></p>
 
-<h2>With opal-sprockets</h2>
+<h2 id="with-opal-sprockets">With opal-sprockets</h2>
 
 <p><em>WIP</em></p>
 

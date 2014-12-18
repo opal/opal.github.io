@@ -64,7 +64,7 @@
   <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
-    <h1>Libraries</h1>
+    <h1 id="libraries">Libraries</h1>
 
 <p>This page is a list of libraries built for opal</p>
 
@@ -77,7 +77,7 @@
 <li><a href="http://github.com/opal/opal-todos#readme">opal-todomvc (TodoMVC)</a></li>
 </ul>
 
-<h2>opal-jquery</h2>
+<h2 id="opal-jquery">opal-jquery</h2>
 
 <p>opal-jquery provides DOM access to opal by wrapping jQuery (or zepto)
 and providing a nice ruby syntax for dealing with jQuery instances.
@@ -85,7 +85,7 @@ opal-jquery is <a href="http://github.com/opal/opal-jquery#readme">hosted on git
 
 <p>jQuery instances are toll-free bridged to instances of the ruby class
 <code>JQuery</code>, so they can be used interchangeably.</p>
-<pre class="highlight ruby"><code><span class="n">elements</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">elements</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
 <span class="c1"># =&gt; [&lt;div class="foo"&gt;, ...]</span>
 
 <span class="n">elements</span><span class="p">.</span><span class="nf">class</span>

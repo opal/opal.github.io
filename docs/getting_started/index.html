@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <title>Opal: Ruby to Javascript compiler</title>
+  <title>Getting Started</title>
 
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
   <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <script src="/javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="docs docs_api docs_api_index">
+<body class="docs docs_getting_started docs_getting_started_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
@@ -66,64 +66,40 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>Getting Started</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<li class="toc-list-chapter"><a href="#installation">Installation</a></li>
+<li class="toc-list-chapter"><a href="#getting-started-with-opal">Getting started with Opal</a></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>API Documentation</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <p>Opal is a ruby to javascript compiler, an implementation of the ruby corelib and stdlib, and associated gems for building fast client side web applications in ruby.</p>
 
-<h2>Corelib</h2>
+<h2 id="installation">Installation</h2>
 
-<ul>
-<li><a href="http://opal.github.io/opal/doc/0-6-stable/corelib/frames.html#!file.README.html">stable</a></li>
-<li><a href="http://opal.github.io/opal/doc/master/corelib/frames.html#!file.README.html">master</a></li>
-</ul>
+<p>Opal is available as a gem, and can be installed via:</p>
+<pre><code class="highlight plaintext">$ gem install opal
+</code></pre>
 
-<h2>Stdlib</h2>
+<p>Or added to your Gemfile as:</p>
+<pre><code class="highlight ruby"><span class="n">gem</span> <span class="s1">'opal'</span>
+</code></pre>
 
-<ul>
-<li><a href="http://opal.github.io/opal/doc/0-6-stable/stdlib/frames.html#!file.README.html">stable</a></li>
-<li><a href="http://opal.github.io/opal/doc/master/stdlib/frames.html#!file.README.html">master</a></li>
-</ul>
+<h2 id="getting-started-with-opal">Getting started with Opal</h2>
+
+<p>At its very core, opal provides a simple method of compiling a string of ruby into javascript that can run on top of the opal runtime, provided by <code>opal.js</code>:</p>
+<pre><code class="highlight ruby"><span class="no">Opal</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="s2">"[1, 2, 3].each { |a| puts a }"</span><span class="p">)</span>
+<span class="c1"># =&gt; "(function() { ... })()"</span>
+</code></pre>
+
+<p><code>opal</code> includes sprockets support to sprockets for compiling ruby (and erb) assets, and treating them as first class javascript citizens. It works in a similar way to coffeescript, where javascript files can simply require ruby sources, and ruby sources can require javascript and other ruby files.</p>
+
+<p>This relies on the opal load path. Any gem containing opal code registers that directory to the opal load path. opal will then use all opal load paths when running sprockets instances. For rails applications, opal-rails does this automatically. For building a simple application, we have to do this manually.</p>
 
       </div>
     </div>

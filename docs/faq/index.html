@@ -66,64 +66,37 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>Opal FAQ</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#why-does-opal-exist?">Why does Opal exist?</a>
+<li class="toc-list-subchapter"><a href="#how-compatible-is-opal?">How compatible is Opal?</a>
+<li class="toc-list-subchapter"><a href="#what-version-of-ruby-does-opal-target?">What version of ruby does Opal target?</a>
+<li class="toc-list-subchapter"><a href="#why-doesn't-opal-support-mutable-strings?">Why doesn't Opal support mutable strings?</a></li>
+</ul></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>FAQ</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="faq">FAQ</h1>
 
-<h3>Why does Opal exist?</h3>
+<h3 id="why-does-opal-exist?">Why does Opal exist?</h3>
 
 <p>To try and keep ruby relevant in a world where client-side apps are making javascript the primary development platform.</p>
 
-<h3>How compatible is Opal?</h3>
+<h3 id="how-compatible-is-opal?">How compatible is Opal?</h3>
 
 <p>We run opal against <a href="https://github.com/rubyspec/rubyspec">rubyspec</a> as our primary testing setup. We try to make Opal as compatible as possible, whilst also taking into account restrictions of Javascript when applicable. Opal supports the majority of ruby syntax features, as well as a very large part of the corelib implementation. We support method_missing, modules, classes, instance_exec, blocks, procs and lots lots more. Opal can compile and run Rspec unmodified, as well as self hosting the compiler at runtime.</p>
 
-<h3>What version of ruby does Opal target?</h3>
+<h3 id="what-version-of-ruby-does-opal-target?">What version of ruby does Opal target?</h3>
 
 <p>We are running tests under ruby 2.0.0 conditions, but are mostly compatible with 1.9 level features.</p>
 
-<h3>Why doesn&#39;t Opal support mutable strings?</h3>
+<h3 id="why-doesn&#39;t-opal-support-mutable-strings?">Why doesn&#39;t Opal support mutable strings?</h3>
 
 <p>All strings in Opal are immutable because ruby strings just get compiled direclty into javascript strings, which are immutable. Wrapping ruby strings as a custom Javascript object would add a lot of overhead as well as making interaction between ruby and javascript libraries more difficult.</p>
 

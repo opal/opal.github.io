@@ -66,60 +66,30 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<li class="toc-list-chapter"><a href="#getting-setup">Getting setup</a></li>
+<li class="toc-list-chapter"><a href="#using-opal::server">Using Opal::Server</a></li>
+<li class="toc-list-chapter"><a href="#running-the-app">Running the app</a></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>Opal &amp; Sprockets</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="opal-&amp;-sprockets">Opal &amp; Sprockets</h1>
 
 <p>Opal comes with built-in sprockets support, and provides a simple <code>Opal::Server</code>
 class to make it easy to get a rack server up and running for trying out opal.
 This server will automatically recompile ruby sources when they change, meaning
 you just need to refresh your page to autorun.</p>
 
-<h2>Getting setup</h2>
+<h2 id="getting-setup">Getting setup</h2>
 
 <p>Add <code>opal</code> to a <code>Gemfile</code>:</p>
-<pre class="highlight ruby"><code><span class="c1">#Gemfile</span>
+<pre><code class="highlight ruby"><span class="c1">#Gemfile</span>
 <span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
 
 <span class="n">gem</span> <span class="s1">'opal'</span><span class="p">,</span> <span class="s1">'&gt;= 0.6.0'</span>
@@ -129,14 +99,14 @@ you just need to refresh your page to autorun.</p>
 
 <p>We need a directory to hold our opal code, so create <code>app/</code> and add a simple
 demo script to <code>app/application.rb</code>:</p>
-<pre class="highlight ruby"><code><span class="c1"># app/application.rb</span>
+<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 
 <span class="nb">puts</span> <span class="s2">"hello world"</span>
 </code></pre>
 
 <p>Finally, we need a html page to run, so create <code>index.html</code>:</p>
-<pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<pre><code class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
@@ -148,10 +118,10 @@ demo script to <code>app/application.rb</code>:</p>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre>
 
-<h2>Using Opal::Server</h2>
+<h2 id="using-opal::server">Using Opal::Server</h2>
 
 <p><code>Opal::Server</code> can be run like any rack app, so just add a <code>config.ru</code> file:</p>
-<pre class="highlight ruby"><code><span class="c1"># config.ru</span>
+<pre><code class="highlight ruby"><span class="c1"># config.ru</span>
 <span class="nb">require</span> <span class="s1">'bundler'</span>
 <span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span>
 
@@ -167,7 +137,7 @@ demo script to <code>app/application.rb</code>:</p>
 <p>This rack app simply adds our <code>app/</code> directory to opal load path, and sets our
 main file to <code>application</code>, which will be found inside <code>app/</code>.</p>
 
-<h2>Running the app</h2>
+<h2 id="running-the-app">Running the app</h2>
 
 <p>Run <code>bundle exec rackup</code> and visit the page <code>http://localhost:9292</code> in any
 browser. Observe the console to see the printed statement.</p>

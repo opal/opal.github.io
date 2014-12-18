@@ -66,55 +66,28 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1>Opal and jQuery</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#getting-started">Getting Started</a>
+<li class="toc-list-subchapter"><a href="#how-does-opal-jquery-work">How does opal-jquery work</a>
+<li class="toc-list-subchapter"><a href="#interacting-with-the-dom">Interacting with the DOM</a>
+<li class="toc-list-subchapter"><a href="#http/ajax-requests">HTTP/AJAX requests</a></li>
+</ul></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>JQuery</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="jquery">JQuery</h1>
 
 <p><code>opal-jquery</code> offers a nicer ruby-like syntax for JQuery (and Zepto). It is
 useful for projects which cannot use <code>opal-browser</code> due to a reliance on jquery
 for plugins or other libraries.</p>
-<pre class="highlight ruby"><code><span class="n">foos</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">foos</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
 <span class="c1"># =&gt; [&lt;div class="foo"&gt;, ...]</span>
 
 <span class="n">foos</span><span class="p">.</span><span class="nf">class</span>
@@ -125,21 +98,21 @@ for plugins or other libraries.</p>
 <span class="k">end</span>
 </code></pre>
 
-<h3>Getting Started</h3>
+<h3 id="getting-started">Getting Started</h3>
 
-<h4>Installation</h4>
+<h4 id="installation">Installation</h4>
 
 <p><code>opal-jquery</code> is distributed as a gem, and needs to be added to your <code>Gemfile</code>:</p>
-<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
+<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s1">'opal'</span>
 <span class="n">gem</span> <span class="s1">'opal-jquery'</span>
 </code></pre>
 
-<h4>Usage</h4>
+<h4 id="usage">Usage</h4>
 
 <p><code>opal-jquery</code> can now be easily added to your opal application sources using a
 standard require:</p>
-<pre class="highlight ruby"><code><span class="c1"># app/application.rb</span>
+<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 <span class="nb">require</span> <span class="s1">'jquery'</span>
 <span class="nb">require</span> <span class="s1">'opal-jquery'</span>
@@ -158,7 +131,7 @@ you are compiling assets from. You can alternatively require a zepto instance.</
 <p>The <code>#alert</code> method is provided by <code>opal-jquery</code>. If the message displays, then
 <code>jquery</code> support should be working.</p>
 
-<h3>How does opal-jquery work</h3>
+<h3 id="how-does-opal-jquery-work">How does opal-jquery work</h3>
 
 <p><code>opal-jquery</code> provides an <code>Element</code> class, whose instances are toll-free
 bridged instances of jquery objects. Just like ruby arrays are just javascript
@@ -168,83 +141,83 @@ with jquery plugins much easier.</p>
 <p>Also, <code>Element</code> will try to bridge with Zepto if it cannot find jQuery loaded,
 making it ideal for mobile applications as well.</p>
 
-<h3>Interacting with the DOM</h3>
+<h3 id="interacting-with-the-dom">Interacting with the DOM</h3>
 
-<h4>Finding Elements</h4>
+<h4 id="finding-elements">Finding Elements</h4>
 
 <p>opal-jquery provides the <code>Element</code> class, which can be used to find elements in
 the current document:</p>
-<pre class="highlight ruby"><code><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">)</span>
 </code></pre>
 
 <p><code>Element.find</code> is aliased to <code>Element[]</code>:</p>
-<pre class="highlight ruby"><code><span class="no">Element</span><span class="p">[</span><span class="s1">'.my-class'</span><span class="p">]</span>
+<pre><code class="highlight ruby"><span class="no">Element</span><span class="p">[</span><span class="s1">'.my-class'</span><span class="p">]</span>
 </code></pre>
 
 <p>These methods acts just like <code>$(&#39;selector&#39;)</code>, and can use any jQuery
 compatible selector:</p>
-<pre class="highlight ruby"><code><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#navigation li:last'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#navigation li:last'</span><span class="p">)</span>
 </code></pre>
 
 <p>The result is just a jQuery instance, which is toll-free bridged to
 instances of the <code>Element</code> class in ruby:</p>
-<pre class="highlight ruby"><code><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">).</span><span class="nf">class</span>
+<pre><code class="highlight ruby"><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">).</span><span class="nf">class</span>
 <span class="c1"># =&gt; Element</span>
 </code></pre>
 
 <p>Instances of <code>Element</code> also have the <code>#find</code> method available for
 finding elements within the scope of each DOM node represented by
 the instance:</p>
-<pre class="highlight ruby"><code><span class="n">el</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">el</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">)</span>
 <span class="n">el</span><span class="p">.</span><span class="nf">find</span> <span class="s1">'.foo'</span>
 <span class="c1"># =&gt; #&lt;Element .... &gt;</span>
 </code></pre>
 
-<h4>Running code on document ready</h4>
+<h4 id="running-code-on-document-ready">Running code on document ready</h4>
 
 <p>Just like jQuery, opal-jquery requires the document to be ready to
 be able to fully interact with the page. Any top level access should
 use the <code>ready?</code> method:</p>
-<pre class="highlight ruby"><code><span class="no">Document</span><span class="p">.</span><span class="nf">ready?</span> <span class="k">do</span>
+<pre><code class="highlight ruby"><span class="no">Document</span><span class="p">.</span><span class="nf">ready?</span> <span class="k">do</span>
   <span class="n">alert</span> <span class="s2">"document is ready to go!"</span>
 <span class="k">end</span>
 </code></pre>
 
 <p>The <code>Kernel#alert</code> method is shown above too.</p>
 
-<h4>Event handling</h4>
+<h4 id="event-handling">Event handling</h4>
 
 <p>The <code>Element#on</code> method is used to attach event handlers to elements:</p>
-<pre class="highlight ruby"><code><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">).</span><span class="nf">on</span> <span class="ss">:click</span> <span class="k">do</span>
+<pre><code class="highlight ruby"><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">).</span><span class="nf">on</span> <span class="ss">:click</span> <span class="k">do</span>
   <span class="nb">puts</span> <span class="s2">"The header was clicked!"</span>
 <span class="k">end</span>
 </code></pre>
 
 <p>Selectors can also be passed as a second argument to handle events
 on certain children:</p>
-<pre class="highlight ruby"><code><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="ss">:click</span><span class="p">,</span> <span class="s1">'.foo'</span><span class="p">)</span> <span class="k">do</span>
+<pre><code class="highlight ruby"><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="ss">:click</span><span class="p">,</span> <span class="s1">'.foo'</span><span class="p">)</span> <span class="k">do</span>
   <span class="nb">puts</span> <span class="s2">"An element with a 'foo' class was clicked"</span>
 <span class="k">end</span>
 </code></pre>
 
 <p>An <code>Event</code> instance is optionally passed to block handlers as well,
 which is toll-free bridged to jquery events:</p>
-<pre class="highlight ruby"><code><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#my_link'</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="ss">:click</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">evt</span><span class="o">|</span>
+<pre><code class="highlight ruby"><span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#my_link'</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="ss">:click</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">evt</span><span class="o">|</span>
   <span class="n">evt</span><span class="p">.</span><span class="nf">stop_propagation</span>
   <span class="nb">puts</span> <span class="s2">"stopped the event!"</span>
 <span class="k">end</span>
 </code></pre>
 
 <p>You can access the element which triggered the event by <code>#current_target</code>.</p>
-<pre class="highlight ruby"><code><span class="no">Document</span><span class="p">.</span><span class="nf">on</span> <span class="ss">:click</span> <span class="k">do</span> <span class="o">|</span><span class="n">evt</span><span class="o">|</span>
+<pre><code class="highlight ruby"><span class="no">Document</span><span class="p">.</span><span class="nf">on</span> <span class="ss">:click</span> <span class="k">do</span> <span class="o">|</span><span class="n">evt</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">"clicked on: </span><span class="si">#{</span><span class="n">evt</span><span class="p">.</span><span class="nf">current_target</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
 </code></pre>
 
-<h4>CSS styles and classnames</h4>
+<h4 id="css-styles-and-classnames">CSS styles and classnames</h4>
 
 <p>The various jQuery methods are available on <code>Element</code> instances:</p>
-<pre class="highlight ruby"><code><span class="n">foo</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">foo</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'.foo'</span><span class="p">)</span>
 
 <span class="n">foo</span><span class="p">.</span><span class="nf">add_class</span> <span class="s1">'blue'</span>
 <span class="n">foo</span><span class="p">.</span><span class="nf">remove_class</span> <span class="s1">'foo'</span>
@@ -252,7 +225,7 @@ which is toll-free bridged to jquery events:</p>
 </code></pre>
 
 <p>There are also added convenience methods for opal-jquery:</p>
-<pre class="highlight ruby"><code><span class="n">foo</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">foo</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#header'</span><span class="p">)</span>
 
 <span class="n">foo</span><span class="p">.</span><span class="nf">class_name</span>
 <span class="c1"># =&gt; 'red lorry'</span>
@@ -264,17 +237,17 @@ which is toll-free bridged to jquery events:</p>
 </code></pre>
 
 <p><code>Element#css</code> also exists for getting/setting css styles:</p>
-<pre class="highlight ruby"><code><span class="n">el</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#container'</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">el</span> <span class="o">=</span> <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'#container'</span><span class="p">)</span>
 <span class="n">el</span><span class="p">.</span><span class="nf">css</span> <span class="s1">'color'</span><span class="p">,</span> <span class="s1">'blue'</span>
 <span class="n">el</span><span class="p">.</span><span class="nf">css</span> <span class="s1">'color'</span>
 <span class="c1"># =&gt; 'blue'</span>
 </code></pre>
 
-<h3>HTTP/AJAX requests</h3>
+<h3 id="http/ajax-requests">HTTP/AJAX requests</h3>
 
 <p>jQuery&#39;s Ajax implementation is also wrapped in the top level HTTP
 class.</p>
-<pre class="highlight ruby"><code><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/1.json"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
+<pre><code class="highlight ruby"><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/1.json"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
   <span class="c1"># =&gt; "{\"name\": \"Adam Beynon\"}"</span>
 <span class="k">end</span>
@@ -283,7 +256,7 @@ class.</p>
 <p>The block passed to this method is used as the handler when the request
 succeeds, as well as when it fails. To determine whether the request
 was successful, use the <code>ok?</code> method:</p>
-<pre class="highlight ruby"><code><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/2.json"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
+<pre><code class="highlight ruby"><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/2.json"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
   <span class="k">if</span> <span class="n">response</span><span class="p">.</span><span class="nf">ok?</span>
     <span class="n">alert</span> <span class="s2">"successful!"</span>
   <span class="k">else</span>
@@ -293,7 +266,7 @@ was successful, use the <code>ok?</code> method:</p>
 </code></pre>
 
 <p>It is also possible to use a different handler for each case:</p>
-<pre class="highlight ruby"><code><span class="n">request</span> <span class="o">=</span> <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/3.json"</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">request</span> <span class="o">=</span> <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/3.json"</span><span class="p">)</span>
 
 <span class="n">request</span><span class="p">.</span><span class="nf">callback</span> <span class="p">{</span>
   <span class="nb">puts</span> <span class="s2">"Request worked!"</span>
@@ -308,11 +281,11 @@ was successful, use the <code>ok?</code> method:</p>
 to the async nature of the request, the callback and errback handlers can
 be added anytime before the request returns.</p>
 
-<h4>Handling responses</h4>
+<h4 id="handling-responses">Handling responses</h4>
 
 <p>Web apps deal with JSON responses quite frequently, so there is a useful
 <code>#json</code> helper method to get the JSON content from a request:</p>
-<pre class="highlight ruby"><code><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users.json"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
+<pre><code class="highlight ruby"><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users.json"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
   <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">json</span>
 <span class="k">end</span>
@@ -325,7 +298,7 @@ be added anytime before the request returns.</p>
 
 <p>If an error is encountered, then the <code>#status_code</code> method will hold the
 specific error code from the underlying request:</p>
-<pre class="highlight ruby"><code><span class="n">request</span> <span class="o">=</span> <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/3.json"</span><span class="p">)</span>
+<pre><code class="highlight ruby"><span class="n">request</span> <span class="o">=</span> <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/users/3.json"</span><span class="p">)</span>
 
 <span class="n">request</span><span class="p">.</span><span class="nf">callback</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"it worked!"</span> <span class="p">}</span>
 

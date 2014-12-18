@@ -66,77 +66,54 @@
   <div class="container">
       <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-sm-12">
+        <h1></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
         <ul class="nav opal-sidebar">
-          <li>
-            <a href="/docs">Getting Started</a>
-              <ul class="nav">
-                <li><a href="/docs/rails">Rails</a></li>
-                <li><a href="/docs/sinatra">Sinatra</a></li>
-                <li><a href="/docs/using_sprockets">Sprockets</a></li>
-                <li><a href="/docs/static_applications">Static Applications</a></li>
-                <li><a href="/docs/cdn_distribution">CDN Distribution</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/api">API documentation</a>
-          </li>
-          <li>
-            <a href="/docs/digging_deeper">Digging Deeper</a>
-              <ul class="nav">
-                <li><a href="/docs/interacting_with_javascript">Interacting with javascript</a></li>
-                <li><a href="/docs/generated_javascript">Generated Code</a></li>
-                <li><a href="/docs/method_missing"><tt>#method_missing</tt> support</a></li>
-                <li><a href="/docs/using_ruby_from_javascript">Accessing Ruby methods</a></li>
-                <li><a href="/docs/compiler">Compiler</a></li>
-                <li><a href="/docs/source_maps">Source Maps</a></li>
-                <li><a href="/docs/unsupported_features">Unsupported Features</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/libraries">Libraries</a>
-              <ul class="nav">
-                <li><a href="/docs/templates">Templates (Haml and ERB)</a></li>
-                <li><a href="/docs/jquery">JQuery</a></li>
-                <li><a href="/docs/rspec">RSpec</a></li>
-                <li><a href="/docs/promises">Promises</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="/docs/faq">FAQ</a>
-          </li>
-        </ul>
+<li class="toc-list-chapter"><a href="#enable-source-maps">Enable source maps</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#rails">Rails</a>
+<li class="toc-list-subchapter"><a href="#sinatra">Sinatra</a>
+<li class="toc-list-subchapter"><a href="#opal::server">Opal::Server</a>
+<li class="toc-list-subchapter"><a href="#opal::environment">Opal::Environment</a></li>
+</ul></li></ul>
       </div>
 
-      <div class="col-md-9">
-        <h1>Source maps</h1>
+      <div class="col-md-8 col-md-pull-4">
+        <h1 id="source-maps">Source maps</h1>
 
 <p>Source maps are available (on current stable release, v0.6.x) even without explicit support from Sprockets in a sort of hackish way.</p>
 
 <p><em>As such even if they generally work fine there are some limitations and edge case issues.</em></p>
 
-<blockquote>
-<h5>Note on <code>master</code> branch</h5>
+<div class="opal-callout opal-callout-info">
+<p>
+  <strong>Note on <code>master</code> branch</strong>
+</p>
+<p>
+  Currently on master sourcemaps are work-in-progress and probably will integrate with the upcoming Sprockets 4 that has integrated support for them.
+</p>
+</div>
 
-<p>Currently on master sourcemaps are work-in-progress and probably will integrate with the upcoming Sprockets 4 that has integrated support for them.</p>
-</blockquote>
-
-<h4>Processor <code>source_map_enabled</code> flag</h4>
+<h4 id="processor-source_map_enabled-flag">Processor <code>source_map_enabled</code> flag</h4>
 
 <p>To enable sourcemaps in the Sprockets processor you need to turn on the relative flag:</p>
-<pre class="highlight ruby"><code><span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">true</span> <span class="c1"># default</span>
+<pre><code class="highlight ruby"><span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">true</span> <span class="c1"># default</span>
 </code></pre>
 
-<h4>Sprockets debug mode</h4>
+<h4 id="sprockets-debug-mode">Sprockets debug mode</h4>
 
 <p>The  sourcemaps only work with Sprockets in debug mode because they are generated just for single files.</p>
 
-<h2>Enable source maps</h2>
+<h2 id="enable-source-maps">Enable source maps</h2>
 
-<h3>Rails</h3>
+<h3 id="rails">Rails</h3>
 
 <p>Rails has debug mode already enabled in development environment with the following line from <code>config/environments/development.rb</code>:</p>
-<pre class="highlight ruby"><code><span class="c1"># Debug mode disables concatenation and preprocessing of assets.</span>
+<pre><code class="highlight ruby"><span class="c1"># Debug mode disables concatenation and preprocessing of assets.</span>
 <span class="c1"># This option may cause significant delays in view rendering with a large</span>
 <span class="c1"># number of complex assets.</span>
 <span class="n">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">debug</span> <span class="o">=</span> <span class="kp">true</span>
@@ -144,15 +121,15 @@
 
 <p><code>opal-rails</code> also enables sourcemaps in development so with the standard setup you ready to go.</p>
 
-<h3>Sinatra</h3>
+<h3 id="sinatra">Sinatra</h3>
 
 <p>You can add <code>Opal::Server</code> as in the official example: <a href="https://github.com/opal/opal/blob/0-6-stable/examples/sinatra/config.ru">sinatra/config.ru</a>.</p>
 
-<h3>Opal::Server</h3>
+<h3 id="opal::server">Opal::Server</h3>
 
 <p><code>Opal::Server</code> implements sourcemaps and can be used alone or with <code>Rack::Cascade</code> in conjunction with other apps.</p>
 
-<h3>Opal::Environment</h3>
+<h3 id="opal::environment">Opal::Environment</h3>
 
 <p><code>Opal::Environment</code> is a bit lower level and doesn&#39;t support source maps by itself.</p>
 
