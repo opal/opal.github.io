@@ -1,20 +1,19 @@
 - title: Getting Started
-  url: '/docs'
-  children:
-    - title: Rails
-      url: '/docs/rails'
-    - title: Sinatra
-      url: '/docs/sinatra'
-    - title: Sprockets
-      url: '/docs/using_sprockets'
-    - title: Static Applications
-      url: '/docs/static_applications'
-    - title: CDN Distribution
-      url: '/docs/cdn_distribution'
+  url: '/docs/getting_started'
+- title: Rails
+  url: '/docs/rails'
+- title: Sinatra
+  url: '/docs/sinatra'
+- title: Sprockets
+  url: '/docs/using_sprockets'
+- title: Static Applications
+  url: '/docs/static_applications'
+- title: CDN Distribution
+  url: '/docs/cdn_distribution'
 - title: API documentation
   url: /docs/api
-- title: Generated Code
-  url: '/docs/generated_javascript'
+- title: Compiled Ruby Code
+  url: '/docs/compiled_ruby'
 - title: Compiler
   url: '/docs/compiler'
 - title: Source Maps
@@ -23,14 +22,13 @@
   url: '/docs/unsupported_features'
 - title: Libraries
   url: '/docs/libraries'
-  children:
-    - title: Templates (Haml and ERB)
-      url: '/docs/templates'
-    - title: JQuery
-      url: '/docs/jquery'
-    - title: RSpec
-      url: '/docs/rspec'
-    - title: Promises
-      url: '/docs/promises'
+- title: Templates (Haml and ERB)
+  url: '/docs/templates'
+- title: JQuery
+  url: '/docs/jquery'
+- title: RSpec
+  url: '/docs/rspec'
+- title: Promises
+  url: '/docs/promises'
 - title: FAQ
   url: '/docs/faq'

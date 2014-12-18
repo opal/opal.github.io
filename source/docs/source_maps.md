@@ -4,8 +4,14 @@ Source maps are available (on current stable release, v0.6.x) even without expli
 
 _As such even if they generally work fine there are some limitations and edge case issues._
 
-> ##### Note on `master` branch
-> Currently on master sourcemaps are work-in-progress and probably will integrate with the upcoming Sprockets 4 that has integrated support for them.
+<div class="opal-callout opal-callout-info">
+<p>
+  <strong>Note on <code>master</code> branch</strong>
+</p>
+<p>
+  Currently on master sourcemaps are work-in-progress and probably will integrate with the upcoming Sprockets 4 that has integrated support for them.
+</p>
+</div>
 
 
 #### Processor `source_map_enabled` flag

@@ -3,11 +3,11 @@
 //= require blog
 //= require index
 
-$background: #1c7cbe;
+$background: #34495E;
 $background-border: $background;
-$background-active: #0e436b;
+$background-active: #2C3E50;
 $color: #fff;
-$color-secondary: lighten(desaturate($background, 20%), 40%);
+$color-secondary: #fff;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -17,12 +17,31 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-weight: 200;
   color: #444444;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
 }
 
 .nav.opal-sidebar {
   background-color: #f7f7f9;
-  border-radius: 5px;
+  border-radius: 0px;
   padding-top: 10px;
   padding-bottom: 10px;
 
@@ -61,23 +80,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .opal-callout {
-  border-left: 10px solid;
   margin: 20px 0px;
   padding: 20px;
   color: #444444;
 
+  code {
+    margin: 0px;
+    padding: 0px;
+  }
+
   &.opal-callout-info {
     background-color: #d9edf7;
-    border-left-color: #3498db;
 
     code {
       background-color: #d9edf7;
-      color: #3498db;
+      color: #2980B9;
     }
   }
 
   &.opal-callout-warning {
-    border-left-color: $brand-warning;
     background-color: $state-warning-bg;
   }
 }
@@ -102,6 +123,11 @@ code {
 pre {
   background-color: #f7f7f9;
   border: 0px;
+  border-left: 10px solid;
+  border-radius: 0px;
+  border-left-color: #3498DB;
+  padding: 15px;
+
   font-family: Menlo, Consolas, "Courier New", monospace;
 
   .highlight {

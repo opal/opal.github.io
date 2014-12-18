@@ -1,14 +1,14 @@
 ---
-title: Generated Javascript
+title: Compiled Ruby Code
 ---
 
-## 1. Generated Javascript
+## Generated Javascript
 
 Opal is a source-to-source compiler, so there is no VM as such and the
 compiled code aims to be as fast and efficient as possible, mapping
 directly to underlying javascript features and objects where possible.
 
-### 1.1 Literals
+### Literals
 
 ```ruby
 nil         # => nil
@@ -104,7 +104,7 @@ range instances.
 3...7       # => __range(3, 7, false)
 ```
 
-### 1.2 Logic and conditionals
+### Logic and conditionals
 
 As per ruby, Opal treats only `false` and `nil` as falsy, everything
 else is a truthy value including `""`, `0` and `[]`. This differs from
@@ -136,7 +136,7 @@ if (val !== false && val !== nil) {
 This makes the generated truthy tests (`if` statements, `and` checks and
 `or` statements) a little more verbose in the generated code.
 
-### 1.3 Instance variables
+### Instance variables
 
 Instance variables in Opal work just as expected. When ivars are set or
 retrieved on an object, they are set natively without the `@` prefix.
@@ -165,7 +165,7 @@ then the instance variable is wrapped using the object-key notation:
 <code>this['class']</code>.
 </div>
 
-## 2. Compiled Files
+## Compiled Files
 
 As described above, a compiled ruby source gets generated into a string
 of javascript code that is wrapped inside an anonymous function. This
@@ -196,19 +196,19 @@ This would compile directly into:
 Most of the helpers are no longer present as they are not used in this
 example.
 
-### 2.1 Using compiled sources
+### Using compiled sources
 
 If you write the generated code as above into a file `app.js` and add
 that to your HTML page, then it is obvious that `"foo"` would be
 written to the browser's console.
 
-### 2.2 Debugging and finding errors
+### Debugging and finding errors
 
 Because Opal does not aim to be fully compatible with ruby, there are
 some instances where things can break and it may not be entirely
 obvious what went wrong.
 
-### 2.3 Using javascript debuggers
+### Using javascript debuggers
 
 As opal just generates javascript, it is useful to use a native
 debugger to work through javascript code. To use a debugger, simply
@@ -230,7 +230,7 @@ javascript output.
   (e.g. <code>try</code> => <code>try$</code>).
 </div>
 
-## 3. Javascript from Ruby
+## Javascript from Ruby
 
 Opal tries to interact as cleanly with javascript and its api as much
 as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
@@ -238,7 +238,7 @@ are just javascript native equivalents. The only boxed core features are
 hashes.
 
 
-### 3.1 Inline Javascript
+### Inline Javascript
 
 As most of the corelib deals with these low level details, opal provides
 a special syntax for inlining javascript code. This is done with
@@ -275,7 +275,7 @@ X-Strings also have the ability to automatically return their value,
 as used by this example.
 
 
-### 3.2 Native Module
+### Native Module
 
 _Reposted from: [Mikamayhem](http://dev.mikamai.com/post/79398725537/using-native-javascript-objects-from-opal)_
 
@@ -326,7 +326,7 @@ That’s all for now, bye!
 window.close!
 ```
 
-## 4. Ruby from Javascript
+## Ruby from Javascript
 
 Accessing classes and methods defined in Opal from the javascript runtime is
 possible via the `Opal` js object. The following class:
@@ -351,7 +351,7 @@ Remember that all ruby methods are prefixed with a `$`.
 In the case that a method name can't be called directly due to a javascript syntax error, you will need to call the method using bracket notation. For example, you can call `foo.$merge(...)` but not `foo.$merge!(...)`, `bar.$fetch('somekey')` but not `bar.$[]('somekey')`. Instead you would write it like this: `foo['$merge!'](...)` or `bar['$[]']('somekey')`.
 
 
-### 4.1 Hash
+### Hash
 
 Since ruby hashes are implemented directly with an Opal class, there's no "toll-free" bridging available (unlike with strings and arrays, for example). However, it's quite possible to interact with hashes from Javascript:
 
@@ -374,9 +374,9 @@ myHash.$to_n(); // provided by the Native module
   Be aware <code>Hash#to_n</code> produces a duplicate copy of the hash.
 </div>
 
-## 5. Advanced Compilation
+## Advanced Compilation
 
-### 5.1 Method Missing
+### Method Missing
 
 Opal supports `method_missing`. This is a key feature of ruby, and opal wouldn't be much use without it! This page details the implementation of `method_missing` for Opal.
 
