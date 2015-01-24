@@ -57,11 +57,11 @@ with all the custom opal paths added automatically.
 
 This `env` object includes all the opal corelib and stdlib paths. To add
 any custom application directories, you must add them to the load path using
-`env.append_path`. You can now add an `opal/application.rb` file into this
+`env.append_path`. You can now add an `app/application.rb` file into this
 added path with some basic content:
 
 ```ruby
-# opal/application.rb
+# app/application.rb
 require 'opal'
 
 puts "wow, running ruby!"
