@@ -123,12 +123,14 @@ code {
 pre {
   background-color: #f7f7f9;
   border: 0px;
-  border-radius: 0px;
+  border-radius: 3px;
   padding: 15px;
+  border-left: 1px solid #3498DB;
+  width: 100%;
 
   font-family: Menlo, Consolas, "Courier New", monospace;
 
-  .highlight {
+  &.highlight {
     background-color: #f7f7f9;
   }
 }
@@ -226,13 +228,31 @@ html {
   }
 }
 
-.btn-code {
-  float: right;
-  border-top-left-radius: 0;
-//  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  i {
-    font-size: 1.4em;
-    vertical-align: top;
+
+p.run-code {
+  height: 0;
+  overflow: visible;
+  width: 100%;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+
+  a.btn-code {
+    $bgcolor: #3498DB;
+    border-color: transparent;
+    background-color: lighten($bgcolor, 20%);
+    border-top-left-radius: 0;
+    // border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    color: white;
+    &:hover {
+      background-color: lighten($bgcolor, 10%);
+    }
+
+    i {
+      font-size: 1.4em;
+      vertical-align: top;
+    }
   }
 }
