@@ -31,7 +31,7 @@ title: "Opal: Ruby to Javascript Compiler"
 
 ### Overview
 
-<a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios7-play"></i></a>
+<p class="run-code"><a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios7-play"></i></a></p>
 
 ```ruby
 class User

@@ -51,9 +51,9 @@ class TryOpal
     @link = Element.find('#link_code')
     Element.find('#run_code').on(:click) { run_code }
 
-    hash = `decodeURIComponent(location.hash)`
+    hash = `decodeURIComponent(location.hash || location.search)`
 
-    if hash.start_with? '#code:'
+    if hash =~ /^[#?]code:/
       @editor.value = hash[6..-1]
     else
       @editor.value = DEFAULT_TRY_CODE.strip
@@ -64,7 +64,7 @@ class TryOpal
     @flush = []
     @output.value = ''
 
-    @link[:href] = "#code:#{`encodeURIComponent(#{@editor.value})`}"
+    @link[:href] = "?code:#{`encodeURIComponent(#{@editor.value})`}"
 
     begin
       code = Opal.compile(@editor.value, :source_map_enabled => false)
