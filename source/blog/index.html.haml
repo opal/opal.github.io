@@ -11,8 +11,8 @@ layout: layout
       - body_parts = article.body.split('<!--preview-->')
       - body_preview = body_parts.first
       - if body_parts.size > 1
-        - body_preview += link_to("continue reading…", article)
-      = partial 'post', locals: {article: article.data.merge(url: article, title: article.title, body: body_preview)}
+        - body_preview += link_to("continue reading…", article.url)
+      = partial 'post', locals: {article: article.data.merge(url: article.url, title: article.title, body: body_preview)}
 
 -# .blog-post-title
 -#   %h1
