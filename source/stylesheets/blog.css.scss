@@ -7,10 +7,6 @@ article.blog-post {
   }
 }
 
-a.blog-title {
-  color: #444444;
-}
-
 .blog-post-meta {
   color: #999999;
   margin-bottom: 30px;
@@ -20,4 +16,23 @@ a.blog-title {
   border-bottom: 1px solid #eeeeee;
   margin-top: 50px;
   margin-bottom: 10px;
+}
+
+
+.blog-title h1 {
+  color: #444444;
+  font-size: 1.4em;
+  margin-bottom: 0;
+  a {
+    color: inherit;
+  }
+}
+
+
+.blog-posts {
+  .blog-title h1 {
+    margin: 0;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 2.5em;
+  }
 }

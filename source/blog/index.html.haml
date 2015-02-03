@@ -5,8 +5,8 @@ layout: layout
 
 
 .container.col-sm-8
-  = partial 'blog_title'
   .blog-posts
+    = partial 'blog_title'
     - blog.articles.each do |article|
       - body_parts = article.body.split('<!--preview-->')
       - body_preview = body_parts.first
