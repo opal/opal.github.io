@@ -3,17 +3,29 @@ title: "Opal Blog"
 layout: layout
 ---
 
-.blog-post-title
-  %h1
-    %a.blog-title(href="/blog") The Opal Blog
 
-.row
-  .col-sm-8
+.container.col-sm-8
+  = partial 'blog_title'
+  .blog-posts
     - blog.articles.each do |article|
-      %h2= link_to article.title, article
+      - body_parts = article.body.split('<!--preview-->')
+      - body_preview = body_parts.first
+      - if body_parts.size > 1
+        - body_preview += link_to("continue reading…", article)
+      = partial 'post', locals: {article: article.data.merge(url: article, title: article.title, body: body_preview)}
 
-      .blog-post-meta
-        = "Posted by #{article.data.author} on #{article.date.strftime "%-a, %d %b %Y"}"
-      = preserve do
-        = article.body
-  .col-sm-4
+-# .blog-post-title
+-#   %h1
+-#     %a.blog-title(href="/blog") The Opal Blog
+-#
+-# .row.blog-posts
+-#   .col-sm-8
+-#     - blog.articles.each do |article|
+-#       %article.blog-post
+-#         %h2.blog-post-title= link_to article.title, article
+-#
+-#         .blog-post-meta
+-#           = "Posted by #{article.data.author} on #{article.date.strftime "%-a, %d %b %Y"}"
+-#         = preserve do
+-#           = article.body
+-#   .col-sm-4
