@@ -93,7 +93,7 @@ either the global environment, or a sprockets instance.</p>
 
 <p>In the <code>Opal</code> module, a property <code>paths</code> is used to hold the load paths which
 <code>Opal</code> uses to require files from. You can add a directory to this:</p>
-<pre><code class="highlight ruby"><span class="no">Opal</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'../my_lib'</span>
+<pre class="highlight ruby"><code><span class="no">Opal</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'../my_lib'</span>
 </code></pre>
 
 <p>Now, any ruby files in this directory can be discovered.</p>
@@ -103,7 +103,7 @@ either the global environment, or a sprockets instance.</p>
 <p><code>Opal::Environment</code> is a subclass of the sprockets environment class which
 can have instance specific paths added to it. This class will inherit all
 global paths, but you can also add your instance paths as:</p>
-<pre><code class="highlight ruby"><span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
+<pre class="highlight ruby"><code><span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
 <span class="n">env</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'../my_lib'</span>
 </code></pre>
 

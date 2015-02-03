@@ -101,7 +101,7 @@
 <h4 id="processor-source_map_enabled-flag">Processor <code>source_map_enabled</code> flag</h4>
 
 <p>To enable sourcemaps in the Sprockets processor you need to turn on the relative flag:</p>
-<pre><code class="highlight ruby"><span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">true</span> <span class="c1"># default</span>
+<pre class="highlight ruby"><code><span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">true</span> <span class="c1"># default</span>
 </code></pre>
 
 <h4 id="sprockets-debug-mode">Sprockets debug mode</h4>
@@ -113,7 +113,7 @@
 <h3 id="rails">Rails</h3>
 
 <p>Rails has debug mode already enabled in development environment with the following line from <code>config/environments/development.rb</code>:</p>
-<pre><code class="highlight ruby"><span class="c1"># Debug mode disables concatenation and preprocessing of assets.</span>
+<pre class="highlight ruby"><code><span class="c1"># Debug mode disables concatenation and preprocessing of assets.</span>
 <span class="c1"># This option may cause significant delays in view rendering with a large</span>
 <span class="c1"># number of complex assets.</span>
 <span class="n">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">debug</span> <span class="o">=</span> <span class="kp">true</span>

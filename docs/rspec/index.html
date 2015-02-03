@@ -91,7 +91,7 @@
 environments. It comes with built-in support for running rspec with custom
 <code>phantomjs</code> and standard web browser formatters. Also, async spec examples
 are supported to reflect browser usage of ruby applications.</p>
-<pre><code class="highlight ruby"><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+<pre class="highlight ruby"><code><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
   <span class="n">it</span> <span class="s2">"can be created with a name"</span> <span class="k">do</span>
     <span class="n">expect</span><span class="p">(</span><span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">).</span><span class="nf">to_not</span> <span class="n">be_persisted</span>
   <span class="k">end</span>
@@ -101,7 +101,7 @@ are supported to reflect browser usage of ruby applications.</p>
 <h3 id="installation">Installation</h3>
 
 <p>Add the <code>opal-rspec</code> gem to your Gemfile:</p>
-<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
+<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s1">'opal'</span>
 <span class="n">gem</span> <span class="s1">'opal-rspec'</span>
 </code></pre>
@@ -112,19 +112,19 @@ are supported to reflect browser usage of ruby applications.</p>
 
 <p>To run specs, a rake task can be added which will load all spec files
 from <code>spec/</code>:</p>
-<pre><code class="highlight ruby"><span class="c1"># Rakefile</span>
+<pre class="highlight ruby"><code><span class="c1"># Rakefile</span>
 <span class="nb">require</span> <span class="s1">'opal/rspec/rake_task'</span>
 <span class="no">Opal</span><span class="o">::</span><span class="no">RSpec</span><span class="o">::</span><span class="no">RakeTask</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:default</span><span class="p">)</span>
 </code></pre>
 
 <p>Then, to run your specs inside phantomjs, just run the rake task:</p>
-<pre><code class="highlight shell"><span class="gp">$ </span>bundle <span class="nb">exec </span>rake
+<pre class="highlight shell"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>rake
 </code></pre>
 
 <h3 id="in-a-browser">In a Browser</h3>
 
 <p><code>opal-rspec</code> can use sprockets to build and serve specs over a simple rack server. Add the following to a <code>config.ru</code> file:</p>
-<pre><code class="highlight ruby"><span class="c1"># config.ru</span>
+<pre class="highlight ruby"><code><span class="c1"># config.ru</span>
 <span class="nb">require</span> <span class="s1">'bundler'</span>
 <span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span>
 
@@ -141,7 +141,7 @@ from <code>spec/</code>:</p>
 
 <p><code>opal-rspec</code> adds support for async specs to rspec. These specs are defined using
 <code>#async</code> instead of <code>#it</code>:</p>
-<pre><code class="highlight ruby"><span class="n">describe</span> <span class="no">MyClass</span> <span class="k">do</span>
+<pre class="highlight ruby"><code><span class="n">describe</span> <span class="no">MyClass</span> <span class="k">do</span>
   <span class="c1"># normal example</span>
   <span class="n">it</span> <span class="s1">'does something'</span> <span class="k">do</span>
     <span class="n">expect</span><span class="p">(</span><span class="ss">:foo</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span>
@@ -156,7 +156,7 @@ from <code>spec/</code>:</p>
 
 <p>This just marks the example as running async. To actually handle the async result,
 you also need to use a <code>run_async</code> call inside some future handler:</p>
-<pre><code class="highlight ruby"><span class="n">async</span> <span class="s1">'HTTP requests should work'</span> <span class="k">do</span>
+<pre class="highlight ruby"><code><span class="n">async</span> <span class="s1">'HTTP requests should work'</span> <span class="k">do</span>
   <span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/users/1.json'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">res</span><span class="o">|</span>
     <span class="n">run_async</span> <span class="p">{</span>
       <span class="n">expect</span><span class="p">(</span><span class="n">res</span><span class="p">).</span><span class="nf">to</span> <span class="n">be_ok</span>

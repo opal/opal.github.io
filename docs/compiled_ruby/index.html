@@ -108,7 +108,7 @@ compiled code aims to be as fast and efficient as possible, mapping
 directly to underlying javascript features and objects where possible.</p>
 
 <h3 id="literals">Literals</h3>
-<pre><code class="highlight ruby"><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
+<pre class="highlight ruby"><code><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
 <span class="kp">true</span>        <span class="c1"># =&gt; true</span>
 <span class="kp">false</span>       <span class="c1"># =&gt; false</span>
 <span class="nb">self</span>        <span class="c1"># =&gt; self</span>
@@ -135,7 +135,7 @@ and <code>FalseClass</code> classes from ruby.
 </div>
 
 <h4 id="strings-&amp;-symbols">Strings &amp; Symbols</h4>
-<pre><code class="highlight ruby"><span class="s2">"hello world!"</span>    <span class="c1"># =&gt; "hello world!"</span>
+<pre class="highlight ruby"><code><span class="s2">"hello world!"</span>    <span class="c1"># =&gt; "hello world!"</span>
 <span class="ss">:foo</span>              <span class="c1"># =&gt; "foo"</span>
 <span class="o">&lt;&lt;-</span><span class="no">EOS</span>            <span class="c1"># =&gt; "\nHello there.\n"</span><span class="sh">
 Hello there.
@@ -162,7 +162,7 @@ as performant as possible, ruby numbers are mapped to native numbers.
 This has the side effect that all numbers must be of the same class.
 Most relevant methods from <code>Integer</code>, <code>Float</code> and <code>Numeric</code> are
 implemented on this class.</p>
-<pre><code class="highlight ruby"><span class="mi">42</span>        <span class="c1"># =&gt; 42</span>
+<pre class="highlight ruby"><code><span class="mi">42</span>        <span class="c1"># =&gt; 42</span>
 <span class="mi">3</span><span class="o">.</span><span class="mi">142</span>     <span class="c1"># =&gt; 3.142</span>
 </code></pre>
 
@@ -170,7 +170,7 @@ implemented on this class.</p>
 
 <p>Ruby arrays are compiled directly into javascript arrays. Special
 ruby syntaxes for word arrays etc are also supported.</p>
-<pre><code class="highlight ruby"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>        <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+<pre class="highlight ruby"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>        <span class="c1"># =&gt; [1, 2, 3, 4]</span>
 <span class="sx">%w[foo bar baz]</span>     <span class="c1"># =&gt; ["foo", "bar", "baz"]</span>
 </code></pre>
 
@@ -179,7 +179,7 @@ ruby syntaxes for word arrays etc are also supported.</p>
 <p>Inside a generated ruby script, a function <code>__hash</code> is available which
 creates a new hash. This is also available in javascript as <code>Opal.hash</code>
 and simply returns a new instance of the <code>Hash</code> class.</p>
-<pre><code class="highlight ruby"><span class="p">{</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:baz</span> <span class="o">=&gt;</span> <span class="mi">700</span> <span class="p">}</span>    <span class="c1"># =&gt; __hash("foo", 100, "baz", 700)</span>
+<pre class="highlight ruby"><code><span class="p">{</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:baz</span> <span class="o">=&gt;</span> <span class="mi">700</span> <span class="p">}</span>    <span class="c1"># =&gt; __hash("foo", 100, "baz", 700)</span>
 <span class="p">{</span> <span class="ss">foo: </span><span class="mi">42</span><span class="p">,</span> <span class="ss">bar: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="p">}</span>     <span class="c1"># =&gt; __hash("foo", 42, "bar", [1, 2, 3])</span>
 </code></pre>
 
@@ -187,7 +187,7 @@ and simply returns a new instance of the <code>Hash</code> class.</p>
 
 <p>Similar to hash, there is a function <code>__range</code> available to create
 range instances.</p>
-<pre><code class="highlight ruby"><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
+<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
 <span class="mi">3</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">7</span>       <span class="c1"># =&gt; __range(3, 7, false)</span>
 </code></pre>
 
@@ -201,7 +201,7 @@ javascript as these values are also treated as false.</p>
 <code>nil</code>.</p>
 
 <p>Taking the following test:</p>
-<pre><code class="highlight ruby"><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
+<pre class="highlight ruby"><code><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
 
 <span class="k">if</span> <span class="n">val</span>
   <span class="k">return</span> <span class="mi">3</span><span class="o">.</span><span class="mi">142</span><span class="p">;</span>
@@ -209,7 +209,7 @@ javascript as these values are also treated as false.</p>
 </code></pre>
 
 <p>This would be compiled into:</p>
-<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nx">val</span> <span class="o">!==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">val</span> <span class="o">!==</span> <span class="nx">nil</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="mf">3.142</span><span class="p">;</span>
@@ -225,14 +225,14 @@ javascript as these values are also treated as false.</p>
 retrieved on an object, they are set natively without the <code>@</code> prefix.
 This allows real javascript identifiers to be used which is more
 efficient then accessing variables by string name.</p>
-<pre><code class="highlight ruby"><span class="vi">@foo</span> <span class="o">=</span> <span class="mi">200</span>
+<pre class="highlight ruby"><code><span class="vi">@foo</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="vi">@foo</span>  <span class="c1"># =&gt; 200</span>
 
 <span class="vi">@bar</span>  <span class="c1"># =&gt; nil</span>
 </code></pre>
 
 <p>This gets compiled into:</p>
-<pre><code class="highlight javascript"><span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<pre class="highlight javascript"><code><span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span>   <span class="c1">// =&gt; 200</span>
 
 <span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>   <span class="c1">// =&gt; nil</span>
@@ -249,18 +249,18 @@ then the instance variable is wrapped using the object-key notation:
 <p>As described above, a compiled ruby source gets generated into a string
 of javascript code that is wrapped inside an anonymous function. This
 looks similar to the following:</p>
-<pre><code class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">$klass</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
   <span class="c1">// generated code</span>
 <span class="p">})(</span><span class="nx">Opal</span><span class="p">);</span>
 </code></pre>
 
 <p>As a complete example, assuming the following code:</p>
-<pre><code class="highlight ruby"><span class="nb">puts</span> <span class="s2">"foo"</span>
+<pre class="highlight ruby"><code><span class="nb">puts</span> <span class="s2">"foo"</span>
 </code></pre>
 
 <p>This would compile directly into:</p>
-<pre><code class="highlight javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">$klass</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
   <span class="nx">self</span><span class="p">.</span><span class="nx">$puts</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">);</span>
 <span class="p">})(</span><span class="nx">Opal</span><span class="p">);</span>
@@ -287,7 +287,7 @@ obvious what went wrong.</p>
 debugger to work through javascript code. To use a debugger, simply
 add an x-string similar to the following at the place you wish to
 debug:</p>
-<pre><code class="highlight ruby"><span class="c1"># .. code</span>
+<pre class="highlight ruby"><code><span class="c1"># .. code</span>
 <span class="sb">`debugger`</span>
 <span class="c1"># .. more code</span>
 </code></pre>
@@ -315,7 +315,7 @@ hashes.</p>
 a special syntax for inlining javascript code. This is done with
 x-strings or &quot;backticks&quot;, as their ruby use has no useful translation
 in the browser.</p>
-<pre><code class="highlight ruby"><span class="sb">`window.title`</span>
+<pre class="highlight ruby"><code><span class="sb">`window.title`</span>
 <span class="c1"># =&gt; "Opal: Ruby to Javascript compiler"</span>
 
 <span class="sx">%x{
@@ -331,7 +331,7 @@ in the browser.</p>
 
 <p>This feature of inlining code is used extensively, for example in
 Array#length:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="nc">Array</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Array</span>
   <span class="k">def</span> <span class="nf">length</span>
     <span class="sb">`this.length`</span>
   <span class="k">end</span>
@@ -346,22 +346,22 @@ as used by this example.</p>
 <p><em>Reposted from: <a href="http://dev.mikamai.com/post/79398725537/using-native-javascript-objects-from-opal">Mikamayhem</a></em></p>
 
 <p>Opal standard lib (stdlib) includes a <code>Native</code> module, let’s see how it works and wrap <code>window</code>:</p>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'native'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'native'</span>
 
 <span class="n">window</span> <span class="o">=</span> <span class="no">Native</span><span class="p">(</span><span class="sb">`window`</span><span class="p">)</span> <span class="c1"># equivalent to Native::Object.new(`window`)</span>
 </code></pre>
 
 <p>Now what if we want to access one of its properties?</p>
-<pre><code class="highlight ruby"><span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span>                         <span class="c1"># =&gt; "http://dev.mikamai.com/"</span>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span>                         <span class="c1"># =&gt; "http://dev.mikamai.com/"</span>
 <span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"http://mikamai.com/"</span> <span class="c1"># will bring you to mikamai.com</span>
 </code></pre>
 
 <p>And what about methods?</p>
-<pre><code class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s1">'hey there!'</span><span class="p">)</span>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s1">'hey there!'</span><span class="p">)</span>
 </code></pre>
 
 <p>So let’s do something more interesting:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">window</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">window</span>
   <span class="c1"># A cross-browser window close method (works in IE!)</span>
   <span class="k">def</span> <span class="nf">close!</span>
     <span class="sx">%x{
@@ -379,14 +379,14 @@ as used by this example.</p>
 </code></pre>
 
 <p>That’s all for now, bye!</p>
-<pre><code class="highlight ruby"><span class="n">window</span><span class="p">.</span><span class="nf">close!</span>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">.</span><span class="nf">close!</span>
 </code></pre>
 
 <h2 id="ruby-from-javascript">Ruby from Javascript</h2>
 
 <p>Accessing classes and methods defined in Opal from the javascript runtime is
 possible via the <code>Opal</code> js object. The following class:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="nc">Foo</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Foo</span>
   <span class="k">def</span> <span class="nf">bar</span>
     <span class="nb">puts</span> <span class="s2">"called bar on class Foo defined in ruby code"</span>
   <span class="k">end</span>
@@ -394,7 +394,7 @@ possible via the <code>Opal</code> js object. The following class:</p>
 </code></pre>
 
 <p>Can be accessed from javascript like this:</p>
-<pre><code class="highlight javascript"><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
+<pre class="highlight javascript"><code><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
 <span class="c1">// =&gt; "called bar on class Foo defined in ruby code"</span>
 </code></pre>
 
@@ -405,7 +405,7 @@ possible via the <code>Opal</code> js object. The following class:</p>
 <h3 id="hash">Hash</h3>
 
 <p>Since ruby hashes are implemented directly with an Opal class, there&#39;s no &quot;toll-free&quot; bridging available (unlike with strings and arrays, for example). However, it&#39;s quite possible to interact with hashes from Javascript:</p>
-<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">myHash</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">hash</span><span class="p">({</span><span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">});</span>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">myHash</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">hash</span><span class="p">({</span><span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">});</span>
 <span class="c1">// output of $inspect: {"a"=&gt;1, "b"=&gt;2}</span>
 <span class="nx">myHash</span><span class="p">.</span><span class="nx">$store</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="c1">// output of $inspect: {"a"=&gt;10, "b"=&gt;2}</span>
@@ -432,7 +432,7 @@ possible via the <code>Opal</code> js object. The following class:</p>
 <h4 id="method-dispatches">Method dispatches</h4>
 
 <p>Firstly, a ruby call <code>foo.bar 1, 2, 3</code> is compiled into the following javascript:</p>
-<pre><code class="highlight javascript"><span class="nx">foo</span><span class="p">.</span><span class="nx">$bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<pre class="highlight javascript"><code><span class="nx">foo</span><span class="p">.</span><span class="nx">$bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre>
 
 <p>This should be pretty easy to read. The <code>bar</code> method has a <code>$</code> prefix just to distinguish it from underlying javascript properties, as well as ruby ivars. Methods are compiled like this to make the generated code really readable.</p>
@@ -444,12 +444,12 @@ possible via the <code>Opal</code> js object. The following class:</p>
 <p>To get around this, we make use of our compiler. During parsing, we collect a list of all method calls made inside a ruby file, and this gives us a list of all possible method calls. We then add stub methods to the root object prototype (an opal object, not the global javascript Object) which will proxy our method missing calls for us.</p>
 
 <p>For example, assume the following ruby script:</p>
-<pre><code class="highlight ruby"><span class="n">first</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<pre class="highlight ruby"><code><span class="n">first</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="n">second</span> <span class="s2">"wow"</span><span class="p">.</span><span class="nf">to_sym</span>
 </code></pre>
 
 <p>After parsing, we know we only ever call 3 methods: <code>[:first, :second, :to_sym]</code>. So, imagine we could just add these 3 methods to <code>BasicObject</code> in ruby, we would get something like this:</p>
-<pre><code class="highlight ruby"><span class="k">class</span> <span class="nc">BasicObject</span>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">BasicObject</span>
   <span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
     <span class="nb">method_missing</span><span class="p">(</span><span class="ss">:first</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
   <span class="k">end</span>
@@ -469,7 +469,7 @@ possible via the <code>Opal</code> js object. The following class:</p>
 <h4 id="optimising-generated-code">Optimising generated code</h4>
 
 <p>To optimise the generated code slightly, we reduce the code output from the compiler into the following javascript:</p>
-<pre><code class="highlight javascript"><span class="nx">Opal</span><span class="p">.</span><span class="nx">add_stubs</span><span class="p">([</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"second"</span><span class="p">,</span> <span class="s2">"to_sym"</span><span class="p">]);</span>
+<pre class="highlight javascript"><code><span class="nx">Opal</span><span class="p">.</span><span class="nx">add_stubs</span><span class="p">([</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"second"</span><span class="p">,</span> <span class="s2">"to_sym"</span><span class="p">]);</span>
 </code></pre>
 
 <p>You will see this at the top of all your generated javascript files. This will add a stub method for all methods used in your file.</p>

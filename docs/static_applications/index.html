@@ -87,13 +87,13 @@ standalone as well.</p>
 <h2 id="overview">Overview</h2>
 
 <p>First, install <code>opal</code> adding them to a <code>Gemfile</code>:</p>
-<pre><code class="highlight ruby"><span class="c1"># Gemfile</span>
+<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
 <span class="n">gem</span> <span class="s2">"opal"</span><span class="p">,</span> <span class="s2">"&gt;= 0.6.0"</span>
 </code></pre>
 
 <p>Next, we want to add our main app code. Keep all opal code inside <code>app/</code>
 directory, and edit <code>app/application.rb</code>:</p>
-<pre><code class="highlight ruby"><span class="c1"># app/application.rb</span>
+<pre class="highlight ruby"><code><span class="c1"># app/application.rb</span>
 <span class="nb">require</span> <span class="s2">"opal"</span>
 
 <span class="nb">puts</span> <span class="s2">"Wow, running opal!"</span>
@@ -106,11 +106,11 @@ method.</p>
 <p>To build this, we need a rake task to load a new opal environment, add our
 <code>app/</code> directory to the load path, and then to build our target file
 <code>application.rb</code> which will be found because it is inside our added load path.</p>
-<pre><code class="highlight ruby"><span class="c1"># Rakefile</span>
+<pre class="highlight ruby"><code><span class="c1"># Rakefile</span>
 <span class="nb">require</span> <span class="s1">'opal'</span>
 
 <span class="n">desc</span> <span class="s2">"Build our app to build.js"</span>
-<span class="n">task</span> <span class="p">:</span><span class="n">build</span> <span class="k">do</span>
+<span class="n">task</span> <span class="ss">:build</span> <span class="k">do</span>
   <span class="no">Opal</span><span class="o">::</span><span class="no">Processor</span><span class="p">.</span><span class="nf">source_map_enabled</span> <span class="o">=</span> <span class="kp">false</span>
   <span class="n">env</span> <span class="o">=</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
   <span class="n">env</span><span class="p">.</span><span class="nf">append_path</span> <span class="s2">"app"</span>
@@ -125,7 +125,7 @@ method.</p>
 application compiled, with the opal runtime included as well.</p>
 
 <p>To run the application, lets create a very simple html file:</p>
-<pre><code class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"build.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
