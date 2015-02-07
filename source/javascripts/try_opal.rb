@@ -80,7 +80,7 @@ class TryOpal
   end
 
   def log_error(err)
-    print "#{err}\n#{`err.stack`}"
+    puts "#{err}\n#{`err.stack`}"
   end
 
   def print_to_output(str)
