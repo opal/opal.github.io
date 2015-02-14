@@ -11,7 +11,7 @@ First, install `opal` adding them to a `Gemfile`:
 
 ```ruby
 # Gemfile
-gem "opal", ">= 0.6.0"
+gem "opal", "~> 0.7.0"
 ```
 
 Next, we want to add our main app code. Keep all opal code inside `app/`
