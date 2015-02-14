@@ -28,7 +28,7 @@ You will notice the `require "opal"` line which will automatically include the
 opal runtime and corelib into our output, giving us access to the `puts()`
 method.
 
-To build this, we need a rake task to load a new sprockets environment, add our
+To build this, we need the rake task to add our
 `app/` directory to the load path, and then to build our target file
 `application.rb` which will be found because it is inside our added load path.
 
@@ -38,16 +38,8 @@ require 'opal'
 
 desc "Build our app to build.js"
 task :build do
-  env = Sprockets::Environment.new
-
-  Opal::Processor.source_map_enabled = false
   Opal.append_path "app"
-
-  Opal.paths.each { |p| env.append_path(p) }
-
-  File.open("build.js", "w+") do |out|
-    out << env["application"].to_s
-  end
+  File.binwrite "build.js", Opal::Builder.build("application").to_s
 end
 ```
 
