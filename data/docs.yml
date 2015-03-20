@@ -32,3 +32,6 @@
   url: '/docs/promises'
 - title: FAQ
   url: '/docs/faq'
+- title: Configuring Gems For Opal
+  url: '/docs/configuring_gems'
+

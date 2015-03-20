@@ -23,6 +23,7 @@ layout: 'layout'
 * [Templates](/docs/templates)
 * [Unsupported Features](/docs/unsupported_features)
 * [Using Sprockets](/docs/using_sprockets)
+* [Configuring Gems For Opal](/docs/configuring_gems)
 
 ## API Documentation
 
