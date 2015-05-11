@@ -1,41 +1,37 @@
 - title: Getting Started
-  url: '/docs'
-  children:
-    - title: Rails
-      url: '/docs/rails'
-    - title: Sinatra
-      url: '/docs/sinatra'
-    - title: Sprockets
-      url: '/docs/using_sprockets'
-    - title: Static Applications
-      url: '/docs/static_applications'
-    - title: CDN Distribution
-      url: '/docs/cdn_distribution'
+  url: '/docs/getting_started'
+- title: Rails
+  url: '/docs/rails'
+- title: Sinatra
+  url: '/docs/sinatra'
+- title: Sprockets
+  url: '/docs/using_sprockets'
+- title: Static Applications
+  url: '/docs/static_applications'
+- title: CDN Distribution
+  url: '/docs/cdn_distribution'
 - title: API documentation
   url: /docs/api
-- title: Digging Deeper
-  url: /docs/digging_deeper
-  children:
-    - title: Interacting with javascript
-      url: '/docs/interacting_with_javascript'
-    - title: Generated Code
-      url: '/docs/generated_javascript'
-    - title: '<tt>#method_missing</tt> support'
-      url: '/docs/method_missing'
-    - title: Accessing Ruby methods
-      url: '/docs/using_ruby_from_javascript'
-    - title: Compiler
-      url: '/docs/compiler'
-    - title: Source Maps
-      url: '/docs/source_maps'
+- title: Compiled Ruby Code
+  url: '/docs/compiled_ruby'
+- title: Compiler
+  url: '/docs/compiler'
+- title: Source Maps
+  url: '/docs/source_maps'
+- title: Unsupported Features
+  url: '/docs/unsupported_features'
 - title: Libraries
   url: '/docs/libraries'
-  children:
-    - title: Templates (Haml and ERB)
-      url: '/docs/templates'
-    - title: JQuery
-      url: '/docs/jquery'
-    - title: RSpec
-      url: '/docs/rspec'
+- title: Templates (Haml and ERB)
+  url: '/docs/templates'
+- title: JQuery
+  url: '/docs/jquery'
+- title: RSpec
+  url: '/docs/rspec'
+- title: Promises
+  url: '/docs/promises'
 - title: FAQ
   url: '/docs/faq'
+- title: Configuring Gems For Opal
+  url: '/docs/configuring_gems'
+

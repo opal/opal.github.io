@@ -43,17 +43,17 @@ class TryOpal
     @flush = []
 
     @output = Editor.new :output, lineNumbers: false, mode: 'text', readOnly: true
-    @viewer = Editor.new :viewer, lineNumbers: true, mode: 'javascript', readOnly: true, theme: 'solarized light'
-    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift', theme: 'solarized light', extraKeys: {
+    @viewer = Editor.new :viewer, lineNumbers: true, mode: 'javascript', readOnly: true, theme: 'tomorrow-night-eighties'
+    @editor = Editor.new :editor, lineNumbers: true, mode: 'ruby', tabMode: 'shift', theme: 'tomorrow-night-eighties', extraKeys: {
       'Cmd-Enter' => -> { run_code }
     }
 
     @link = Element.find('#link_code')
     Element.find('#run_code').on(:click) { run_code }
 
-    hash = `decodeURIComponent(location.hash)`
+    hash = `decodeURIComponent(location.hash || location.search)`
 
-    if hash.start_with? '#code:'
+    if hash =~ /^[#?]code:/
       @editor.value = hash[6..-1]
     else
       @editor.value = DEFAULT_TRY_CODE.strip
@@ -64,7 +64,7 @@ class TryOpal
     @flush = []
     @output.value = ''
 
-    @link[:href] = "#code:#{`encodeURIComponent(#{@editor.value})`}"
+    @link[:href] = "?code:#{`encodeURIComponent(#{@editor.value})`}"
 
     begin
       code = Opal.compile(@editor.value, :source_map_enabled => false)
@@ -80,19 +80,18 @@ class TryOpal
   end
 
   def log_error(err)
-    print_to_output "#{err}\n#{`err.stack`}"
+    puts "#{err}\n#{`err.stack`}"
   end
 
   def print_to_output(str)
     @flush << str
-    @output.value = @flush.join("\n")
+    @output.value = @flush.join('')
   end
 end
 
 Document.ready? do
-  def $stdout.puts(*strs)
-    strs.each { |str| TryOpal.instance.print_to_output str }
+  $stdout.write_proc = $stderr.write_proc = proc do |str|
+    TryOpal.instance.print_to_output(str)
   end
-
   TryOpal.instance.run_code
 end

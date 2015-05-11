@@ -1,40 +1,56 @@
+---
+title: 'Opal Documentation'
+layout: 'layout'
+---
+
 # Opal Documentation
 
-Opal is a ruby to javascript compiler, an implementation of the ruby corelib
-and stdlib, and associated gems for building fast client side web applications
-in ruby.
+## Guides
 
-## Installation
+* [Getting Started](/docs/getting_started)
+* [Compiled Ruby](/docs/compiled_ruby)
+* [Compiler](/docs/compiler)
+* [Encoding](/docs/encoding)
+* [FAQ](/docs/faq)
+* [JQuery](/docs/jquery)
+* [Libraries](/docs/libraries)
+* [Promises](/docs/promises)
+* [Rails](/docs/rails)
+* [RSpec](/docs/rspec)
+* [Sinatra](/docs/sinatra)
+* [Source Maps](/docs/source_maps)
+* [Static Applications](/docs/static_applications)
+* [Templates](/docs/templates)
+* [Unsupported Features](/docs/unsupported_features)
+* [Using Sprockets](/docs/using_sprockets)
+* [Configuring Gems For Opal](/docs/configuring_gems)
 
-Opal is available as a gem, and can be installed via:
+## API Documentation
 
-```sh
-$ gem install opal
+#### Corelib
+
+- [stable](http://opal.github.io/opal/doc/0-6-stable/corelib/frames.html#!file.README.html)
+- [master](http://opal.github.io/opal/doc/master/corelib/frames.html#!file.README.html)
+
+#### Stdlib
+
+- [stable](http://opal.github.io/opal/doc/0-6-stable/stdlib/frames.html#!file.README.html)
+- [master](http://opal.github.io/opal/doc/master/stdlib/frames.html#!file.README.html)
+
+## CDN Distribution
+
+Opal prebuilt <del>binaries</del>, err… compiled JavaScript files are available on:
+
+<a href="http://cdn.opalrb.org" class="btn btn-lg">http://cdn.opalrb.org</a>
+
+_Visit the link to have more detailed instructions_
+
+#### Example
+
+```html
+<head>
+  <meta charset="utf-8">
+  <script src="//cdn.opalrb.org/opal/current/opal.min.js"></script>
+  <script src="//cdn.opalrb.org/opal/current/opal-parser.min.js"></script>
+</head>
 ```
-
-Or added to your Gemfile as:
-
-```ruby
-gem 'opal'
-```
-
-## Getting started with Opal
-
-At its very core, opal provides a simple method of compiling a string of ruby
-into javascript that can run on top of the opal runtime, provided by opal.js:
-
-```ruby
-Opal.compile("[1, 2, 3].each { |a| puts a }")
-# => "(function() { ... })()"
-```
-
-opal includes `sprockets` support to sprockets for compiling ruby (and erb) assets,
-and treating them as first class javascript citizens. It works in a similar way
-to coffeescript, where javascript files can simply `require` ruby sources, and
-ruby sources can `require` javascript and other ruby files.
-
-This relies on the opal load path. Any gem containing opal code registers that
-directory to the opal load path. `opal` will then use all opal load
-paths when running sprockets instances. For rails applications,
-[opal-rails](http://github.com/opal/opal-rails#readme) does this automatically. For
-building a simple application, we have to do this manually.

@@ -1,0 +1,22 @@
+---
+title: "RSpec Playground"
+---
+= javascript_include_tag 'rspec-playground'
+= stylesheet_link_tag 'codemirror'
+= stylesheet_link_tag '_vendor/codemirror-solarized'
+
+:css
+  .CodeMirror { height: 100% !important; }
+  .CodeMirror-scroll { height: 100% !important; }
+
+.row
+  .col-md-12(style="margin-bottom: 20px")
+    %button.btn.btn-primary#run-code
+      Run Code (Cmd+Enter)
+
+.row
+  .col-md-6(style="height: 100%")
+    .top-pane#ruby_pane(style="height: 100%")
+  .col-md-6
+    .top-pane#result_pane(style="height: 100%")
+      %iframe.result-frame(frameborder="0" style="width: 100%; height: 100%")

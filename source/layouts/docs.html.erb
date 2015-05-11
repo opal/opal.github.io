@@ -1,24 +1,16 @@
 <% wrap_layout :layout do %>
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
-        <ul class="nav opal-sidebar">
-        <% data.docs.each do |item| %>
-          <li>
-            <%= link_to item.title, item.url %>
-            <% if item.children %>
-              <ul class="nav">
-              <% item.children.each do |child| %>
-                <li><%= link_to child.title, child.url %></li>
-              <% end %>
-              </ul>
-            <% end %>
-          </li>
-        <% end %>
-        </ul>
+      <div class="col-sm-12">
+        <h1><%= data.page.title %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
+        <%= table_of_contents current_page %>
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-8 col-md-pull-4">
         <%= yield %>
       </div>
     </div>
