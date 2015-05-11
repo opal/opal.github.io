@@ -31,8 +31,12 @@ title: "Opal: Ruby to Javascript Compiler"
   </p>
 
   <p>
-    Or discuss on the <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list <i class="ion-email"></i></a>
+    Discuss on the <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list <i class="ion-email"></i></a>
     or on <i class="ion-social-twitter"></i> <b>Twitter</b> <a href="http://twitter.com/opalrb">@opalrb</a>.
+  </p>
+  
+  <p>
+    Stay updated on the latest Opal news from around the web with the <a href="http://opalist.co">Opalist newsletter <i class="ion-paper-airplane"></i></a>.
   </p>
 </div>
 
