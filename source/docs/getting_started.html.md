@@ -20,6 +20,8 @@ gem 'opal'
 
 ## Getting started with Opal
 
+### Opal.compile
+
 At its very core, opal provides a simple method of compiling a string of ruby into javascript that can run on top of the opal runtime, provided by `opal.js`:
 
 ```ruby
@@ -27,6 +29,63 @@ Opal.compile("[1, 2, 3].each { |a| puts a }")
 # => "(function() { ... })()"
 ```
 
+### Opal::Builder
+
+To build more complex projects, such as files that require other files, you can use `Opal::Builder`.  You can call `build` directly on `Opal::Builder`:
+
+```ruby
+Opal::Builder.build('/path/to/file.rb').to_s
+```
+
+Or you can create a new `Opal::Builder` instance and call `build` on it:
+
+```ruby
+builder = Opal::Builder.new(:stubs=>['opal'])
+builder.append_paths('assets/js')
+builder.use_gem('opal-jquery')
+builder.build('/path/to/file.rb').to_s
+```
+
+In both cases, the output of `build(file).to_s` will be a string of javascript code.
+
+By default `Opal::Builder` will include the runtime in the resulting javascript code, if you do not want that, use the `:stubs=>['opal']` option as shown above.
+
+### CLI
+
+Opal includes an executable that can be used to build opal projects, using the `-c` option:
+
+```sh
+opal -c /path/to/file.rb > /path/to/file.js
+```
+
+By default `opal` will include the runtime in the resulting javascript code, if you do not want that, use the `-O` option.
+
+### Sprockets
+
 `opal` includes sprockets support to sprockets for compiling ruby (and erb) assets, and treating them as first class javascript citizens. It works in a similar way to coffeescript, where javascript files can simply require ruby sources, and ruby sources can require javascript and other ruby files.
 
 This relies on the opal load path. Any gem containing opal code registers that directory to the opal load path. opal will then use all opal load paths when running sprockets instances. For rails applications, opal-rails does this automatically. For building a simple application, we have to do this manually.
+
+### Tilt
+
+Opal includes tilt support, so that you can compile ruby files to javascript using tilt:
+
+```ruby
+require 'tilt/opal'
+Tilt.new('/path/to/file.rb').render
+```
+
+By default, this uses `Opal.compile`, so it doesn't handle require calls inside the file.  You can use the `:build` option to use `Opal::Builder`, so that requires will work correctly:
+
+```ruby
+require 'tilt/opal'
+Tilt.new('/path/to/file.rb', :build=>true).render
+```
+
+For more complete control, you can use the `:builder` option to pass in an `Opal::Builder` instance:
+
+```ruby
+require 'tilt/opal'
+builder = Opal::Builder.new(:stubs=>['opal'])
+Tilt.new('/path/to/file.rb', :builder=>builder).render
+```
