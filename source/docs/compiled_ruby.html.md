@@ -328,7 +328,103 @@ That’s all for now, bye!
 window.close!
 ```
 
-## Ruby from JavaScript
+### Calling Javascript Methods
+
+You can make direct javascript method calls on using the `recv.JS.method`
+syntax.  For example, if you have a javascript object named `foo` and want to call the
+`bar` method on it with no arguments, with or without parentheses:
+
+```ruby
+# javascript: foo.bar()
+foo.JS.bar
+foo.JS.bar()
+```
+
+You can call the javascript methods with arguments, with or without parentheses, just
+like ruby methods:
+
+```ruby
+# javascript: foo.bar(1, "a")
+foo.JS.bar(1, :a)
+foo.JS.bar 1, :a
+```
+
+You can call the javascript methods with argument splats:
+
+```ruby
+# javascript: ($a = foo).bar.apply($a, [1].concat([2, 3]))
+foo.JS.bar(1, *[2, 3])
+foo.JS.bar 1, *[2, 3]
+```
+
+You can provide a block when making a javascript method call, and it will be
+converted to a javascript function added as the last argument to the method:
+
+```ruby
+# javascript:
+# ($a = (TMP_1 = function(arg){
+#     var self = TMP_1.$$s || this;
+#     if (arg == null) arg = nil;
+#     return "" + (arg.method()) + " " + (self.$baz(3))
+#    },
+#    TMP_1.$$s = self, TMP_1),
+# foo.bar)(1, 2, $a);
+foo.JS.bar(1, 2){|arg| arg.JS.method + baz(3)}
+```
+
+Note how `self` is set for the javascript function passed as an argument.  This
+allows normal ruby block behavior to work when passing blocks to javascript
+methods.
+
+The `.JS.` syntax is recognized as a special token by the lexer, so if you have
+a ruby method named `JS` that you want to call, you can add a space to call it:
+
+```ruby
+# call ruby JS method on foo, call ruby bar method on result
+foo. JS.bar
+```
+
+### Getting/Setting Javascript Properties
+
+You can get javascript properties using the `recv.JS[:property]` syntax:
+
+```ruby
+# javascript: foo["bar"]
+foo.JS[:bar]
+```
+
+This also works for javascript array access:
+
+```ruby
+# javascript: foo[2]
+foo.JS[2]
+```
+
+You can set javascript properties using this as the left hand side in an
+assignment:
+
+```ruby
+# javascript: foo["bar"] = 1
+foo.JS[:bar] = 1
+```
+
+This also works for setting values in a javascript array:
+
+```ruby
+# javascript: foo[2] = "a"
+foo.JS[2] = :a
+```
+
+Like the `recv.JS.method` syntax, `.JS[` is recognized as a special token by
+the lexer, so if you want to call the ruby `JS` method on a object and then
+call the ruby `[]` method on the result, you can add a space:
+
+```ruby
+# call ruby JS method on foo, call ruby [] method on result with :a argument
+foo. JS[:a]
+```
+
+## Ruby from Javascript
 
 Accessing classes and methods defined in Opal from the JavaScript runtime is
 possible via the `Opal` js object. The following class:
