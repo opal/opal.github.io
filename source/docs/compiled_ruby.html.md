@@ -424,6 +424,52 @@ call the ruby `[]` method on the result, you can add a space:
 foo. JS[:a]
 ```
 
+### Calling Javascript Operators
+
+Opal has a `js` library in the stdlib that provides a `JS` module which can
+be used to call javascript operators such as `new`.  Example:
+
+```ruby
+require 'js'
+
+# new foo(bar)
+JS.new(foo, bar)
+
+# delete foo["bar"]
+JS.delete(foo, :bar)
+
+# "bar" in foo
+JS.in(:bar, foo)
+
+# foo instanceof bar
+JS.instanceof(foo, bar)
+
+# typeof foo
+JS.typeof(foo)
+```
+
+### Calling Javascript Global Functions
+
+You can also use the `js` library to call javascript global functions via
+`JS.call`:
+
+```ruby
+require 'js'
+
+# parseFloat("1.1")
+JS.call(:parseFloat, "1.1")
+```
+
+For convenience, `method_missing` is aliased to call, allowing you to call
+global javascript methods directly on the `JS` module:
+
+```ruby
+require 'js'
+
+# parseFloat("1.1")
+JS.parseFloat("1.1")
+```
+
 ## Ruby from Javascript
 
 Accessing classes and methods defined in Opal from the JavaScript runtime is
