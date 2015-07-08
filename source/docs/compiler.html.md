@@ -1,6 +1,6 @@
 # Opal Compiler
 
-Opal is a source to source compiler. It accepts Ruby code as a string and
+Opal is a source-to-source compiler. It accepts Ruby code as a string and
 generates JavaScript code which can be run in any environment. Generated
 code relies on the opal runtime which provides the class system and some
 other runtime helpers.
