@@ -80,19 +80,18 @@ class TryOpal
   end
 
   def log_error(err)
-    print_to_output "#{err}\n#{`err.stack`}"
+    puts "#{err}\n#{`err.stack`}"
   end
 
   def print_to_output(str)
     @flush << str
-    @output.value = @flush.join("\n")
+    @output.value = @flush.join('')
   end
 end
 
 Document.ready? do
-  def $stdout.puts(*strs)
-    strs.each { |str| TryOpal.instance.print_to_output str }
+  $stdout.write_proc = $stderr.write_proc = proc do |str|
+    TryOpal.instance.print_to_output(str)
   end
-
   TryOpal.instance.run_code
 end

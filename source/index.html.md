@@ -1,11 +1,11 @@
 ---
-title: "Opal: Ruby to Javascript Compiler"
+title: "Opal: Ruby to JavaScript Compiler"
 ---
 
 <div class="jumbotron opal-front-jumbo">
   <img src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' alt='' style='float:right;margin-top:-24px' width='128' height='128' />
   <div class="page-header">
-    <h1>Opal <small>Ruby to Javascript Compiler</small></h1>
+    <h1>Opal <small>Ruby to JavaScript Compiler</small></h1>
     <p>It is source-to-source, making it fast as a runtime. Opal includes a compiler (which can be run in any browser), a corelib and runtime implementation. The corelib/runtime is also very small.</p>
     <p>
       <a href="/docs" class="btn btn-primary btn-lg" role="button"><i class="ion-ios7-copy"></i> Opal Documentation</a>
@@ -31,8 +31,11 @@ title: "Opal: Ruby to Javascript Compiler"
   </p>
 
   <p>
-    Or discuss on the <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list <i class="ion-email"></i></a>
+    Discuss on the <a href="https://groups.google.com/forum/#!forum/opalrb">mailing list <i class="ion-email"></i></a>
     or on <i class="ion-social-twitter"></i> <b>Twitter</b> <a href="http://twitter.com/opalrb">@opalrb</a>.
+  </p>
+  <p>
+    Stay updated on the latest Opal news from around the web with the <a href="http://opalist.co">Opalist newsletter <i class="ion-paper-airplane"></i></a>.
   </p>
 </div>
 

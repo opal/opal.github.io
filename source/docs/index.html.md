@@ -23,6 +23,7 @@ layout: 'layout'
 * [Templates](/docs/templates)
 * [Unsupported Features](/docs/unsupported_features)
 * [Using Sprockets](/docs/using_sprockets)
+* [Configuring Gems For Opal](/docs/configuring_gems)
 
 ## API Documentation
 
@@ -51,5 +52,6 @@ _Visit the link to have more detailed instructions_
   <meta charset="utf-8">
   <script src="//cdn.opalrb.org/opal/current/opal.min.js"></script>
   <script src="//cdn.opalrb.org/opal/current/opal-parser.min.js"></script>
+  <script>Opal.require('opal-parser')</script>
 </head>
 ```

@@ -4,8 +4,8 @@ title: 'Opal and jQuery'
 
 # JQuery
 
-`opal-jquery` offers a nicer ruby-like syntax for JQuery (and Zepto). It is
-useful for projects which cannot use `opal-browser` due to a reliance on jquery
+`opal-jquery` offers a nicer Ruby-like syntax for JQuery (and Zepto). It is
+useful for projects which cannot use `opal-browser` due to a reliance on jQuery
 for plugins or other libraries.
 
 ```ruby
@@ -43,7 +43,7 @@ require 'opal'
 require 'jquery'
 require 'opal-jquery'
 
-alert "Hello from jquery + opal"
+alert "Hello from jQuery + opal"
 ```
 
 > **Note**: this file requires two important dependencies, `jquery` and `opal-jquery`.
@@ -53,14 +53,14 @@ alert "Hello from jquery + opal"
 > you are compiling assets from. You can alternatively require a zepto instance.
 
 The `#alert` method is provided by `opal-jquery`. If the message displays, then
-`jquery` support should be working.
+`jQuery` support should be working.
 
 ### How does opal-jquery work
 
 `opal-jquery` provides an `Element` class, whose instances are toll-free
-bridged instances of jquery objects. Just like ruby arrays are just javascript
-arrays, `Element` instances are just jquery objects. This makes interaction
-with jquery plugins much easier.
+bridged instances of jQuery objects. Just like Ruby arrays are just JavaScript
+arrays, `Element` instances are just jQuery objects. This makes interaction
+with jQuery plugins much easier.
 
 Also, `Element` will try to bridge with Zepto if it cannot find jQuery loaded,
 making it ideal for mobile applications as well.
@@ -90,7 +90,7 @@ Element.find('#navigation li:last')
 ```
 
 The result is just a jQuery instance, which is toll-free bridged to
-instances of the `Element` class in ruby:
+instances of the `Element` class in Ruby:
 
 ```ruby
 Element.find('.foo').class
@@ -141,7 +141,7 @@ end
 ```
 
 An `Event` instance is optionally passed to block handlers as well,
-which is toll-free bridged to jquery events:
+which is toll-free bridged to jQuery events:
 
 ```ruby
 Element.find('#my_link').on(:click) do |evt|
