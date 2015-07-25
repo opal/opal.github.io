@@ -328,10 +328,10 @@ That’s all for now, bye!
 window.close!
 ```
 
-### Calling Javascript Methods
+### Calling JavaScript Methods
 
-You can make direct javascript method calls on using the `recv.JS.method`
-syntax.  For example, if you have a javascript object named `foo` and want to call the
+You can make direct JavaScript method calls on using the `recv.JS.method`
+syntax.  For example, if you have a JavaScript object named `foo` and want to call the
 `bar` method on it with no arguments, with or without parentheses:
 
 ```ruby
@@ -340,28 +340,28 @@ foo.JS.bar
 foo.JS.bar()
 ```
 
-You can call the javascript methods with arguments, with or without parentheses, just
-like ruby methods:
+You can call the JavaScript methods with arguments, with or without parentheses, just
+like Ruby methods:
 
 ```ruby
-# javascript: foo.bar(1, "a")
+# JavaScript: foo.bar(1, "a")
 foo.JS.bar(1, :a)
 foo.JS.bar 1, :a
 ```
 
-You can call the javascript methods with argument splats:
+You can call the JavaScript methods with argument splats:
 
 ```ruby
-# javascript: ($a = foo).bar.apply($a, [1].concat([2, 3]))
+# JavaScript: ($a = foo).bar.apply($a, [1].concat([2, 3]))
 foo.JS.bar(1, *[2, 3])
 foo.JS.bar 1, *[2, 3]
 ```
 
-You can provide a block when making a javascript method call, and it will be
-converted to a javascript function added as the last argument to the method:
+You can provide a block when making a JavaScript method call, and it will be
+converted to a JavaScript function added as the last argument to the method:
 
 ```ruby
-# javascript:
+# JavaScript:
 # ($a = (TMP_1 = function(arg){
 #     var self = TMP_1.$$s || this;
 #     if (arg == null) arg = nil;
@@ -372,62 +372,62 @@ converted to a javascript function added as the last argument to the method:
 foo.JS.bar(1, 2){|arg| arg.JS.method + baz(3)}
 ```
 
-Note how `self` is set for the javascript function passed as an argument.  This
-allows normal ruby block behavior to work when passing blocks to javascript
+Note how `self` is set for the JavaScript function passed as an argument.  This
+allows normal Ruby block behavior to work when passing blocks to JavaScript
 methods.
 
 The `.JS.` syntax is recognized as a special token by the lexer, so if you have
-a ruby method named `JS` that you want to call, you can add a space to call it:
+a Ruby method named `JS` that you want to call, you can add a space to call it:
 
 ```ruby
-# call ruby JS method on foo, call ruby bar method on result
+# call Ruby JS method on foo, call Ruby bar method on result
 foo. JS.bar
 ```
 
-### Getting/Setting Javascript Properties
+### Getting/Setting JavaScript Properties
 
-You can get javascript properties using the `recv.JS[:property]` syntax:
+You can get JavaScript properties using the `recv.JS[:property]` syntax:
 
 ```ruby
-# javascript: foo["bar"]
+# JavaScript: foo["bar"]
 foo.JS[:bar]
 ```
 
-This also works for javascript array access:
+This also works for JavaScript array access:
 
 ```ruby
-# javascript: foo[2]
+# JavaScript: foo[2]
 foo.JS[2]
 ```
 
-You can set javascript properties using this as the left hand side in an
+You can set JavaScript properties using this as the left hand side in an
 assignment:
 
 ```ruby
-# javascript: foo["bar"] = 1
+# JavaScript: foo["bar"] = 1
 foo.JS[:bar] = 1
 ```
 
-This also works for setting values in a javascript array:
+This also works for setting values in a JavaScript array:
 
 ```ruby
-# javascript: foo[2] = "a"
+# JavaScript: foo[2] = "a"
 foo.JS[2] = :a
 ```
 
 Like the `recv.JS.method` syntax, `.JS[` is recognized as a special token by
-the lexer, so if you want to call the ruby `JS` method on a object and then
-call the ruby `[]` method on the result, you can add a space:
+the lexer, so if you want to call the Ruby `JS` method on a object and then
+call the Ruby `[]` method on the result, you can add a space:
 
 ```ruby
-# call ruby JS method on foo, call ruby [] method on result with :a argument
+# call Ruby JS method on foo, call Ruby [] method on result with :a argument
 foo. JS[:a]
 ```
 
-### Calling Javascript Operators
+### Calling JavaScript Operators
 
 Opal has a `js` library in the stdlib that provides a `JS` module which can
-be used to call javascript operators such as `new`.  Example:
+be used to call JavaScript operators such as `new`.  Example:
 
 ```ruby
 require 'js'
@@ -448,9 +448,9 @@ JS.instanceof(foo, bar)
 JS.typeof(foo)
 ```
 
-### Calling Javascript Global Functions
+### Calling JavaScript Global Functions
 
-You can also use the `js` library to call javascript global functions via
+You can also use the `js` library to call JavaScript global functions via
 `JS.call`:
 
 ```ruby
@@ -461,7 +461,7 @@ JS.call(:parseFloat, "1.1")
 ```
 
 For convenience, `method_missing` is aliased to call, allowing you to call
-global javascript methods directly on the `JS` module:
+global JavaScript methods directly on the `JS` module:
 
 ```ruby
 require 'js'
@@ -470,7 +470,7 @@ require 'js'
 JS.parseFloat("1.1")
 ```
 
-## Ruby from Javascript
+## Ruby from JavaScript
 
 Accessing classes and methods defined in Opal from the JavaScript runtime is
 possible via the `Opal` js object. The following class:
