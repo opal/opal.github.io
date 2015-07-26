@@ -14,7 +14,7 @@ gem 'opal', '~> 0.6.2'
 
 Opal uses `sprockets` as its default build system, so the asset-pipeline
 from rails can be mimicked here to map all ruby assets in the `/assets`
-path to be compiled using opal.
+path to be compiled using Opal.
 
 ## Basic Application
 
@@ -53,9 +53,9 @@ run Sinatra::Application
 This creates a simple sprockets instance under the `/assets` path. Opal
 uses a set of load paths to compile assets using sprockets. The
 `Opal::Environment` instance is a simple subclass of `Sprockets::Environment`
-with all the custom opal paths added automatically.
+with all the custom Opal paths added automatically.
 
-This `env` object includes all the opal corelib and stdlib paths. To add
+This `env` object includes all the Opal corelib and stdlib paths. To add
 any custom application directories, you must add them to the load path using
 `env.append_path`. You can now add an `app/application.rb` file into this
 added path with some basic content:
@@ -67,7 +67,7 @@ require 'opal'
 puts "wow, running ruby!"
 ```
 
-It is necessary to require the opal corelib (seen in the `require` call) above.
+It is necessary to require the Opal corelib (seen in the `require` call) above.
 This just makes the Opal runtime and corelib available. Then it is possible to
 use all the corelib methods and classes, e.g. `Kernel#puts` as seen above.
 

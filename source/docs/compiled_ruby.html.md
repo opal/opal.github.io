@@ -28,7 +28,7 @@ or `undefined`, and they are considered bad values to be inside Ruby code.
 
 **true** and **false** are compiled directly into their native boolean
 equivalents. This makes interaction a lot easier as there is no need
-to convert values to opal specific values.
+to convert values to Opal specific values.
 
 <div class="opal-callout opal-callout-info">
 Because <code>true</code> and <code>false</code> compile to their native
@@ -62,7 +62,7 @@ class. Symbols and Strings can therefore be used interchangeably.
 
 #### Numbers
 
-In Opal there is a single class for numbers; `Numeric`. To keep opal
+In Opal there is a single class for numbers; `Numeric`. To keep Opal
 as performant as possible, Ruby numbers are mapped to native numbers.
 This has the side effect that all numbers must be of the same class.
 Most relevant methods from `Integer`, `Float` and `Numeric` are
@@ -210,7 +210,7 @@ obvious what went wrong.
 
 ### Using JavaScript debuggers
 
-As opal just generates JavaScript, it is useful to use a native
+As Opal just generates JavaScript, it is useful to use a native
 debugger to work through JavaScript code. To use a debugger, simply
 add an x-string similar to the following at the place you wish to
 debug:
@@ -240,7 +240,7 @@ hashes.
 
 ### Inline JavaScript
 
-As most of the corelib deals with these low level details, opal provides
+As most of the corelib deals with these low level details, Opal provides
 a special syntax for inlining JavaScript code. This is done with
 x-strings or "backticks", as their Ruby use has no useful translation
 in the browser.
@@ -380,7 +380,7 @@ myHash.$to_n(); // provided by the Native module
 
 ### Method Missing
 
-Opal supports `method_missing`. This is a key feature of Ruby, and opal wouldn't be much use without it! This page details the implementation of `method_missing` for Opal.
+Opal supports `method_missing`. This is a key feature of Ruby, and Opal wouldn't be much use without it! This page details the implementation of `method_missing` for Opal.
 
 #### Method dispatches
 
@@ -396,7 +396,7 @@ This should be pretty easy to read. The `bar` method has a `$` prefix just to di
 
 JavaScript does not have an equivalent of `method_missing`, so how do we handle it? If a function is missing in JavaScript, then a language level exception will be raised.
 
-To get around this, we make use of our compiler. During parsing, we collect a list of all method calls made inside a Ruby file, and this gives us a list of all possible method calls. We then add stub methods to the root object prototype (an opal object, not the global JavaScript Object) which will proxy our method missing calls for us.
+To get around this, we make use of our compiler. During parsing, we collect a list of all method calls made inside a Ruby file, and this gives us a list of all possible method calls. We then add stub methods to the root object prototype (an Opal object, not the global JavaScript Object) which will proxy our method missing calls for us.
 
 For example, assume the following Ruby script:
 
@@ -423,7 +423,7 @@ class BasicObject
 end
 ```
 
-It is obvious from here, that unless an object defines any given method, it will always resort in a dispatch to `method_missing` from one of our defined stub methods. This is how we get `method_missing` in opal.
+It is obvious from here, that unless an object defines any given method, it will always resort in a dispatch to `method_missing` from one of our defined stub methods. This is how we get `method_missing` in Opal.
 
 #### Optimising generated code
 

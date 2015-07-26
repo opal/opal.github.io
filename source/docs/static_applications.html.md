@@ -1,6 +1,6 @@
 # Static Building
 
-`opal` makes it easy to build static opal applications. Opal uses internal load
+`opal` makes it easy to build static Opal applications. Opal uses internal load
 paths to make it easy to handle resolving requirements during building. `opal`
 forms the basis of rails support, so anything you can do there, you can do
 standalone as well.
@@ -14,7 +14,7 @@ First, install `opal` adding them to a `Gemfile`:
 gem "opal", "~> 0.7.0"
 ```
 
-Next, we want to add our main app code. Keep all opal code inside `app/`
+Next, we want to add our main app code. Keep all Opal code inside `app/`
 directory, and edit `app/application.rb`:
 
 ```ruby
@@ -25,7 +25,7 @@ puts "Wow, running opal!"
 ```
 
 You will notice the `require "opal"` line which will automatically include the
-opal runtime and corelib into our output, giving us access to the `puts()`
+Opal runtime and corelib into our output, giving us access to the `puts()`
 method.
 
 To build this, we need the rake task to add our
@@ -44,7 +44,7 @@ end
 ```
 
 Now, if you run `rake build` you will get the `build.js` output file with our
-application compiled, with the opal runtime included as well.
+application compiled, with the Opal runtime included as well.
 
 To run the application, lets create a very simple html file:
 
