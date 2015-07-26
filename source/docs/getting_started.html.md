@@ -22,7 +22,7 @@ gem 'opal'
 
 ### Opal.compile
 
-At its very core, opal provides a simple method of compiling a string of Ruby into JavaScript that can run on top of the opal runtime, provided by `opal.js`:
+At its very core, Opal provides a simple method of compiling a string of Ruby into JavaScript that can run on top of the Opal runtime, provided by `opal.js`:
 
 ```ruby
 Opal.compile("[1, 2, 3].each { |a| puts a }")
@@ -52,7 +52,7 @@ By default `Opal::Builder` will include the runtime in the resulting JavaScript 
 
 ### CLI
 
-Opal includes an executable that can be used to build opal projects, using the `-c` option:
+Opal includes an executable that can be used to build Opal projects, using the `-c` option:
 
 ```sh
 opal -c /path/to/file.rb > /path/to/file.js
@@ -62,9 +62,9 @@ By default `opal` will include the runtime in the resulting JavaScript code, if 
 
 ### Sprockets
 
-`opal` includes sprockets support to sprockets for compiling Ruby (and erb) assets, and treating them as first class JavaScript citizens. It works in a similar way to CoffeeScript, where JavaScript files can simply require Ruby sources, and Ruby sources can require JavaScript and other Ruby files.
+`Opal` includes sprockets support to sprockets for compiling Ruby (and erb) assets, and treating them as first class JavaScript citizens. It works in a similar way to CoffeeScript, where JavaScript files can simply require Ruby sources, and Ruby sources can require JavaScript and other Ruby files.
 
-This relies on the opal load path. Any gem containing opal code registers that directory to the opal load path. opal will then use all opal load paths when running sprockets instances. For Rails applications, opal-rails does this automatically. For building a simple application, we have to do this manually.
+This relies on the Opal load path. Any gem containing Opal code registers that directory to the Opal load path. Opal will then use all Opal load paths when running sprockets instances. For Rails applications, opal-rails does this automatically. For building a simple application, we have to do this manually.
 
 ### Tilt
 

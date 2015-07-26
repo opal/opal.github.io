@@ -48,7 +48,7 @@ Template['login']
 
 ## Haml templates
 
-`opal-haml` allows `.haml` templates to be compiled, just like opal compiles
+`opal-haml` allows `.haml` templates to be compiled, just like Opal compiles
 ruby code, ready to run on the client.
 
 To get started, add to your Gemfile:
@@ -62,7 +62,7 @@ gem 'opal-haml'
 `opal-haml` simply registers the `.haml` template to be handled under sprockets.
 This means, that you can simply `require()` a haml template in your code.
 
-Lets say you have the following simple opal app:
+Lets say you have the following simple Opal app:
 
 ```ruby
 # app/application.rb
@@ -118,7 +118,7 @@ check it out, you should see it compiled into something like the following:
 
 ## ERB Templates
 
-Support for `erb` templates is built in directly to the opal gem and stdlib.
+Support for `erb` templates is built in directly to the Opal gem and stdlib.
 There is one caveat though when working with sprockets - it must have the
 `.opalerb` file extension, instead of `.erb`. This is because sprockets has a
 built in handler for `.erb` files.

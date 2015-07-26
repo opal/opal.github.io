@@ -34,7 +34,7 @@ gem 'opal-jquery'
 
 #### Usage
 
-`opal-jquery` can now be easily added to your opal application sources using a
+`opal-jquery` can now be easily added to your Opal application sources using a
 standard require:
 
 ```ruby
@@ -43,7 +43,7 @@ require 'opal'
 require 'jquery'
 require 'opal-jquery'
 
-alert "Hello from jQuery + opal"
+alert "Hello from jQuery + Opal"
 ```
 
 > **Note**: this file requires two important dependencies, `jquery` and `opal-jquery`.

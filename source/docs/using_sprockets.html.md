@@ -1,7 +1,7 @@
 # Opal & Sprockets
 
 Opal comes with built-in sprockets support, and provides a simple `Opal::Server`
-class to make it easy to get a rack server up and running for trying out opal.
+class to make it easy to get a rack server up and running for trying out Opal.
 This server will automatically recompile ruby sources when they change, meaning
 you just need to refresh your page to autorun.
 
@@ -18,7 +18,7 @@ gem 'opal', '>= 0.6.0'
 
 And install with `bundle install`.
 
-We need a directory to hold our opal code, so create `app/` and add a simple
+We need a directory to hold our Opal code, so create `app/` and add a simple
 demo script to `app/application.rb`:
 
 ```ruby
@@ -61,7 +61,7 @@ run Opal::Server.new { |s|
 }
 ```
 
-This rack app simply adds our `app/` directory to opal load path, and sets our
+This rack app simply adds our `app/` directory to Opal load path, and sets our
 main file to `application`, which will be found inside `app/`.
 
 ## Running the app

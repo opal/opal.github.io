@@ -4,7 +4,7 @@ title: RSpec
 
 # RSpec
 
-`opal-rspec` allows opal to use rspec for running specs in javascript
+`opal-rspec` allows Opal to use rspec for running specs in javascript
 environments. It comes with built-in support for running rspec with custom
 `phantomjs` and standard web browser formatters. Also, async spec examples
 are supported to reflect browser usage of ruby applications.
@@ -99,4 +99,3 @@ end
 The block passed to `run_async` informs the runner that this spec is finished
 so it can move on. Any failures/expectations run inside this block will be run
 in the context of the example.
-
