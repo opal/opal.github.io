@@ -70,3 +70,31 @@ Run `bundle exec rackup` and visit the page `http://localhost:9292` in any
 browser. Observe the console to see the printed statement.
 
 You can just change `app/application.rb` and refresh the page to see any changes.
+
+## Speed improvements for larger applications
+
+You can use other opal compatible gems, either opal specific ones or pure ruby ones that are
+compatible with opal. To use them you will also need to add ``` Opal.use_gem("some-gem") ```
+to config.ru.
+
+You will notice that for larger applications sprockets default file cache (in tmp/) can get quite
+slow. Too speed things up you can use the memory cache sprockets supply by configuring it in the
+`config.ru`
+
+
+```ruby
+ #as above ...
+
+  s.index_path = 'index.html'
+  s.sprockets.cache = Sprockets::Cache::MemoryStore.new(1000)
+}
+```
+
+The number 1000 is the default size of keys the cache retains. Basically this is the number of files
+in you system, so you can adjust accordingly.
+
+Another way to speed up load-times is to switch debug off. In (default) debug mode the server will
+generate one js file per ruby file, and as source maps are also on by default, one source map per
+file. The separate request for several hundred files can easily add several seconds.
+To avoid this, at the cost of less debugging (in the browser), add  ``` s.debug = false ``` to the
+`config.ru` .
