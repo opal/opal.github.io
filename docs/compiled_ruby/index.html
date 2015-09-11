@@ -1,0 +1,632 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Compiled Ruby Code</title>
+
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="docs docs_compiled_ruby docs_compiled_ruby_index">
+  <nav class='navbar navbar-default opal-nav' role='navigation'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <a class='navbar-brand' href='/'>
+        <img height='22' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' style='margin-top:-10%;' width='22'>
+        Opal
+      </a>
+      <button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
+    </div>
+    <div class='navbar-collapse collapse' id='opal-navbar'>
+      <ul class='nav navbar-nav'>
+        <li>
+          <a href='/try'>
+            <i class='ion-ios7-compose'></i>
+            Try
+          </a>
+        </li>
+        <li>
+          <a href='/blog'>
+            <i class='ion-ios7-chatboxes'></i>
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href='/docs'>
+            <i class='ion-ios7-copy'></i>
+            Documentation
+          </a>
+        </li>
+        <li>
+          <a href='/libraries'>
+            <i class='ion-android-developer'></i>
+            Libraries
+          </a>
+        </li>
+        <li>
+          <a href='https://github.com/opal/opal#readme'>
+            <i class='ion-social-github'></i>
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+
+  <div class="container">
+      <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Compiled Ruby Code</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
+        <ul class="nav opal-sidebar">
+<li class="toc-list-chapter"><a href="#generated-javascript">Generated JavaScript</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#literals">Literals</a>
+<li class="toc-list-subchapter"><a href="#logic-and-conditionals">Logic and conditionals</a>
+<li class="toc-list-subchapter"><a href="#instance-variables">Instance variables</a></li>
+</ul>
+<li class="toc-list-chapter"><a href="#compiled-files">Compiled Files</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#using-compiled-sources">Using compiled sources</a>
+<li class="toc-list-subchapter"><a href="#debugging-and-finding-errors">Debugging and finding errors</a>
+<li class="toc-list-subchapter"><a href="#using-javascript-debuggers">Using JavaScript debuggers</a></li>
+</ul>
+<li class="toc-list-chapter"><a href="#javascript-from-ruby">JavaScript from Ruby</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#inline-javascript">Inline JavaScript</a>
+<li class="toc-list-subchapter"><a href="#native-module">Native Module</a>
+<li class="toc-list-subchapter"><a href="#calling-javascript-methods">Calling JavaScript Methods</a>
+<li class="toc-list-subchapter"><a href="#getting/setting-javascript-properties">Getting/Setting JavaScript Properties</a>
+<li class="toc-list-subchapter"><a href="#calling-javascript-operators">Calling JavaScript Operators</a>
+<li class="toc-list-subchapter"><a href="#calling-javascript-global-functions">Calling JavaScript Global Functions</a></li>
+</ul>
+<li class="toc-list-chapter"><a href="#ruby-from-javascript">Ruby from JavaScript</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#hash">Hash</a></li>
+</ul>
+<li class="toc-list-chapter"><a href="#advanced-compilation">Advanced Compilation</a>
+<ul class="subchapter">
+<li class="toc-list-subchapter"><a href="#method-missing">Method Missing</a></li>
+</ul></li></ul>
+      </div>
+
+      <div class="col-md-8 col-md-pull-4">
+        <h2 id="generated-javascript">Generated JavaScript</h2>
+
+<p>Opal is a source-to-source compiler, so there is no VM as such and the
+compiled code aims to be as fast and efficient as possible, mapping
+directly to underlying JavaScript features and objects where possible.</p>
+
+<h3 id="literals">Literals</h3>
+<pre class="highlight ruby"><code><span class="kp">nil</span>         <span class="c1"># =&gt; nil</span>
+<span class="kp">true</span>        <span class="c1"># =&gt; true</span>
+<span class="kp">false</span>       <span class="c1"># =&gt; false</span>
+<span class="nb">self</span>        <span class="c1"># =&gt; self</span>
+</code></pre>
+
+<p><strong>self</strong> is mostly compiled to <code>this</code>. Methods and blocks are implemented
+as JavaScript functions, so their <code>this</code> value will be the right
+<code>self</code> value. Class bodies and the top level scope use a <code>self</code> variable
+to improve readability.</p>
+
+<p><strong>nil</strong> is compiled to a <code>nil</code> JavaScript variable. <code>nil</code> is a real object
+which allows methods to be called on it. Opal cannot send methods to <code>null</code>
+or <code>undefined</code>, and they are considered bad values to be inside Ruby code.</p>
+
+<p><strong>true</strong> and <strong>false</strong> are compiled directly into their native boolean
+equivalents. This makes interaction a lot easier as there is no need
+to convert values to Opal specific values.</p>
+
+<div class="opal-callout opal-callout-info">
+Because <code>true</code> and <code>false</code> compile to their native
+JavaScript equivalents, they must share the same class: <code>Boolean</code>.
+For this reason, they do not belong to their respective <code>TrueClass</code>
+and <code>FalseClass</code> classes from Ruby.
+</div>
+
+<h4 id="strings-&amp;-symbols">Strings &amp; Symbols</h4>
+<pre class="highlight ruby"><code><span class="s2">"hello world!"</span>    <span class="c1"># =&gt; "hello world!"</span>
+<span class="ss">:foo</span>              <span class="c1"># =&gt; "foo"</span>
+<span class="o">&lt;&lt;-</span><span class="no">EOS</span>            <span class="c1"># =&gt; "\nHello there.\n"</span><span class="sh">
+Hello there.
+</span><span class="no">EOS</span>
+</code></pre>
+
+<p>Ruby strings are compiled directly into JavaScript strings for
+performance as well as readability. This has the side effect that Opal
+does not support mutable strings - i.e. all strings are immutable.</p>
+
+<div class="opal-callout opal-callout-info">
+  Strings in Opal are immutable because they are compiled into regular
+  JavaScript strings. This is done for performance reasons.
+</div>
+
+<p>For performance reasons, symbols are also compiled directly into strings.
+Opal supports all the symbol syntaxes, but does not have a real <code>Symbol</code>
+class. Symbols and Strings can therefore be used interchangeably.</p>
+
+<h4 id="numbers">Numbers</h4>
+
+<p>In Opal there is a single class for numbers; <code>Numeric</code>. To keep Opal
+as performant as possible, Ruby numbers are mapped to native numbers.
+This has the side effect that all numbers must be of the same class.
+Most relevant methods from <code>Integer</code>, <code>Float</code> and <code>Numeric</code> are
+implemented on this class.</p>
+<pre class="highlight ruby"><code><span class="mi">42</span>        <span class="c1"># =&gt; 42</span>
+<span class="mi">3</span><span class="o">.</span><span class="mi">142</span>     <span class="c1"># =&gt; 3.142</span>
+</code></pre>
+
+<h4 id="arrays">Arrays</h4>
+
+<p>Ruby arrays are compiled directly into JavaScript arrays. Special
+Ruby syntaxes for word arrays etc are also supported.</p>
+<pre class="highlight ruby"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>        <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+<span class="sx">%w[foo bar baz]</span>     <span class="c1"># =&gt; ["foo", "bar", "baz"]</span>
+</code></pre>
+
+<h4 id="hash">Hash</h4>
+
+<p>Inside a generated Ruby script, a function <code>__hash</code> is available which
+creates a new hash. This is also available in JavaScript as <code>Opal.hash</code>
+and simply returns a new instance of the <code>Hash</code> class.</p>
+<pre class="highlight ruby"><code><span class="p">{</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">:baz</span> <span class="o">=&gt;</span> <span class="mi">700</span> <span class="p">}</span>    <span class="c1"># =&gt; __hash("foo", 100, "baz", 700)</span>
+<span class="p">{</span> <span class="ss">foo: </span><span class="mi">42</span><span class="p">,</span> <span class="ss">bar: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="p">}</span>     <span class="c1"># =&gt; __hash("foo", 42, "bar", [1, 2, 3])</span>
+</code></pre>
+
+<h4 id="range">Range</h4>
+
+<p>Similar to hash, there is a function <code>__range</code> available to create
+range instances.</p>
+<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">4</span>        <span class="c1"># =&gt; __range(1, 4, true)</span>
+<span class="mi">3</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">7</span>       <span class="c1"># =&gt; __range(3, 7, false)</span>
+</code></pre>
+
+<h3 id="logic-and-conditionals">Logic and conditionals</h3>
+
+<p>As per Ruby, Opal treats only <code>false</code> and <code>nil</code> as falsy, everything
+else is a truthy value including <code>&quot;&quot;</code>, <code>0</code> and <code>[]</code>. This differs from
+JavaScript as these values are also treated as false.</p>
+
+<p>For this reason, most truthy tests must check if values are <code>false</code> or
+<code>nil</code>.</p>
+
+<p>Taking the following test:</p>
+<pre class="highlight ruby"><code><span class="n">val</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="k">if</span> <span class="n">val</span>
+  <span class="k">return</span> <span class="mi">3</span><span class="o">.</span><span class="mi">142</span><span class="p">;</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>This would be compiled into:</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">val</span> <span class="o">!==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="nx">val</span> <span class="o">!==</span> <span class="nx">nil</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mf">3.142</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>This makes the generated truthy tests (<code>if</code> statements, <code>and</code> checks and
+<code>or</code> statements) a little more verbose in the generated code.</p>
+
+<h3 id="instance-variables">Instance variables</h3>
+
+<p>Instance variables in Opal work just as expected. When ivars are set or
+retrieved on an object, they are set natively without the <code>@</code> prefix.
+This allows real JavaScript identifiers to be used which is more
+efficient then accessing variables by string name.</p>
+<pre class="highlight ruby"><code><span class="vi">@foo</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="vi">@foo</span>  <span class="c1"># =&gt; 200</span>
+
+<span class="vi">@bar</span>  <span class="c1"># =&gt; nil</span>
+</code></pre>
+
+<p>This gets compiled into:</p>
+<pre class="highlight javascript"><code><span class="k">this</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span>   <span class="c1">// =&gt; 200</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>   <span class="c1">// =&gt; nil</span>
+</code></pre>
+
+<div class="opal-callout opal-callout-info">
+If an instance variable uses the same name as a reserved JavaScript keyword,
+then the instance variable is wrapped using the object-key notation:
+<code>this['class']</code>.
+</div>
+
+<h2 id="compiled-files">Compiled Files</h2>
+
+<p>As described above, a compiled Ruby source gets generated into a string
+of JavaScript code that is wrapped inside an anonymous function. This
+looks similar to the following:</p>
+<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$klass</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+  <span class="c1">// generated code</span>
+<span class="p">})(</span><span class="nx">Opal</span><span class="p">);</span>
+</code></pre>
+
+<p>As a complete example, assuming the following code:</p>
+<pre class="highlight ruby"><code><span class="nb">puts</span> <span class="s2">"foo"</span>
+</code></pre>
+
+<p>This would compile directly into:</p>
+<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$opal</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$klass</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">klass</span><span class="p">,</span> <span class="nx">self</span> <span class="o">=</span> <span class="nx">$opal</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+  <span class="nx">self</span><span class="p">.</span><span class="nx">$puts</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">);</span>
+<span class="p">})(</span><span class="nx">Opal</span><span class="p">);</span>
+</code></pre>
+
+<p>Most of the helpers are no longer present as they are not used in this
+example.</p>
+
+<h3 id="using-compiled-sources">Using compiled sources</h3>
+
+<p>If you write the generated code as above into a file <code>app.js</code> and add
+that to your HTML page, then it is obvious that <code>&quot;foo&quot;</code> would be
+written to the browser&#39;s console.</p>
+
+<h3 id="debugging-and-finding-errors">Debugging and finding errors</h3>
+
+<p>Because Opal does not aim to be fully compatible with Ruby, there are
+some instances where things can break and it may not be entirely
+obvious what went wrong.</p>
+
+<h3 id="using-javascript-debuggers">Using JavaScript debuggers</h3>
+
+<p>As Opal just generates JavaScript, it is useful to use a native
+debugger to work through JavaScript code. To use a debugger, simply
+add an x-string similar to the following at the place you wish to
+debug:</p>
+<pre class="highlight ruby"><code><span class="c1"># .. code</span>
+<span class="sb">`debugger`</span>
+<span class="c1"># .. more code</span>
+</code></pre>
+
+<p>The x-strings just pass the debugger statement straight through to the
+JavaScript output.</p>
+
+<div class="opal-callout opal-callout-info">
+  All local variables and method/block arguments also keep their Ruby
+  names except in the rare cases when the name is reserved in JavaScript.
+  In these cases, a <code>$</code> suffix is added to the name
+  (e.g. <code>try</code> => <code>try$</code>).
+</div>
+
+<h2 id="javascript-from-ruby">JavaScript from Ruby</h2>
+
+<p>Opal tries to interact as cleanly with JavaScript and its api as much
+as possible. Ruby arrays, strings, numbers, regexps, blocks and booleans
+are just JavaScript native equivalents. The only boxed core features are
+hashes.</p>
+
+<h3 id="inline-javascript">Inline JavaScript</h3>
+
+<p>As most of the corelib deals with these low level details, Opal provides
+a special syntax for inlining JavaScript code. This is done with
+x-strings or &quot;backticks&quot;, as their Ruby use has no useful translation
+in the browser.</p>
+<pre class="highlight ruby"><code><span class="sb">`window.title`</span>
+<span class="c1"># =&gt; "Opal: Ruby to JavaScript compiler"</span>
+
+<span class="sx">%x{
+  console.log("opal version is:");
+  console.log(</span><span class="si">#{</span> <span class="no">RUBY_ENGINE_VERSION</span> <span class="si">}</span><span class="sx">);
+}</span>
+
+<span class="c1"># =&gt; opal version is:</span>
+<span class="c1"># =&gt; 0.6.0</span>
+</code></pre>
+
+<p>Even interpolations are supported, as seen here.</p>
+
+<p>This feature of inlining code is used extensively, for example in
+Array#length:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">length</span>
+    <span class="sb">`this.length`</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>X-Strings also have the ability to automatically return their value,
+as used by this example.</p>
+
+<h3 id="native-module">Native Module</h3>
+
+<p><em>Reposted from: <a href="http://dev.mikamai.com/post/79398725537/using-native-javascript-objects-from-opal">Mikamayhem</a></em></p>
+
+<p>Opal standard lib (stdlib) includes a <code>Native</code> module. To use it, you need to download and reference <code>native.js</code>. You can find the latest minified one from the CDN <a href="http://cdn.opalrb.org/opal/current/native.min.js">here</a>.</p>
+
+<p>Let&#39;s see how it works and wrap <code>window</code>:</p>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'native'</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="no">Native</span><span class="p">(</span><span class="sb">`window`</span><span class="p">)</span> <span class="c1"># equivalent to Native::Object.new(`window`)</span>
+</code></pre>
+
+<p>Now what if we want to access one of its properties?</p>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span>                         <span class="c1"># =&gt; "http://dev.mikamai.com/"</span>
+<span class="n">window</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"http://mikamai.com/"</span> <span class="c1"># will bring you to mikamai.com</span>
+</code></pre>
+
+<p>And what about methods?</p>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s1">'hey there!'</span><span class="p">)</span>
+</code></pre>
+
+<p>So let’s do something more interesting:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">window</span>
+  <span class="c1"># A cross-browser window close method (works in IE!)</span>
+  <span class="k">def</span> <span class="nf">close!</span>
+    <span class="sx">%x{
+      return (</span><span class="si">#@native</span><span class="sx">.open('', '_self', '') &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close()) ||
+             (</span><span class="si">#@native</span><span class="sx">.opener = null &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close()) ||
+             (</span><span class="si">#@native</span><span class="sx">.opener = '' &amp;&amp; </span><span class="si">#@native</span><span class="sx">.close());
+    }</span>
+  <span class="k">end</span>
+
+  <span class="c1"># let's assign href directly</span>
+  <span class="k">def</span> <span class="nf">href</span><span class="o">=</span> <span class="n">url</span>
+    <span class="nb">self</span><span class="p">[</span><span class="ss">:location</span><span class="p">][</span><span class="ss">:href</span><span class="p">]</span> <span class="o">=</span> <span class="n">url</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>That’s all for now, bye!</p>
+<pre class="highlight ruby"><code><span class="n">window</span><span class="p">.</span><span class="nf">close!</span>
+</code></pre>
+
+<h3 id="calling-javascript-methods">Calling JavaScript Methods</h3>
+
+<p>You can make direct JavaScript method calls on using the <code>recv.JS.method</code>
+syntax.  For example, if you have a JavaScript object named <code>foo</code> and want to call the
+<code>bar</code> method on it with no arguments, with or without parentheses:</p>
+<pre class="highlight ruby"><code><span class="c1"># javascript: foo.bar()</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span><span class="p">()</span>
+</code></pre>
+
+<p>You can call the JavaScript methods with arguments, with or without parentheses, just
+like Ruby methods:</p>
+<pre class="highlight ruby"><code><span class="c1"># JavaScript: foo.bar(1, "a")</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="ss">:a</span><span class="p">)</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:a</span>
+</code></pre>
+
+<p>You can call the JavaScript methods with argument splats:</p>
+<pre class="highlight ruby"><code><span class="c1"># JavaScript: ($a = foo).bar.apply($a, [1].concat([2, 3]))</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre>
+
+<p>You can provide a block when making a JavaScript method call, and it will be
+converted to a JavaScript function added as the last argument to the method:</p>
+<pre class="highlight ruby"><code><span class="c1"># JavaScript:</span>
+<span class="c1"># ($a = (TMP_1 = function(arg){</span>
+<span class="c1">#     var self = TMP_1.$$s || this;</span>
+<span class="c1">#     if (arg == null) arg = nil;</span>
+<span class="c1">#     return "" + (arg.method()) + " " + (self.$baz(3))</span>
+<span class="c1">#    },</span>
+<span class="c1">#    TMP_1.$$s = self, TMP_1),</span>
+<span class="c1"># foo.bar)(1, 2, $a);</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">){</span><span class="o">|</span><span class="n">arg</span><span class="o">|</span> <span class="n">arg</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">method</span> <span class="o">+</span> <span class="n">baz</span><span class="p">(</span><span class="mi">3</span><span class="p">)}</span>
+</code></pre>
+
+<p>Note how <code>self</code> is set for the JavaScript function passed as an argument.  This
+allows normal Ruby block behavior to work when passing blocks to JavaScript
+methods.</p>
+
+<p>The <code>.JS.</code> syntax is recognized as a special token by the lexer, so if you have
+a Ruby method named <code>JS</code> that you want to call, you can add a space to call it:</p>
+<pre class="highlight ruby"><code><span class="c1"># call Ruby JS method on foo, call Ruby bar method on result</span>
+<span class="n">foo</span><span class="o">.</span> <span class="no">JS</span><span class="p">.</span><span class="nf">bar</span>
+</code></pre>
+
+<h3 id="getting/setting-javascript-properties">Getting/Setting JavaScript Properties</h3>
+
+<p>You can get JavaScript properties using the <code>recv.JS[:property]</code> syntax:</p>
+<pre class="highlight ruby"><code><span class="c1"># JavaScript: foo["bar"]</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">[</span><span class="ss">:bar</span><span class="p">]</span>
+</code></pre>
+
+<p>This also works for JavaScript array access:</p>
+<pre class="highlight ruby"><code><span class="c1"># JavaScript: foo[2]</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre>
+
+<p>You can set JavaScript properties using this as the left hand side in an
+assignment:</p>
+<pre class="highlight ruby"><code><span class="c1"># JavaScript: foo["bar"] = 1</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">[</span><span class="ss">:bar</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre>
+
+<p>This also works for setting values in a JavaScript array:</p>
+<pre class="highlight ruby"><code><span class="c1"># JavaScript: foo[2] = "a"</span>
+<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="ss">:a</span>
+</code></pre>
+
+<p>Like the <code>recv.JS.method</code> syntax, <code>.JS[</code> is recognized as a special token by
+the lexer, so if you want to call the Ruby <code>JS</code> method on a object and then
+call the Ruby <code>[]</code> method on the result, you can add a space:</p>
+<pre class="highlight ruby"><code><span class="c1"># call Ruby JS method on foo, call Ruby [] method on result with :a argument</span>
+<span class="n">foo</span><span class="o">.</span> <span class="no">JS</span><span class="p">[</span><span class="ss">:a</span><span class="p">]</span>
+</code></pre>
+
+<h3 id="calling-javascript-operators">Calling JavaScript Operators</h3>
+
+<p>Opal has a <code>js</code> library in the stdlib that provides a <code>JS</code> module which can
+be used to call JavaScript operators such as <code>new</code>.  Example:</p>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'js'</span>
+
+<span class="c1"># new foo(bar)</span>
+<span class="no">JS</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">)</span>
+
+<span class="c1"># delete foo["bar"]</span>
+<span class="no">JS</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="ss">:bar</span><span class="p">)</span>
+
+<span class="c1"># "bar" in foo</span>
+<span class="no">JS</span><span class="p">.</span><span class="nf">in</span><span class="p">(</span><span class="ss">:bar</span><span class="p">,</span> <span class="n">foo</span><span class="p">)</span>
+
+<span class="c1"># foo instanceof bar</span>
+<span class="no">JS</span><span class="p">.</span><span class="nf">instanceof</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">)</span>
+
+<span class="c1"># typeof foo</span>
+<span class="no">JS</span><span class="p">.</span><span class="nf">typeof</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+</code></pre>
+
+<h3 id="calling-javascript-global-functions">Calling JavaScript Global Functions</h3>
+
+<p>You can also use the <code>js</code> library to call JavaScript global functions via
+<code>JS.call</code>:</p>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'js'</span>
+
+<span class="c1"># parseFloat("1.1")</span>
+<span class="no">JS</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="ss">:parseFloat</span><span class="p">,</span> <span class="s2">"1.1"</span><span class="p">)</span>
+</code></pre>
+
+<p>For convenience, <code>method_missing</code> is aliased to call, allowing you to call
+global JavaScript methods directly on the <code>JS</code> module:</p>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'js'</span>
+
+<span class="c1"># parseFloat("1.1")</span>
+<span class="no">JS</span><span class="p">.</span><span class="nf">parseFloat</span><span class="p">(</span><span class="s2">"1.1"</span><span class="p">)</span>
+</code></pre>
+
+<h2 id="ruby-from-javascript">Ruby from JavaScript</h2>
+
+<p>Accessing classes and methods defined in Opal from the JavaScript runtime is
+possible via the <code>Opal</code> js object. The following class:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Foo</span>
+  <span class="k">def</span> <span class="nf">bar</span>
+    <span class="nb">puts</span> <span class="s2">"called bar on class Foo defined in Ruby code"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Can be accessed from JavaScript like this:</p>
+<pre class="highlight javascript"><code><span class="nx">Opal</span><span class="p">.</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">$new</span><span class="p">().</span><span class="nx">$bar</span><span class="p">();</span>
+<span class="c1">// =&gt; "called bar on class Foo defined in Ruby code"</span>
+</code></pre>
+
+<p>Remember that all Ruby methods are prefixed with a <code>$</code>.</p>
+
+<p>In the case that a method name can&#39;t be called directly due to a JavaScript syntax error, you will need to call the method using bracket notation. For example, you can call <code>foo.$merge(...)</code> but not <code>foo.$merge!(...)</code>, <code>bar.$fetch(&#39;somekey&#39;)</code> but not <code>bar.$[](&#39;somekey&#39;)</code>. Instead you would write it like this: <code>foo[&#39;$merge!&#39;](...)</code> or <code>bar[&#39;$[]&#39;](&#39;somekey&#39;)</code>.</p>
+
+<h3 id="hash">Hash</h3>
+
+<p>Since Ruby hashes are implemented directly with an Opal class, there&#39;s no &quot;toll-free&quot; bridging available (unlike with strings and arrays, for example). However, it&#39;s quite possible to interact with hashes from JavaScript:</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">myHash</span> <span class="o">=</span> <span class="nx">Opal</span><span class="p">.</span><span class="nx">hash</span><span class="p">({</span><span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">});</span>
+<span class="c1">// output of $inspect: {"a"=&gt;1, "b"=&gt;2}</span>
+<span class="nx">myHash</span><span class="p">.</span><span class="nx">$store</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="c1">// output of $inspect: {"a"=&gt;10, "b"=&gt;2}</span>
+<span class="nx">myHash</span><span class="p">.</span><span class="nx">$fetch</span><span class="p">(</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">''</span><span class="p">);</span>
+<span class="c1">// 2</span>
+<span class="nx">myHash</span><span class="p">.</span><span class="nx">$fetch</span><span class="p">(</span><span class="s1">'z'</span><span class="p">,</span><span class="s1">''</span><span class="p">);</span>
+<span class="c1">// ""</span>
+<span class="nx">myHash</span><span class="p">.</span><span class="nx">$update</span><span class="p">(</span><span class="nx">Opal</span><span class="p">.</span><span class="nx">hash</span><span class="p">({</span><span class="na">b</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span> <span class="mi">30</span><span class="p">}));</span>
+<span class="c1">// output of $inspect: {"a"=&gt;10, "b"=&gt;20, "c"=&gt;30}</span>
+<span class="nx">myHash</span><span class="p">.</span><span class="nx">$to_n</span><span class="p">();</span> <span class="c1">// provided by the Native module</span>
+<span class="c1">// output: {"a": 10, "b": 20, "c": 30} aka a standard JavaScript object</span>
+</code></pre>
+
+<div class="opal-callout opal-callout-info">
+  Be aware <code>Hash#to_n</code> produces a duplicate copy of the hash.
+</div>
+
+<h2 id="advanced-compilation">Advanced Compilation</h2>
+
+<h3 id="method-missing">Method Missing</h3>
+
+<p>Opal supports <code>method_missing</code>. This is a key feature of Ruby, and Opal wouldn&#39;t be much use without it! This page details the implementation of <code>method_missing</code> for Opal.</p>
+
+<h4 id="method-dispatches">Method dispatches</h4>
+
+<p>Firstly, a Ruby call <code>foo.bar 1, 2, 3</code> is compiled into the following JavaScript:</p>
+<pre class="highlight javascript"><code><span class="nx">foo</span><span class="p">.</span><span class="nx">$bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre>
+
+<p>This should be pretty easy to read. The <code>bar</code> method has a <code>$</code> prefix just to distinguish it from underlying JavaScript properties, as well as Ruby ivars. Methods are compiled like this to make the generated code really readable.</p>
+
+<h4 id="handling-method_missing">Handling <code>method_missing</code></h4>
+
+<p>JavaScript does not have an equivalent of <code>method_missing</code>, so how do we handle it? If a function is missing in JavaScript, then a language level exception will be raised.</p>
+
+<p>To get around this, we make use of our compiler. During parsing, we collect a list of all method calls made inside a Ruby file, and this gives us a list of all possible method calls. We then add stub methods to the root object prototype (an Opal object, not the global JavaScript Object) which will proxy our method missing calls for us.</p>
+
+<p>For example, assume the following Ruby script:</p>
+<pre class="highlight ruby"><code><span class="n">first</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">second</span> <span class="s2">"wow"</span><span class="p">.</span><span class="nf">to_sym</span>
+</code></pre>
+
+<p>After parsing, we know we only ever call 3 methods: <code>[:first, :second, :to_sym]</code>. So, imagine we could just add these 3 methods to <code>BasicObject</code> in Ruby, we would get something like this:</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">BasicObject</span>
+  <span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="nb">method_missing</span><span class="p">(</span><span class="ss">:first</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="nb">method_missing</span><span class="p">(</span><span class="ss">:second</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">to_sym</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="nb">method_missing</span><span class="p">(</span><span class="ss">:to_sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>It is obvious from here, that unless an object defines any given method, it will always resort in a dispatch to <code>method_missing</code> from one of our defined stub methods. This is how we get <code>method_missing</code> in Opal.</p>
+
+<h4 id="optimising-generated-code">Optimising generated code</h4>
+
+<p>To optimise the generated code slightly, we reduce the code output from the compiler into the following JavaScript:</p>
+<pre class="highlight javascript"><code><span class="nx">Opal</span><span class="p">.</span><span class="nx">add_stubs</span><span class="p">([</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"second"</span><span class="p">,</span> <span class="s2">"to_sym"</span><span class="p">]);</span>
+</code></pre>
+
+<p>You will see this at the top of all your generated JavaScript files. This will add a stub method for all methods used in your file.</p>
+
+<h4 id="alternative-approaches">Alternative approaches</h4>
+
+<p>The old approach was to inline <code>method_missing</code> calls by checking for a method on <strong>every method dispatch</strong>. This is still supported via a parser option, but not recommended.</p>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- GOOGLE ANALYTICS -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35688734-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<footer>
+  <a href="/license"><i class="ion-unlocked"></i> License</a> ·
+  <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
+</footer>
+
+
+  <script>
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+  </script>
+</body>
+</html>
