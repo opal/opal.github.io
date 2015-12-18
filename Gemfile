@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem "opal",        :github => 'opal/opal'
-gem "opal-jquery", :github => 'opal/opal-jquery'
-gem 'opal-rspec',  :github => 'opal/opal-rspec'
+gem "opal"
+gem "opal-jquery"
+gem 'opal-rspec'
 
 gem 'bootstrap-sass', '~> 3.2.0.2'
 
