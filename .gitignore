@@ -13,6 +13,5 @@
 # Ignore Sass' cache
 /.sass-cache
 
-Gemfile.lock
 .DS_Store
 /tmp
