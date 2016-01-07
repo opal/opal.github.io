@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "opal"
+gem "opal", '~> 0.9.0'
 gem "opal-jquery"
 gem 'opal-rspec'
 
@@ -8,7 +8,7 @@ gem 'bootstrap-sass', '~> 3.2.0.2'
 
 gem "middleman"
 gem "middleman-syntax"
-gem "middleman-sprockets"
+gem "middleman-sprockets", '4.0.0.rc.1'
 gem "middleman-blog"
 gem 'middleman-gh-pages'
 
