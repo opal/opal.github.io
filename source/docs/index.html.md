@@ -41,7 +41,7 @@ layout: 'layout'
 
 Opal prebuilt <del>binaries</del>, err… compiled JavaScript files are available on:
 
-<a href="http://cdn.opalrb.org" class="btn btn-lg">http://cdn.opalrb.org</a>
+<a href="http://cdn.opalrb.com" class="btn btn-lg">http://cdn.opalrb.com</a>
 
 _Visit the link to have more detailed instructions_
 
@@ -50,8 +50,8 @@ _Visit the link to have more detailed instructions_
 ```html
 <head>
   <meta charset="utf-8">
-  <script src="//cdn.opalrb.org/opal/current/opal.min.js"></script>
-  <script src="//cdn.opalrb.org/opal/current/opal-parser.min.js"></script>
+  <script src="//cdn.opalrb.com/opal/current/opal.min.js"></script>
+  <script src="//cdn.opalrb.com/opal/current/opal-parser.min.js"></script>
   <script>Opal.require('opal-parser')</script>
 </head>
 ```
