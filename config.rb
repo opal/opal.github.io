@@ -10,8 +10,6 @@ set :markdown, layout_engine: :erb,
 
 activate :syntax
 
-# activate :sprockets
-
 activate :blog do |blog|
   blog.prefix = "blog"
 end
