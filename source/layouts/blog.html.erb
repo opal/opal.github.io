@@ -1,6 +1,6 @@
 <% wrap_layout :layout do %>
   <div class="container col-sm-8">
     <%= partial 'blog_title' %>
-    <%= partial 'post', locals: {article: data.page.merge(body: yield)} %>
+    <%= partial 'post', locals: {article: current_article.data.merge(body: yield)} %>
   </div>
 <% end %>
