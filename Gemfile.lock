@@ -134,7 +134,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.2.0.2)
-  middleman
+  middleman (~> 4.0.0)
   middleman-blog
   middleman-gh-pages
   middleman-sprockets (= 4.0.0.rc.1)
