@@ -10,7 +10,7 @@ gem "middleman", '~> 4.0.0'
 gem "middleman-syntax"
 gem "middleman-sprockets", '4.0.0.rc.1'
 gem "middleman-blog"
-gem 'middleman-gh-pages'
+gem 'rake'
 
 gem "redcarpet"
 gem "nokogiri"
