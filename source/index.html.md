@@ -9,10 +9,10 @@ title: "Opal: Ruby to JavaScript Compiler"
     <p>It is source-to-source, making it fast as a runtime. Opal includes a compiler (which can be run in any browser), a corelib and runtime implementation. The corelib/runtime is also very small.</p>
     <p>
       <a href="/docs" class="btn btn-primary btn-lg" role="button"><i class="ion-ios7-copy"></i> Opal Documentation</a>
-      <a target="_blank" href="http://cdn.opalrb.com/opal/current/opal.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-android-download"></i> opal.min.js</a>
-      <a target="_blank" href="http://cdn.opalrb.com/opal/current/opal-parser.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-android-download"></i> opal-parser.min.js</a>
-      <a target="_blank" href="http://cdn.opalrb.com/" class="btn btn-lg" role="button"><i class="ion-earth"></i> Use the CDN</a>
-      <!-- <a href="http://cdn.opalrb.com/" class="btn btn-lg" role="button"><i class="ion-speedometer"></i> Use the CDN</a> -->
+      <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-android-download"></i> opal.min.js</a>
+      <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal-parser.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-android-download"></i> opal-parser.min.js</a>
+      <a target="_blank" href="http://cdn.opalrb.org/" class="btn btn-lg" role="button"><i class="ion-earth"></i> Use the CDN</a>
+      <!-- <a href="http://cdn.opalrb.org/" class="btn btn-lg" role="button"><i class="ion-speedometer"></i> Use the CDN</a> -->
     </p>
   </div>
 </div>
