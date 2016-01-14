@@ -22,10 +22,9 @@ file GH_PAGES_REF => BUILD_DIR do
     sh "git init"
     sh "git remote add #{REMOTE_NAME} #{repo_url}"
     sh "git fetch #{REMOTE_NAME}"
-    sh "git checkout master"
 
     if `git branch -r` =~ /#{GH_PAGES_BRANCH}/
-      sh "git checkout #{GH_PAGES_BRANCH}"
+      sh "git checkout -f #{GH_PAGES_BRANCH}"
     else
       sh "git checkout --orphan #{GH_PAGES_BRANCH}"
       sh "touch index.html"
