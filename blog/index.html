@@ -74,6 +74,21 @@
     <article class='blog-post'>
       <header>
         <h2 class='blog-post-title'>
+          <a href='/blog/2016/01/13/opal-0-9/'>
+            Opal 0.9: direct JS calls, console.rb, numeric updates, better reflection, and fixes aplenty
+          </a>
+        </h2>
+        <div class='blog-post-meta'>
+          Posted by Jared White on 2016-01-13
+        </div>
+      </header>
+      <div class='blog-post-body'>
+        <p>Opal is now officially on the 0.9.x release path, having just released <a href="https://github.com/opal/opal/compare/v0.8.1...v0.9.2">0.9.2</a>. Thanks to all the <a href="https://github.com/opal/opal/graphs/contributors?from=2015-04-30&amp;to=2016-01-13&amp;type=c">contributors to Opal</a>, especially over the holidays, and we&#39;re excited for what the new year will bring to the Opal community. Some highlights from the latest release:</p>&#x000A;&#x000A;<h3 id="direct-calling-of-javascript-methods">Direct calling of JavaScript methods</h3>&#x000A;&#x000A;<p>You can now make direct JavaScript method calls on native JS objects using the <code>recv.JS.method</code> syntax. Has support for method calls, final callback (as a block), property getter and setter (via <code>#[]</code> and <code>#[]=</code>), splats, JavaScript keywords (via the <code>::JS</code> module) and global functions (after <code>require &quot;js&quot;</code>).</p>&#x000A;&#x000A;<p>Some examples, first a simple method call:</p>&#x000A;<pre class="highlight ruby"><code><span class="c1"># javascript: foo.bar()</span>&#x000A;<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span>&#x000A;<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span><span class="p">()</span>&#x000A;</code></pre>&#x000A;&#x000A;<a href="/blog/2016/01/13/opal-0-9/">continue reading…</a>
+      </div>
+    </article>
+    <article class='blog-post'>
+      <header>
+        <h2 class='blog-post-title'>
           <a href='/blog/2015/02/02/opal-0-7-0/'>
             Opal 0.7.0: require, kwargs, docs, testing, lots of fixes
           </a>
