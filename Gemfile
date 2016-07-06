@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
-gem "opal", '~> 0.9.0'
-gem "opal-jquery"
-gem 'opal-rspec'
+gem 'opal', '~> 0.10.0'
+gem 'opal-jquery'
+gem 'opal-rspec', github: 'opal/opal-rspec'
 
 gem 'bootstrap-sass', '~> 3.2.0.2'
 
-gem "middleman", '~> 4.0.0'
-gem "middleman-syntax"
-gem "middleman-sprockets", '4.0.0.rc.1'
-gem "middleman-blog"
+gem 'middleman', '~> 4.1.0'
+gem 'middleman-sprockets'
+gem 'middleman-syntax'
+gem 'middleman-blog'
 gem 'rake'
 
-gem "redcarpet"
-gem "nokogiri"
+gem 'redcarpet'
+gem 'nokogiri'
