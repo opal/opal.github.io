@@ -9,6 +9,7 @@ set :markdown, layout_engine: :erb,
                with_toc_data: true
 
 activate :syntax
+activate :sprockets
 
 activate :blog do |blog|
   blog.prefix = "blog"
