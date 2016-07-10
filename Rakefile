@@ -61,6 +61,26 @@ task :build do
   end
 end
 
+desc "Refresh the libraries page contents from awesome-opal"
+task :libraries do
+  require 'open-uri'
+  awesome_page = open 'https://raw.githubusercontent.com/fazibear/awesome-opal/master/README.md'
+  awesome_contents = awesome_page.read
+
+  File.write "#{__dir__}/source/libraries.html.md", <<~MD
+  ---
+  title: "Libraries (Awesome Opal)"
+  ---
+
+  _the following content comes from the *awesome* [🕶awesome-opal](https://github.com/fazibear/awesome-opal#readme) page by [Michał Kalbarczyk](https://github.com/fazibear)_
+
+  ---
+
+  #{awesome_contents}
+
+  MD
+end
+
 desc "Build and publish to Github Pages"
 task :publish => [:not_dirty, :prepare_git_remote_in_build_dir, :sync, :build] do
   message = nil
