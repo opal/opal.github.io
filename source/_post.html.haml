@@ -14,7 +14,7 @@
         = article.title
 
     .blog-post-meta
-      = "Posted by #{article.author} on #{Date.parse(article.date).to_s}"
+      = "Posted by #{article.author} on #{Date.parse(article.date.to_s).to_s}"
 
   .blog-post-body
     = preserve do
