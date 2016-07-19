@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+exec "cd #{__dir__}/..; bundle exec rake publish"
