@@ -1,0 +1,117 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Opal-RSpec 0.5: Newer RSpec version, improved Rake task, better documentation</title>
+
+  <link href="/stylesheets/application.css" rel="stylesheet" />
+  <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" />
+  <script src="/javascripts/application.js"></script>
+</head>
+<body class="blog blog_2016 blog_2016_07 blog_2016_07_19 blog_2016_07_19_opal-rspec-0">
+  <nav class='navbar navbar-default opal-nav' role='navigation'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <a class='navbar-brand' href='/'>
+        <img height='22' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' style='margin-top:-10%;' width='22'>
+        Opal
+      </a>
+      <button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
+    </div>
+    <div class='navbar-collapse collapse' id='opal-navbar'>
+      <ul class='nav navbar-nav'>
+        <li>
+          <a href='/try'>
+            <i class='ion-ios7-compose'></i>
+            Try
+          </a>
+        </li>
+        <li>
+          <a href='/blog'>
+            <i class='ion-ios7-chatboxes'></i>
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href='/docs'>
+            <i class='ion-ios7-copy'></i>
+            Documentation
+          </a>
+        </li>
+        <li>
+          <a href='/libraries'>
+            <i class='ion-android-developer'></i>
+            Libraries
+          </a>
+        </li>
+        <li>
+          <a href='https://github.com/opal/opal#readme'>
+            <i class='ion-social-github'></i>
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+
+  <div class="container">
+      <div class="container col-sm-8">
+    <div class='blog-title'>
+  <h1>
+    <a href='/blog'>The Opal Blog</a>
+  </h1>
+</div>
+
+    <article class='blog-post'>
+  <header>
+    <h2 class='blog-post-title'>
+      <a href=''>
+        Opal-RSpec 0.5: Newer RSpec version, improved Rake task, better documentation
+      </a>
+    </h2>
+    <div class='blog-post-meta'>
+      Posted by Brady Wied on 2016-07-19
+    </div>
+  </header>
+  <div class='blog-post-body'>
+    <h1 id="opal-rspec">Opal-RSpec</h1>&#x000A;&#x000A;<p>If you&#39;re a Rubyist, you know about RSpec. It&#39;s the testing framework that most of us like. RSpec&#39;s code base also happens to use a lot of features of the Ruby language, which means getting it to work on Opal is a challenge, but to some extent, we&#39;re there! Even if you&#39;re writing code in ES5/ES6, you might enjoy using RSpec as an alternative to Jasmine. Opal&#39;s native JS functionality makes that fairly easy to do.</p>&#x000A;&#x000A;<h2 id="what-39-s-new">What&#39;s new?</h2>&#x000A;&#x000A;<p>There were 394 commits since opal-rspec 0.4.3 that covered a variety of areas:</p>&#x000A;&#x000A;<ul>&#x000A;<li>Opal itself - 30+ pull requests went into Opal 0.9 to improve RSpec&#39;s stability on Opal. This obviously benefits anyone using opal, not just opal-rspec users.</li>&#x000A;<li>RSpec specs - opal-rspec 0.5 now runs and passes 80%+ of RSpec&#39;s own specs. For the first time, limitations, including some present in prior opal-rspec versions, are documented.</li>&#x000A;<li>New versions - Base RSpec version has been upgraded to 3.1 from the 3.0 beta (we know we&#39;re still behind, but read on) and the Rake task works with Phantom JS 1.9.8 and 2.0.</li>&#x000A;<li>New features - Node runner support and improved Rake task configurability.</li>&#x000A;</ul>&#x000A;&#x000A;<h2 id="how-do-you-get-started">How do you get started?</h2>&#x000A;&#x000A;<p>First stop is adding it to your <code>Gemfile</code> and <code>bundle install</code>.</p>&#x000A;<pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal-rspec'</span>&#x000A;</code></pre>&#x000A;&#x000A;<p>Then you&#39;ll need to ensure, for the default config, you have at 1.9.8 of PhantomJS installed.</p>&#x000A;&#x000A;<p>Then you can start writing specs!</p>&#x000A;&#x000A;<p>Put this in <code>spec/42_spec.rb</code></p>&#x000A;<pre class="highlight ruby"><code><span class="n">describe</span> <span class="mi">42</span> <span class="k">do</span>&#x000A;  <span class="n">subject</span> <span class="p">{</span> <span class="mi">43</span> <span class="p">}</span>&#x000A;&#x000A;  <span class="n">it</span> <span class="p">{</span> <span class="n">is_expected</span><span class="p">.</span><span class="nf">to</span> <span class="n">eq</span> <span class="mi">43</span> <span class="p">}</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre>&#x000A;&#x000A;<p>Then in your Rakefile:</p>&#x000A;<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal/rspec/rake_task'</span>&#x000A;<span class="no">Opal</span><span class="o">::</span><span class="no">RSpec</span><span class="o">::</span><span class="no">RakeTask</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:default</span><span class="p">)</span>&#x000A;</code></pre>&#x000A;&#x000A;<p>After running <code>bundle exec rake</code>, you&#39;ll see:</p>&#x000A;<pre class="highlight ruby"><code><span class="no">Running</span> <span class="n">phantomjs</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="n">bundle</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">opal</span><span class="o">-</span><span class="n">rspec</span><span class="o">-</span><span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">spec_runner</span><span class="p">.</span><span class="nf">js</span> <span class="s2">"http://localhost:9999/"</span>&#x000A;<span class="no">Object</span> <span class="n">freezing</span> <span class="n">is</span> <span class="n">not</span> <span class="n">supported</span> <span class="n">by</span> <span class="no">Opal</span>&#x000A;&#x000A;<span class="o">.</span>&#x000A;&#x000A;<span class="no">Finished</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="mo">013</span> <span class="n">seconds</span> <span class="p">(</span><span class="n">files</span> <span class="n">took</span> <span class="mi">0</span><span class="o">.</span><span class="mi">163</span> <span class="n">seconds</span> <span class="n">to</span> <span class="nb">load</span><span class="p">)</span>&#x000A;<span class="mi">1</span> <span class="n">example</span><span class="p">,</span> <span class="mi">0</span> <span class="n">failures</span>&#x000A;</code></pre>&#x000A;&#x000A;<p>Right off the bat, you can see at least a few things Opal doesn&#39;t like about RSpec&#39;s code base (the freeze warning), but as of opal-rspec 0.5, those are either limited to this warning message or other documented limitations.</p>&#x000A;&#x000A;<p>Formatter support works as well.</p>&#x000A;&#x000A;<p>After running <code>SPEC_OPTS=&quot;--format json&quot; bundle exec rake</code>:</p>&#x000A;<pre class="highlight plaintext"><code>Object freezing is not supported by Opal&#x000A;&#x000A;{"examples":[{"description":"should eq 43", "full_description":"42 should eq 43", "status":"passed", "file_path":"http://localhost", "line_number":9999, "run_time":0.005}], "summary":{"duration":0.013, "example_count":1, "failure_count":0, "pending_count":0}, "summary_line":"1 example, 0 failures"}&#x000A;</code></pre>&#x000A;&#x000A;<h2 id="asynchronous-testing-on-opal">Asynchronous testing on Opal</h2>&#x000A;&#x000A;<p>Since opal has a promise implementation built in, opal-rspec has some support for asynchronous testing. By default, any <code>subject</code>, <code>it</code> block, <code>before(:each)</code>, <code>after(:each)</code>, or <code>around</code> hook that returns a promise will cause RSpec to wait for promise resolution before continuing. In the <code>subject</code> case, any <code>subject</code> resolution in your specs will be against the promise result, not the promise, which should DRY up your specs.</p>&#x000A;&#x000A;<p>Example:&#x000A;Create <code>spec/async_spec.rb</code> with this content:</p>&#x000A;<pre class="highlight ruby"><code><span class="n">describe</span> <span class="s1">'async'</span> <span class="k">do</span>&#x000A;  <span class="n">subject</span> <span class="k">do</span>&#x000A;    <span class="n">promise</span> <span class="o">=</span> <span class="no">Promise</span><span class="p">.</span><span class="nf">new</span>&#x000A;    <span class="n">delay</span> <span class="mi">1</span> <span class="k">do</span>&#x000A;      <span class="n">promise</span><span class="p">.</span><span class="nf">resolve</span> <span class="mi">42</span>&#x000A;    <span class="k">end</span>&#x000A;    <span class="n">promise</span>&#x000A;  <span class="k">end</span>&#x000A;&#x000A;  <span class="n">it</span> <span class="p">{</span> <span class="n">is_expected</span><span class="p">.</span><span class="nf">to</span> <span class="n">be_a</span> <span class="no">Promise</span> <span class="p">}</span>&#x000A;  <span class="n">it</span> <span class="p">{</span> <span class="n">is_expected</span><span class="p">.</span><span class="nf">to</span> <span class="n">eq</span> <span class="mi">42</span> <span class="p">}</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre>&#x000A;&#x000A;<p>Result:</p>&#x000A;<pre class="highlight plaintext"><code>Running phantomjs /usr/local/bundle/gems/opal-rspec-0.5.0/vendor/spec_runner.js "http://localhost:9999/"&#x000A;Object freezing is not supported by Opal&#x000A;&#x000A;.F.&#x000A;&#x000A;Failures:&#x000A;&#x000A;  1) async should be a kind of Promise&#x000A;     Failure/Error: Unable to find matching line from backtrace&#x000A;     Exception::ExpectationNotMetError:&#x000A;       expected 42 to be a kind of Promise&#x000A;     # ExpectationNotMetError: expected 42 to be a kind of Promise&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:4294&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:50378&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:33927&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:33950&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:33708&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:53200&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:3000&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:52274&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:52348&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:1055&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:14805&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:52554&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:52573&#x000A;     #     at http://localhost:9999/assets/opal/rspec/sprockets_runner.js:52555&#x000A;     #&#x000A;     #   Showing full backtrace because every line was filtered out.&#x000A;     #   See docs for RSpec::Configuration#backtrace_exclusion_patterns and&#x000A;     #   RSpec::Configuration#backtrace_inclusion_patterns for more information.&#x000A;&#x000A;Finished in 2.03 seconds (files took 0.156 seconds to load)&#x000A;3 examples, 1 failure&#x000A;&#x000A;Failed examples:&#x000A;&#x000A;rspec http://localhost:9999 # async should be a kind of Promise&#x000A;</code></pre>&#x000A;&#x000A;<p>The failure is because we get a number back, not a Promise.</p>&#x000A;&#x000A;<h2 id="other-new-tools-in-the-ecosystem">Other new tools in the ecosystem</h2>&#x000A;&#x000A;<h3 id="junit-amp-teamcity-rubymine-formatter-support">JUnit &amp; TeamCity/Rubymine formatter support</h3>&#x000A;&#x000A;<p>The chances are your CI tool supports at least 1 of those. Check out <a href="https://github.com/wied03/opal-rspec-formatter">opal-rspec-formatter</a></p>&#x000A;&#x000A;<h3 id="karma-support">Karma support</h3>&#x000A;&#x000A;<p>If you want to tap into the browser runners that Karma supports but keep using Opal, you might want to check out <a href="https://github.com/wied03/karma-opal-rspec">karma-opal-rspec</a>.</p>&#x000A;&#x000A;<h2 id="work-to-be-done">Work to be done</h2>&#x000A;&#x000A;<p>As was mentioned above, we&#39;re still using RSpec 3.1, which as of this writing, is almost 1.5 years old. Due to the number of changes necessary to make RSpec Opal friendly, we cannot track with RSpec releases as fast as we would like. That said, several things we&#39;re doing should allow us to move faster in the future, including:</p>&#x000A;&#x000A;<ul>&#x000A;<li>Constantly improving Opal code base that allows more Ruby features to work out of the box.</li>&#x000A;<li>RSpec specs which helped improve Opal and allow us to easily identify far corners of RSpec&#39;s functionality.</li>&#x000A;<li>Work on arity checking is already in-progress (opal-rspec currently doesn&#39;t run with arity checking enabled). This will tease out even more issues.</li>&#x000A;</ul>&#x000A;&#x000A;<p>All of these will eventually lead to less monkey patching and more out of the box stuff that works.</p>&#x000A;&#x000A;<h2 id="how-to-help">How to help</h2>&#x000A;&#x000A;<p>Arity checking is the top priority right now. If you can assist with issues like <a href="https://github.com/opal/opal/issues/1237">this opal issue</a> that are documented on the opal-rspec <a href="https://github.com/opal/opal-rspec/issues/40">arity check issue</a>, that will help move things along.</p>&#x000A;&#x000A;<p>After that is complete, we can begin work on RSpec 3.4.</p>
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+  <!-- GOOGLE ANALYTICS -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35688734-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<footer>
+  <a href="/license"><i class="ion-unlocked"></i> License</a> ·
+  <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
+</footer>
+
+
+  <script>
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+  </script>
+</body>
+</html>
