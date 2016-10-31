@@ -27,6 +27,7 @@ page "/docs/*", :layout => "docs"
 page "/blog/*", :layout => :blog
 
 after_configuration do
+  Opal::Config.arity_check_enabled = true
   Opal.paths.each do |p|
     sprockets.append_path p
   end
