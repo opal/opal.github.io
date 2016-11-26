@@ -8,11 +8,16 @@ title: "Opal: Ruby to JavaScript Compiler"
     <h1>Opal <small>Ruby to JavaScript Compiler</small></h1>
     <p>It is source-to-source, making it fast as a runtime. Opal includes a compiler (which can be run in any browser), a corelib and runtime implementation. The corelib/runtime is also very small.</p>
     <p>
-      <a href="/docs" class="btn btn-primary btn-lg" role="button"><i class="ion-ios7-copy"></i> Opal Documentation</a>
-      <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-android-download"></i> opal.min.js</a>
-      <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal-parser.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-android-download"></i> opal-parser.min.js</a>
-      <a target="_blank" href="http://cdn.opalrb.org/" class="btn btn-lg" role="button"><i class="ion-earth"></i> Use the CDN</a>
+      <a href="#getting-started" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book"></i> Getting Started</a>
+      <!-- <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal.min.js</a>
+      <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal-parser.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal-parser.min.js</a>
+      <a target="_blank" href="http://cdn.opalrb.org/" class="btn btn-lg" role="button"><i class="ion-ios-world-outline"></i> Use the CDN</a> -->
       <!-- <a href="http://cdn.opalrb.org/" class="btn btn-lg" role="button"><i class="ion-speedometer"></i> Use the CDN</a> -->
+    <!-- </p>
+    <p> -->
+      <a href="#getting-started-with-rails" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rails tutorial</a>
+      <a href="#getting-started-with-rack-and-sprockets" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rack/Sprockets tutorial</a>
+      <a href="/docs" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-copy-outline"></i> Opal Documentation</a>
     </p>
   </div>
 </div>
@@ -39,11 +44,10 @@ title: "Opal: Ruby to JavaScript Compiler"
   </p>
 </div>
 
-## Getting Started
 
-### Overview
+## Overview
 
-<p class="run-code"><a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios7-play"></i></a></p>
+<p class="run-code"><a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios-play"></i></a></p>
 
 ```ruby
 class User
@@ -59,20 +63,82 @@ class User
 end
 
 user = User.new('Bob')
+
+# the output will go to your browser's console
 puts user
 puts user.admin?
 ```
 
-### Installation
+---
 
-Install Opal from RubyGems:
+## Getting Started with Rails
 
-```text
-$ gem install opal
-```
-
-Or include it in your `Gemfile` for Bundler:
+Add `opal-rails` to your `Gemfile` or build your Rails app with Opal support: `rails new -j opal`
 
 ```ruby
-gem 'opal'
+gem 'opal-rails'
 ```
+
+Rename `app/assets/javascripts/application.js` to `app/assets/javascripts/application.js.rb` and replace its contents with this code:
+
+```ruby
+require 'opal'
+require 'opal_ujs'
+require 'turbolinks'
+require_tree '.'
+```
+
+Create a "Hello World" controller:
+
+```ruby
+bin/rails generate controller HelloWorld index
+```
+
+Replace the contents of `app/assets/javascripts/hello_world.js.rb` with:
+
+```ruby
+Document.ready? do
+  Element.find('body').html = '<h1>Hello World from Opal!</h1>'
+end
+```
+
+Start the server with `bin/rails server` and visit: [http://localhost:3000/hello_world/index](http://localhost:3000/hello_world/index).
+
+<a href="https://github.com/opal/opal-rails#readme" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Learn more about Opal Rails</a>
+
+
+---
+
+## Getting Started with Rack and Sprockets
+
+Add `rack` & `opal-sprockets` to your `Gemfile`.
+
+```ruby
+gem 'rack'
+gem 'opal-sprockets'
+```
+
+Setup the Opal rack-app in your `config.ru` as follows:
+
+```ruby
+require 'opal-sprockets'
+
+run Opal::Server.new { |server|
+  # the name of the ruby file to load. To use more files they must be required from here (see app)
+  server.main = 'application'
+  # the directory where the code is (add to opal load path )
+  server.append_path 'app'
+}
+```
+
+Add a file named `hello_world.js.rb` to `app/` with your hello world:
+
+```ruby
+require 'opal'
+require 'native'
+$$.alert 'Hello World from Opal!'
+```
+
+Then start the server with `bundle exec rackup` and visit [http://localhost:9292](http://localhost:9292).
+
+<a href="https://github.com/opal/opal-sprockets#readme" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Learn more about Opal Sprockets integration</a>
