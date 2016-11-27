@@ -2,5 +2,6 @@ require 'bundler'
 Bundler.require
 
 require 'middleman/rack'
+require 'middleman-core/rack'
 
-run Middleman.server
+run Middleman::Rack.new(Middleman::Application.new)
