@@ -172,7 +172,6 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 ### Deprecated
 - [Opal Node](https://github.com/opal/opal-node)
 - [Opal Spec](https://github.com/opal/opal-spec)
-- [Opal Sprockets](https://github.com/opal/opal-sprockets)
 
 ## Contribution
 
