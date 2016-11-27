@@ -40,12 +40,13 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Dare](https://github.com/domgetter/dare) - Ruby Web Game library on top of Opal
 - [Electron Opal](https://github.com/jannishuebl/electron_opal) - Lightweigt Ruby wrapper around the geat electron desktop application engine
 - [Grand Central](https://github.com/clearwater-rb/grand_central) - State-management and action-dispatching for Opal apps
+- [Hyalite](https://github.com/youchan/hyalite) - This is ruby virtual DOM implementation using opal. It is inspired by react.js.
 - [Jekyll Opal](https://github.com/jekyll/jekyll-opal) - Let Jekyll convert your Ruby into JavaScript using Opal
+- [Opal ActionCable](https://github.com/MichaelSp/opal-actioncable) - Opal wrapper for rails actioncable
 - [Opal ActionPack](https://github.com/boberetezeke/opal-actionpack) - A small port of the awesome action pack to Opal JS
 - [Opal ActiveRecord](https://github.com/boberetezeke/opal-activerecord) - An basic implementation of rails active record for use with opaljs
 - [Opal ActiveSupport](https://github.com/opal/opal-activesupport) - The port of the glorious ActiveSupport for Opal
-- [Opal Airbrake](https://github.com/fazibear/opal-airbrake) - Opal wrapper for airbrake-js javascript library.
-- [Opal Anync](https://github.com/Ravenstine/opal-async) - Non-blocking tasks and enumerators for Opal.
+- [Opal Async](https://github.com/Ravenstine/opal-async) - Non-blocking tasks and enumerators for Opal.
 - [Opal Browser](https://github.com/opal/opal-browser) - Browser support for Opal.
 - [Opal Builder](https://github.com/wied03/opal-builder) - An attempt at making the builder XML gem work with Opal
 - [Opal Dom](https://github.com/adambeynon/opal-dom) - Simple DOM for Opal (legacy?)
@@ -70,12 +71,12 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal Slim](https://github.com/jgaskins/opal-slim) - Sprockets integration to compile Slim templates for Opal apps
 - [Opal Starter Kit](https://github.com/fkchang/opal-starter-kit) - Create Opal projects easily
 - [Opal UI](https://github.com/ppibburr/opal-ui) - A GUI Toolkit in your Browser
-- [Opal Web Midi](https://github.com/fazibear/opal-web-midi) - Web MIDI for Opal.
 - [Opal aasm](https://github.com/catprintlabs/opal-aasm) - Opal compatible version of Acts As State Machine with React.rb awareness
 - [Rack Opal](https://github.com/t0xa/rack-opal) - Rack middleware to automatically compile ruby scripts to javascripts
 - [Reactive Record](https://github.com/catprintlabs/reactive-record) - Ruby Opal + React + ActiveRecord = GOODNESS!
 
 ### JS Wrappers (Bindings)
+- [Opal Airbrake](https://github.com/fazibear/opal-airbrake) - Opal wrapper for airbrake-js javascript library.
 - [Opal Dagred3](https://github.com/lonelyplanet/opal-dagred3) - An opalized (ruby-fied) wrapper for the dagreD3 directed, acyclic graphing library
 - [Opal Firebase](https://github.com/gabrielrios/opal-firebase) - Firebase Wrapper providing a nice ruby syntax
 - [Opal Highcharts](https://github.com/balmoral/opal-highcharts) - Ruby wrapper for Highcharts and Highstock javascript libraries
@@ -89,15 +90,18 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal PunchDB](https://github.com/dodecaphonic/opal-pouchdb) - An Opal bridge to PouchDB
 - [Opal Pusher](https://github.com/jgaskins/opal-pusher) - Opal bindings for the Pusher JS API
 - [Opal Raphael](https://github.com/yhara/opal-raphael) - Opal binding for Raphael.js
+- [Opal Sid](https://github.com/fazibear/opal-sid) - Hermit jsSID wrapper for opal
 - [Opal VirtualDOM](https://github.com/fazibear/opal-virtual-dom) - virtual-dom wrapper for opal
+- [Opal Web Midi](https://github.com/fazibear/opal-web-midi) - Web MIDI wrapper for Opal.
 - [Reactrb](https://github.com/reactrb/reactrb) - Opal Ruby wrapper of React.js library.
 - [Stripe Opal](https://github.com/DataMelon/stripe-opal) - Stripe.JS wrapper for Opal
 - [Three.rb](https://github.com/orbitalimpact/three.rb) - An Opal wrapper for Three.js to develop 3D browser applications in Ruby!
 
 ### Examples
-- [AsciifyMe](https://github.com/inesita-rb/asciify-me) - Convert webcam into asciiart. Live!
+- [AsciifyMe](https://github.com/fazibear/asciify-me) - Convert webcam into asciiart. Live!
 - [Calculator](https://github.com/boberetezeke/calculator) - A HTML5 shared calculator app using ruby Opal
 - [Codemotion](https://github.com/elia/codemotion) - Ruby-everywhere chat app (rack/websockets/opal)
+- [Inesid](https://github.com/fazibear/inesid) - SID Web player with retor interface
 - [Inesita DBMonster](https://github.com/inesita-rb/dbmonster) - DBMonster test app written in Inesita
 - [Inesita Playground](https://github.com/inesita-rb/playground) - Playground for Inesita
 - [Inesita TodoMVC](https://github.com/inesita-rb/todomvc) - Inesita TodoMVC
@@ -133,6 +137,8 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Rails Opal React Example](https://github.com/alterego-labs/rails-opal-react-example) - JS is hell of shit! Opal is rising!
 - [RethinkDB Ruby Opal](https://github.com/segphault/rethinkdb-ruby-opal) - A RethinkDB demo application built with Ruby and Opal
 - [Roda Opal Example](https://github.com/jeremyevans/roda-opal-example) - Example of Using Roda with Opal
+- [Sprint Poker](https://github.com/elpassion/sprint-poker-inesita) - Online estimation tool for Agile teams
+- [WebAdudio Playground](https://github.com/fazibear/web-audio-playground) - Website to play with web-audio
 - [Zupfnoter](https://github.com/bwl21/zupfnoter) - A feature rich abc based music editor written in Opal Ruby; uses dropbox, abc2svg, jspdf and much more
 
 ### Other
@@ -148,8 +154,9 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [opal.tmbundle](https://github.com/opal/opal.tmbundle) - TextMate bundler for Opal Ruby
 
 ### Live Applications
-- [Asciify Me](https://inesita-asciify-me.netlify.com)
+- [Asciify Me](https://asciifyme.fazibear.me)
 - [Clearwater Blog](http://clearwater-blog.herokuapp.com)
+- [Inesid](http://inesid.fazibear.me)
 - [Inesita DBMonster](http://inesita-dbmonster.netlify.com)
 - [Inesita Playground](http://inesita-playground.netlify.com)
 - [Inesita TodoMVC](http://inesita-todomvc.netlify.com)
@@ -158,6 +165,8 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal IRB Standalone](http://fkchang.github.io/opal-irb/index-jq.html)
 - [Opal Playground](http://fkchang.github.io/opal-playground/)
 - [Pong in Opal](https://opalpong.herokuapp.com)
+- [Sprint Poker](http://sprintpoker-inesita.surge.sh)
+- [WebAudio Playgrond](http://inesita-web-audio.netlify.com)
 - [Zupfnoter](https://zupfnoter.weichel21.de)
 
 ### Deprecated
@@ -167,6 +176,6 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 
 ## Contribution
 
-Your contributions and suggestions are welcome ♡.
+Your [contributions](https://github.com/fazibear/awesome-opal/blob/master/README.md) and [suggestions](https://github.com/fazibear/awesome-opal/issues/new?title=suggestion:+) are welcome ♡.
 
 
