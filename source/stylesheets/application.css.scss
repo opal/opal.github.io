@@ -1,0 +1,258 @@
+//= require _vendor/pygment_solarized_light
+//= require _vendor/codemirror-solarized
+//= require blog
+//= require index
+
+$background: #34495E;
+$background-border: $background;
+$background-active: #2C3E50;
+$color: #fff;
+$color-secondary: #fff;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  color: #555555;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 200;
+  color: #444444;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+.nav.opal-sidebar {
+  background-color: #f7f7f9;
+  border-radius: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  > li > a {
+    padding: 5px 20px;
+  }
+
+  .nav > li > a {
+    padding-left: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 90%;
+  }
+
+  li > a {
+    color: #666666;;
+
+    &:hover {
+      background-color: #f7f7f9;
+      color: $brand-primary;
+      text-decoration: none;
+    }
+  }
+
+  ul.subchapter {
+    list-style: none;
+  }
+
+  li.toc-list-chapter {
+    margin-bottom: 5px;
+
+    > a {
+      font-weight: bold;
+    }
+  }
+}
+
+.opal-callout {
+  margin: 20px 0px;
+  padding: 20px;
+  color: #444444;
+
+  code {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  &.opal-callout-info {
+    background-color: #d9edf7;
+
+    code {
+      background-color: #d9edf7;
+      color: #2980B9;
+    }
+  }
+
+  &.opal-callout-warning {
+    background-color: $state-warning-bg;
+  }
+}
+
+
+blockquote p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+}
+
+code {
+  color: #444444;
+  background-color: #f1f1f1;
+  border: 0px;
+  margin: 0 2px;
+  padding: .2em;
+  font-family: Menlo, Consolas, "Courier New", monospace;
+}
+
+pre {
+  background-color: #f7f7f9;
+  border: 0px;
+  border-radius: 3px;
+  padding: 15px;
+  border-left: 1px solid #3498DB;
+  width: 100%;
+
+  font-family: Menlo, Consolas, "Courier New", monospace;
+
+  &.highlight {
+    background-color: #f7f7f9;
+  }
+}
+
+.main-title {
+  padding-bottom: 32px;
+}
+
+.opal-nav {
+  border: 0px;
+  background-color: $background;
+  border-bottom: 1px solid $background-border;
+  color: $color;
+
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+
+  .navbar-collapse {
+    // border-color: #463265;
+    border-color: lighten($background, 15%);
+    border-width: .5px
+  }
+
+  .navbar-brand {
+    color: $color;
+  }
+
+  .navbar-nav > li.divider > a {
+    color: $color;
+  }
+
+  .navbar-toggle .icon-bar {
+      background-color: #fff;
+  }
+
+  .navbar-nav > li > a {
+    color: $color;
+
+    &:hover {
+      background-color: lighten($background-active, 10%);
+      color: $color;
+    }
+  }
+
+  .navbar-nav > li.active > a,
+  .navbar-brand:hover,
+  .navbar-nav > li.active > a:hover {
+    color: $color-secondary;
+    background-color: $background-active;
+  }
+
+  .navbar-toggle {
+    border-color: $background;
+
+    &:hover {
+      background-color: $background;
+      border-color: $background;
+    }
+  }
+
+}
+
+
+body > footer {
+  padding: 20px 0;
+  // padding-bottom: 50%;
+  // margin-bottom: -50%;
+  margin-top: 70px;
+  border-top: 1px solid #e5e5e5;
+  background-color: $background;
+  text-align: center;
+  color: $color;
+  word-spacing: 0.3em;
+  a {
+    color: $color-secondary;
+    &:hover {
+      color: $color;
+    }
+  }
+}
+
+html {
+  min-height: 100%;
+  background-color: $background;
+}
+
+.jumbotron.opal-front-jumbo {
+  background-color: #f7f7f9;
+
+  .page-header {
+    border-bottom: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+
+p.run-code {
+  height: 0;
+  overflow: visible;
+  width: 100%;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+
+  a.btn-code {
+    $bgcolor: #3498DB;
+    border-color: transparent;
+    background-color: lighten($bgcolor, 20%);
+    border-top-left-radius: 0;
+    // border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    color: white;
+    &:hover {
+      background-color: lighten($bgcolor, 10%);
+    }
+
+    i {
+      font-size: 1.4em;
+      vertical-align: top;
+    }
+  }
+}

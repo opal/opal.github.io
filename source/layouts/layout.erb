@@ -1,0 +1,27 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title><%= data.page.title || "Opal: Ruby to Javascript compiler" %></title>
+
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" %>
+  <%= javascript_include_tag "application" %>
+</head>
+<body class="<%= page_classes %>">
+  <%= partial 'header' %>
+  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  <%= partial 'footer' %>
+
+  <script>
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+  </script>
+</body>
+</html>

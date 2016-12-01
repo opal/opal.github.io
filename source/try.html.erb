@@ -1,0 +1,34 @@
+---
+title: "Try Opal: Browser compiler and REPL"
+---
+
+<%= stylesheet_link_tag "codemirror" %>
+<%= javascript_include_tag "try" %>
+
+<div class="page-header"><h1>Try Opal in your browser!</h1></div>
+
+<div class="row" id="wrapper">
+  <div id="editor_wrapper" class="col-md-6">
+    <a href="#" id="run_code" class="btn btn-primary">Run (Cmd+Enter)</a>
+    <a href="#" id="link_code" class="btn">Link</a>
+    <p></p>
+    <div id="editor" class="well" style="padding:0"></div>
+  </div>
+  <div class="col-md-6">
+    <a href="#" class="btn disabled">Compiled Javascript</a>
+    <p></p>
+    <div id="viewer" class="well" style="padding:0">
+    </div>
+  </div>
+</div>
+
+<!-- output -->
+<div class="row" id="wrapper">
+  <div class="col-md-12">
+    <a href="#" class="btn disabled">Output</a>
+    <p></p>
+    <div id="output" class="well" style="padding:0">
+    </div>
+  </div>
+</div>
+
