@@ -1,0 +1,21 @@
+-# %article.blog-post
+-#   %h2.blog-post-title= link_to article.title, article
+-#
+-#   .blog-post-meta
+-#     = "Posted by #{article.data.author} on #{article.date.strftime "%-a, %d %b %Y"}"
+-#
+-#   = preserve do
+-#     = article.body
+
+%article.blog-post
+  %header
+    %h2.blog-post-title
+      %a(href="#{article.url}")
+        = article.title
+
+    .blog-post-meta
+      = "Posted by #{article.author} on #{Date.parse(article.date).inspect}"
+
+  .blog-post-body
+    = preserve do
+      = article.body
