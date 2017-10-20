@@ -6,17 +6,17 @@ This repo holds the source of the opalrb.com website.
 
 Clone this repo, and use bundler to get dependencies:
 
-    $ bundle install
+    $ bin/setup
 
 The website is built using middleman.
 
 ## Run site/server
 
-    $ bundle exec middleman server
+    $ bin/server
 
 Then visit `http://localhost:4567`.
 
 ## Publishing
 
-    $ rake publish
+    $ bin/deploy
 
