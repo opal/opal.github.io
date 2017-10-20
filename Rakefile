@@ -63,6 +63,7 @@ end
 
 desc "Refresh the libraries page contents from awesome-opal"
 task :libraries do
+  puts 'Downloading from fazibear/awesome-opal...'
   require 'open-uri'
   awesome_page = open 'https://raw.githubusercontent.com/fazibear/awesome-opal/master/README.md'
   awesome_contents = awesome_page.read
@@ -79,6 +80,8 @@ task :libraries do
   #{awesome_contents}
 
   MD
+
+  puts "Done, downloaded #{awesome_contents.bytesize} bytes."
 end
 
 desc "Build and publish to Github Pages"
