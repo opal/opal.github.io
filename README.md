@@ -1,6 +1,6 @@
 # Opal Website
 
-This repo holds the source of the opalrb.org website.
+This repo holds the source of the opalrb.com website.
 
 ## Preparing
 
