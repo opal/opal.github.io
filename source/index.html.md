@@ -13,10 +13,10 @@ title: "Opal: Ruby to JavaScript Compiler"
     </p>
     <p>
       <a href="#getting-started" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book"></i> Getting Started</a>
-      <!-- <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal.min.js</a>
-      <a target="_blank" href="http://cdn.opalrb.org/opal/current/opal-parser.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal-parser.min.js</a>
-      <a target="_blank" href="http://cdn.opalrb.org/" class="btn btn-lg" role="button"><i class="ion-ios-world-outline"></i> Use the CDN</a> -->
-      <!-- <a href="http://cdn.opalrb.org/" class="btn btn-lg" role="button"><i class="ion-speedometer"></i> Use the CDN</a> -->
+      <!-- <a target="_blank" href="http://cdn.opalrb.com/opal/current/opal.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal.min.js</a>
+      <a target="_blank" href="http://cdn.opalrb.com/opal/current/opal-parser.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal-parser.min.js</a>
+      <a target="_blank" href="http://cdn.opalrb.com/" class="btn btn-lg" role="button"><i class="ion-ios-world-outline"></i> Use the CDN</a> -->
+      <!-- <a href="http://cdn.opalrb.com/" class="btn btn-lg" role="button"><i class="ion-speedometer"></i> Use the CDN</a> -->
     <!-- </p>
     <p> -->
       <a href="#getting-started-rack-and-sprockets" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rack tutorial</a>

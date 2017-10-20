@@ -9,7 +9,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 # Awesome Opal [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 ### Opal
-- [Opal Website](http://opalrb.com/)
+- [Opal Website](http://opalrb.org/)
 - [Opal Github Repository](https://github.com/opal/opal)
 - [Opal Github Organization](https://github.com/opal)
 - [Opal Gitter](https://gitter.im/opal/opal)
@@ -20,7 +20,6 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 ### Blogs
 - [Funkworks (tagged Opal)](http://funkworks.blogspot.com/search/label/opal) Software blog, articles tagged opal
 - [Mikamai (tagged Opal)](http://dev.mikamai.com/tagged/opal) Software blog, articles tagged opal
-- [DataMelon](http://datamelon.io/blog/) Software blog with many screencasts, strong Volt focus
 - [Opalist](http://www.opalist.co) Blog links on the bottom
 
 ### Video Presentations
@@ -30,6 +29,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 
 ### Frameworks
 - [Clearwater](https://github.com/clearwater-rb/clearwater) - Component-based Ruby front-end framework
+- [Hyperloop](http://ruby-hyperloop.io/) - A Complete Isomorphic Ruby Framework using React, Rails and Opal
 - [Inesita](https://github.com/inesita-rb/inesita) - Frontend web application framework in Ruby using Opal.
 - [Lissio](https://github.com/meh/lissio) - lissio is a VCL (Vai Col Lissio) framework for Opal to implement frontends completely on the client side.
 - [Opal Praha](https://github.com/unplugandplay/opal-praha) - An opal-vienna rewrite with Convention over Configuration in mind
@@ -69,6 +69,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal Scriptish](https://github.com/meh/opal-scriptish) - Scriptish support for Ruby scripting, with Opal.
 - [Opal Shimmer](https://github.com/jaredcwhite/opal-shimmer) - Shimmer is an application state and configuration management library built with Opal
 - [Opal Slim](https://github.com/jgaskins/opal-slim) - Sprockets integration to compile Slim templates for Opal apps
+- [Opal Sprockets](https://github.com/opal/opal-sprockets) - Integration with Sprockets
 - [Opal Starter Kit](https://github.com/fkchang/opal-starter-kit) - Create Opal projects easily
 - [Opal UI](https://github.com/ppibburr/opal-ui) - A GUI Toolkit in your Browser
 - [Opal aasm](https://github.com/catprintlabs/opal-aasm) - Opal compatible version of Acts As State Machine with React.rb awareness
@@ -98,6 +99,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Three.rb](https://github.com/orbitalimpact/three.rb) - An Opal wrapper for Three.js to develop 3D browser applications in Ruby!
 
 ### Examples
+- [Asciidoctor.js](https://github.com/asciidoctor/asciidoctor.js) - A JavaScript port of Asciidoctor produced by Opal
 - [AsciifyMe](https://github.com/fazibear/asciify-me) - Convert webcam into asciiart. Live!
 - [Calculator](https://github.com/boberetezeke/calculator) - A HTML5 shared calculator app using ruby Opal
 - [Codemotion](https://github.com/elia/codemotion) - Ruby-everywhere chat app (rack/websockets/opal)
@@ -150,6 +152,8 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal Console](https://github.com/edubkendo/OpalConsole) - A Chrome extension to compile and run Opal in the browser
 - [Opal Loader](https://github.com/zetachang/opalrb-loader) - Opal Ruby module loader for webpack
 - [Opal Meteor](https://github.com/marcandre/meteor-opal) - Ruby runtime and core library for Meteor
+- [Opal Node Runtime](https://github.com/mogztter/opal-node-runtime) - Opal runtime as a Node module
+- [Opal Node Compiler](https://github.com/mogztter/opal-node-compiler) - Opal compiler as a Node module
 - [Opal npm Wrapper](https://github.com/anthonny/opal-npm-wrapper) - Npm wrapper for Opal
 - [opal.tmbundle](https://github.com/opal/opal.tmbundle) - TextMate bundler for Opal Ruby
 
