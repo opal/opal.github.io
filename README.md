@@ -8,7 +8,10 @@ Clone this repo, and use bundler to get dependencies:
 
     $ bin/setup
 
-The website is built using middleman.
+The website is built using middleman. It also incorporates the awesome awesome-opal list by @fazibear.
+To update the list just run
+
+    $ bin/update-libraries-page
 
 ## Run site/server
 
