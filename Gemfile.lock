@@ -1,10 +1,37 @@
 GIT
+  remote: git://github.com/opal/opal-jquery.git
+  revision: f47a9b42da366cea270f743b05acf529f3077d35
+  specs:
+    opal-jquery (0.4.2)
+      opal (>= 0.10.0, < 0.12.0)
+
+GIT
   remote: git://github.com/opal/opal-rspec.git
   revision: d2cdb3aa98fab2a0c05c49192943fe84e8d51ebd
   submodules: true
   specs:
     opal-rspec (0.7.0.dev)
       opal (>= 0.10.0, < 0.11)
+
+GIT
+  remote: git://github.com/opal/opal-sprockets.git
+  revision: c5ce8dc6c5c5c24499942b41e6e98ae8ebf156de
+  specs:
+    opal-sprockets (0.4.1.0.11.0.rc1.3.1)
+      opal (~> 0.11.0.rc1)
+      sprockets (~> 3.1)
+      tilt (>= 1.4)
+
+GIT
+  remote: git://github.com/opal/opal.git
+  revision: 4e0e92ca08785d067e7673082ae2459c06ef6be6
+  branch: master
+  specs:
+    opal (0.11.0.rc1)
+      ast (>= 2.3.0)
+      hike (~> 1.2)
+      parser (= 2.3.3.1)
+      sourcemap (~> 0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -16,6 +43,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    ast (2.3.0)
     backports (3.10.3)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
@@ -93,13 +121,6 @@ GEM
     minitest (5.10.3)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    opal (0.10.5)
-      hike (~> 1.2)
-      sourcemap (~> 0.1.0)
-      sprockets (~> 3.1)
-      tilt (>= 1.4)
-    opal-jquery (0.4.2)
-      opal (>= 0.7.0, < 0.11.0)
     padrino-helpers (0.13.3.4)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.13.3.4)
@@ -107,6 +128,8 @@ GEM
     padrino-support (0.13.3.4)
       activesupport (>= 3.1)
     parallel (1.12.0)
+    parser (2.3.3.1)
+      ast (~> 2.2)
     public_suffix (3.0.0)
     puma (3.6.2)
     rack (2.0.3)
@@ -141,9 +164,10 @@ DEPENDENCIES
   middleman-sprockets
   middleman-syntax
   nokogiri
-  opal (~> 0.10.5)
-  opal-jquery
+  opal (= 0.11.0.rc1)!
+  opal-jquery!
   opal-rspec!
+  opal-sprockets!
   puma
   rake
   redcarpet
