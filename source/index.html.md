@@ -56,6 +56,8 @@ puts user.admin?
 
 ---
 
+<span id="getting-started">
+
 ## Getting Started: Rack and Sprockets
 
 Add `rack` & `opal-sprockets` to your `Gemfile`.
