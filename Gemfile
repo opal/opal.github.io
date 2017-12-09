@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'opal', '0.11.0.rc1', github: 'opal', branch: :master
+gem 'opal', '0.11.0'
 gem 'opal-sprockets', github: 'opal/opal-sprockets'
 gem 'opal-jquery', github: 'opal/opal-jquery'
 # gem 'opal-jquery'
-gem 'opal-rspec', github: 'opal/opal-rspec', submodules: true
+gem 'opal-rspec', github: 'opal/opal-rspec', submodules: true, branch: 'elia/opal-master'
 
 gem 'bootstrap-sass', '~> 3.2.0.2'
 
