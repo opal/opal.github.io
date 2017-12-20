@@ -1,0 +1,116 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Opal 0.11.0: Parser gem, Safe navigator (&.), Random seed support, Constant lookup</title>
+
+  <link href="/stylesheets/application.css" rel="stylesheet" />
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+  <script src="/javascripts/application.js"></script>
+</head>
+<body class="blog blog_2017 blog_2017_12 blog_2017_12_20 blog_2017_12_20_opal-0-11-0 blog_2017_12_20_opal-0-11-0_index">
+  <nav class='navbar navbar-default opal-nav' role='navigation'>
+<div class='container'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+<img height='22' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' style='margin-top:-10%;' width='22'>
+Opal
+</a>
+<button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+</div>
+<div class='navbar-collapse collapse' id='opal-navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href='/try'>
+<i class='ion-ios-compose'></i>
+Try
+</a>
+</li>
+<li>
+<a href='/blog'>
+<i class='ion-ios-chatboxes'></i>
+Blog
+</a>
+</li>
+<li>
+<a href='/docs'>
+<i class='ion-ios-copy'></i>
+Documentation
+</a>
+</li>
+<li>
+<a href='/libraries'>
+<i class='ion-android-developer'></i>
+Libraries
+</a>
+</li>
+<li>
+<a href='https://github.com/opal/opal#readme'>
+<i class='ion-social-github'></i>
+GitHub
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
+
+  <div class="container">
+      <div class="container col-sm-8">
+    <div class='blog-title'>
+<h1>
+<a href='/blog'>The Opal Blog</a>
+</h1>
+</div>
+
+    <article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href=''>
+Opal 0.11.0: Parser gem, Safe navigator (&.), Random seed support, Constant lookup
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by Elia Schito on 2017-12-20
+</div>
+</header>
+<div class='blog-post-body'>
+<p>Hello everyone!</p>&#x000A;&#x000A;<p>I&#39;m very happy to announce that after more than a year in the making Opal v0.11.0 has finally been released!</p>&#x000A;&#x000A;<p>This version is probably the last one before 1.0, it&#39;s packed with great new features, a ton of fixes and a complete reimplementation of the parser.</p>&#x000A;&#x000A;<h2 id="notable-changes-since-opal-v0-10-0">Notable Changes since Opal v0.10.0</h2>&#x000A;&#x000A;<!--preview-->&#x000A;&#x000A;<h3 id="renewed-parser">Renewed parser</h3>&#x000A;&#x000A;<p>The new parser is much more stricter, expect some code that was happily parsed be for to be rejected.&#x000A;The good news is that the error messages are generally much better and will tell you exactly where to look, also your code will be more correct.</p>&#x000A;&#x000A;<h3 id="constant-lookup">Constant lookup</h3>&#x000A;&#x000A;<p>The constants lookup system has been rewritten and now the algorithm matches more closely what MRI does while still taking advantage of an aggressive cache.</p>&#x000A;&#x000A;<h3 id="sprockets-extraction">Sprockets extraction</h3>&#x000A;&#x000A;<p>Opal::Server was relying on Sprockets which is now extracted to the resurrected <code>opal-sprockets</code> gem and can be found under <code>Opal::Sprockets::Server</code>.</p>&#x000A;&#x000A;<p>The <code>opal</code> gem sill provides a basic server that uses the internal <code>Opal::Builder</code> instead of sprockets and can be accessed as <code>Opal::SimpleServer</code> and has kept the same API where possible.</p>&#x000A;&#x000A;<h3 id="headless-chrome">Headless Chrome</h3>&#x000A;&#x000A;<p>Headless Chrome is the new standard, while <code>phantomjs</code> has been officially abandoned.</p>&#x000A;&#x000A;<p>Opal v0.11.0 replaced the <code>phantomjs</code> CLI runner with <code>chrome</code>. While there&#39;s no plan to restore support for <code>phantomjs</code> if your app really needs it please contact the core team on <a href="https://github.com/opal/opal/issues/new">GitHub</a> or <a href="https://gitter.im/opal/opal">Gitter</a>, if there&#39;s enough interest we&#39;ll do our best to extract and publish <code>phantomjs</code> runner code as an external gem.</p>&#x000A;&#x000A;<h3 id="dynamic-requires">Dynamic requires</h3>&#x000A;&#x000A;<p>Pre-compiling Ruby into JavaScript doesn&#39;t go along well with dynamic requires, but Opal <a href="https://github.com/opal/opal/blob/v0.11.0/lib/opal/nodes/call.rb#L311-L364">goes out of its way</a> to cover all possible cases where it can infer the required path (e.g. parses calls to <code>File.expand_path</code> and resolves them at compile time).</p>&#x000A;&#x000A;<p>Previously whenever a call to require couldn&#39;t be solved it ended in raising an exception and blocked the compilation, often unnecessarily forcing the user to add the requested path to stubs (see Opal::Config documentation).</p>&#x000A;&#x000A;<p>With Opal v0.11.0 unsolvable calls to require will just be ignored at compile time and will raise a  <code>LoadError</code> at runtime if the given path isn&#39;t found matching more closely what happens under MRI. It&#39;s still possibile to revert back to the old behavior by settings <code>Opal::Config.dynamic_require_severity = :error</code> (see the relevant code in <a href="https://github.com/opal/opal/blob/v0.11.0/lib/opal/config.rb#L101-L108">opal/config.rb</a>).</p>&#x000A;&#x000A;<h3 id="read-the-changelog-for-further-details">Read the Changelog for further details</h3>&#x000A;&#x000A;<p>As always, Opal 0.10 includes many bug fixes and improvements to the internals of the Opal libraries, so be sure to <a href="https://github.com/opal/opal/blob/0-10-stable/CHANGELOG.md#0100---2016-07-04">read the changelog</a> for further details.</p>&#x000A;&#x000A;<hr>&#x000A;&#x000A;<p>As always, huge thanks to the many contributors who helped with this release.</p>&#x000A;</div>
+</article>
+
+  </div>
+
+  </div>
+
+  <!-- GOOGLE ANALYTICS -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35688734-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<footer>
+  <a href="/license"><i class="ion-unlocked"></i> License</a> ·
+  <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
+</footer>
+
+
+  <script>
+    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+  </script>
+</body>
+</html>
