@@ -101,7 +101,7 @@ Then start the server with `bundle exec rackup` and visit [http://localhost:9292
 
 ## Getting Started: Rails
 
-Add `opal-rails` to your `Gemfile` or build your Rails app with Opal support: `rails new -j opal`
+Add `opal-rails` to your Rails app's `Gemfile`:
 
 ```ruby
 gem 'opal-rails'
