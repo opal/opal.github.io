@@ -1,14 +1,14 @@
 GIT
-  remote: git://github.com/opal/opal-jquery.git
+  remote: https://github.com/opal/opal-jquery.git
   revision: f47a9b42da366cea270f743b05acf529f3077d35
   specs:
     opal-jquery (0.4.2)
       opal (>= 0.10.0, < 0.12.0)
 
 GIT
-  remote: git://github.com/opal/opal-rspec.git
-  revision: 29ee91d19b3c65668be38d2c34f99546959a2d9f
-  branch: elia/opal-master
+  remote: https://github.com/opal/opal-rspec.git
+  revision: f3b28c3df1e0159a5f4ad9363ef17789ca26ba63
+  branch: master
   submodules: true
   specs:
     opal-rspec (0.7.0.dev)
@@ -16,11 +16,11 @@ GIT
       opal-sprockets
 
 GIT
-  remote: git://github.com/opal/opal-sprockets.git
-  revision: c5ce8dc6c5c5c24499942b41e6e98ae8ebf156de
+  remote: https://github.com/opal/opal-sprockets.git
+  revision: 32cde8638159a41ae10fbde2fe06f844451ff540
   specs:
-    opal-sprockets (0.4.1.0.11.0.rc1.3.1)
-      opal (~> 0.11.0.rc1)
+    opal-sprockets (0.4.1.0.11.0.3.1)
+      opal (~> 0.11.0)
       sprockets (~> 3.1)
       tilt (>= 1.4)
 
