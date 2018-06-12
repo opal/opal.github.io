@@ -9,7 +9,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 # Awesome Opal [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 ### Opal
-- [Opal Website](http://opalrb.org/)
+- [Opal Website](https://opalrb.com/)
 - [Opal Github Repository](https://github.com/opal/opal)
 - [Opal Github Organization](https://github.com/opal)
 - [Opal Gitter](https://gitter.im/opal/opal)
@@ -29,9 +29,10 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 
 ### Frameworks
 - [Clearwater](https://github.com/clearwater-rb/clearwater) - Component-based Ruby front-end framework
-- [Hyperloop](http://ruby-hyperloop.io/) - A Complete Isomorphic Ruby Framework using React, Rails and Opal
+- [Hyperloop](http://ruby-hyperloop.org/) - A Complete Isomorphic Ruby Framework using React, Rails and Opal
 - [Inesita](https://github.com/inesita-rb/inesita) - Frontend web application framework in Ruby using Opal.
 - [Lissio](https://github.com/meh/lissio) - lissio is a VCL (Vai Col Lissio) framework for Opal to implement frontends completely on the client side.
+- [Opal Ferro](https://github.com/easydatawarehousing/opal-ferro) - Create webapps object-oriented style. No HTML, just beautiful and simple Ruby code
 - [Opal Praha](https://github.com/unplugandplay/opal-praha) - An opal-vienna rewrite with Convention over Configuration in mind
 - [Vienna](https://github.com/opal/vienna) - Client-side MVC framework for Opal
 - [Volt](https://github.com/voltrb/volt) - A Ruby web framework where your Ruby runs on both server and client
@@ -42,6 +43,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Grand Central](https://github.com/clearwater-rb/grand_central) - State-management and action-dispatching for Opal apps
 - [Hyalite](https://github.com/youchan/hyalite) - This is ruby virtual DOM implementation using opal. It is inspired by react.js.
 - [Jekyll Opal](https://github.com/jekyll/jekyll-opal) - Let Jekyll convert your Ruby into JavaScript using Opal
+- [Negasonic](https://github.com/merongivian/negasonic) - Music live coding in the browser, powered by Tone.rb
 - [Opal ActionCable](https://github.com/MichaelSp/opal-actioncable) - Opal wrapper for rails actioncable
 - [Opal ActionPack](https://github.com/boberetezeke/opal-actionpack) - A small port of the awesome action pack to Opal JS
 - [Opal ActiveRecord](https://github.com/boberetezeke/opal-activerecord) - An basic implementation of rails active record for use with opaljs
@@ -97,6 +99,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Reactrb](https://github.com/reactrb/reactrb) - Opal Ruby wrapper of React.js library.
 - [Stripe Opal](https://github.com/DataMelon/stripe-opal) - Stripe.JS wrapper for Opal
 - [Three.rb](https://github.com/orbitalimpact/three.rb) - An Opal wrapper for Three.js to develop 3D browser applications in Ruby!
+- [Tone.rb](https://github.com/merongivian/tone.rb) - Ruby wrapper for Tone.js
 
 ### Examples
 - [Asciidoctor.js](https://github.com/asciidoctor/asciidoctor.js) - A JavaScript port of Asciidoctor produced by Opal
@@ -107,6 +110,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Inesita DBMonster](https://github.com/inesita-rb/dbmonster) - DBMonster test app written in Inesita
 - [Inesita Playground](https://github.com/inesita-rb/playground) - Playground for Inesita
 - [Inesita TodoMVC](https://github.com/inesita-rb/todomvc) - Inesita TodoMVC
+- [Negasonic Editor](https://github.com/merongivian/negasonic_editor) - Online editor for Negasonic, music live coding in the browser
 - [Opal Blog](https://github.com/jgaskins/opal_blog) - An example of using the Clearwater framework with Opal/Rails
 - [Opal Canvas Demo](https://github.com/danxexe/opal-canvas-demo) - Crappy canvas experiment using Opal.
 - [Opal Cats](https://github.com/bbonamin/opal-cats) - Get some cat pictures, with Opal
@@ -146,6 +150,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 ### Other
 - [Dyndoc Opal](https://github.com/rcqls/dyndoc-opal) - dyndoc js via opal
 - [Ember Cli Opalrb](https://github.com/mfeckie/ember-cli-opal-rb) - Include Opal.rb in your Ember projects
+- [Ferro](https://easydatawarehousing.github.io/ferro/) - Demonstration of the abilities and use of the opal-ferro framework
 - [Gulp Opal](https://github.com/akasata/gulp-opal) - A gulp plugin convert Ruby to Javascript(by Opal)
 - [Meteor Opal](https://github.com/mikamai/meteor-opal) - Meteor support for Opal, the Ruby to Javascript Compiler
 - [Opal Benchmarks](https://github.com/ryanstout/opal_benchmarks) - A quick, totally inaccurate set of simple benchmarks for opal
@@ -164,12 +169,14 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Inesita DBMonster](http://inesita-dbmonster.netlify.com)
 - [Inesita Playground](http://inesita-playground.netlify.com)
 - [Inesita TodoMVC](http://inesita-todomvc.netlify.com)
+- [Negasonic Editor](https://negasonic.herokuapp.com/)
 - [Opal Canvas Demo](http://opal-canvas-demo.herokuapp.com)
 - [Opal IRB Embedded](http://fkchang.github.io/opal-irb/index-embeddable.html)
 - [Opal IRB Standalone](http://fkchang.github.io/opal-irb/index-jq.html)
 - [Opal Playground](http://fkchang.github.io/opal-playground/)
 - [Pong in Opal](https://opalpong.herokuapp.com)
 - [Sprint Poker](http://sprintpoker-inesita.surge.sh)
+- [TryRuby](https://easydatawarehousing.github.io/TryRuby/)
 - [WebAudio Playgrond](http://inesita-web-audio.netlify.com)
 - [Zupfnoter](https://zupfnoter.weichel21.de)
 
@@ -180,5 +187,4 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 ## Contribution
 
 Your [contributions](https://github.com/fazibear/awesome-opal/blob/master/README.md) and [suggestions](https://github.com/fazibear/awesome-opal/issues/new?title=suggestion:+) are welcome ♡.
-
 
