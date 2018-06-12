@@ -30,13 +30,16 @@ title: "Opal: Ruby to JavaScript Compiler"
 
 ## Praise
 
-> Opal is truly amazing and it has taken me in a whole new direction.
-— @mistergibson (https://gitter.im/opal/opal?at=5a652b8de014122650743f80)
-
-> opal 0.11 is a blessing! Its a giant step forward to ruby on the client! Its just amazing what bugs i find in existing 0.10 code and do keep wondering, "How did this ever work at all?" I am amzed, fantastic 👍👍👍😄
-— @janbiedermann (https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d)
-
-
+<p>
+<blockquote>Opal is truly amazing and it has taken me in a whole new direction.</blockquote>
+<em>— @mistergibson (https://gitter.im/opal/opal?at=5a652b8de014122650743f80)</em>
+</p>
+<br>
+<p>
+<blockquote>opal 0.11 is a blessing! Its a giant step forward to ruby on the client! Its just amazing what bugs i find in existing 0.10 code and do keep wondering, "How did this ever work at all?" I am amzed, fantastic 👍👍👍😄</blockquote>
+<em>— @janbiedermann (https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d)</em>
+</p>
+<br>
 
 ## Overview
 
