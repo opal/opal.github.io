@@ -127,7 +127,7 @@ GEM
     parser (2.3.3.1)
       ast (~> 2.2)
     public_suffix (3.0.0)
-    puma (3.6.2)
+    puma (3.11.2)
     rack (2.0.3)
     rake (11.3.0)
     rb-fsevent (0.10.2)
@@ -169,4 +169,4 @@ DEPENDENCIES
   redcarpet
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
