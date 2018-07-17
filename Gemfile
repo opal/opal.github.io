@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}.git" }
 
-gem 'opal', '0.11.0'
-gem 'opal-sprockets', github: 'opal/opal-sprockets'
+gem 'opal', '0.11.1'
+gem 'opal-sprockets', '~> 0.4.1'
 gem 'opal-jquery', github: 'opal/opal-jquery'
 # gem 'opal-jquery'
 gem 'opal-rspec', github: 'opal/opal-rspec', submodules: true, branch: 'master'
