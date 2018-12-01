@@ -67,7 +67,7 @@ class TryOpal
     @link[:href] = "?code:#{`encodeURIComponent(#{@editor.value})`}"
 
     begin
-      code = Opal.compile(@editor.value, :source_map_enabled => false)
+      code = Opal.compile(@editor.value, source_map_enabled: false)
       @viewer.value = code
       eval_code code
     rescue => err
