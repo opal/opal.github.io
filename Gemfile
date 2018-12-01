@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}.git" }
 
-gem 'opal', '0.11.1'
+gem 'opal', '~> 0.11.1'
 gem 'opal-sprockets', '~> 0.4.1'
 gem 'opal-jquery', github: 'opal/opal-jquery'
 # gem 'opal-jquery'
