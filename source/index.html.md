@@ -40,6 +40,11 @@ title: "Opal: Ruby to JavaScript Compiler"
 <em>— @janbiedermann (https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d)</em>
 </p>
 <br>
+<p>
+<blockquote>these guys are great. We have a large production app (www.catprint.com) that thanks to opal is 100% RUBY. The UI part is about 17K of opal code, using the hyperstack (www.hyperstack.org) framework.<br>
+In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
+<em>— @catmando (https://gitter.im/opal/opal?at=5c02cd4b9f38cc0fd58c3b7f)</em>
+</p>
 
 ## Overview
 
