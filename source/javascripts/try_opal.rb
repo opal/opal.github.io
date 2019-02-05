@@ -104,19 +104,21 @@ class TryOpal
     end
   end
 
-  def run_code
-    @flush = []
-    @output.value = ''
-
+  def compile_code
+    @output.value = 'click "Run" to see the output'
     @link[:href] = "?code:#{`encodeURIComponent(#{@editor.value})`}"
+    code = Opal.compile(@editor.value, source_map_enabled: false)
+    @viewer.value = code
+  rescue StandardError, SyntaxError => err
+    log_error err
+  end
 
-    begin
-      code = Opal.compile(@editor.value, source_map_enabled: false)
-      @viewer.value = code
-      eval_code code
-    rescue => err
-      log_error err
-    end
+  def run_code
+    compile_code
+    @flush = []
+    eval_code @viewer.value
+  rescue StandardError, SyntaxError => err
+    log_error err
   end
 
   def eval_code(js_code)
@@ -137,5 +139,5 @@ Document.ready? do
   $stdout.write_proc = $stderr.write_proc = proc do |str|
     TryOpal.instance.print_to_output(str)
   end
-  TryOpal.instance.run_code
+  TryOpal.instance.compile_code
 end
