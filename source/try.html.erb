@@ -6,7 +6,12 @@ title: "Try Opal: Browser compiler and REPL"
 <%= javascript_include_tag "try" %>
 <script>Opal.load('try_opal');</script>
 
-<div class="page-header"><h1>Try Opal in your browser!</h1></div>
+<div class="page-header">
+  <h1>Try Opal in your browser!</h1>
+  Examples:
+  <a href="/try/?code:require%20%27native%27%0Aname%20%3D%20%24%24.prompt%20%22Please%20enter%20your%20name%22%0A%24%24.alert(%22Hello%20%23%7Bname%7D!%22)" id="link_code" class="btn">Prompt &amp; Alert</a>
+  <a href="/try/?code:require%20%27native%27%0A%0Aelement%20%3D%20%24%24%5B%3Adocument%5D.querySelector(%27h1%27)%0Atitle%20%3D%20element%5B%3AinnerText%5D%0A%0Aclicks%20%3D%20title.scan(%25r%7B(%3F%3A%20(%5Cd%2B))%3F%24%7D).first.first.to_i%0Awith_clicks%20%3D%20title.sub(%25r%7B(%3F%3A%20(%5Cd%2B))%3F%24%7D%2C%20%22%20%23%7Bclicks%2B1%7D%22)%0A%0Aelement%5B%3AinnerText%5D%20%3D%20with_clicks" id="link_code" class="btn">Count Clicks</a>
+</div>
 
 <div class="row" id="wrapper">
   <div id="editor_wrapper" class="col-md-6">
