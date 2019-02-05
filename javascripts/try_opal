@@ -3,9 +3,9 @@
   function $rb_minus(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs - rhs : lhs['$-'](rhs);
   }
-  var TMP_12, self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $hash2 = Opal.hash2, $send = Opal.send, $range = Opal.range, $gvars = Opal.gvars;
+  var TMP_13, self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $hash2 = Opal.hash2, $send = Opal.send, $range = Opal.range, $gvars = Opal.gvars;
 
-  Opal.add_stubs(['$require', '$to_n', '$new', '$lambda', '$run_code', '$find', '$on', '$=~', '$[]', '$value=', '$-', '$strip', '$value', '$[]=', '$compile', '$eval_code', '$log_error', '$puts', '$<<', '$join', '$ready?', '$proc', '$print_to_output', '$instance', '$write_proc=']);
+  Opal.add_stubs(['$require', '$to_n', '$new', '$lambda', '$run_code', '$find', '$on', '$=~', '$[]', '$value=', '$-', '$strip', '$value', '$[]=', '$compile', '$log_error', '$compile_code', '$eval_code', '$puts', '$<<', '$join', '$ready?', '$proc', '$print_to_output', '$instance', '$write_proc=']);
   
   self.$require("opal");
   self.$require("opal-parser");
@@ -16,7 +16,7 @@
     function $TryOpal(){};
     var self = $TryOpal = $klass($base, $super, 'TryOpal', $TryOpal);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_TryOpal_instance_4, TMP_TryOpal_initialize_7, TMP_TryOpal_run_code_8, TMP_TryOpal_eval_code_9, TMP_TryOpal_log_error_10, TMP_TryOpal_print_to_output_11;
+    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_TryOpal_instance_4, TMP_TryOpal_initialize_7, TMP_TryOpal_compile_code_8, TMP_TryOpal_run_code_9, TMP_TryOpal_eval_code_10, TMP_TryOpal_log_error_11, TMP_TryOpal_print_to_output_12;
 
     def.editor = def.output = def.link = def.viewer = def.flush = nil;
     
@@ -81,49 +81,62 @@
       };
     }, TMP_TryOpal_initialize_7.$$arity = 0);
     
-    Opal.defn(self, '$run_code', TMP_TryOpal_run_code_8 = function $$run_code() {
+    Opal.defn(self, '$compile_code', TMP_TryOpal_compile_code_8 = function $$compile_code() {
       var self = this, $writer = nil, code = nil, err = nil;
 
-      
-      self.flush = [];
-      
-      $writer = [""];
-      $send(self.output, 'value=', Opal.to_a($writer));
-      $writer[$rb_minus($writer["length"], 1)];;
-      
-      $writer = ["href", "" + "?code:" + (encodeURIComponent(self.editor.$value()))];
-      $send(self.link, '[]=', Opal.to_a($writer));
-      $writer[$rb_minus($writer["length"], 1)];;
-      
       try {
         
+        
+        $writer = ["click \"Run\" to see the output"];
+        $send(self.output, 'value=', Opal.to_a($writer));
+        $writer[$rb_minus($writer["length"], 1)];;
+        
+        $writer = ["href", "" + "?code:" + (encodeURIComponent(self.editor.$value()))];
+        $send(self.link, '[]=', Opal.to_a($writer));
+        $writer[$rb_minus($writer["length"], 1)];;
         code = Opal.const_get_relative($nesting, 'Opal').$compile(self.editor.$value(), $hash2(["source_map_enabled"], {"source_map_enabled": false}));
         
         $writer = [code];
         $send(self.viewer, 'value=', Opal.to_a($writer));
-        $writer[$rb_minus($writer["length"], 1)];;
-        return self.$eval_code(code);
+        return $writer[$rb_minus($writer["length"], 1)];;
       } catch ($err) {
-        if (Opal.rescue($err, [Opal.const_get_relative($nesting, 'StandardError')])) {err = $err;
+        if (Opal.rescue($err, [Opal.const_get_relative($nesting, 'StandardError'), Opal.const_get_relative($nesting, 'SyntaxError')])) {err = $err;
           try {
             return self.$log_error(err)
           } finally { Opal.pop_exception() }
         } else { throw $err; }
-      };;
-    }, TMP_TryOpal_run_code_8.$$arity = 0);
+      }
+    }, TMP_TryOpal_compile_code_8.$$arity = 0);
     
-    Opal.defn(self, '$eval_code', TMP_TryOpal_eval_code_9 = function $$eval_code(js_code) {
+    Opal.defn(self, '$run_code', TMP_TryOpal_run_code_9 = function $$run_code() {
+      var self = this, err = nil;
+
+      try {
+        
+        self.$compile_code();
+        self.flush = [];
+        return self.$eval_code(self.viewer.$value());
+      } catch ($err) {
+        if (Opal.rescue($err, [Opal.const_get_relative($nesting, 'StandardError'), Opal.const_get_relative($nesting, 'SyntaxError')])) {err = $err;
+          try {
+            return self.$log_error(err)
+          } finally { Opal.pop_exception() }
+        } else { throw $err; }
+      }
+    }, TMP_TryOpal_run_code_9.$$arity = 0);
+    
+    Opal.defn(self, '$eval_code', TMP_TryOpal_eval_code_10 = function $$eval_code(js_code) {
       var self = this;
 
       return eval(js_code)
-    }, TMP_TryOpal_eval_code_9.$$arity = 1);
+    }, TMP_TryOpal_eval_code_10.$$arity = 1);
     
-    Opal.defn(self, '$log_error', TMP_TryOpal_log_error_10 = function $$log_error(err) {
+    Opal.defn(self, '$log_error', TMP_TryOpal_log_error_11 = function $$log_error(err) {
       var self = this;
 
       return self.$puts("" + (err) + "\n" + (err.stack))
-    }, TMP_TryOpal_log_error_10.$$arity = 1);
-    return (Opal.defn(self, '$print_to_output', TMP_TryOpal_print_to_output_11 = function $$print_to_output(str) {
+    }, TMP_TryOpal_log_error_11.$$arity = 1);
+    return (Opal.defn(self, '$print_to_output', TMP_TryOpal_print_to_output_12 = function $$print_to_output(str) {
       var self = this, $writer = nil;
 
       
@@ -132,18 +145,18 @@
       $writer = [self.flush.$join("")];
       $send(self.output, 'value=', Opal.to_a($writer));
       return $writer[$rb_minus($writer["length"], 1)];;
-    }, TMP_TryOpal_print_to_output_11.$$arity = 1), nil) && 'print_to_output';
+    }, TMP_TryOpal_print_to_output_12.$$arity = 1), nil) && 'print_to_output';
   })($nesting[0], null, $nesting);
-  return $send(Opal.const_get_relative($nesting, 'Document'), 'ready?', [], (TMP_12 = function(){var self = TMP_12.$$s || this, TMP_13, $writer = nil;
+  return $send(Opal.const_get_relative($nesting, 'Document'), 'ready?', [], (TMP_13 = function(){var self = TMP_13.$$s || this, TMP_14, $writer = nil;
     if ($gvars.stderr == null) $gvars.stderr = nil;
     if ($gvars.stdout == null) $gvars.stdout = nil;
 
   
     
-    $writer = [(($writer = [$send(self, 'proc', [], (TMP_13 = function(str){var self = TMP_13.$$s || this;
+    $writer = [(($writer = [$send(self, 'proc', [], (TMP_14 = function(str){var self = TMP_14.$$s || this;
 if (str == null) str = nil;
-    return Opal.const_get_relative($nesting, 'TryOpal').$instance().$print_to_output(str)}, TMP_13.$$s = self, TMP_13.$$arity = 1, TMP_13))]), $send($gvars.stderr, 'write_proc=', Opal.to_a($writer)), $writer[$rb_minus($writer["length"], 1)])];
+    return Opal.const_get_relative($nesting, 'TryOpal').$instance().$print_to_output(str)}, TMP_14.$$s = self, TMP_14.$$arity = 1, TMP_14))]), $send($gvars.stderr, 'write_proc=', Opal.to_a($writer)), $writer[$rb_minus($writer["length"], 1)])];
     $send($gvars.stdout, 'write_proc=', Opal.to_a($writer));
     $writer[$rb_minus($writer["length"], 1)];;
-    return Opal.const_get_relative($nesting, 'TryOpal').$instance().$run_code();}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12));
+    return Opal.const_get_relative($nesting, 'TryOpal').$instance().$compile_code();}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13));
 })(Opal);

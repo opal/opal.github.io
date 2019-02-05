@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <title>Try Opal: Browser compiler and REPL</title>
+  <title>Opal-RSpec v0.7, has been finally released! ✨</title>
 
   <link href="/stylesheets/application.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
   <script src="/javascripts/application.js"></script>
 </head>
-<body class="try try_index">
+<body class="blog blog_2019 blog_2019_02 blog_2019_02_05 blog_2019_02_05_opal-rspec-0-7 blog_2019_02_05_opal-rspec-0-7_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
 <div class='container'>
 <div class='navbar-header'>
@@ -69,43 +69,29 @@ v0.11.4
   <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
-    <link href="/stylesheets/codemirror.css" rel="stylesheet" />
-<script src="/javascripts/try.js"></script>
-<script>Opal.load('try_opal');</script>
-
-<div class="page-header">
-  <h1>Try Opal in your browser!</h1>
-  Examples:
-  <a href="/try/?code:require%20%27native%27%0Aname%20%3D%20%24%24.prompt%20%22Please%20enter%20your%20name%22%0A%24%24.alert(%22Hello%20%23%7Bname%7D!%22)" id="link_code" class="btn">Prompt &amp; Alert</a>
-  <a href="/try/?code:require%20%27native%27%0A%0Aelement%20%3D%20%24%24%5B%3Adocument%5D.querySelector(%27h1%27)%0Atitle%20%3D%20element%5B%3AinnerText%5D%0A%0Aclicks%20%3D%20title.scan(%25r%7B(%3F%3A%20(%5Cd%2B))%3F%24%7D).first.first.to_i%0Awith_clicks%20%3D%20title.sub(%25r%7B(%3F%3A%20(%5Cd%2B))%3F%24%7D%2C%20%22%20%23%7Bclicks%2B1%7D%22)%0A%0Aelement%5B%3AinnerText%5D%20%3D%20with_clicks" id="link_code" class="btn">Count Clicks</a>
+      <div class="container col-sm-8">
+    <div class='blog-title'>
+<h1>
+<a href='/blog'>The Opal Blog</a>
+</h1>
 </div>
 
-<div class="row" id="wrapper">
-  <div id="editor_wrapper" class="col-md-6">
-    <a href="#" id="run_code" class="btn btn-primary">Run (Cmd+Enter)</a>
-    <a href="#" id="link_code" class="btn">Link</a>
-    <a href="?code:" id="link_code" class="btn">Reset</a>
-    <p></p>
-    <div id="editor" class="well" style="padding:0"></div>
-  </div>
-  <div class="col-md-6">
-    <a href="#" class="btn disabled">Output</a>
-    <p></p>
-    <div id="output" class="well" style="padding:0">
-    </div>
-  </div>
+    <article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href=''>
+Opal-RSpec v0.7, has been finally released! ✨
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by Elia Schito on 2019-02-05
 </div>
+</header>
+<div class='blog-post-body'>
+<p>It&#39;s been a deep work of refactoring and rewriting, adding specs and updating dependencies. Huge kudos to <a href="https://github.com/wied03">@wied03</a> for the foundational work and as usual to <a href="https://github.com/iliabylich">@iliabylich</a> for the laser sharp refactoring.</p>&#x000A;&#x000A;<p><em>For a full list of changes and updated instructions please checkout the <a href="https://github.com/opal/opal-rspec/blob/master/CHANGELOG.md#071---2019-02-04">Changelog</a> and the <a href="https://github.com/opal/opal-rspec#readme">Readme</a>.</em></p>&#x000A;&#x000A;<h3 id="new-opal-rspec-command">New <code>opal-rspec</code> command</h3>&#x000A;&#x000A;<p>A new CLI executable has been added with basic functionality to aid writing and running specs. Type <code>opal-rspec -h</code> for the complete list of options.</p>&#x000A;&#x000A;<p>One notable addition is the <code>--init</code> option that will help you initialize your project with opal-rspec.</p>&#x000A;&#x000A;<h3 id="new-folder-defaults">New folder defaults 📂</h3>&#x000A;&#x000A;<p>With this update I&#39;m also announcing the new standard paths for opal <code>lib/</code> and <code>spec/</code> folders, which are <code>lib-opal/</code> and <code>spec-opal</code>. This will avoid the confusion about the role of the two folders and make them nicely stay near they&#39;re MRI counterparts in your editor.</p>&#x000A;&#x000A;<p>In this spirit the <code>opal-rspec</code> command and all rake tasks will look for spec files in <code>spec-opal/</code>.</p>&#x000A;&#x000A;<p><strong>Note:</strong> those defaults are intended as the current best practice to organize an Opal project.</p>&#x000A;&#x000A;<hr>&#x000A;&#x000A;<p><em>🗓 More than a year has passed since the last post, if you missed Opal, that&#39;s because most of the news circulated on the <a href="https://gitter.im/opal/opal">gitter channel</a>, that&#39;s my fault! <strong>But rejoyce! new posts are coming and the 1.0 release is around the corner</strong></em> 😄</p>&#x000A;</div>
+</article>
 
-<!-- output -->
-<div class="row" id="wrapper">
-  <div class="col-md-12">
-    <a href="#" class="btn disabled">Compiled Javascript</a>
-    <p></p>
-    <div id="viewer" class="well" style="padding:0">
-    </div>
   </div>
-</div>
-
 
   </div>
 
