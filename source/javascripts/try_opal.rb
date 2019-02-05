@@ -4,26 +4,25 @@ require 'opal-jquery'
 require 'js'
 
 DEFAULT_TRY_CODE = <<-'RUBY'
-say = "I love Ruby"
-puts say
-
-puts say.sub('love', "*love*").upcase
-
-5.times { puts say }
-
-
 def title(s)
-  puts "\n\n~ #{s} ~\n" + '~' * (s.size+4) + "\n\n"
+  puts "~ #{s} ~\n" + '~' * (s.size+4) + "\n\n"
   yield
+  puts "\n\n\n"
+end
+
+title "The basics" do
+  puts say = "I love Ruby"
+  puts say.sub('love', "*love*").upcase
+  3.times { puts "#{say.sub("love", "❤️")}!" }
 end
 
 title "Interacting with the DOM" do
   require 'native'
-
   puts "The page title is #{$$[:document][:title].inspect}."
-  puts "You're viewing #{$$[:location][:href]}."
+  puts "The current URL is #{$$[:location][:href].inspect}."
 
   # Uncomment the following lines to ask for a name:
+  #
   # name = $$.prompt "Please enter your name"
   # $$.alert("Hello #{name}!")
 end
