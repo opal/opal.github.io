@@ -116,6 +116,7 @@ class TryOpal
   def run_code
     compile_code
     @flush = []
+    @output.value = ''
     eval_code @viewer.value
   rescue StandardError, SyntaxError => err
     log_error err
