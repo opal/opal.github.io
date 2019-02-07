@@ -109,12 +109,16 @@
     }, TMP_TryOpal_compile_code_8.$$arity = 0);
     
     Opal.defn(self, '$run_code', TMP_TryOpal_run_code_9 = function $$run_code() {
-      var self = this, err = nil;
+      var self = this, $writer = nil, err = nil;
 
       try {
         
         self.$compile_code();
         self.flush = [];
+        
+        $writer = [""];
+        $send(self.output, 'value=', Opal.to_a($writer));
+        $writer[$rb_minus($writer["length"], 1)];;
         return self.$eval_code(self.viewer.$value());
       } catch ($err) {
         if (Opal.rescue($err, [Opal.const_get_relative($nesting, 'StandardError'), Opal.const_get_relative($nesting, 'SyntaxError')])) {err = $err;
