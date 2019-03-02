@@ -114,6 +114,7 @@ class TryOpal
 
   def compile_code
     @output.value = 'click "Run" to see the output'
+    Element['#output'].css(opacity: '0.5')
     link[:href] = "?code:#{`encodeURIComponent(#{@editor.value})`}"
     code = Opal.compile(@editor.value, source_map_enabled: false)
     @viewer.value = code
@@ -125,6 +126,7 @@ class TryOpal
     compile_code
     @flush = []
     @output.value = ''
+    Element['#output'].css(opacity: '1')
     eval_code @viewer.value
   rescue StandardError, SyntaxError => err
     log_error err
