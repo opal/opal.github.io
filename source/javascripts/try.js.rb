@@ -45,11 +45,27 @@ class TryOpal
 
     TRY_EXAMPLES.each do |title, code|
       url = "?example=#{`encodeURIComponent(#{title})`}"
-
-      examples_container << spacer << Element.new(:a).tap { |a|
+      link = Element.new(:a).tap { |a|
         a[:href] = url
         a.text = title
       }
+
+      link.on(:click) do |event|
+        event.prevent
+
+        @editor.value = code
+        compile_code
+        `history`.JS.replaceState(
+          {
+            title: title,
+            code: code,
+          },
+          nil.to_n,
+          url
+        )
+      end
+
+      examples_container << spacer << link
     end
   end
 
