@@ -9,7 +9,8 @@
   <%= stylesheet_link_tag "application" %>
   <%# See: https://ionicons.com/v2/ %>
   <%= stylesheet_link_tag "//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" %>
-  <%= javascript_include_tag "application" %>
+
+  <%= javascript_include_tag "application", onload: "Opal.load('application');" %>
 </head>
 <body class="<%= page_classes %>">
   <%= partial 'header' %>

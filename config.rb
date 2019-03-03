@@ -9,7 +9,6 @@ set :markdown, layout_engine: :erb,
                with_toc_data: true
 
 activate :syntax
-activate :sprockets
 
 activate :blog do |blog|
   blog.prefix = "blog"
@@ -17,26 +16,17 @@ end
 
 activate :directory_indexes
 
-set :css_dir, 'stylesheets'
-
-set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
 
 page "/docs/*", :layout => "docs"
 page "/blog/*", :layout => :blog
 
-after_configuration do
-  Opal::Config.arity_check_enabled = true
-  Opal.paths.each do |p|
-    sprockets.append_path p
-  end
-end
-
 configure :build do
   activate :minify_css
-  activate :minify_javascript
+  # activate :minify_javascript
 end
+
+activate :asset_hash
 
 helpers do
   def body_for(resource)
@@ -79,3 +69,22 @@ helpers do
     %Q{<ul class="nav opal-sidebar">#{content.join}</ul>}
   end
 end
+
+ignore '*.sass'
+ignore '*.scss'
+
+activate(:external_pipeline,
+  name: :sass,
+  command: (
+    "sass --#{build? ? 'update' : 'watch'} " +
+            "lib-sass/:source/stylesheets/ " +
+            "-I lib-sass/"
+  ),
+  source: "source/stylesheeds/",
+)
+
+activate(:external_pipeline,
+  name: :opal,
+  command: "bin/build-opal application try #{'--watch' unless build?}",
+  source: "source/javascripts/",
+)

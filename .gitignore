@@ -15,3 +15,7 @@
 
 .DS_Store
 /tmp
+
+# Ignore compiled assets
+/source/stylesheets
+/source/javascripts

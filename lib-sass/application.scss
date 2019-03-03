@@ -1,7 +1,8 @@
-//= require _vendor/pygment_solarized_light
-//= require _vendor/codemirror-solarized
-//= require blog
-//= require index
+@import "_vendor/pygment_solarized_light";
+@import "_vendor/codemirror-solarized";
+@import "blog";
+@import "index";
+@import "codemirror";
 
 $background: #34495E;
 $background-border: $background;

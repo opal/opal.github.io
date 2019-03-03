@@ -1,4 +1,3 @@
-require 'opal'
 require '_vendor/codemirror'
 require '_vendor/ruby'
 require '_vendor/javascript'

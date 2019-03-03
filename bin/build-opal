@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+Bundler.require
+
+source = "#{__dir__}/../lib-opal"
+target = "#{__dir__}/../source/javascripts"
+
+watch = ARGV.delete('--watch')
+names = ARGV.empty? ? Dir["#{source}/*.rb"].map { |f|
+  Pathname(f).basename.sub(/(\.js)?\.rb$/, '')
+} : ARGV
+
+Opal::Config.arity_check_enabled = true
+Opal.append_path source
+
+p target
+FileUtils.mkpath target
+require 'pathname'
+$stdout.sync = true
+
+build = -> {
+  names.each do |name|
+    target_file = Pathname(target).join("#{name}.js")
+    max_mtime = -> { Dir["#{source}/**/*"].map{|f| File.mtime(f)}.max }
+
+    puts "[opal] building #{name}..."
+    if target_file.exist? && target_file.mtime >= max_mtime[]
+      puts "[opal] skipped #{name}."
+      next
+    end
+    begin
+      builder = Opal::Builder.build("#{name}.js")
+      File.write "#{target}/#{name}.js", builder.to_s
+      # File.write "#{target}/#{name}.map { |e|  }", builder.source_map.to_s
+      puts "[opal] built #{name}."
+    rescue SyntaxError, StandardError
+      warn($!)
+      warn "[opal] DID NOT build #{name}."
+    end
+  end
+}
+
+$exit = false
+trap 'INT' do
+  if $exit
+    warn "\nForcing exit."
+    exit 1
+  else
+    warn "\nWaiting for build to finish then exiting..."
+    $exit = true
+  end
+end
+
+if watch
+  thread = Thread.new { build.() }
+  listener = Listen.to(source) do |modified, added, removed|
+    puts "modified absolute path: #{modified}"
+    puts "added absolute path: #{added}"
+    puts "removed absolute path: #{removed}"
+    build.()
+  end
+  listener.start # not blocking
+  until $exit
+    sleep 1
+  end
+  listener.stop
+  thread.join
+else
+  build.()
+end
+

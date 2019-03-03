@@ -4,13 +4,12 @@ ruby '2.6.1'
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}.git" }
 
-gem 'opal', '~> 0.11.1'
+gem 'opal', '~> 0.11.4'
 gem 'opal-sprockets', '~> 0.4.1'
-gem 'opal-jquery', github: 'opal/opal-jquery'
-# gem 'opal-jquery'
-gem 'opal-rspec', github: 'opal/opal-rspec', submodules: true, branch: 'master'
+gem 'opal-jquery'
+gem 'opal-rspec'
 
-gem 'middleman', '~> 4.2.0'
+gem 'middleman', '~> 4.2'
 gem 'middleman-sprockets'
 gem 'middleman-syntax'
 gem 'middleman-blog'
