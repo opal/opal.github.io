@@ -8,6 +8,7 @@ gem 'opal', '~> 0.11.4'
 gem 'opal-sprockets', '~> 0.4.1'
 gem 'opal-jquery'
 gem 'opal-rspec'
+gem 'sass'
 
 gem 'middleman', '~> 4.2'
 gem 'middleman-sprockets'
