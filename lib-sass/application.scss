@@ -4,6 +4,12 @@
 @import "index";
 @import "codemirror";
 
+body.try {
+  #wrapper .well {
+    min-height: 400px;
+  }
+}
+
 $background: #34495E;
 $background-border: $background;
 $background-active: #2C3E50;

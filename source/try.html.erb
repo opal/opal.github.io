@@ -2,7 +2,6 @@
 title: "Try Opal: Browser compiler and REPL"
 ---
 
-<%= stylesheet_link_tag "codemirror" %>
 <%= javascript_include_tag "try", onload: "Opal.load('try');", async: 'async' %>
 
 <div class="page-header">
@@ -29,11 +28,11 @@ title: "Try Opal: Browser compiler and REPL"
 </div>
 
 <!-- output -->
-<div class="row" id="wrapper">
+<div class="row">
   <div class="col-md-12">
     <summary><a href="#" class="btn disabled">Compiled Javascript</a></summary>
     <p></p>
-    <div id="viewer" class="well" style="padding:0; height: 3rem">
+    <div id="viewer" class="well" style="padding:0; height: 10rem; overflow: auto" onclick="$(this).css('height', '400px')">
     </div>
   </div>
 </div>
