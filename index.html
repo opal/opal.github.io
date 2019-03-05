@@ -6,9 +6,10 @@
 
   <title>Opal: Ruby to JavaScript Compiler</title>
 
-  <link href="/stylesheets/application.css" rel="stylesheet" />
+  <link href="/stylesheets/application-ffb3ca11.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
-  <script src="/javascripts/application.js"></script>
+
+  <script src="/application-44c8d9a5.js" onload="Opal.load('application');"></script>
 </head>
 <body class="index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
@@ -117,8 +118,8 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
 <h2 id="overview">Overview</h2>
 
 <p class="run-code"><a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios-play"></i></a></p>
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">User</span>
-  <span class="kp">attr_accessor</span> <span class="ss">:name</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">User</span>
+  <span class="nb">attr_accessor</span> <span class="ss">:name</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
     <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
@@ -134,7 +135,7 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
 <span class="c1"># the output will go to your browser's console</span>
 <span class="nb">puts</span> <span class="n">user</span>
 <span class="nb">puts</span> <span class="n">user</span><span class="p">.</span><span class="nf">admin?</span>
-</code></pre>
+</code></pre></div>
 <hr>
 
 <p><span id="getting-started"></p>
@@ -142,11 +143,11 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
 <h2 id="getting-started-rack-and-sprockets">Getting Started: Rack and Sprockets</h2>
 
 <p>Add <code>rack</code> &amp; <code>opal-sprockets</code> to your <code>Gemfile</code>.</p>
-<pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'rack'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'rack'</span>
 <span class="n">gem</span> <span class="s1">'opal-sprockets'</span>
-</code></pre>
+</code></pre></div>
 <p>Setup the Opal rack-app in your <code>config.ru</code> as follows:</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal-sprockets'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal-sprockets'</span>
 
 <span class="n">run</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Server</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">server</span><span class="o">|</span>
   <span class="c1"># the name of the ruby file to load. To use more files they must be required from here (see app)</span>
@@ -154,12 +155,12 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
   <span class="c1"># the directory where the code is (add to opal load path )</span>
   <span class="n">server</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'app'</span>
 <span class="p">}</span>
-</code></pre>
+</code></pre></div>
 <p>Add a file named <code>hello_world.js.rb</code> to <code>app/</code> with your hello world:</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
 <span class="nb">require</span> <span class="s1">'native'</span>
 <span class="vg">$$</span><span class="p">.</span><span class="nf">alert</span> <span class="s1">'Hello World from Opal!'</span>
-</code></pre>
+</code></pre></div>
 <p>Then start the server with <code>bundle exec rackup</code> and visit <a href="http://localhost:9292">http://localhost:9292</a>.</p>
 
 <p><br>
@@ -173,22 +174,22 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
 <h2 id="getting-started-rails">Getting Started: Rails</h2>
 
 <p>Add <code>opal-rails</code> to your <code>Gemfile</code> or build your Rails app with Opal support: <code>rails new -j opal</code></p>
-<pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal-rails'</span>
-</code></pre>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal-rails'</span>
+</code></pre></div>
 <p>Rename <code>app/assets/javascripts/application.js</code> to <code>app/assets/javascripts/application.js.rb</code> and replace its contents with this code:</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
 <span class="nb">require</span> <span class="s1">'opal_ujs'</span>
 <span class="nb">require</span> <span class="s1">'turbolinks'</span>
 <span class="n">require_tree</span> <span class="s1">'.'</span>
-</code></pre>
+</code></pre></div>
 <p>Create a &quot;Hello World&quot; controller:</p>
-<pre class="highlight ruby"><code><span class="n">bin</span><span class="o">/</span><span class="n">rails</span> <span class="n">generate</span> <span class="n">controller</span> <span class="no">HelloWorld</span> <span class="n">index</span>
-</code></pre>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">bin</span><span class="o">/</span><span class="n">rails</span> <span class="n">generate</span> <span class="n">controller</span> <span class="no">HelloWorld</span> <span class="n">index</span>
+</code></pre></div>
 <p>Replace the contents of <code>app/assets/javascripts/hello_world.js.rb</code> with:</p>
-<pre class="highlight ruby"><code><span class="no">Document</span><span class="p">.</span><span class="nf">ready?</span> <span class="k">do</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="no">Document</span><span class="p">.</span><span class="nf">ready?</span> <span class="k">do</span>
   <span class="no">Element</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nf">html</span> <span class="o">=</span> <span class="s1">'&lt;h1&gt;Hello World from Opal!&lt;/h1&gt;'</span>
 <span class="k">end</span>
-</code></pre>
+</code></pre></div>
 <p>Start the server with <code>bin/rails server</code> and visit: <a href="http://localhost:3000/hello_world/index">http://localhost:3000/hello_world/index</a>.</p>
 
 <p><br>
@@ -202,25 +203,25 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
 <h2 id="getting-started-command-line-interface-cli">Getting Started: Command Line Interface (CLI)</h2>
 
 <p>Install <code>opal</code> from Rubygems:</p>
-<pre class="highlight shell"><code>gem install opal
-</code></pre>
+<div class="highlight"><pre class="highlight shell"><code>gem install opal
+</code></pre></div>
 <p>Write this code to <code>hello_world.js.rb</code>:</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'ostruct'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'ostruct'</span>
 <span class="n">greeting</span> <span class="o">=</span> <span class="no">OpenStruct</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">type: :Hello</span><span class="p">,</span> <span class="ss">target: :World</span><span class="p">,</span> <span class="ss">source: :Opal</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">greeting</span><span class="p">.</span><span class="nf">type</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">greeting</span><span class="p">.</span><span class="nf">target</span><span class="si">}</span><span class="s2"> from </span><span class="si">#{</span><span class="n">greeting</span><span class="p">.</span><span class="nf">source</span><span class="si">}</span><span class="s2">!"</span>
-</code></pre>
+</code></pre></div>
 <p>Run it with Node.js (assuming it&#39;s installed):</p>
-<pre class="highlight shell"><code>opal hello_world.js.rb
+<div class="highlight"><pre class="highlight shell"><code>opal hello_world.js.rb
 <span class="c"># =&gt; Hello World from Opal!</span>
-</code></pre>
+</code></pre></div>
 <p>Compile it to a JavaScript file:</p>
-<pre class="highlight shell"><code>opal -c hello_world.js.rb &gt; hello_world.js
+<div class="highlight"><pre class="highlight shell"><code>opal <span class="nt">-c</span> hello_world.js.rb <span class="o">&gt;</span> hello_world.js
 node hello_world.js
 <span class="c"># =&gt; Hello World from Opal!</span>
-</code></pre>
+</code></pre></div>
 <p>For a full list of supported options see:</p>
-<pre class="highlight shell"><code>opal --help
-</code></pre>
+<div class="highlight"><pre class="highlight shell"><code>opal <span class="nt">--help</span>
+</code></pre></div>
 <p><br>
 <br>
 <a href="https://github.com/opal/opal#usage" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Learn more about the CLI</a>

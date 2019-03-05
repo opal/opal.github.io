@@ -6,9 +6,10 @@
 
   <title>Try Opal: Browser compiler and REPL</title>
 
-  <link href="/stylesheets/application.css" rel="stylesheet" />
+  <link href="/stylesheets/application-ffb3ca11.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
-  <script src="/javascripts/application.js"></script>
+
+  <script src="/application-44c8d9a5.js" onload="Opal.load('application');"></script>
 </head>
 <body class="try try_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
@@ -69,8 +70,7 @@ v0.11.4
   <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
-    <link href="/stylesheets/codemirror.css" rel="stylesheet" />
-<script src="/javascripts/try.js" onload="Opal.load('try');" async="async"></script>
+    <script src="/try-ce2a02f7.js" onload="Opal.load('try');" async="async"></script>
 
 <div class="page-header">
   <h1>Try Opal in your browser!</h1>
@@ -96,11 +96,11 @@ v0.11.4
 </div>
 
 <!-- output -->
-<div class="row" id="wrapper">
+<div class="row">
   <div class="col-md-12">
     <summary><a href="#" class="btn disabled">Compiled Javascript</a></summary>
     <p></p>
-    <div id="viewer" class="well" style="padding:0; height: 3rem">
+    <div id="viewer" class="well" style="padding:0; height: 10rem; overflow: auto" onclick="$(this).css('height', '400px')">
     </div>
   </div>
 </div>
