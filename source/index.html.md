@@ -30,21 +30,22 @@ title: "Opal: Ruby to JavaScript Compiler"
 
 ## Praise
 
-<p>
-<blockquote>Opal is truly amazing and it has taken me in a whole new direction.</blockquote>
-<em>— @mistergibson <a href="https://gitter.im/opal/opal?at=5a652b8de014122650743f80">from Gitter, on Jan 22 2018</a></em>
-</p>
-<br>
-<p>
-<blockquote>opal 0.11 is a blessing! Its a giant step forward to ruby on the client! Its just amazing what bugs i find in existing 0.10 code and do keep wondering, "How did this ever work at all?" I am amzed, fantastic 👍👍👍😄</blockquote>
-<em>— @janbiedermann [from Gitter, on Jan 20 2018](https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d)</em>
-</p>
-<br>
-<p>
-<blockquote>these guys are great. We have a large production app (www.catprint.com) that thanks to opal is 100% RUBY. The UI part is about 17K of opal code, using the hyperstack (www.hyperstack.org) framework.<br>
-In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
-<em>— @catmando [from Gitter, on Dec 1 2018](https://gitter.im/opal/opal?at=5c02cd4b9f38cc0fd58c3b7f)</em>
-</p>
+<div class="praise">
+  <div class="praise-item">
+  <blockquote>Opal is truly amazing and it has taken me in a whole new direction.</blockquote>
+  <em>— @mistergibson <a href="https://gitter.im/opal/opal?at=5a652b8de014122650743f80">from Gitter, on Jan 22 2018</a></em>
+  </div class="praise-item">
+  <div class="praise-item">
+  <blockquote>Opal 0.11 is a blessing! Its a giant step forward to ruby on the client! Its just amazing what bugs i find in existing 0.10 code and do keep wondering, "How did this ever work at all?" I am amzed, fantastic 👍👍👍😄</blockquote>
+  <em>— @janbiedermann <a href="https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d">from Gitter, on Jan 20 2018</a></em>
+  </div class="praise-item">
+  <div class="praise-item">
+  <blockquote>These guys are great. We have a large production app (www.catprint.com) that thanks to opal is 100% RUBY. The UI part is about 17K of opal code, using the hyperstack (www.hyperstack.org) framework.<br>
+  In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
+  <em>— @catmando <a href="https://gitter.im/opal/opal?at=5c02cd4b9f38cc0fd58c3b7f">from Gitter, on Dec 1 2018</a></em>
+  </div class="praise-item">
+</div>
+
 
 ## Overview
 
@@ -75,26 +76,29 @@ puts user.admin?
 
 <span id="getting-started">
 
-## Getting Started: Rack and Sprockets
+## Getting Started: Rack
 
-Add `rack` & `opal-sprockets` to your `Gemfile`.
+Add `rack` to your `Gemfile`.
 
 ```ruby
 gem 'rack'
-gem 'opal-sprockets'
 ```
 
 Setup the Opal rack-app in your `config.ru` as follows:
 
 ```ruby
-require 'opal-sprockets'
+require 'opal'
 
-run Opal::Sprockets::Server.new { |server|
+run(Opal::SimpleServer.new do |s|
   # the name of the ruby file to load. To use more files they must be required from here (see app)
-  server.main = 'hello_world.js.rb'
+  s.main = 'application'
+
   # the directory where the code is (add to opal load path )
-  server.append_path 'app'
-}
+  s.append_path 'app'
+
+  # need to set the index explicitly for opal server to pick it up
+  s.index_path = 'index.html.erb'
+end)
 ```
 
 Add a file named `hello_world.js.rb` to `app/` with your hello world:

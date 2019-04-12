@@ -1,0 +1,25 @@
+@media all and (min-width: 800px) {
+  .praise {
+    display: flex;
+    flex-flow: row;
+    align-items: stretch;
+
+    .praise-item {
+      display: flex;
+      flex-direction: column;
+      flex-flow: column;
+      flex: 1 100%;
+      justify-content: space-between;
+
+      blockquote {
+        display: block;
+        flex: 1 100%;
+        font-size: 1.3em;
+      }
+
+      em {
+        display: block;
+      }
+    }
+  }
+}
