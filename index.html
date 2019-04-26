@@ -6,7 +6,7 @@
 
   <title>Opal: Ruby to JavaScript Compiler</title>
 
-  <link href="/stylesheets/application-ffb3ca11.css" rel="stylesheet" />
+  <link href="/stylesheets/application-3974e0a6.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
   <script src="/application-44c8d9a5.js" onload="Opal.load('application');"></script>
@@ -98,22 +98,21 @@ v0.11.4
 
 <h2 id="praise">Praise</h2>
 
-<p>
-<blockquote>Opal is truly amazing and it has taken me in a whole new direction.</blockquote>
-<em>— @mistergibson <a href="https://gitter.im/opal/opal?at=5a652b8de014122650743f80">from Gitter, on Jan 22 2018</a></em>
-</p>
-
-<p><br>
-<p>
-<blockquote>opal 0.11 is a blessing! Its a giant step forward to ruby on the client! Its just amazing what bugs i find in existing 0.10 code and do keep wondering, &quot;How did this ever work at all?&quot; I am amzed, fantastic 👍👍👍😄</blockquote>
-<em>— @janbiedermann <a href="https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d">from Gitter, on Jan 20 2018</a></em>
-</p>
-<br>
-<p>
-<blockquote>these guys are great. We have a large production app (www.catprint.com) that thanks to opal is 100% RUBY. The UI part is about 17K of opal code, using the hyperstack (www.hyperstack.org) framework.<br>
-In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
-<em>— @catmando <a href="https://gitter.im/opal/opal?at=5c02cd4b9f38cc0fd58c3b7f">from Gitter, on Dec 1 2018</a></em>
-</p></p>
+<div class="praise">
+  <div class="praise-item">
+  <blockquote>Opal is truly amazing and it has taken me in a whole new direction.</blockquote>
+  <em>— @mistergibson <a href="https://gitter.im/opal/opal?at=5a652b8de014122650743f80">from Gitter, on Jan 22 2018</a></em>
+  </div class="praise-item">
+  <div class="praise-item">
+  <blockquote>Opal 0.11 is a blessing! Its a giant step forward to ruby on the client! Its just amazing what bugs i find in existing 0.10 code and do keep wondering, "How did this ever work at all?" I am amzed, fantastic 👍👍👍😄</blockquote>
+  <em>— @janbiedermann <a href="https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d">from Gitter, on Jan 20 2018</a></em>
+  </div class="praise-item">
+  <div class="praise-item">
+  <blockquote>These guys are great. We have a large production app (www.catprint.com) that thanks to opal is 100% RUBY. The UI part is about 17K of opal code, using the hyperstack (www.hyperstack.org) framework.<br>
+  In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
+  <em>— @catmando <a href="https://gitter.im/opal/opal?at=5c02cd4b9f38cc0fd58c3b7f">from Gitter, on Dec 1 2018</a></em>
+  </div class="praise-item">
+</div>
 
 <h2 id="overview">Overview</h2>
 
@@ -140,21 +139,24 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
 
 <p><span id="getting-started"></p>
 
-<h2 id="getting-started-rack-and-sprockets">Getting Started: Rack and Sprockets</h2>
+<h2 id="getting-started-rack">Getting Started: Rack</h2>
 
-<p>Add <code>rack</code> &amp; <code>opal-sprockets</code> to your <code>Gemfile</code>.</p>
+<p>Add <code>rack</code> to your <code>Gemfile</code>.</p>
 <div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'rack'</span>
-<span class="n">gem</span> <span class="s1">'opal-sprockets'</span>
 </code></pre></div>
 <p>Setup the Opal rack-app in your <code>config.ru</code> as follows:</p>
-<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal-sprockets'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
 
-<span class="n">run</span> <span class="no">Opal</span><span class="o">::</span><span class="no">Server</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">server</span><span class="o">|</span>
+<span class="n">run</span><span class="p">(</span><span class="no">Opal</span><span class="o">::</span><span class="no">SimpleServer</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
   <span class="c1"># the name of the ruby file to load. To use more files they must be required from here (see app)</span>
-  <span class="n">server</span><span class="p">.</span><span class="nf">main</span> <span class="o">=</span> <span class="s1">'hello_world.js.rb'</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">main</span> <span class="o">=</span> <span class="s1">'application'</span>
+
   <span class="c1"># the directory where the code is (add to opal load path )</span>
-  <span class="n">server</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'app'</span>
-<span class="p">}</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'app'</span>
+
+  <span class="c1"># need to set the index explicitly for opal server to pick it up</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">index_path</span> <span class="o">=</span> <span class="s1">'index.html.erb'</span>
+<span class="k">end</span><span class="p">)</span>
 </code></pre></div>
 <p>Add a file named <code>hello_world.js.rb</code> to <code>app/</code> with your hello world:</p>
 <div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
@@ -173,7 +175,7 @@ In practice Opal == MRI Ruby, very reliable and solid.</blockquote>
 
 <h2 id="getting-started-rails">Getting Started: Rails</h2>
 
-<p>Add <code>opal-rails</code> to your <code>Gemfile</code> or build your Rails app with Opal support: <code>rails new -j opal</code></p>
+<p>Add <code>opal-rails</code> to your Rails app&#39;s <code>Gemfile</code>:</p>
 <div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal-rails'</span>
 </code></pre></div>
 <p>Rename <code>app/assets/javascripts/application.js</code> to <code>app/assets/javascripts/application.js.rb</code> and replace its contents with this code:</p>
