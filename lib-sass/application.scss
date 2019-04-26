@@ -137,6 +137,10 @@ pre {
 
   font-family: Menlo, Consolas, "Courier New", monospace;
 
+  code {
+    display: inline-block;
+  }
+
   &.highlight {
     background-color: #f7f7f9;
   }
