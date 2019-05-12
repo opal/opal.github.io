@@ -1,18 +1,26 @@
 ---
-title: "Opal: Ruby to JavaScript Compiler"
+title: "Opal: Ruby ♥︎ JavaScript"
 ---
 
 <div class="jumbotron opal-front-jumbo">
-  <img src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' alt='' style='float:right;margin-top:-24px' width='128' height='128' />
   <div class="page-header">
-    <h1>Opal <small>Ruby in the Browser</small></h1>
+    <img src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' alt='' width='128' height='128' />
+    <h1>Opal</h1>
+    <h3 class="tagline">Ruby ♥︎ JavaScript</h3>
+    <p>
+      <br>
+      <a href="#getting-started" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book"></i> Getting Started</a>
+      <br>
+      <br>
+    </p>
+
     <p>
       Opal is a Ruby to JavaScript source-to-source compiler. <br>
       It comes packed with the Ruby corelib you know and love. <br>
       It is both fast as a runtime and small in its footprint.
     </p>
+
     <p>
-      <a href="#getting-started" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book"></i> Getting Started</a>
       <!-- <a target="_blank" href="http://cdn.opalrb.com/opal/current/opal.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal.min.js</a>
       <a target="_blank" href="http://cdn.opalrb.com/opal/current/opal-parser.min.js" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-download-outline"></i> opal-parser.min.js</a>
       <a target="_blank" href="http://cdn.opalrb.com/" class="btn btn-lg" role="button"><i class="ion-ios-world-outline"></i> Use the CDN</a> -->
@@ -22,9 +30,10 @@ title: "Opal: Ruby to JavaScript Compiler"
       <a href="#getting-started-rack-and-sprockets" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rack tutorial</a>
       <a href="#getting-started-rails" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rails tutorial</a>
       <a href="#getting-started-command-line-interface-cli" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> CLI tutorial</a>
-      <a href="/libraries" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-lightbulb"></i> Awesome Opal</a>
+      <a href="/libraries" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-glasses"></i> Awesome Opal</a>
       <!-- <a href="/docs" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-copy-outline"></i> Opal Documentation</a> -->
     </p>
+
   </div>
 </div>
 
@@ -49,7 +58,7 @@ title: "Opal: Ruby to JavaScript Compiler"
 
 ## Overview
 
-<p class="run-code"><a href="/try" class="btn btn-default btn-code">Run this code in your browser <i class="ion-ios-play"></i></a></p>
+<p class="run-code"><a href="/try" class="btn btn-default btn-code">Try this code <i style="vertical-align: middle" class="ion-ios-play"></i></a></p>
 
 ```ruby
 class User
