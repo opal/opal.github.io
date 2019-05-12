@@ -8,10 +8,10 @@ layout: layout
   .blog-posts
     = partial 'blog_title'
     - blog.articles.each do |article|
-      - body_parts = article.body.split('<!--preview-->')
+      - body_parts = article.body.split('<div id="continue-reading"></div>')
       - body_preview = body_parts.first
       - if body_parts.size > 1
-        - body_preview += link_to("continue reading…", article.url)
+        - body_preview += link_to("continue reading…", article.url + '#continue-reading')
       = partial 'post', locals: {article: article.data.merge(url: article.url, title: article.title, body: body_preview)}
 
 -# .blog-post-title

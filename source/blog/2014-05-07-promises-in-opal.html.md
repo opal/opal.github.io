@@ -28,7 +28,7 @@ Initially the method call using a `Promise` looks just a more verbose version of
 
 Lets take a slightly more complex example where an initial HTTP request is made for some user details, and then a second request is made using the result of the first json response:
 
-<!--preview-->
+<div id="continue-reading"></div>
 
 ```ruby
 HTTP.get("user_details") do |response|
