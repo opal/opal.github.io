@@ -27,7 +27,7 @@ title: "Opal: Ruby ♥︎ JavaScript"
       <!-- <a href="http://cdn.opalrb.com/" class="btn btn-lg" role="button"><i class="ion-speedometer"></i> Use the CDN</a> -->
     <!-- </p>
     <p> -->
-      <a href="#getting-started-rack-and-sprockets" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rack tutorial</a>
+      <a href="#getting-started-rack" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rack tutorial</a>
       <a href="#getting-started-rails" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rails tutorial</a>
       <a href="#getting-started-command-line-interface-cli" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> CLI tutorial</a>
       <a href="/libraries" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-glasses"></i> Awesome Opal</a>
