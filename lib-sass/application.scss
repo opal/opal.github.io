@@ -219,12 +219,12 @@ pre {
         border: 0;
         border-radius: 3px;
         min-width: 25rem;
-        right: -2em;
-
       }
       [type="reset"] {
-        position: relative;
-        // left: -1.5em;
+        position: absolute;
+        right: 0;
+        top: 10px;
+        height: 20px;
         border: 0;
         background: transparent;
         color: #aaa;
