@@ -6,10 +6,13 @@
 
   <title>Opal: Ruby ♥︎ JavaScript</title>
 
-  <link href="/stylesheets/application-356e0189.css" rel="stylesheet" />
+  <link href="/stylesheets/application-c4303ba2.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
   <script src="/application-44c8d9a5.js" onload="Opal.load('application');"></script>
+
+  <!-- Algolia -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 </head>
 <body class="index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
@@ -63,6 +66,16 @@ v1.0.0
 </a>
 </li>
 </ul>
+<ul class='nav navbar-right'>
+<li class='search-bar'>
+<form id='search-form'>
+<input placeholder='Search docs &amp; guides' type='search'>
+<button title='Clear the search query.' type='reset'>
+&times;
+</button>
+</form>
+</li>
+</ul>
 </div>
 </div>
 </nav>
@@ -95,7 +108,7 @@ v1.0.0
       <!-- <a href="http://cdn.opalrb.com/" class="btn btn-lg" role="button"><i class="ion-speedometer"></i> Use the CDN</a> -->
     <!-- </p>
     <p> -->
-      <a href="#getting-started-rack-and-sprockets" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rack tutorial</a>
+      <a href="#getting-started-rack" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rack tutorial</a>
       <a href="#getting-started-rails" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> Rails tutorial</a>
       <a href="#getting-started-command-line-interface-cli" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-book-outline"></i> CLI tutorial</a>
       <a href="/libraries" class="btn btn-secondary btn-lg" role="button"><i class="ion-ios-glasses"></i> Awesome Opal</a>
@@ -285,6 +298,17 @@ node hello_world.js
 
   <script>
     $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+  </script>
+
+  <!-- Algolia -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: 'cf08db1eca77cb92ca34e24a86430bcb',
+      indexName: 'opalrb',
+      inputSelector: '#search-form input[type="search"]',
+      debug: false // Set debug to true if you want to inspect the dropdown
+    });
   </script>
 </body>
 </html>

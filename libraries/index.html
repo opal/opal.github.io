@@ -6,10 +6,13 @@
 
   <title>Libraries (Awesome Opal)</title>
 
-  <link href="/stylesheets/application-356e0189.css" rel="stylesheet" />
+  <link href="/stylesheets/application-c4303ba2.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
   <script src="/application-44c8d9a5.js" onload="Opal.load('application');"></script>
+
+  <!-- Algolia -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 </head>
 <body class="libraries libraries_index">
   <nav class='navbar navbar-default opal-nav' role='navigation'>
@@ -61,6 +64,16 @@ GitHub
 <a href='https://rubygems.org/gems/opal/versions/1.0.0' style='opacity: 0.5;'>
 v1.0.0
 </a>
+</li>
+</ul>
+<ul class='nav navbar-right'>
+<li class='search-bar'>
+<form id='search-form'>
+<input placeholder='Search docs &amp; guides' type='search'>
+<button title='Clear the search query.' type='reset'>
+&times;
+</button>
+</form>
 </li>
 </ul>
 </div>
@@ -309,6 +322,17 @@ If switching video sources is too much of a pain, whole thing w/censored out sou
 
   <script>
     $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+  </script>
+
+  <!-- Algolia -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: 'cf08db1eca77cb92ca34e24a86430bcb',
+      indexName: 'opalrb',
+      inputSelector: '#search-form input[type="search"]',
+      debug: false // Set debug to true if you want to inspect the dropdown
+    });
   </script>
 </body>
 </html>
