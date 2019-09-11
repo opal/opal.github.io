@@ -36,3 +36,9 @@
         %li
           %a(href="https://rubygems.org/gems/opal/versions/#{Opal::VERSION}" style="opacity: 0.5;")
             v#{Opal::VERSION}
+      %ul.nav.navbar-right
+        %li.search-bar
+          %form#search-form
+            %input(type="search" placeholder="Search docs & guides")
+            %button(title="Clear the search query." type="reset")
+              &times;

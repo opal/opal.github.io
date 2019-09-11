@@ -203,6 +203,36 @@ pre {
     }
   }
 
+  .search-bar {
+    color: #777;
+    form {
+      > span.algolia-autocomplete {
+        vertical-align: top;
+      }
+      margin:0;padding: 10px 0; display:block; position: relative; line-height: 30px; height: 50px;
+      input[type="search"] {
+        display: block;
+        position: relative;
+        padding: 5px 10px;
+        line-height: 20px;
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 3px;
+        min-width: 25rem;
+        right: -2em;
+
+      }
+      [type="reset"] {
+        position: relative;
+        // left: -1.5em;
+        border: 0;
+        background: transparent;
+        color: #aaa;
+        font-size: 1.5em;
+        line-height: 20px;
+      }
+    }
+  }
 }
 
 
