@@ -29,7 +29,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 
 ### Frameworks
 - [Clearwater](https://github.com/clearwater-rb/clearwater) - Component-based Ruby front-end framework
-- [Hyperloop](http://ruby-hyperloop.org/) - A Complete Isomorphic Ruby Framework using React, Rails and Opal
+- [Hyperstack](https://hyperstack.org/) - A Complete Isomorphic Ruby Framework using React, Rails and Opal
 - [Inesita](https://github.com/inesita-rb/inesita) - Frontend web application framework in Ruby using Opal.
 - [Lissio](https://github.com/meh/lissio) - lissio is a VCL (Vai Col Lissio) framework for Opal to implement frontends completely on the client side.
 - [Opal Ferro](https://github.com/easydatawarehousing/opal-ferro) - Create webapps object-oriented style. No HTML, just beautiful and simple Ruby code
@@ -134,7 +134,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal TODOS](https://github.com/JikkuJose/opal-todo) - Simple static todo app using OpalRb
 - [Opal TODOS](https://github.com/opal/opal-todos) - todomvc based opal example
 - [Opal Tic Tac Toe](https://github.com/loicboutet/opal-tictactoe) - A very simple port of TodoMVC
-- [Opal on Abgularities](https://github.com/OpalOnAngularities/opal_on_angularities) - Write AngularJS app in Ruby using Opal.
+- [Opal on Angularities](https://github.com/OpalOnAngularities/opal_on_angularities) - Write AngularJS app in Ruby using Opal.
 - [Opal try](https://github.com/iamninja/opal-try)
 - [Opal with slim sass sprockets](https://github.com/fazibear/opal-slim-sass-sprockets-example) - Opal environment with sprockets, slim, sass, and rails-assets.
 - [Opalrb Example](https://github.com/markbates/opal-rb-example) - A "todo" example using the Opal.rb Project.
@@ -187,4 +187,3 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 ## Contribution
 
 Your [contributions](https://github.com/fazibear/awesome-opal/blob/master/README.md) and [suggestions](https://github.com/fazibear/awesome-opal/issues/new?title=suggestion:+) are welcome ♡.
-
