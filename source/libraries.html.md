@@ -34,6 +34,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Lissio](https://github.com/meh/lissio) - lissio is a VCL (Vai Col Lissio) framework for Opal to implement frontends completely on the client side.
 - [Opal Ferro](https://github.com/easydatawarehousing/opal-ferro) - Create webapps object-oriented style. No HTML, just beautiful and simple Ruby code
 - [Opal Praha](https://github.com/unplugandplay/opal-praha) - An opal-vienna rewrite with Convention over Configuration in mind
+- [Snabberb](https://github.com/tobymao/snabberb) - A minimalistic reactive frontend web framework written in Ruby / Opal and based on Snabbdom.
 - [Vienna](https://github.com/opal/vienna) - Client-side MVC framework for Opal
 - [Volt](https://github.com/voltrb/volt) - A Ruby web framework where your Ruby runs on both server and client
 
@@ -116,6 +117,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal Cats](https://github.com/bbonamin/opal-cats) - Get some cat pictures, with Opal
 - [Opal Conway](https://github.com/stevenandrewcarter/opal_conway) - Conway Game of Life, implemented with Opal and Ruby
 - [Opal Examples](https://github.com/Alliants/opal-examples) - Experiments with html5 and the opal ruby to javascript compiler
+- [Opal Node server with Express.js and Socket.io Demo Chat App](https://github.com/sebyx07/opal-express-socketio) - Project which uses Opal (Ruby) with a Node.js server, Express and Socket.io to build a real time chat
 - [Opal HelloWorld](https://github.com/JikkuJose/opal-hello-world) - A simple project to test OpalRb
 - [Opal IRB](https://github.com/fkchang/opal-irb) - IRB (interactive ruby) for Opal
 - [Opal Learning WebGL](https://github.com/aost/opal-learningwebgl) - Opal (Ruby) port of the Learning WebGL (NeHe) demos
@@ -151,7 +153,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Dyndoc Opal](https://github.com/rcqls/dyndoc-opal) - dyndoc js via opal
 - [Ember Cli Opalrb](https://github.com/mfeckie/ember-cli-opal-rb) - Include Opal.rb in your Ember projects
 - [Ferro](https://easydatawarehousing.github.io/ferro/) - Demonstration of the abilities and use of the opal-ferro framework
-- [Gulp Opal](https://github.com/akasata/gulp-opal) - A gulp plugin convert Ruby to Javascript(by Opal)
+- [Gulp Opal](https://github.com/akasata/gulp-opal) - A gulp plugin to convert Ruby to Javascript (by Opal)
 - [Meteor Opal](https://github.com/mikamai/meteor-opal) - Meteor support for Opal, the Ruby to Javascript Compiler
 - [Opal Benchmarks](https://github.com/ryanstout/opal_benchmarks) - A quick, totally inaccurate set of simple benchmarks for opal
 - [Opal Console](https://github.com/edubkendo/OpalConsole) - A Chrome extension to compile and run Opal in the browser
@@ -176,7 +178,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal Playground](http://fkchang.github.io/opal-playground/)
 - [Pong in Opal](https://opalpong.herokuapp.com)
 - [Sprint Poker](http://sprintpoker-inesita.surge.sh)
-- [TryRuby](https://easydatawarehousing.github.io/TryRuby/)
+- [TryRuby](https://ruby.github.io/TryRuby)
 - [WebAudio Playgrond](http://inesita-web-audio.netlify.com)
 - [Zupfnoter](https://zupfnoter.weichel21.de)
 
@@ -187,3 +189,5 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 ## Contribution
 
 Your [contributions](https://github.com/fazibear/awesome-opal/blob/master/README.md) and [suggestions](https://github.com/fazibear/awesome-opal/issues/new?title=suggestion:+) are welcome ♡.
+
+
