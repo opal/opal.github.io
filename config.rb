@@ -75,12 +75,8 @@ ignore '*.scss'
 
 activate(:external_pipeline,
   name: :sass,
-  command: (
-    "sass --#{build? ? 'update' : 'watch'} " +
-            "lib-sass/:source/stylesheets/ " +
-            "-I lib-sass/"
-  ),
-  source: "source/stylesheeds/",
+  command: "bin/build-sass #{'--watch' unless build?}",
+  source: "source/stylesheets/",
 )
 
 activate(:external_pipeline,
