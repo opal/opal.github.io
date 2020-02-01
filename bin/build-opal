@@ -22,7 +22,7 @@ $stdout.sync = true
 build = -> {
   names.each do |name|
     target_file = Pathname(target).join("#{name}.js")
-    max_mtime = -> { Dir["#{source}/**/*"].map{|f| File.mtime(f)}.max }
+    max_mtime = -> { Dir["{Gemfile.lock,#{source}/**/*}"].map{|f| File.mtime(f)}.max }
 
     puts "[opal] building #{name}..."
     if target_file.exist? && target_file.mtime >= max_mtime[]
