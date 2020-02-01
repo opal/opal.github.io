@@ -104,3 +104,5 @@ task :publish => [:not_dirty, :prepare_git_remote_in_build_dir, :sync, :build] d
     sh "git push #{REMOTE_NAME} #{GH_PAGES_BRANCH}"
   end
 end
+
+task default: :build

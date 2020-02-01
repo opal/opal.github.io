@@ -23,10 +23,9 @@ page "/blog/*", :layout => :blog
 
 configure :build do
   activate :minify_css
-  # activate :minify_javascript
+  activate :minify_javascript
+  activate :asset_hash
 end
-
-activate :asset_hash
 
 helpers do
   def body_for(resource)
