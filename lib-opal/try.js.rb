@@ -1,7 +1,6 @@
 require '_vendor/codemirror'
 require '_vendor/ruby'
 require '_vendor/javascript'
-require 'opal-parser'
 require 'js'
 require 'try/examples'
 require 'console'
@@ -142,6 +141,12 @@ class TryOpal
     @flush << str
     @output.value = @flush.join('')
   end
+
+  def attempt_compilation(ready: nil, parser: nil)
+    @ready ||= ready
+    @parser ||= parser
+    compile_code if @ready && @parser
+  end
 end
 
 $try = TryOpal.new
@@ -151,5 +156,9 @@ end
 
 Document.ready? do
   $try.setup
-  $try.compile_code
+  $try.attempt_compilation ready: true
+end
+
+Document.on :parser_loaded do
+  $try.attempt_compilation parser: true
 end
