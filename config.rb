@@ -80,6 +80,6 @@ activate(:external_pipeline,
 
 activate(:external_pipeline,
   name: :opal,
-  command: "bin/build-opal application try #{'--watch' unless build?}",
+  command: "bin/build-opal #{'--watch' unless build?}",
   source: "source/javascripts/",
 )

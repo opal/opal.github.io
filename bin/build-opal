@@ -19,7 +19,20 @@ FileUtils.mkpath target
 require 'pathname'
 $stdout.sync = true
 
-build = -> {
+build_js = -> {
+  Dir["#{source}/*.js"].each do |path|
+    target_path = "#{target}/#{File.basename path}"
+    if !File.exist?(target_path) || File.mtime(path) > File.mtime(target_path)
+      puts "[opal] copying #{path}..."
+      File.write target_path, File.read(path)
+      puts "[opal] copied #{path}."
+    else
+      puts "[opal] skipped #{path}."
+    end
+  end
+}
+
+build_rb = -> {
   names.each do |name|
     target_file = Pathname(target).join("#{name}.js")
     max_mtime = -> { Dir["{Gemfile.lock,#{source}/**/*}"].map{|f| File.mtime(f)}.max }
@@ -39,6 +52,11 @@ build = -> {
       warn "[opal] DID NOT build #{name}."
     end
   end
+}
+
+build = -> {
+  build_rb.()
+  build_js.()
 }
 
 $exit = false
