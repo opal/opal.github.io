@@ -44,7 +44,8 @@ build_rb = -> {
     end
     begin
       builder = Opal::Builder.build("#{name}.js")
-      File.write "#{target}/#{name}.js", builder.to_s
+      js_code = Uglifier.new.compile(builder.to_s)
+      File.write "#{target}/#{name}.js", js_code
       # File.write "#{target}/#{name}.map { |e|  }", builder.source_map.to_s
       puts "[opal] built #{name}."
     rescue SyntaxError, StandardError
