@@ -6,10 +6,21 @@
 
   <title>Libraries (Awesome Opal)</title>
 
-  <link href="/stylesheets/application-bb90150f.css" rel="stylesheet" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-35688734-1"></script>
+  <script>
+    window.dataLayer || (window.dataLayer = []);
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-35688734-1');
+  </script>
+
+  <link href="/application-bb90150f.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-  <script src="/application-44c8d9a5.js" onload="Opal.load('application');"></script>
+  <script src="/jquery-c8267e5b.js"></script>
+  <script src="/bootstrap-6c3618fe.js"></script>
+  <script src="/application-dfc56bc4.js"></script>
 
   <!-- Algolia -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -61,8 +72,8 @@ GitHub
 </a>
 </li>
 <li>
-<a href='https://rubygems.org/gems/opal/versions/1.0.0' style='opacity: 0.5;'>
-v1.0.0
+<a href='https://rubygems.org/gems/opal/versions/1.0.3' style='opacity: 0.5;'>
+v1.0.3
 </a>
 </li>
 </ul>
@@ -126,6 +137,7 @@ If switching video sources is too much of a pain, whole thing w/censored out sou
 <li><a href="https://github.com/meh/lissio">Lissio</a> - lissio is a VCL (Vai Col Lissio) framework for Opal to implement frontends completely on the client side.</li>
 <li><a href="https://github.com/easydatawarehousing/opal-ferro">Opal Ferro</a> - Create webapps object-oriented style. No HTML, just beautiful and simple Ruby code</li>
 <li><a href="https://github.com/unplugandplay/opal-praha">Opal Praha</a> - An opal-vienna rewrite with Convention over Configuration in mind</li>
+<li><a href="https://github.com/tobymao/snabberb">Snabberb</a> - A minimalistic reactive frontend web framework written in Ruby / Opal and based on Snabbdom.</li>
 <li><a href="https://github.com/opal/vienna">Vienna</a> - Client-side MVC framework for Opal</li>
 <li><a href="https://github.com/voltrb/volt">Volt</a> - A Ruby web framework where your Ruby runs on both server and client</li>
 </ul>
@@ -217,6 +229,7 @@ If switching video sources is too much of a pain, whole thing w/censored out sou
 <li><a href="https://github.com/bbonamin/opal-cats">Opal Cats</a> - Get some cat pictures, with Opal</li>
 <li><a href="https://github.com/stevenandrewcarter/opal_conway">Opal Conway</a> - Conway Game of Life, implemented with Opal and Ruby</li>
 <li><a href="https://github.com/Alliants/opal-examples">Opal Examples</a> - Experiments with html5 and the opal ruby to javascript compiler</li>
+<li><a href="https://github.com/sebyx07/opal-express-socketio">Opal Node server with Express.js and Socket.io Demo Chat App</a> - Project which uses Opal (Ruby) with a Node.js server, Express and Socket.io to build a real time chat</li>
 <li><a href="https://github.com/JikkuJose/opal-hello-world">Opal HelloWorld</a> - A simple project to test OpalRb</li>
 <li><a href="https://github.com/fkchang/opal-irb">Opal IRB</a> - IRB (interactive ruby) for Opal</li>
 <li><a href="https://github.com/aost/opal-learningwebgl">Opal Learning WebGL</a> - Opal (Ruby) port of the Learning WebGL (NeHe) demos</li>
@@ -255,7 +268,7 @@ If switching video sources is too much of a pain, whole thing w/censored out sou
 <li><a href="https://github.com/rcqls/dyndoc-opal">Dyndoc Opal</a> - dyndoc js via opal</li>
 <li><a href="https://github.com/mfeckie/ember-cli-opal-rb">Ember Cli Opalrb</a> - Include Opal.rb in your Ember projects</li>
 <li><a href="https://easydatawarehousing.github.io/ferro/">Ferro</a> - Demonstration of the abilities and use of the opal-ferro framework</li>
-<li><a href="https://github.com/akasata/gulp-opal">Gulp Opal</a> - A gulp plugin convert Ruby to Javascript(by Opal)</li>
+<li><a href="https://github.com/akasata/gulp-opal">Gulp Opal</a> - A gulp plugin to convert Ruby to Javascript (by Opal)</li>
 <li><a href="https://github.com/mikamai/meteor-opal">Meteor Opal</a> - Meteor support for Opal, the Ruby to Javascript Compiler</li>
 <li><a href="https://github.com/ryanstout/opal_benchmarks">Opal Benchmarks</a> - A quick, totally inaccurate set of simple benchmarks for opal</li>
 <li><a href="https://github.com/edubkendo/OpalConsole">Opal Console</a> - A Chrome extension to compile and run Opal in the browser</li>
@@ -283,7 +296,7 @@ If switching video sources is too much of a pain, whole thing w/censored out sou
 <li><a href="http://fkchang.github.io/opal-playground/">Opal Playground</a></li>
 <li><a href="https://opalpong.herokuapp.com">Pong in Opal</a></li>
 <li><a href="http://sprintpoker-inesita.surge.sh">Sprint Poker</a></li>
-<li><a href="https://easydatawarehousing.github.io/TryRuby/">TryRuby</a></li>
+<li><a href="https://ruby.github.io/TryRuby">TryRuby</a></li>
 <li><a href="http://inesita-web-audio.netlify.com">WebAudio Playgrond</a></li>
 <li><a href="https://zupfnoter.weichel21.de">Zupfnoter</a></li>
 </ul>
@@ -301,20 +314,7 @@ If switching video sources is too much of a pain, whole thing w/censored out sou
 
   </div>
 
-  <!-- GOOGLE ANALYTICS -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35688734-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-<footer>
+  <footer>
   <a href="/license"><i class="ion-unlocked"></i> License</a> ·
   <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
 </footer>

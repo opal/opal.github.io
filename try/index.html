@@ -6,10 +6,21 @@
 
   <title>Try Opal: Browser compiler and REPL</title>
 
-  <link href="/stylesheets/application-bb90150f.css" rel="stylesheet" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-35688734-1"></script>
+  <script>
+    window.dataLayer || (window.dataLayer = []);
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-35688734-1');
+  </script>
+
+  <link href="/application-bb90150f.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-  <script src="/application-44c8d9a5.js" onload="Opal.load('application');"></script>
+  <script src="/jquery-c8267e5b.js"></script>
+  <script src="/bootstrap-6c3618fe.js"></script>
+  <script src="/application-dfc56bc4.js"></script>
 
   <!-- Algolia -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -61,8 +72,8 @@ GitHub
 </a>
 </li>
 <li>
-<a href='https://rubygems.org/gems/opal/versions/1.0.0' style='opacity: 0.5;'>
-v1.0.0
+<a href='https://rubygems.org/gems/opal/versions/1.0.3' style='opacity: 0.5;'>
+v1.0.3
 </a>
 </li>
 </ul>
@@ -83,7 +94,8 @@ v1.0.0
   <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
-    <script src="/try-ce2a02f7.js" onload="Opal.load('try');" async="async"></script>
+    <script src="/parser-b829138f.js" async="async"></script>
+<script src="/try-78cc7cb9.js" async="async"></script>
 
 <div class="page-header">
   <h1>Try Opal in your browser!</h1>
@@ -111,7 +123,7 @@ v1.0.0
 <!-- output -->
 <div class="row">
   <div class="col-md-12">
-    <summary><a href="#" class="btn disabled">Compiled Javascript</a></summary>
+    <summary><a href="#" class="btn disabled">Compiled Javascript <small>(click to expand)</small></a></summary>
     <p></p>
     <div id="viewer" class="well" style="padding:0; height: 10rem; overflow: auto" onclick="$(this).css('height', '400px')">
     </div>
@@ -121,20 +133,7 @@ v1.0.0
 
   </div>
 
-  <!-- GOOGLE ANALYTICS -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35688734-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-<footer>
+  <footer>
   <a href="/license"><i class="ion-unlocked"></i> License</a> ·
   <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
 </footer>
