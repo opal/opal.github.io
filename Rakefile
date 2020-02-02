@@ -57,7 +57,7 @@ end
 desc "Compile all files into the build directory"
 task :build do
   cd PROJECT_ROOT do
-    sh "bundle exec middleman build --clean"
+    sh "bin/build"
   end
 end
 
