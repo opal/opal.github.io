@@ -226,7 +226,7 @@ opal --help
   </p>
 
   <p>
-    You can join the community by chatting <i class="ion-chatbubbles"></i> on <b>Gitter</b> at <a href="https://gitter.im/opal/opal">opal/opal</a> or on Freenode IRC (channel: <code>#opal</code>).
+    You can join the community by chatting <i class="ion-chatbubbles"></i> on <b>Slack</b> at <a href="https://slack.opalrb.com">opal/opal</a> or on Freenode IRC (channel: <code>#opal</code>).
   </p>
 
   <p>

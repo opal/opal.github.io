@@ -12,7 +12,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal Website](https://opalrb.com/)
 - [Opal Github Repository](https://github.com/opal/opal)
 - [Opal Github Organization](https://github.com/opal)
-- [Opal Gitter](https://gitter.im/opal/opal)
+- [Opal Slack](https://slack.opalrb.com)
 - [Opal Stackoverflow](http://stackoverflow.com/questions/ask?tags=opalrb)
 - [Opalist](http://www.opalist.co) The only Opal mailing list, issues on the web [here](http://opalist.curated.co/issues)
 - [Google Opal Group](https://groups.google.com/forum/#!forum/opalrb)
