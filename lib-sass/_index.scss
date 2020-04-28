@@ -1,4 +1,30 @@
+.page-header {
+  .cta {
+    display: block;
+    margin: 4rem 0;
+  }
+  .cta-group {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.praise-item {
+  margin: 4rem 0;
+}
+
 @media all and (min-width: 800px) {
+  .page-header {
+    .cta {
+      display: inline-block;
+      margin: 0 1rem;
+    }
+    img {
+      position: absolute;
+      margin-left: -220px;
+    }
+  }
+
   .praise {
     display: flex;
     flex-flow: row;
@@ -22,4 +48,18 @@
       }
     }
   }
+}
+
+.tagline {
+  font-weight: 400;
+  // span {
+  //   display: inline-block;
+  // }
+  // .first { text-align: right; }
+  // .last { text-align: left; }
+  // .first, .last { width: 15rem; padding: 0 1rem; }
+  // .first { vertical-align: super; }
+  // .last { vertical-align: sub; }
+  // .first, .last { width: 15rem; padding: 0 0.5rem; }
+
 }

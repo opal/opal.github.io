@@ -6,12 +6,10 @@ title: "Opal: Ruby ♥︎ JavaScript"
   <div class="page-header">
     <img src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' alt='' width='128' height='128' />
     <h1>Opal</h1>
-    <h3 class="tagline">Ruby ♥︎ JavaScript</h3>
-    <p>
-      <br>
-      <a href="#getting-started" class="btn btn-primary btn-lg" role="button"><i class="ion-ios-book"></i> Getting Started</a>
-      <br>
-      <br>
+    <h3 class="tagline"><span class="first">Ruby</span> <span title="loves">💛</span> <span class="last">JavaScript</span></h3>
+    <p class="cta-group">
+      <a href="#getting-started" class="cta btn btn-primary btn-lg" role="button"><i class="ion-ios-book"></i> Getting Started</a>
+      <a href="https://slack.opalrb.com" class="cta " role="button"><i class="ion-chatbubbles"></i> Join the conversation</a>
     </p>
 
     <p>
@@ -226,11 +224,11 @@ opal --help
   </p>
 
   <p>
-    You can join the community by chatting <i class="ion-chatbubbles"></i> on <b>Slack</b> at <a href="https://slack.opalrb.com">opal/opal</a> or on Freenode IRC (channel: <code>#opal</code>).
+    You can join the community by chatting <i class="ion-chatbubbles"></i> on <a href="https://slack.opalrb.com"><b>Slack</b></a>.
   </p>
 
   <p>
-    Ask questions on <i>stack</i><b>overflow</b> by using the <a href="http://stackoverflow.com/questions/ask?tags=opalrb">#opalrb</a>  tag.
+    Ask questions on <i>stack</i><b>overflow</b> by using the <a href="http://stackoverflow.com/questions/ask?tags=opalrb">#opalrb</a> tag.
   </p>
 
   <p>
