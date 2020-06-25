@@ -16,7 +16,7 @@ gem 'rake'
 gem 'puma'
 
 # https://github.com/middleman/middleman/issues/2309#issuecomment-575607760
-gem 'rack', '2.0.8'
+gem 'rack', '2.1.4'
 
 gem 'redcarpet'
 gem 'nokogiri'
