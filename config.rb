@@ -23,13 +23,18 @@ page "/blog/*", :layout => :blog
 
 configure :build do
   activate :minify_css
-  # activate :asset_hash
 end
 
 helpers do
   def body_for(resource)
     html = resource.render layout: nil
     Nokogiri::HTML::DocumentFragment.parse html
+  end
+
+  def javascript_include_tag(name, *args)
+    assets = JSON.parse(File.read("#{__dir__}/source/javascripts/.assets.json"))
+    digest_name = assets.dig(name.to_s, "digest_name") and name = digest_name
+    super name, *args
   end
 
   def table_of_contents(resource)

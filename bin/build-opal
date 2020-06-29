@@ -3,10 +3,11 @@
 require 'bundler/setup'
 Bundler.require
 
-source = "#{__dir__}/../lib-opal"
-target = "#{__dir__}/../source/javascripts"
+source = File.expand_path("#{__dir__}/../lib-opal")
+target = File.expand_path("#{__dir__}/../source/javascripts")
 
 watch = ARGV.delete('--watch')
+force = ARGV.delete('--force')
 names = ARGV.empty? ? Dir["#{source}/*.rb"].map { |f|
   Pathname(f).basename.sub(/(\.js)?\.rb$/, '')
 } : ARGV
@@ -14,7 +15,10 @@ names = ARGV.empty? ? Dir["#{source}/*.rb"].map { |f|
 Opal::Config.arity_check_enabled = true
 Opal.append_path source
 
-p target
+assets_path = "#{target}/.assets.json"
+assets = File.exist?(assets_path) ? JSON.parse(File.read(assets_path), symbolize_names: true) : {}
+
+puts "[opal] target: #{target}"
 FileUtils.mkpath target
 require 'pathname'
 $stdout.sync = true
@@ -34,24 +38,47 @@ build_js = -> {
 
 build_rb = -> {
   names.each do |name|
+    asset = (assets[name.to_s.to_sym] ||= {})
+
     target_file = Pathname(target).join("#{name}.js")
     max_mtime = -> { Dir["{Gemfile.lock,#{source}/**/*}"].map{|f| File.mtime(f)}.max }
 
     puts "[opal] building #{name}..."
-    if target_file.exist? && target_file.mtime >= max_mtime[]
+    if !force && target_file.exist? && target_file.mtime >= max_mtime[]
       puts "[opal] skipped #{name}."
       next
     end
+
     begin
       builder = Opal::Builder.build("#{name}.js")
       js_code = Uglifier.new.compile(builder.to_s)
-      File.write "#{target}/#{name}.js", js_code
+      digest = Digest::MD5.hexdigest js_code
+
+      digest_name = "#{name}-#{digest}"
+      digest_path = "#{target}/#{digest_name}.js"
+      path = "#{target}/#{name}.js"
+      asset.merge!(
+        name: name,
+        digest: digest,
+        path: path,
+        digest_path: digest_path,
+        digest_name: digest_name,
+        target: target,
+      )
+
+      File.write path, js_code
+      File.write digest_path, js_code
+
+      p assets
+
       # File.write "#{target}/#{name}.map { |e|  }", builder.source_map.to_s
       puts "[opal] built #{name}."
     rescue SyntaxError, StandardError
       warn($!)
       warn "[opal] DID NOT build #{name}."
     end
+
+    File.write assets_path, assets.to_json
   end
 }
 
