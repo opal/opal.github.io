@@ -98,7 +98,7 @@ GEM
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.1.4)
     rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
@@ -134,7 +134,7 @@ DEPENDENCIES
   opal (~> 1.0.3)
   opal-jquery
   puma
-  rack (= 2.0.8)
+  rack (= 2.1.4)
   rake
   redcarpet
   sass
