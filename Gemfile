@@ -20,3 +20,4 @@ gem 'rack', '2.1.4'
 
 gem 'redcarpet'
 gem 'nokogiri'
+gem 'uglifier'

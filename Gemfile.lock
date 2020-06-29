@@ -138,6 +138,7 @@ DEPENDENCIES
   rake
   redcarpet
   sass
+  uglifier
 
 RUBY VERSION
    ruby 2.6.3p62
