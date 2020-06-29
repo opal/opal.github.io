@@ -23,7 +23,7 @@ page "/blog/*", :layout => :blog
 
 configure :build do
   activate :minify_css
-  activate :asset_hash
+  # activate :asset_hash
 end
 
 helpers do
