@@ -103,9 +103,6 @@ run(Opal::SimpleServer.new do |s|
 
   # the directory where the code is (add to opal load path )
   s.append_path 'app'
-
-  # need to set the index explicitly for opal server to pick it up
-  s.index_path = 'index.html.erb'
 end)
 ```
 
