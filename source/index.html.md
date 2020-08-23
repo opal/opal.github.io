@@ -106,7 +106,7 @@ run(Opal::SimpleServer.new do |s|
 end)
 ```
 
-Add a file named `hello_world.js.rb` to `app/` with your hello world:
+Add a file named `application.js.rb` to `app/` with your hello world:
 
 ```ruby
 require 'opal'
