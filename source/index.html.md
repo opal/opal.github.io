@@ -85,9 +85,10 @@ puts user.admin?
 
 ## Getting Started: Rack
 
-Add `rack` to your `Gemfile`.
+Add `opal` and `rack` to your `Gemfile`.
 
 ```ruby
+gem 'opal'
 gem 'rack'
 ```
 
