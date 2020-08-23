@@ -17,9 +17,8 @@ To update the list just run
 
     $ bin/server
 
-Then visit `http://localhost:4567`.
+Then visit `http://localhost:3000`.
 
 ## Publishing
 
     $ bin/deploy
-
