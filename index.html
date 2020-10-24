@@ -163,8 +163,9 @@ v1.0.3
 
 <h2 id="getting-started-rack">Getting Started: Rack</h2>
 
-<p>Add <code>rack</code> to your <code>Gemfile</code>.</p>
-<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'rack'</span>
+<p>Add <code>opal</code> and <code>rack</code> to your <code>Gemfile</code>.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal'</span>
+<span class="n">gem</span> <span class="s1">'rack'</span>
 </code></pre></div>
 <p>Setup the Opal rack-app in your <code>config.ru</code> as follows:</p>
 <div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
@@ -175,12 +176,9 @@ v1.0.3
 
   <span class="c1"># the directory where the code is (add to opal load path )</span>
   <span class="n">s</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'app'</span>
-
-  <span class="c1"># need to set the index explicitly for opal server to pick it up</span>
-  <span class="n">s</span><span class="p">.</span><span class="nf">index_path</span> <span class="o">=</span> <span class="s1">'index.html.erb'</span>
 <span class="k">end</span><span class="p">)</span>
 </code></pre></div>
-<p>Add a file named <code>hello_world.js.rb</code> to <code>app/</code> with your hello world:</p>
+<p>Add a file named <code>application.js.rb</code> to <code>app/</code> with your hello world:</p>
 <div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
 <span class="nb">require</span> <span class="s1">'native'</span>
 <span class="vg">$$</span><span class="p">.</span><span class="nf">alert</span> <span class="s1">'Hello World from Opal!'</span>
