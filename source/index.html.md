@@ -85,9 +85,10 @@ puts user.admin?
 
 ## Getting Started: Rack
 
-Add `rack` to your `Gemfile`.
+Add `opal` and `rack` to your `Gemfile`.
 
 ```ruby
+gem 'opal'
 gem 'rack'
 ```
 
@@ -102,13 +103,10 @@ run(Opal::SimpleServer.new do |s|
 
   # the directory where the code is (add to opal load path )
   s.append_path 'app'
-
-  # need to set the index explicitly for opal server to pick it up
-  s.index_path = 'index.html.erb'
 end)
 ```
 
-Add a file named `hello_world.js.rb` to `app/` with your hello world:
+Add a file named `application.js.rb` to `app/` with your hello world:
 
 ```ruby
 require 'opal'
