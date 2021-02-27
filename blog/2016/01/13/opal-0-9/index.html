@@ -6,12 +6,11 @@
 
   <title>Opal 0.9: direct JS calls, console.rb, numeric updates, better reflection, and fixes aplenty</title>
 
-  <link href="/application.css" rel="stylesheet" />
+  <link href="/assets/application-9db9bab64149be06d09e3390c1f7e70d7a98cfcf86f32f8e777c14fcac0ccb27.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-  <script src="/jquery.js"></script>
-  <script src="/bootstrap.js"></script>
-  <script src="/application-0f1b84d988a890f0479cf44b3cb58edf.js"></script>
+  <script src="/assets/application-ebc9a3fff8eae3470a6b7b27753a921aceae8d2254be48253cd1e932e9081355.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
 
   <!-- Algolia -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -63,8 +62,8 @@ GitHub
 </a>
 </li>
 <li>
-<a href='https://rubygems.org/gems/opal/versions/1.0.3' style='opacity: 0.5;'>
-v1.0.3
+<a href='https://rubygems.org/gems/opal/versions/1.1.1' style='opacity: 0.5;'>
+v1.1.1
 </a>
 </li>
 </ul>
@@ -82,7 +81,6 @@ v1.0.3
 </div>
 </nav>
 
-  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
       <div class="container col-sm-8">
@@ -118,7 +116,8 @@ Posted by Jared White on 2016-01-13
 
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)
+      .parentElement.classList.add("active")
   </script>
 
   <!-- Algolia -->

@@ -6,12 +6,11 @@
 
   <title>Try Opal: Browser compiler and REPL</title>
 
-  <link href="/application.css" rel="stylesheet" />
+  <link href="/assets/application-9db9bab64149be06d09e3390c1f7e70d7a98cfcf86f32f8e777c14fcac0ccb27.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-  <script src="/jquery.js"></script>
-  <script src="/bootstrap.js"></script>
-  <script src="/application-0f1b84d988a890f0479cf44b3cb58edf.js"></script>
+  <script src="/assets/application-ebc9a3fff8eae3470a6b7b27753a921aceae8d2254be48253cd1e932e9081355.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
 
   <!-- Algolia -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -63,8 +62,8 @@ GitHub
 </a>
 </li>
 <li>
-<a href='https://rubygems.org/gems/opal/versions/1.0.3' style='opacity: 0.5;'>
-v1.0.3
+<a href='https://rubygems.org/gems/opal/versions/1.1.1' style='opacity: 0.5;'>
+v1.1.1
 </a>
 </li>
 </ul>
@@ -82,11 +81,12 @@ v1.0.3
 </div>
 </nav>
 
-  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
-    <script src="/parser-dabbabd31f5bada505d96f9ab9ed99d6.js" async="async"></script>
-<script src="/try-aed779e34c3b66d419357dc32860ea69.js" async="async"></script>
+    <script src="/assets/load-parser-c2d7983d1e75bd693a8ce042740f23164970071da2fad2c9acffafcd2b4a94be.js" async="async" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+Opal.require(&quot;load-parser&quot;);;console.log('loaded load-parser')"></script>
+<script src="/assets/try-5477aabb9c68ff9317f8b76c1d857bbed128362f77d3cc95851b3a45fad1c575.js" async="async" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+Opal.require(&quot;try&quot;);;console.log('loaded try')"></script>
 
 <div class="page-header">
   <h1>Try Opal in your browser!</h1>
@@ -98,7 +98,7 @@ v1.0.3
   <div id="editor_wrapper" class="col-md-6">
     <a href="#" id="run_code" class="btn btn-primary">Run (Cmd+Enter)</a>
     <a href="#" id="link_code" class="btn">Link</a>
-    <a href="?code:" id="link_code" class="btn">Reset</a>
+    <a href="?code=" id="reset_code" class="btn">Reset</a>
     <p></p>
     <div id="editor" class="well" style="padding:0">
     </div>
@@ -131,7 +131,8 @@ v1.0.3
 
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)
+      .parentElement.classList.add("active")
   </script>
 
   <!-- Algolia -->
