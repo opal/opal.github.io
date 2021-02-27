@@ -17,5 +17,4 @@
 /tmp
 
 # Ignore compiled assets
-/source/stylesheets
-/source/javascripts
+/source/assets

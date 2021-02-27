@@ -31,10 +31,20 @@ helpers do
     Nokogiri::HTML::DocumentFragment.parse html
   end
 
-  def javascript_include_tag(name, *args)
-    assets = JSON.parse(File.read("#{__dir__}/source/javascripts/.assets.json"))
-    digest_name = assets.dig(name.to_s, "digest_name") and name = digest_name
-    super name, *args
+  def javascript_include_tag(name, options = {})
+    options.merge!(onload: Opal::Sprockets.load_asset(name) + ";console.log('loaded #{name}')")
+    super(sprockets_path(name + ".js") || name, options)
+  end
+
+  def stylesheet_link_tag(name, options = {})
+    super(sprockets_path(name + ".css") || name, options)
+  end
+
+  def sprockets_path(name)
+    assets_path = Dir["#{__dir__}/source/assets/.*.json"].first
+    assets = File.exist?(assets_path) ? JSON.parse(File.read(assets_path)) : {}
+    asset = assets.dig("assets", name)
+    asset ? "/assets/#{asset}" : nil
   end
 
   def table_of_contents(resource)
@@ -77,13 +87,7 @@ ignore '*.sass'
 ignore '*.scss'
 
 activate(:external_pipeline,
-  name: :sass,
-  command: "bin/build-sass #{'--watch' unless build?}",
-  source: "source/stylesheets/",
-)
-
-activate(:external_pipeline,
-  name: :opal,
-  command: "bin/build-opal #{'--watch' unless build?}",
-  source: "source/javascripts/",
+  name: :sprockets,
+  command: "bin/build-sprockets #{'--watch' unless build?}",
+  source: "assets/",
 )
