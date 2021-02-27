@@ -1,9 +1,7 @@
 require '_vendor/codemirror'
 require '_vendor/ruby'
 require '_vendor/javascript'
-require 'js'
 require 'try/examples'
-require 'console'
 
 class TryOpal
   class Editor
@@ -30,29 +28,39 @@ class TryOpal
     }
   end
 
-  def link
-    @link ||= Element.find('#link_code')
-  end
-
   def setup_links
-    Element.find('#run_code').on(:click) { run_code }
-    examples_container = Element.find('#examples')
-    examples_container.text = ''
-    spacer = ' &nbsp; '
+    $$[:document].querySelector('#run_code').addEventListener(:click) { |event|
+      event.JS.preventDefault
+      event.JS.stopPropagation
+      run_code
+    }
+
+    $$[:document].querySelector('#link_code').addEventListener(:click) { |event|
+      event.JS.preventDefault
+      event.JS.stopPropagation
+      $$[:location][:hash] = ""
+      $$[:location][:search] = "code=#{$$.encodeURIComponent(@editor.value)}"
+    }
+
+    examples_container = $$[:document].querySelector('#examples')
+    examples_container.innerText = ''
 
     TRY_EXAMPLES.each do |title, code|
-      url = "?example=#{`encodeURIComponent(#{title})`}"
-      link = Element.new(:a).tap { |a|
-        a[:href] = url
-        a.text = title
-      }
+      url = "?example=#{$$.encodeURIComponent(title)}"
 
-      link.on(:click) do |event|
-        event.prevent
+      link = $$[:document].createElement(:a)
+      link[:href] = url
+      link[:innerText] = title
+
+      spacer = $$[:document].createTextNode '   '
+
+      link.addEventListener(:click) do |event|
+        event.JS.preventDefault
+        event.JS.stopPropagation
 
         @editor.value = code
         compile_code
-        `history`.JS.replaceState(
+        $$[:history].replaceState(
           {
             title: title,
             code: code,
@@ -62,13 +70,16 @@ class TryOpal
         )
       end
 
-      examples_container << spacer << link
+      $console.log(link)
+
+      examples_container.appendChild spacer
+      examples_container.appendChild link
     end
   end
 
   def setup_code
-    hash = `decodeURIComponent(location.hash)`
-    search = `decodeURIComponent(location.search)`
+    hash = $$.decodeURIComponent($$[:location][:hash])
+    search = $$.decodeURIComponent($$[:location][:search])
     run = false
 
     if hash.start_with?('#code=')
@@ -111,8 +122,7 @@ class TryOpal
 
   def compile_code
     @output.value = 'click "Run" to see the output'
-    Element['#output'].css(opacity: '0.5')
-    link[:href] = "?code:#{`encodeURIComponent(#{@editor.value})`}"
+    $$[:document].querySelector('#output').css(opacity: '0.5')
     code = Opal.compile(@editor.value, source_map_enabled: false)
     @viewer.value = code
   rescue StandardError, SyntaxError => err
@@ -123,8 +133,8 @@ class TryOpal
     compile_code
     @flush = []
     @output.value = ''
-    Element['#output'].css(opacity: '1')
     eval_code @viewer.value
+    $$[:document].querySelector('#output')[:style][:opacity] = '1'
   rescue StandardError, SyntaxError => err
     log_error err
   end
@@ -148,17 +158,26 @@ class TryOpal
     compile_code if @ready && @parser
   end
 end
-
 $try = TryOpal.new
-$stdout.write_proc = $stderr.write_proc = proc do |str|
-  $try.print_to_output(str)
-end
 
-Document.ready? do
+p $$[:document][:readyState]
+
+case $$[:document][:readyState]
+when :complete, :loaded, :interactive
   $try.setup
   $try.attempt_compilation ready: true
+else
+  $$[:document].addEventListener :DOMContentLoaded do
+    $try.setup
+    $try.attempt_compilation ready: true
+  end
 end
 
-Document.on :parser_loaded do
+$$[:document].addEventListener :parser_loaded do
+  p :parser_loaded
   $try.attempt_compilation parser: true
+end
+
+$stdout.write_proc = $stderr.write_proc = proc do |str|
+  $try.print_to_output(str)
 end

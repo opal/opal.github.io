@@ -2,7 +2,7 @@
 title: "Try Opal: Browser compiler and REPL"
 ---
 
-<%= javascript_include_tag "parser", async: 'async' %>
+<%= javascript_include_tag "load-parser", async: 'async' %>
 <%= javascript_include_tag "try", async: 'async' %>
 
 <div class="page-header">
@@ -15,7 +15,7 @@ title: "Try Opal: Browser compiler and REPL"
   <div id="editor_wrapper" class="col-md-6">
     <a href="#" id="run_code" class="btn btn-primary">Run (Cmd+Enter)</a>
     <a href="#" id="link_code" class="btn">Link</a>
-    <a href="?code:" id="link_code" class="btn">Reset</a>
+    <a href="?code=" id="reset_code" class="btn">Reset</a>
     <p></p>
     <div id="editor" class="well" style="padding:0">
     </div>

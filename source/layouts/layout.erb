@@ -10,8 +10,6 @@
   <%# See: https://ionicons.com/v2/ %>
   <%= stylesheet_link_tag "//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" %>
 
-  <%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "bootstrap" %>
   <%= javascript_include_tag "application" %>
 
   <!-- Algolia -->
@@ -19,7 +17,6 @@
 </head>
 <body class="<%= page_classes %>">
   <%= partial 'header' %>
-  <script>$('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent().addClass('active')</script>
 
   <div class="container">
     <%= yield %>
@@ -28,7 +25,8 @@
   <%= partial 'footer' %>
 
   <script>
-    $('a[href="'+location.pathname.replace(/\/$/,'')+'"]').parent('li').addClass('active')
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)
+      .parentElement.classList.add("active")
   </script>
 
   <!-- Algolia -->

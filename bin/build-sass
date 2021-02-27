@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-build = !ARGV.include?('--watch')
-
-exec "cd #{__dir__}/..; sass --#{build ? 'update' : 'watch'} " +
-            "lib-sass/:source/stylesheets/ " +
-            "-I lib-sass/"

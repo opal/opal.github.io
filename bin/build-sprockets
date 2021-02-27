@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+Bundler.require
+
+source = "#{__dir__}/../assets"
+watch = ARGV.delete('--watch')
+force = ARGV.delete('--force')
+
+$stdout.sync = true
+
+require 'sprockets'
+require 'opal-sprockets'
+require 'logger'
+
+environment = Sprockets::Environment.new("#{__dir__}/..")
+environment.context_class.class_eval do
+  def asset_path(path, options = {})
+    "/assets/#{path}"
+  end
+end
+
+p(Opal.paths).each { environment.append_path _1 }
+environment.append_path "#{__dir__}/../assets/config"
+environment.append_path "#{__dir__}/../assets/stylesheets"
+environment.append_path "#{__dir__}/../assets/javascripts"
+manifest = Sprockets::Manifest.new(environment, "#{__dir__}/../source/assets")
+environment.css_compressor = :scss
+# environment.js_compressor = :uglify
+environment.cache = Sprockets::Cache::FileStore.new("#{__dir__}/../tmp/cache/sprockets")
+environment.logger = Logger.new($stdout)
+environment.logger.level = Logger::DEBUG
+
+build = -> {
+  manifest.compile(%w[manifest])
+}
+
+$exit = false
+trap 'INT' do
+  if $exit
+    $stderr.puts "\nForcing exit."
+    exit 1
+  else
+    $stderr.puts "\nWaiting for build to finish then exiting..."
+    $exit = true
+  end
+end
+
+if watch
+  thread = Thread.new { build.() }
+  listener = Listen.to(source) do |modified, added, removed|
+    puts "modified absolute path: #{modified}"
+    puts "added absolute path: #{added}"
+    puts "removed absolute path: #{removed}"
+    build.()
+  end
+  listener.start # not blocking
+  until $exit
+    sleep 1
+  end
+  listener.stop
+  thread.join
+else
+  build.()
+end
+
