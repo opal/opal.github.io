@@ -93,6 +93,8 @@ WebAssembly.wait_for "onigmo/onigmo-wasm" do
 end
 ```
 
+*The source for opal-webassembly is available at https://github.com/interscript/opal-webassembly.*
+
 ## Opal-Onigmo
 
 After having a nice library to bind with WebAssembly modules, writing an individual binding was very easy and the resulting code looks (in my opinion) very cool.
@@ -133,6 +135,8 @@ Opal-Onigmo depends on the strings being coded as UTF-16. There are two reasons 
    but only methods for UTF-16 are valid for characters beyond the Basic Multilingual
    Plane (Unicode 0x0000 to 0xffff) which are used in 2 maps.
 2. JavaScript uses UTF-16 strings internally.
+
+*The source for opal-onigmo is available at https://github.com/interscript/opal-onigmo.*
 
 ## Interscript
 
