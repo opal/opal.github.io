@@ -4,6 +4,10 @@ date: 2021-06-26
 author: Interscript
 ---
 
+*(This is a guest-post from the people at [Interscript](https://github.com/interscript/interscript), featuring an in-depth account of the work done around building a web-assebly bridge and compiling Onigmo for Opal)*
+
+---
+
 At [Ribose Inc](https://github.com/riboseinc) we develop [Interscript](https://github.com/interscript/interscript), an open source Ruby implementation of interoperable transliteration schemes from ALA-LC, BGN/PCGN, ICAO, ISO, UN (by UNGEGN) and many, many other script conversion system authorities. The goal of this project is to achieve interoperable transliteration schemes allowing quality comparisons.
 
 We decided to port our software to JavaScript using Opal (the Ruby to JavaScript compiler), so it can be also used in web browsers and Node environments. The problem is - Opal translates Ruby regular expressions (upon which we rely quite heavily) to JavaScript almost verbatim. This made our ported codebase incompatible on principle, so we searched for a better solution.
