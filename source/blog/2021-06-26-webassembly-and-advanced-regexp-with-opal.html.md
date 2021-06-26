@@ -12,19 +12,22 @@ At [Ribose Inc](https://github.com/riboseinc) we develop [Interscript](https://g
 
 We decided to port our software to JavaScript using Opal (the Ruby to JavaScript compiler), so it can be also used in web browsers and Node environments. The problem is - Opal translates Ruby regular expressions (upon which we rely quite heavily) to JavaScript almost verbatim. This made our ported codebase incompatible on principle, so we searched for a better solution.
 
-Unfortunately, Regexp is basically something like a programming language that has more than a dozen of incompatible implementations - even across the web browsers: there is a new standard in ECMAScript which adds lookbehind assertions and Safari doesn't implement that (and we do need lookbehind assertions).
+Unfortunately, Regexp is basically something like a programming language that has more than a dozen of incompatible implementations - even across the web browsers. For instance, we need lookbehind assertions, but even if there is a new standard in ECMAScript which adds lookbehind assertions, Safari doesn't implement that.
+
+Given all this context let's dive into how we ported the original Ruby Regexp engine to the browser!
 
 ## Onigmo
 
-Onigmo is a Regexp engine that is used by Ruby. It is a fork of Oniguruma, which is also in use by PHP and a few more programming languages. Fortunately, it's possible to compile it to a static WebAssembly module which can be interfaced with the Javascript land.
+We started by trying to compile Onigmo with WebAssembly.
+
+Onigmo is a Regexp engine that is used by Ruby. It is a fork of Oniguruma, which is also in use by PHP and a few more programming languages. Fortunately, it's possible to compile it to a static WebAssembly module which can be interfaced with the JavaScript land.
 
 We tried compiling Onigmo using a simple handcrafted libc with no memory management
-so as to reduce the size. This plan backfired (rightfully so), now we use wasi-libc:
+so as to reduce the size, but this plan backfired, and rightfully so!
 
-https://github.com/WebAssembly/wasi-libc
+Now we use [wasi-libc](https://github.com/WebAssembly/wasi-libc). WASI stands for WebAssembly System Interface, and is designed to provide "a wide array of POSIX-compatible C APIs".
 
-The library is made to be able to use either of them, but use of wasi-libc is highly
-encouraged. As we are concerned about the output size of the resulting WASM binaries, we chose not to use Emscripten, just the upstream LLVM/Clang and its WASM target.
+The library is made to be able to work with both wasi-libc and the handcrafted libc, but use of wasi-libc is highly encouraged. As we are concerned about the output size of the resulting WASM binaries, we chose not to use Emscripten, just the upstream LLVM/Clang and its WASM target.
 
 ## Opal-WebAssembly
 
