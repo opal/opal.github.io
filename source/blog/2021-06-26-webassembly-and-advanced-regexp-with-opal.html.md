@@ -1,6 +1,6 @@
 ---
 title: "WebAssembly and advanced regular expressions with Opal"
-date: 2021-06-20
+date: 2021-06-26
 author: Interscript
 ---
 
@@ -38,20 +38,20 @@ calling process and each library (think about something like a segmented memory)
 For instance, for the following code, we don't know which memory space to use:
 ```ruby
     FFI::MemoryPointer.new(:uint8, 1200)
-```    
+```
 This requires us to use a special syntax, like:
 ```ruby
     LibraryName.context do
       FFI::MemoryPointer.new(:uint8, 1200)
     end
-```    
+```
 This context call makes it clear that we want this memory to be alocated in the
 "LibraryName" space.
 
 Another thing is that a call like the following:
 ```ruby
     FFI::MemoryPointer.from_string("Test string")
-```    
+```
 Would not allocate the memory, but share the memory between the calling process and
 the library. In Opal-WebAssembly we must allocate the memory, as sharing is not an option in the WASM model. Now, another issue comes into play. In regular Ruby a call similar to this should allocate the memory and clear it later, once the object is destroyed. In our case, we can't really access Javascript's GC. This means we always need to free the memory ourselves.
 
@@ -63,7 +63,7 @@ Chromium browser doesn't allow us to load WebAssembly modules larger than 4KB sy
     <script>
         Opal.Library.$new();
     </script>
-```    
+```
 This approach works in Node and possibly in other browsers, but Chromium requires us to
 use promises:
 ```html
@@ -73,7 +73,7 @@ use promises:
             Opal.Library.$new();
         });
     </script>
-```    
+```
 There are certain assumptions of how a library should be loaded on Opal side - the FFI library creation depends on the WebAssembly module being already loaded, so we need to either move those definitions to a wait_for block or move require directives, like so:
 
 ```ruby
@@ -96,7 +96,7 @@ replacement. We need to manually call an #ffi_free method. Eg:
     re = Onigmo::Regexp.new("ab+")
     # use the regular expression
     re.ffi_free # free it afterwards and not use it anymore
-```    
+```
 At early stages our implementation of Opal-Onigmo we didn't consider the memory a
 problem. When hit with a real world scenario, we found out, that it's a severe issue and
 needs to be dealt with. As far as we know, the library doesn't leak any memory if the
@@ -127,30 +127,30 @@ Opal-Onigmo depends on the strings being coded as UTF-16. There are two reasons 
 Using Opal-Onigmo we made it so that it passes _all_ the tests (not counting transliterating Thai scripts which ultimately depends on an external process, which relies on machine learning). To optimize it, we use Opal-Onigmo _only_ when the regexp
 is a more complex regexp, otherwise we fall back to an (ultimately faster) Javascript regexp engine:
 ```ruby
-    def mkregexp(regexpstring) 
-      @cache ||= {} 
-      if s = @cache[regexpstring] 
-        if s.class == Onigmo::Regexp 
-          # Opal-Onigmo stores a variable "lastIndex" mimicking the JS 
-          # global regexp. If we want to reuse it, we need to reset it. 
-          s.reset 
-        else 
-          s 
-        end 
-      else 
-        # JS regexp is more performant than Onigmo. Let's use the JS 
-        # regexp wherever possible, but use Onigmo where we must. 
-        # Let's allow those characters to happen for the regexp to be 
-        # considered compatible: ()|.*+?{} ** BUT NOT (? **. 
-        if /[\\$^\[\]]|\(\?/.match?(regexpstring) 
-          # Ruby caches its regexps internally. We can't GC. We could 
-          # think about freeing them, but we really can't, because they 
-          # may be in use. 
-          @cache[regexpstring] = Onigmo::Regexp.new(regexpstring) 
-        else 
-          @cache[regexpstring] = Regexp.new(regexpstring) 
-        end 
-      end 
+    def mkregexp(regexpstring)
+      @cache ||= {}
+      if s = @cache[regexpstring]
+        if s.class == Onigmo::Regexp
+          # Opal-Onigmo stores a variable "lastIndex" mimicking the JS
+          # global regexp. If we want to reuse it, we need to reset it.
+          s.reset
+        else
+          s
+        end
+      else
+        # JS regexp is more performant than Onigmo. Let's use the JS
+        # regexp wherever possible, but use Onigmo where we must.
+        # Let's allow those characters to happen for the regexp to be
+        # considered compatible: ()|.*+?{} ** BUT NOT (? **.
+        if /[\\$^\[\]]|\(\?/.match?(regexpstring)
+          # Ruby caches its regexps internally. We can't GC. We could
+          # think about freeing them, but we really can't, because they
+          # may be in use.
+          @cache[regexpstring] = Onigmo::Regexp.new(regexpstring)
+        else
+          @cache[regexpstring] = Regexp.new(regexpstring)
+        end
+      end
     end
 ```
 It also never frees the regexps (see a previous note about #ffi_free), because we never know if a Regexp won't be in use later on (and the Regexps are actually cached in a Hash for performance reasons). The issue about dangling Regexps can be worked out in the future, but the JS API will need to change again. We would need to do something like:
