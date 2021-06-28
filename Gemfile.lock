@@ -14,7 +14,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     contracts (0.13.0)
     dotenv (2.7.6)
     erubis (2.7.0)
@@ -148,7 +148,7 @@ DEPENDENCIES
   webrick
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.7.1p83
 
 BUNDLED WITH
    2.2.3
