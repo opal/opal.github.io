@@ -12,7 +12,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal Website](https://opalrb.com/)
 - [Opal Github Repository](https://github.com/opal/opal)
 - [Opal Github Organization](https://github.com/opal)
-- [Opal Slack](https://slack.opalrb.com)
+- [Opal Gitter](https://gitter.im/opal/opal)
 - [Opal Stackoverflow](http://stackoverflow.com/questions/ask?tags=opalrb)
 - [Opalist](http://www.opalist.co) The only Opal mailing list, issues on the web [here](http://opalist.curated.co/issues)
 - [Google Opal Group](https://groups.google.com/forum/#!forum/opalrb)
@@ -29,6 +29,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 
 ### Frameworks
 - [Clearwater](https://github.com/clearwater-rb/clearwater) - Component-based Ruby front-end framework
+- [Glimmer DSL for Opal](https://github.com/AndyObtiva/glimmer-dsl-opal) - Pure-Ruby Web GUI and Auto-Webifier of [Glimmer](https://github.com/AndyObtiva/glimmer) Desktop Apps
 - [Hyperstack](https://hyperstack.org/) - A Complete Isomorphic Ruby Framework using React, Rails and Opal
 - [Inesita](https://github.com/inesita-rb/inesita) - Frontend web application framework in Ruby using Opal.
 - [Lissio](https://github.com/meh/lissio) - lissio is a VCL (Vai Col Lissio) framework for Opal to implement frontends completely on the client side.
@@ -78,6 +79,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [Opal aasm](https://github.com/catprintlabs/opal-aasm) - Opal compatible version of Acts As State Machine with React.rb awareness
 - [Rack Opal](https://github.com/t0xa/rack-opal) - Rack middleware to automatically compile ruby scripts to javascripts
 - [Reactive Record](https://github.com/catprintlabs/reactive-record) - Ruby Opal + React + ActiveRecord = GOODNESS!
+- [YASL](https://github.com/AndyObtiva/yasl) - A pure Ruby serialization library alternative to YAML that works in Opal inside web browsers
 
 ### JS Wrappers (Bindings)
 - [Opal Airbrake](https://github.com/fazibear/opal-airbrake) - Opal wrapper for airbrake-js javascript library.
@@ -107,6 +109,7 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [AsciifyMe](https://github.com/fazibear/asciify-me) - Convert webcam into asciiart. Live!
 - [Calculator](https://github.com/boberetezeke/calculator) - A HTML5 shared calculator app using ruby Opal
 - [Codemotion](https://github.com/elia/codemotion) - Ruby-everywhere chat app (rack/websockets/opal)
+- [Glimmer Calculator](https://github.com/AndyObtiva/glimmer-cs-calculator) - A fully functional calculator with keyboard shortcuts and multiple themes built in [Glimmer](https://github.com/AndyObtiva/glimmer-dsl-opal)
 - [Inesid](https://github.com/fazibear/inesid) - SID Web player with retor interface
 - [Inesita DBMonster](https://github.com/inesita-rb/dbmonster) - DBMonster test app written in Inesita
 - [Inesita Playground](https://github.com/inesita-rb/playground) - Playground for Inesita
@@ -165,8 +168,10 @@ _the following content comes from the *awesome* [🕶awesome-opal](https://githu
 - [opal.tmbundle](https://github.com/opal/opal.tmbundle) - TextMate bundler for Opal Ruby
 
 ### Live Applications
+- [18xx.games](https://18xx.games)
 - [Asciify Me](https://asciifyme.fazibear.me)
 - [Clearwater Blog](http://clearwater-blog.herokuapp.com)
+- [Glimmer Calculator](https://glimmer-cs-calculator-server.herokuapp.com) ([Apple Theme](https://glimmer-cs-calculator-server.herokuapp.com/welcomes/apple) / [Tiles Theme](https://glimmer-cs-calculator-server.herokuapp.com/welcomes/tiles))
 - [Inesid](http://inesid.fazibear.me)
 - [Inesita DBMonster](http://inesita-dbmonster.netlify.com)
 - [Inesita Playground](http://inesita-playground.netlify.com)
