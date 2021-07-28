@@ -59,6 +59,8 @@ RUBY
 TRY_EXAMPLES["Click counter"] = <<-'RUBY'
 require 'native'
 
+puts "Look at the title!"
+
 element = $$[:document].querySelector('h1')
 title = element[:innerText]
 
