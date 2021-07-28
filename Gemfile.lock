@@ -80,11 +80,11 @@ GEM
     nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    opal (1.1.1)
+    opal (1.2.0)
       ast (>= 2.3.0)
       parser (~> 3.0)
-    opal-sprockets (1.0.0)
-      opal (>= 1.0, < 1.2)
+    opal-sprockets (1.0.1)
+      opal (>= 1.0, < 2.0)
       sprockets (~> 4.0)
       tilt (>= 1.4)
     padrino-helpers (0.13.3.4)
@@ -94,7 +94,7 @@ GEM
     padrino-support (0.13.3.4)
       activesupport (>= 3.1)
     parallel (1.20.1)
-    parser (3.0.0.0)
+    parser (3.0.2.0)
       ast (~> 2.4.1)
     public_suffix (4.0.6)
     puma (5.3.1)
@@ -137,7 +137,7 @@ DEPENDENCIES
   middleman-blog
   middleman-syntax
   nokogiri
-  opal (~> 1.1)
+  opal (~> 1.2)
   opal-sprockets
   puma
   rack
