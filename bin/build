@@ -4,11 +4,15 @@ def system!(...)
   system(...) or abort
 end
 
-Dir.chdir "#{__dir__}/.."
+Dir.chdir File.expand_path "#{__dir__}/.."
 
-Dir.chdir 'source/docs' do
+system! "bundle exec middleman build --clean --verbose --no-parallel --bail --watcher-disable"
+
+Dir.chdir 'docs' do
   system! "git fetch"
   system! "git reset --hard origin/gh-pages"
 end
 
-system! "bundle exec middleman build --clean --verbose --no-parallel --bail --watcher-disable"
+require 'fileutils'
+FileUtils.cp_r 'docs', 'build/docs'
+
