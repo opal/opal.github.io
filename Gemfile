@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.7.4'
+ruby '2.7.4' unless ENV['CLOUDFLARE_PAGES']
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}.git" }
 
