@@ -1,33 +1,36 @@
 ---
 title: "Optimizing Opal output for size"
-date: 2021-11-17
+date: 2021-11-24
 author: hmdne
 ---
 
 Opal doesn't output the smallest code possible - that's not our goal. We want to output readable ES5 code and we have tools: JS minifiers
-([Terser](https://terser.org/)) and [Google Closure Compiler](https://developers.google.com/closure/compiler/)), and tree shaking utilities
+([Terser](https://terser.org/) and [Google Closure Compiler](https://developers.google.com/closure/compiler/)), and tree shaking utilities
 ([opal-optimizer](https://github.com/hmdne/opal-optimizer)) to bring the code size down.
 
-JavaScript and Ruby certainly have some different semantics. Some things work similarly (like open classes), but some don't - and those that don't
-require some boilerplate code that not only reduces performance, but also increases load times, which for JavaScript code are crucial.
+JavaScript and Ruby certainly have some different semantics. Some things work similarly (like open classes), but some others don't - and those that don't
+require some boilerplate code. That not only reduces performance, but also increases load times, both crucial for JavaScript code.
 
-In this article we will particularly focus on Terser, since it's the most widely used tool for Opal postprocessing. Can Terser find every nook and
+In this article we will particularly focus on Terser, since it's the most widely used tool for Opal post-processing. Can Terser find every nook and
 cranny and optimize the resulting code to the minimal JavaScript version possible? Unfortunately not. It doesn't have a knowledge about which
 statements can produce side effects and which don't. And so it only does the transformations that are semantically equivalent. But while compiling,
 we may know something more.
 
-And so I attempted an exercise to reduce the size of [Asciidoctor.js](https://asciidoctor.org/) - a Ruby program to compile AsciiDoc documents
-to HTML - compiled with Opal to JavaScript - which we use in our CI "performance" task. I took a code golf approach with an exception that we
-need to produce a readable code (Terser takes care to uglify it) - let's make the smallest JavaScript AsciiDoc compiler by improving Opal compiler.
-The main idea is to reduce the code size, not increase performance, but as I will sum this up later, those increases will happen together, but to a
+So I attempted an exercise to reduce the size of the compiled JavaScript code. As a benchmark I took a real-world library, [Asciidoctor](https://asciidoctor.org/)
+(available in its Opal-compiled version as Asciidoctor.js), which is the one we already use to test for performance changes in the Opal CI.
+
+I took a [code golfing](https://en.wikipedia.org/wiki/Code_golf) approach, with the exception that I wanted to produce readable code (Terser will take
+care of uglifying it), setting myself up for generating the smallest JavaScript AsciiDoc output by improving Opal compiler.
+The main idea is to reduce the code size, not to increase performance, but as I will sum this up later, those increases will happen together, but to a
 lesser extent. This exercise took about 4 work days for me.
 
-Those improvements will most probably land for Opal 1.4 release, to happen in late December, along with Ruby 3.1 support. But for now, let me take
-you for a long journey during which you may learn a bit about how Opal compiles Ruby to JavaScript.
+Those improvements will most probably land in the Opal 1.4 release, to happen in late December, along with Ruby 3.1 support. But for now, let me take
+you for a long journey during which you may pick up a couple of JavaScript optimization tricks and learn a bit about how Opal compiles Ruby to JavaScript.
 
 ## Step 1. Do we need `self`?
 
-In Opal, we always alias `this` to `self`. But, let's consider the following code. Do we really need to define `self` in that case?
+In Opal, we always alias `this` to `self` at the beginning of method definitions as `var self = this`.
+But, let's consider the following code, do we really need to define `self` in that case?
 
 ```ruby
 def loop
@@ -40,6 +43,8 @@ end
 And so, if a function doesn't reference self in any way (a special case will be x-strings), let's not compile it in. So, what gains for AsciiDoctor
 do we get?
 
+Let's run `bin/rake performance` and find out:
+
 ```
 Comparison of the Asciidoctor (a real-life Opal application) compile and run:
                   Compile time: 6.239 -> 6.123 (change: -1.86%)
@@ -48,8 +53,8 @@ Comparison of the Asciidoctor (a real-life Opal application) compile and run:
           Minified bundle size: 1264503 -> 1254455 (change: -0.79%)
 ```
 
-Not much, but at least some. Take note - we can't reliably compare the first two performance metrics. And also gains for different softwares will be
-different. The minified bundle size is the minification with `terser -c`. Do also note, that all the following outputs of this kind will refer to entire
+Not much, but at least it's something. Take note - we can't reliably compare the first two performance metrics. And also gains for different softwares will be
+different. The minified bundle size is the created with `terser -c`. Do also note that all the following outputs of this kind will refer to entire
 patchset, as compared to Opal v1.3.2.
 
 ## Step 2. Optimize methods that accept blocks
@@ -61,29 +66,33 @@ def a(&block)
 end
 ```
 
-You may wonder, what does this function compile into?
+You may wonder, what does this function compile to?
 
 ```javascript
   return (Opal.def(self, '$a', $a$1 = function $$a() {
     var $iter = $a$1.$$p, block = $iter || nil, self = this;
 
     if ($iter) $a$1.$$p = null;
-    
-    
+
+
     if ($iter) $a$1.$$p = null;;
     return nil;
   }, $a$1.$$arity = 0), nil) && 'a'
 ```
 
+*You can see `$a$1`, which is a reference to the method body, on which the block is attached as `$$p` when the method is called.*
+
 Hm, not so good. One statement is duplicated, too many variable declarations. We will focus quite a lot on this method, optimizing it step-by-step in
-the following steps. So, this step gives us this:
+the following passes.
+
+So, after some tinkering, this is the result:
 
 ```javascript
   return (Opal.def(self, '$a', $a$1 = function $$a() {
     var block = $a$1.$$p || nil;
 
     if (block) $a$1.$$p = null;
-    
+
     ;
     return nil;
   }, $a$1.$$arity = 0), nil) && 'a'
@@ -103,7 +112,7 @@ Okay! That's not bad!
 
 ## Step 3. `nil && 'a'`?
 
-The previous versions of Ruby tended to return `nil` for method definition, but later changed to return `Symbol`s (== `Strings` in Opal). So why we
+The previous versions of Ruby tended to return `nil` for method definition, but later changed to return `Symbol`s (i.e. `Strings` in Opal). So why we
 actually need this `nil`? Let's reduce it:
 
 ```javascript
@@ -111,7 +120,7 @@ actually need this `nil`? Let's reduce it:
     var block = $a$1.$$p || nil;
 
     if (block) $a$1.$$p = null;
-    
+
     ;
     return nil;
   }, $a$1.$$arity = 0), 'a')
@@ -131,8 +140,8 @@ That's not much. Even though Opal has a lot of method definitions. But let's go 
 
 ## Step 4. Helperize `Opal.def` and `Opal.defs`
 
-What does helperize mean? Well - in Opal compiler we may make a statement `helper :def` to generate a file top-level statement that does
-`var $def = Opal.def`. That's kinda like more code, right? But most files have more than one method defined, often even a lot of them. And Terser
+What does "helperize" mean? Well - in Opal compiler we may make a statement `helper :def` to generate a per-file top-level statement that does
+`var $def = Opal.def`. That's kinda like more code, right? But most files have more than one use of `Opal.def`, often even a lot of them. And Terser
 can't reliably rename `Opal.def` to something shorter, but `$def` can safely become `S` or whatever it decides. So, our method (now with a broader
 context) will produce this:
 
@@ -143,7 +152,7 @@ context) will produce this:
     var block = $a$1.$$p || nil;
 
     if (block) $a$1.$$p = null;
-    
+
     ;
     return nil;
   }, $a$1.$$arity = 0), 'a')
@@ -163,7 +172,9 @@ Yes. It's quite a lot.
 
 ## Step 5. Optimize `slice` and `splice` calls.
 
-We use those calls a lot for the rest arguments, in methods like `def a(arg, *restargs)`. `Opal.slice` is short for `Array.prototype.slice`.
+We use those calls a lot for extracting Ruby rest arguments from the `arguments` array-like object in JavaScript, in methods
+like `def a(arg, *restargs)`. `Opal.slice` is short for `Array.prototype.slice`.
+
 Before this step, we used to output this:
 
 ```javascript
@@ -212,7 +223,7 @@ Opal.queue(function(Opal) {/* Generated by Opal 1.3.1 */
     var block = $$a.$$p || nil;
 
     if (block) $$a.$$p = null;
-    
+
     ;
     return nil;
   }, 0), 'a')
@@ -246,7 +257,7 @@ Opal.queue(function(Opal) {/* Generated by Opal 1.3.1 */
     var block = $$a.$$p || nil;
 
     delete $$a.$$p;
-    
+
     ;
     return nil;
   }, 0), 'a')
@@ -275,7 +286,7 @@ Opal.queue(function(Opal) {/* Generated by Opal 1.3.1 */
     var block = $$a.$$p || nil;
 
     delete $$a.$$p;
-    
+
     ;
     return nil;
   }, 0)
@@ -366,7 +377,7 @@ This used to compile to this:
 Opal.queue(function(Opal) {/* Generated by Opal 1.3.1 */
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $klass = Opal.klass;
 
-  
+
   (function($base, $super, $parent_nesting) {
     var self = $klass($base, $super, 'StandardError');
 
@@ -397,7 +408,7 @@ The closure is kind of... unneeded, isn't it? Let's make it disappear for this p
 Opal.queue(function(Opal) {/* Generated by Opal 1.3.1 */
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $klass = Opal.klass;
 
-  
+
   $klass($nesting[0], $$$('Exception'), 'StandardError');
   $klass($nesting[0], $$$('StandardError'), 'EncodingError');
   $klass($nesting[0], $$$('StandardError'), 'ZeroDivisionError');
@@ -739,9 +750,9 @@ Opal.queue(function(Opal) {/* Generated by Opal 1.3.2 */
   return (function($base, $super) {
     var self = $klass($base, $super, 'A');
 
-    
+
     return $def(self, '$x', function $$x() {
-      
+
       return nil
     }, 0)
   })($nesting[0], null)
@@ -751,6 +762,7 @@ Opal.queue(function(Opal) {/* Generated by Opal 1.3.2 */
 Therefore we skip one variable more. And while some JS minifiers may find this thing and optimize it out itself, some don't
 
 ## Conclusion
+
 After this patchset is merged, Opal will produce much cleaner code with much lesser complexity that you can read much easier without knowledge of how Opal actually
 works under the hood. If you know Ruby, you are likely to know what `$super` means in this particular code (if you don't, it means a superclass, which `A` doesn't
 have set). So, to conclude. What are the total gains from this entire patchset?
