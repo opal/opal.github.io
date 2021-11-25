@@ -1,3 +1,6 @@
+$display-text: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+$display-font: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+
 article.blog-post {
   margin-bottom: 130px;
   font-size: 1.3em;
@@ -10,21 +13,49 @@ article.blog-post {
   }
 }
 
+.blog-post-body {
+  p {
+    color: rgb(29, 29, 31);
+    font-family: $display-text;
+    font-size: 17px;
+    font-style: normal;
+    font-synthesis: none;
+    font-weight: normal;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: $display-font;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 48px;
+  }
+}
+
 .blog-post-meta {
   color: #999999;
   margin-bottom: 30px;
+
+  -webkit-font-smoothing: antialiased;
+  font-family: $display-font;
+  font-size: 14px;
+  font-style: normal;
+  font-synthesis: none;
+  font-weight: 600;
 }
 
 .blog-post-title {
   border-bottom: 1px solid #eeeeee;
   margin-top: 50px;
   margin-bottom: 10px;
+  font-family: $display-font;
+  font-size: 40px;
+  font-weight: 700;
 }
-
 
 .blog-title h1 {
   color: #444444;
-  font-size: 1.4em;
   margin-bottom: 0;
   a {
     color: inherit;
