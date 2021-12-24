@@ -16,6 +16,8 @@ Unfortunately, Regexp is basically something like a programming language that ha
 
 Given all this context let's dive into how we ported the original Ruby Regexp engine to the browser!
 
+<div id="continue-reading"></div>
+
 ## Onigmo
 
 We started by trying to compile Onigmo with WebAssembly.

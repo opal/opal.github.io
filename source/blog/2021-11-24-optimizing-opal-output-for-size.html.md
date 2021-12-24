@@ -16,6 +16,8 @@ cranny and optimize the resulting code to the minimal JavaScript version possibl
 statements can produce side effects and which don't. And so it only does the transformations that are semantically equivalent. But while compiling,
 we may know something more.
 
+<div id="continue-reading"></div>
+
 So I attempted an exercise to reduce the size of the compiled JavaScript code. As a benchmark I took a real-world library, [Asciidoctor](https://asciidoctor.org/)
 (available in its Opal-compiled version as Asciidoctor.js), which is the one we already use to test for performance changes in the Opal CI.
 
