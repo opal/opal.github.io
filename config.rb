@@ -1,6 +1,12 @@
 require 'bundler'
 Bundler.require
 
+# https://stackoverflow.com/a/71994319
+require 'uri'
+def URI.escape(url)
+  url
+end
+
 set :markdown_engine, :redcarpet
 
 set :markdown, layout_engine: :erb,
