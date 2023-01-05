@@ -87,9 +87,8 @@ puts user.admin?
 
 Add `opal` and `rack` to your `Gemfile`.
 
-```ruby
-gem 'opal'
-gem 'rack'
+```shell
+bundle add opal rack
 ```
 
 Setup the Opal rack-app in your `config.ru` as follows:
@@ -129,8 +128,8 @@ Then start the server with `bundle exec rackup` and visit [http://localhost:9292
 
 Add `opal-rails` to your Rails app's `Gemfile`:
 
-```ruby
-gem 'opal-rails'
+```shell
+bundle add opal-rails
 ```
 
 Rename `app/assets/javascripts/application.js` to `app/assets/javascripts/application.js.rb` and replace its contents with this code:
