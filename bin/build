@@ -1,18 +1,24 @@
 #!/usr/bin/env ruby
 
+require 'fileutils'
+
 def system!(...)
   system(...) or abort
 end
 
 Dir.chdir File.expand_path "#{__dir__}/.."
+FileUtils.rm_rf 'build/docs'
 
 system! "bundle exec middleman build --clean --verbose --no-parallel --bail --watcher-disable"
+
+puts '~~~> Extracting updated docs...'
+
+FileUtils.mkpath 'build/docs'
 
 Dir.chdir 'docs' do
   system! "git fetch"
   system! "git reset --hard origin/gh-pages"
+  system! "git archive origin/gh-pages | tar --directory ../build/docs -x -"
 end
 
-require 'fileutils'
-FileUtils.cp_r 'docs', 'build/docs'
 
