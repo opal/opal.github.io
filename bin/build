@@ -18,7 +18,8 @@ FileUtils.mkpath 'build/docs'
 Dir.chdir 'docs' do
   system! "git fetch"
   system! "git reset --hard origin/gh-pages"
-  system! "git archive origin/gh-pages | tar --directory ../build/docs -x -"
+  system! "git archive origin/gh-pages docs.tar"
+  system! "tar --directory ../build/docs -x docs.tar"
 end
 
 
