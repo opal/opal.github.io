@@ -6,20 +6,20 @@ def system!(...)
   system(...) or abort
 end
 
+puts '~~~> Cleaning up...'
 Dir.chdir File.expand_path "#{__dir__}/.."
 FileUtils.rm_rf 'build/docs'
+FileUtils.rm_rf 'docs.tar'
 
+puts '~~~> Building the site...'
 system! "bundle exec middleman build --clean --verbose --no-parallel --bail --watcher-disable"
 
-puts '~~~> Extracting updated docs...'
-
+puts '~~~> Fetching updated docs...'
 FileUtils.mkpath 'build/docs'
-
 Dir.chdir 'docs' do
-  system! "git fetch"
-  system! "git reset --hard origin/gh-pages"
-  system! "git archive origin/gh-pages docs.tar"
-  system! "tar --directory ../build/docs -x docs.tar"
+  system! "git fetch --all --verbose"
 end
 
-
+puts '~~~> Extracting updated docs...'
+system! "git archive --remote ./.git/modules/docs/ origin/gh-pages -o docs.tar"
+system! "tar --verbose --directory build/docs -xf docs.tar"
