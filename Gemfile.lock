@@ -80,7 +80,7 @@ GEM
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    opal (1.7.1)
+    opal (1.7.2)
       ast (>= 2.3.0)
       parser (~> 3.0, >= 3.0.3.2)
     opal-sprockets (1.0.3)
@@ -138,7 +138,7 @@ DEPENDENCIES
   middleman-blog
   middleman-syntax
   nokogiri
-  opal (~> 1.7.1)
+  opal (~> 1.7.2)
   opal-sprockets
   puma
   rack
