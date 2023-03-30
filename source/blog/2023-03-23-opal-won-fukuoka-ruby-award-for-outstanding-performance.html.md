@@ -21,12 +21,14 @@ We want to give special recognition to the following people, who have made signi
 - [Adam Beynon](https://github.com/adambeynon), for starting the project
 - [Andy Maleh](https://github.com/andyobtiva), for showing the world how to use Opal creatively with [Glimmer](https://github.com/AndyObtiva/glimmer) (and winning another Fukuoka Ruby Award in the process!)
 - [Brady Wied](https://github.com/wied03), for his work on [Opal-RSpec](https://github.com/opal/opal-rspec)
+- [Forrest Chang](https://github.com/fkchang), for his work on promoting Opal, for writing useful developer tools
 - [Guillaume Grossetie](https://github.com/ggrossetie) for his work on [Asciidoctor.js](https://github.com/asciidoctor/asciidoctor.js) and upstreaming bug-fixes to Opal
 - [Ilia Bylich](https://github.com/iliabylich), for his work on the parser and compiler
 - [Jan Biedermann](https://github.com/janbiedermann), for his active participation in the community, and for building [Isomorfeus](https://github.com/isomorfeus/isomorfeus-project/)
 - [Kenichi Kamiya](https://github.com/kachick), for going after less known Ruby features and making Opal more complete
 - [meh](https://github.com/meh), for his sustained work on the ecosystem and for building [Opal-Browser](https://github.com/opal/opal-browser/)
 - [Mitch VanDuyn](https://github.com/catmando), for his technical and financial support and for building [Hyperstack](https://hyperstack.org/)
+- [Ryan Stout](https://github.com/ryanstout), for his work on the (now defunct) Volt framework, which introduced many users to Opal
 - [Vais Salikhov](https://github.com/vais), for his work on the core library
 
 The list could never be complete, but we want to thank all the people that have contributed to Opal in the past and have helped to make it the project it is today. Please refer to the [Opal ecosystem page](https://opalrb.com/libraries/) for a more complete list of libraries and projects that use Opal.
@@ -36,4 +38,4 @@ The future of Opal looks bright. With the support of the Ruby community and the 
 In conclusion, Opal winning the Fukuoka Ruby Award for Outstanding Performance is a significant achievement for the project and its developers. It highlights the importance and value of the project in the Ruby ecosystem and brings attention to its unique approach to web development.
 
 The Opal Core team,
-@hmdne and @elia.
+[@hmdne](https://github.com/hmdne) and [@elia](https://github.com/elia).
