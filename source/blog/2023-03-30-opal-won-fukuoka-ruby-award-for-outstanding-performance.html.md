@@ -1,6 +1,6 @@
 ---
 title: "Opal Won the Fukuoka Ruby Award 2023 for Outstanding Performance"
-date: 2023-03-23
+date: 2023-03-30
 author: elia, hmdne
 ---
 
