@@ -4,13 +4,13 @@ date: 2023-03-30
 author: elia, hmdne
 ---
 
-Opal has recently won the prestigious [Fukuoka Ruby Award for Outstanding Performance in the 2023 edition](https://www.digitalfukuoka.jp/event_reports/23). This is a major achievement for the project and its developers, and it reflects the significant contributions that Opal has made to the Ruby programming language and its ecosystem.
+Opal has recently won the prestigious [Fukuoka Ruby Award for Outstanding Performance in the 2023 edition](https://www.digitalfukuoka.jp/topics/228?locale=ja). This is a major achievement for the project and its developers, and it reflects the significant contributions that Opal has made to the Ruby programming language and its ecosystem.
 
 Opal is an open-source project that allows developers to write Ruby code and run it in the browser. It achieves this by compiling Ruby code into JavaScript, which can then be executed in a browser environment. This approach has many advantages, including the ability to reuse existing Ruby code and the ability to write web applications entirely in Ruby, without needing to use JavaScript at all.
 
 Opal has been around since 2011, and it has steadily gained popularity over the years. It is now widely used by Ruby developers who want to use Ruby on both the front-end and the back-end of their applications or who want to port their Ruby libraries to JavaScript.
 
-<div class="continue-reading"></div>
+<div id="continue-reading"></div>
 
 The Fukuoka Ruby Award is an annual award that recognizes outstanding contributions to the Ruby programming language and its ecosystem. It is organized by the Fukuoka Ruby and Software Industry Promotion Committee, which is based in Fukuoka City, Japan. The award has been running since 2009, and it has become one of the most prestigious awards in the Ruby community.
 
