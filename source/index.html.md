@@ -85,10 +85,10 @@ puts user.admin?
 
 ## Getting Started: Rack
 
-Add `opal` and `rack` to your `Gemfile`.
+Add `opal`, `rack` and `rackup` to your `Gemfile`.
 
 ```shell
-bundle add opal rack
+bundle add opal rack rackup
 ```
 
 Setup the Opal rack-app in your `config.ru` as follows:
