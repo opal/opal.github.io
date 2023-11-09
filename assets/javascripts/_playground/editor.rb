@@ -1,3 +1,5 @@
+# backtick_javascript: true
+
 module Playground
   class Editor
     OPTIONS = { lineNumbers: true, theme: 'tomorrow-night-eighties' }
