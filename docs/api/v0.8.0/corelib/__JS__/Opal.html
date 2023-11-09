@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: __JS__::Opal
+  
+    &mdash; corelib (Opal v0.8.0)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "__JS__::Opal";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../_index.html">Index (O)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../__JS__.html" title="__JS__ (module)">__JS__</a></span></span>
+     &raquo; 
+    <span class="title">Opal</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: __JS__::Opal
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/opal/corelib/runtime.js.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>This module is just a placeholder for showing the documentation of the
+internal JavaScript runtime. The methods you&#39;ll find defined below
+are actually JavaScript functions attached to the <code>Opal</code> global object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_stub_for-class_method" title="add_stub_for (class method)">.<strong>add_stub_for</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add a method_missing stub function to the given prototype for the given name.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_stubs_subscriber-class_method" title="add_stubs_subscriber (class method)">.<strong>add_stubs_subscriber</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add a prototype to the subscribers list, and (TODO) add previously stubbed methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#boot_class-class_method" title="boot_class (class method)">.<strong>boot_class</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Create generic class with given superclass.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#boot_class_alloc-class_method" title="boot_class_alloc (class method)">.<strong>boot_class_alloc</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Boot a base class (makes instances).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#boot_class_object-class_method" title="boot_class_object (class method)">.<strong>boot_class_object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The class object itself (as in <code>Class.new</code>) *.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#boot_core_class_object-class_method" title="boot_core_class_object (class method)">.<strong>boot_core_class_object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds the class object for core classes: - make the class object have a singleton class - make the singleton class inherit from its parent singleton class *.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#boot_module_object-class_method" title="boot_module_object (class method)">.<strong>boot_module_object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Internal function to create a new module instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bridge_class-class_method" title="bridge_class (class method)">.<strong>bridge_class</strong>  &#x21d2; Class </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>For performance, some core ruby classes are toll-free bridged to their native javascript counterparts (e.g. a ruby Array is a javascript Array).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_class_singleton_class-class_method" title="build_class_singleton_class (class method)">.<strong>build_class_singleton_class</strong>  &#x21d2; RubyClass </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Build the singleton class for an existing class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_object_singleton_class-class_method" title="build_object_singleton_class (class method)">.<strong>build_object_singleton_class</strong>  &#x21d2; RubyClass </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Build the singleton class for a Ruby (non class) Object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_scope-class_method" title="create_scope (class method)">.<strong>create_scope</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Create a new constants scope for the given class with the given base.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#define_module_method-class_method" title="define_module_method (class method)">.<strong>define_module_method</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Define the given method on the module.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#donate_constants-class_method" title="donate_constants (class method)">.<strong>donate_constants</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>When a source module is included into the target module, we must also copy its constants to the target.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#donate_methods-class_method" title="donate_methods (class method)">.<strong>donate_methods</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Donate methods for a class/module.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup_module_or_class_object-class_method" title="setup_module_or_class_object (class method)">.<strong>setup_module_or_class_object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Adds common/required properties to a module or class object (as in <code>Module.new</code> / <code>Class.new</code>) * * * *.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stub_for-class_method" title="stub_for (class method)">.<strong>stub_for</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generate the method_missing stub for a given method name.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add_stub_for-class_method">
+  
+    .<strong>add_stub_for</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add a method_missing stub function to the given prototype for the
+given name.
+*</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>prototype</span>
+      
+      
+        <span class='type'>(<tt>Prototype</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the target prototype</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>stub</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>stub name to add (e.g. &quot;$foo&quot;)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+360
+361
+362
+363
+364
+365
+366
+367</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 360</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_stub_for'>add_stub_for</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function add_stub_for(prototype, stub) {
+     var method_missing_stub = stub_for(stub);
+     prototype[stub] = method_missing_stub;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_stubs_subscriber-class_method">
+  
+    .<strong>add_stubs_subscriber</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add a prototype to the subscribers list, and (TODO) add previously stubbed
+methods.
+*</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'></span>
+      
+      
+        <span class='type'>(<tt>Prototype</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+345
+346
+347
+348
+349
+350
+351
+352</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 345</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_stubs_subscriber'>add_stubs_subscriber</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function add_stubs_subscriber(prototype) {
+     // TODO: Add previously stubbed methods too.
+     Opal.stub_subscribers.push(prototype);
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="boot_class-class_method">
+  
+    .<strong>boot_class</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Create generic class with given superclass.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_boot_class'>boot_class</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function boot_class(superklass, constructor) {
+     var alloc = boot_class_alloc(null, constructor, superklass)
+   
+     return boot_class_object(superklass, alloc);
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="boot_class_alloc-class_method">
+  
+    .<strong>boot_class_alloc</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Boot a base class (makes instances).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 209</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_boot_class_alloc'>boot_class_alloc</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function boot_class_alloc(id, constructor, superklass) {
+     if (superklass) {
+       var ctor = function() {};
+           ctor.prototype   = superklass.$$proto || superklass.prototype;
+   
+       if (id) {
+         ctor.displayName = id;
+       }
+   
+       constructor.prototype = new ctor();
+     }
+   
+     constructor.prototype.constructor = constructor;
+   
+     return constructor;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="boot_class_object-class_method">
+  
+    .<strong>boot_class_object</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The class object itself (as in <code>Class.new</code>)
+*</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>superklass</span>
+      
+      
+        <span class='type'>(<tt>(<span class='object_link'><a href="" title="__JS__::Opal (module)">Opal</a></span>) <span class='object_link'><a href="../Class.html" title="Class (class)">Class</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Another class object (as in <code>Class.new</code>)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>alloc</span>
+      
+      
+        <span class='type'>(<tt>constructor</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The constructor that holds the prototype
+that will be used for instances of the
+newly constructed class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_boot_class_object'>boot_class_object</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function boot_class_object(superklass, alloc) {
+     var singleton_class = function() {};
+     singleton_class.prototype = superklass.constructor.prototype;
+   
+     function OpalClass() {}
+     OpalClass.prototype = new singleton_class();
+   
+     var klass = new OpalClass();
+   
+     setup_module_or_class_object(klass, OpalClass, superklass, alloc.prototype);
+   
+     // @property $$alloc This is the constructor of instances of the current
+     //                   class. Its prototype will be used for method lookup
+     klass.$$alloc = alloc;
+   
+     // @property $$proto.$$class Make available to instances a reference to the
+     //                           class they belong to.
+     klass.$$proto.$$class = klass;
+   
+     return klass;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="boot_core_class_object-class_method">
+  
+    .<strong>boot_core_class_object</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Builds the class object for core classes:</p>
+
+<ul>
+<li>make the class object have a singleton class</li>
+<li>make the singleton class inherit from its parent singleton class
+*</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the name of the class</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>alloc</span>
+      
+      
+        <span class='type'>(<tt>Function</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the constructor for the core class instances</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>superclass</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Class.html" title="Class (class)">Class</a></span> alloc</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the constructor of the superclass</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 238</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_boot_core_class_object'>boot_core_class_object</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function boot_core_class_object(id, alloc, superclass) {
+     var superclass_constructor = function() {};
+         superclass_constructor.prototype = superclass.prototype;
+   
+     var singleton_class = function() {};
+         singleton_class.prototype = new superclass_constructor();
+   
+     singleton_class.displayName = &quot;#&lt;Class:&quot;+id+&quot;&gt;&quot;;
+   
+     // the singleton_class acts as the class object constructor
+     var klass = new singleton_class();
+   
+     setup_module_or_class_object(klass, singleton_class, superclass, alloc.prototype);
+   
+     klass.$$alloc = alloc;
+     klass.$$name  = id;
+   
+     // Give all instances a ref to their class
+     alloc.prototype.$$class = klass;
+   
+     Opal[id] = klass;
+     Opal.constants.push(id);
+   
+     return klass;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="boot_module_object-class_method">
+  
+    .<strong>boot_module_object</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Internal function to create a new module instance. This simply sets up
+the prototype hierarchy and method tables.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_boot_module_object'>boot_module_object</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function boot_module_object() {
+     var mtor = function() {};
+     mtor.prototype = ModuleClass.constructor.prototype;
+   
+     function module_constructor() {}
+     module_constructor.prototype = new mtor();
+   
+     var module = new module_constructor();
+     var module_prototype = {};
+   
+     setup_module_or_class_object(module, module_constructor, ModuleClass, module_prototype);
+   
+     module.$$is_mod = true;
+     module.$$dep    = [];
+   
+     return module;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bridge_class-class_method">
+  
+    .<strong>bridge_class</strong>  &#x21d2; <tt><span class='object_link'><a href="../Class.html" title="Class (class)">Class</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>For performance, some core ruby classes are toll-free bridged to their
+native javascript counterparts (e.g. a ruby Array is a javascript Array).
+*
+This method is used to setup a native constructor (e.g. Array), to have
+its prototype act like a normal ruby class. Firstly, a new ruby class is
+created using the native constructor so that its prototype is set as the
+target for th new class. Note: all bridged classes are set to inherit
+from Object.
+*
+Bridged classes are tracked in <code>bridged_classes</code> array so that methods
+defined on Object can be &quot;donated&quot; to all bridged classes. This allows
+us to fake the inheritance of a native prototype from our Object
+prototype.
+*
+Example:
+*
+   bridge_class(&quot;Proc&quot;, Function);
+*</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the name of the ruby class to create</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>constructor</span>
+      
+      
+        <span class='type'>(<tt>Function</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>native javascript constructor to use</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>base</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>where the bridge class is being created. If none is supplied, the top level scope (Opal) will be used</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Class.html" title="Class (class)">Class</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>returns new ruby class</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 291</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_bridge_class'>bridge_class</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function bridge_class(name, constructor, base) {
+     var klass = boot_class_object(ObjectClass, constructor);
+   
+     klass.$$name = name;
+   
+     if (base === undefined) {
+       base = Opal;
+     }
+     else {
+       base = base.$$scope;
+     }
+   
+     create_scope(base, klass, name);
+     bridged_classes.push(klass);
+   
+     var object_methods = BasicObjectClass.$$methods.concat(ObjectClass.$$methods);
+   
+     for (var i = 0, len = object_methods.length; i &lt; len; i++) {
+       var meth = object_methods[i];
+       constructor.prototype[meth] = ObjectClass.$$proto[meth];
+     }
+   
+     add_stubs_subscriber(constructor.prototype);
+   
+     return klass;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="build_class_singleton_class-class_method">
+  
+    .<strong>build_class_singleton_class</strong>  &#x21d2; <tt>RubyClass</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Build the singleton class for an existing class.</p>
+
+<p>NOTE: Actually in MRI a class&#39; singleton class inherits from its
+superclass&#39; singleton class which in turn inherits from Class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>klass</span>
+      
+      
+        <span class='type'>(<tt>RubyClass</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RubyClass</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 165</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_class_singleton_class'>build_class_singleton_class</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function build_class_singleton_class(klass) {
+     var meta = new Opal.Class.$$alloc;
+   
+     meta.$$class = Opal.Class;
+     meta.$$proto = klass.constructor.prototype;
+   
+     meta.$$is_singleton = true;
+     meta.$$inc          = [];
+     meta.$$methods      = [];
+     meta.$$scope        = klass.$$scope;
+   
+     return klass.$$meta = meta;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="build_object_singleton_class-class_method">
+  
+    .<strong>build_object_singleton_class</strong>  &#x21d2; <tt>RubyClass</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Build the singleton class for a Ruby (non class) Object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>object</span>
+      
+      
+        <span class='type'>(<tt>RubyObject</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RubyClass</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 188</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_object_singleton_class'>build_object_singleton_class</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function build_object_singleton_class(object) {
+     var orig_class = object.$$class,
+         class_id   = &quot;#&lt;Class:#&lt;&quot; + orig_class.$$name + &quot;:&quot; + orig_class.$$id + &quot;&gt;&gt;&quot;;
+   
+     var Singleton = function () {};
+     var meta = Opal.boot(orig_class, Singleton);
+     meta.$$name   = class_id;
+   
+     meta.$$proto  = object;
+     meta.$$class  = orig_class.$$class;
+     meta.$$scope  = orig_class.$$scope;
+     meta.$$parent = orig_class;
+     return object.$$meta = meta;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_scope-class_method">
+  
+    .<strong>create_scope</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Create a new constants scope for the given class with the given
+base. Constants are looked up through their parents, so the base
+scope will be the outer scope of the new klass.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_scope'>create_scope</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function create_scope(base, klass, id) {
+     var const_alloc = function() {};
+     var const_scope = const_alloc.prototype = new base.constructor();
+   
+     klass.$$scope       = const_scope;
+     klass.$$base_module = base.base;
+   
+     const_scope.base        = klass;
+     const_scope.constructor = const_alloc;
+     const_scope.constants   = [];
+   
+     if (id) {
+       klass.$$orig_scope = base;
+       base[id] = base.constructor[id] = klass;
+       base.constants.push(id);
+     }
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="define_module_method-class_method">
+  
+    .<strong>define_module_method</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Define the given method on the module.</p>
+
+<p>This also handles donating methods to all classes that include this
+module. Method conflicts are also handled here, where a class might already
+have defined a method of the same name, or another included module defined
+the same method.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>module</span>
+      
+      
+        <span class='type'>(<tt>RubyModule</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the module method defined on</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>jsid</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>javascript friendly method name (e.g. &quot;$foo&quot;)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>body</span>
+      
+      
+        <span class='type'>(<tt>Function</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>method body of actual function</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 437</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_define_module_method'>define_module_method</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function define_module_method(module, jsid, body) {
+     module.$$proto[jsid] = body;
+     body.$$owner = module;
+   
+     module.$$methods.push(jsid);
+   
+     if (module.$$module_function) {
+       module[jsid] = body;
+     }
+   
+     var included_in = module.$$dep;
+   
+     if (included_in) {
+       for (var i = 0, length = included_in.length; i &lt; length; i++) {
+         var includee = included_in[i];
+         var dest = includee.$$proto;
+         var current = dest[jsid];
+   
+   
+         if (dest.hasOwnProperty(jsid) &amp;&amp; !current.$$donated &amp;&amp; !current.$$stub) {
+           // target class has already defined the same method name - do nothing
+         }
+         else if (dest.hasOwnProperty(jsid) &amp;&amp; !current.$$stub) {
+           // target class includes another module that has defined this method
+           var klass_includees = includee.$$inc;
+   
+           for (var j = 0, jj = klass_includees.length; j &lt; jj; j++) {
+             if (klass_includees[j] === current.$$owner) {
+               var current_owner_index = j;
+             }
+             if (klass_includees[j] === module) {
+               var module_index = j;
+             }
+           }
+   
+           // only redefine method on class if the module was included AFTER
+           // the module which defined the current method body. Also make sure
+           // a module can overwrite a method it defined before
+           if (current_owner_index &lt;= module_index) {
+             dest[jsid] = body;
+             dest[jsid].$$donated = true;
+           }
+         }
+         else {
+           // neither a class, or module included by class, has defined method
+           dest[jsid] = body;
+           dest[jsid].$$donated = true;
+         }
+   
+         if (includee.$$dep) {
+           donate_methods(includee, [jsid], true);
+         }
+       }
+     }
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="donate_constants-class_method">
+  
+    .<strong>donate_constants</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>When a source module is included into the target module, we must also copy
+its constants to the target.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 325</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_donate_constants'>donate_constants</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function donate_constants(source_mod, target_mod) {
+     var source_constants = source_mod.$$scope.constants,
+         target_scope     = target_mod.$$scope,
+         target_constants = target_scope.constants;
+   
+     for (var i = 0, length = source_constants.length; i &lt; length; i++) {
+       target_constants.push(source_constants[i]);
+       target_scope[source_constants[i]] = source_mod.$$scope[source_constants[i]];
+     }
+   };
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="donate_methods-class_method">
+  
+    .<strong>donate_methods</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Donate methods for a class/module</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 396</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_donate_methods'>donate_methods</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function donate_methods(klass, defined, indirect) {
+     var methods = klass.$$methods, included_in = klass.$$dep;
+   
+     // if (!indirect) {
+       klass.$$methods = methods.concat(defined);
+     // }
+   
+     if (included_in) {
+       for (var i = 0, length = included_in.length; i &lt; length; i++) {
+         var includee = included_in[i];
+         var dest     = includee.$$proto;
+   
+         for (var j = 0, jj = defined.length; j &lt; jj; j++) {
+           var method = defined[j];
+   
+           dest[method] = klass.$$proto[method];
+           dest[method].$$donated = true;
+         }
+   
+         if (includee.$$dep) {
+           donate_methods(includee, defined, true);
+         }
+       }
+     }
+   };
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setup_module_or_class_object-class_method">
+  
+    .<strong>setup_module_or_class_object</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Adds common/required properties to a module or class object
+(as in <code>Module.new</code> / <code>Class.new</code>)
+*
+*
+*
+*</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>module</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The module or class that needs to be prepared</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>constructor</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The constructor of the module or class itself,
+usually it&#39;s already assigned by using <code>new</code>. Some
+ipothesis on why it&#39;s needed can be found below.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>superklass</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The superclass of the class/module object, for modules
+is <code>Module</code> (of <code>ModuleClass</code> in JS context)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>prototype</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The prototype on which the class/module methods will
+be stored.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup_module_or_class_object'>setup_module_or_class_object</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function setup_module_or_class_object(module, constructor, superklass, prototype) {
+     // @property $$id Each class is assigned a unique `id` that helps
+     //                comparation and implementation of `#object_id`
+     module.$$id = Opal.uid();
+   
+     // @property $$proto This is the prototype on which methods will be defined
+     module.$$proto = prototype;
+   
+     // @property constructor keeps a ref to the constructor, but apparently the
+     //                       constructor is already set on:
+     //
+     //                          `var module = new constructor` is called.
+     //
+     //                       Maybe there are some browsers not abiding (IE6?)
+     module.constructor = constructor;
+   
+     // @property $$is_class Clearly mark this as a class-like
+     module.$$is_class = true;
+   
+     // @property $$super the superclass, doesn&#39;t get changed by module inclusions
+     module.$$super = superklass;
+   
+     // @property $$parent direct parent class or module
+     //                    starts with the superclass, after module inclusion is
+     //                    the last included module
+     module.$$parent = superklass;
+   
+     // @property $$methods keeps track of methods defined on the class
+     //                     but seems to be used just by `define_basic_object_method`
+     //                     and for donating (Ruby) Object methods to bridged classes
+     //                     TODO: check if it can be removed
+     module.$$methods = [];
+   
+     // @property $$inc included modules
+     module.$$inc = [];
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stub_for-class_method">
+  
+    .<strong>stub_for</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generate the method_missing stub for a given method name.
+*</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method_name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The js-name of the method to stub (e.g. &quot;$foo&quot;)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 373</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_stub_for'>stub_for</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function stub_for(method_name) {
+     function method_missing_stub() {
+       // Copy any given block onto the method_missing dispatcher
+       this.$method_missing.$$p = method_missing_stub.$$p;
+   
+       // Set block property to null ready for the next call (stop false-positives)
+       method_missing_stub.$$p = null;
+   
+       // call method missing with correct args (remove &#39;$&#39; prefix on method name)
+       return this.$method_missing.apply(this, [method_name.slice(1)].concat($slice.call(arguments)));
+     }
+   
+     method_missing_stub.$$stub = true;
+   
+     return method_missing_stub;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 03/13/18 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.9 (ruby-2.5.0).
+</div>
+
+    </div>
+  </body>
+</html>

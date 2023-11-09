@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Opal::Processor
+  
+    &mdash; lib (Opal v0.9.4)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Opal::Processor";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span>
+     &raquo; 
+    <span class="title">Processor</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Opal::Processor
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="TiltTemplate.html" title="Opal::TiltTemplate (class)">TiltTemplate</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Tilt::Template</li>
+          
+            <li class="next"><span class='object_link'><a href="TiltTemplate.html" title="Opal::TiltTemplate (class)">TiltTemplate</a></span></li>
+          
+            <li class="next">Opal::Processor</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/lib/opal/sprockets/processor.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Internal: The Processor class is used to make ruby files (with .rb or .opal
+  extensions) available to any sprockets based server. Processor will then
+  get passed any ruby source file to build.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="ERB/Processor.html" title="Opal::ERB::Processor (class)">ERB::Processor</a></span></p>
+</div>
+
+  <h2>Constant Summary</h2>
+  <dl class="constants">
+    
+      <dt id="cache_key-classvariable" class="">@@cache_key =
+        
+      </dt>
+      <dd><pre class="code"><span class='kw'>nil</span></pre></dd>
+    
+  </dl>
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache_key-class_method" title="cache_key (class method)">.<strong>cache_key</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_asset_code-class_method" title="load_asset_code (class method)">.<strong>load_asset_code</strong>(sprockets, name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deprecated: Moved to Opal::Sprockets.load_asset(sprockets, name).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset_cache_key!-class_method" title="reset_cache_key! (class method)">.<strong>reset_cache_key!</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sprockets_extnames_regexp-class_method" title="sprockets_extnames_regexp (class method)">.<strong>sprockets_extnames_regexp</strong>(sprockets)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stub_file-class_method" title="stub_file (class method)">.<strong>stub_file</strong>(name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stubbed_files-class_method" title="stubbed_files (class method)">.<strong>stubbed_files</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#evaluate-instance_method" title="#evaluate (instance method)">#<strong>evaluate</strong>(context, locals, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_required_trees-instance_method" title="#process_required_trees (instance method)">#<strong>process_required_trees</strong>(required_trees, context)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Internal: Add files required with <code>require_tree</code> as asset dependencies.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_requires-instance_method" title="#process_requires (instance method)">#<strong>process_requires</strong>(requires, context)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sprockets_extnames_regexp-instance_method" title="#sprockets_extnames_regexp (instance method)">#<strong>sprockets_extnames_regexp</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stubbed_files-instance_method" title="#stubbed_files (instance method)">#<strong>stubbed_files</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="TiltTemplate.html" title="Opal::TiltTemplate (class)">TiltTemplate</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TiltTemplate.html#compiler_options-class_method" title="Opal::TiltTemplate.compiler_options (method)">compiler_options</a></span>, <span class='object_link'><a href="TiltTemplate.html#compiler_options-instance_method" title="Opal::TiltTemplate#compiler_options (method)">#compiler_options</a></span>, <span class='object_link'><a href="TiltTemplate.html#engine_initialized%3F-class_method" title="Opal::TiltTemplate.engine_initialized? (method)">engine_initialized?</a></span>, <span class='object_link'><a href="TiltTemplate.html#inherited-class_method" title="Opal::TiltTemplate.inherited (method)">inherited</a></span>, <span class='object_link'><a href="TiltTemplate.html#initialize_engine-instance_method" title="Opal::TiltTemplate#initialize_engine (method)">#initialize_engine</a></span>, <span class='object_link'><a href="TiltTemplate.html#prepare-instance_method" title="Opal::TiltTemplate#prepare (method)">#prepare</a></span>, <span class='object_link'><a href="TiltTemplate.html#version-class_method" title="Opal::TiltTemplate.version (method)">version</a></span></p>
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="cache_key-class_method">
+  
+    .<strong>cache_key</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cache_key'>cache_key</span>
+  <span class='cvar'>@@cache_key</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Opal</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html#VERSION-constant" title="Opal::VERSION (constant)">VERSION</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Config.html" title="Opal::Config (module)">Config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="Config.html#config-class_method" title="Opal::Config.config (method)">config</a></span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load_asset_code-class_method">
+  
+    .<strong>load_asset_code</strong>(sprockets, name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Deprecated: Moved to Opal::Sprockets.load_asset(sprockets, name)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 129</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load_asset_code'>load_asset_code</span><span class='lparen'>(</span><span class='id identifier rubyid_sprockets'>sprockets</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Sprockets.html" title="Opal::Sprockets (module)">Sprockets</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_asset'><span class='object_link'><a href="Sprockets.html#load_asset-class_method" title="Opal::Sprockets.load_asset (method)">load_asset</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_sprockets'>sprockets</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset_cache_key!-class_method">
+  
+    .<strong>reset_cache_key!</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_reset_cache_key!'>reset_cache_key!</span>
+  <span class='cvar'>@@cache_key</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sprockets_extnames_regexp-class_method">
+  
+    .<strong>sprockets_extnames_regexp</strong>(sprockets)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sprockets_extnames_regexp'>sprockets_extnames_regexp</span><span class='lparen'>(</span><span class='id identifier rubyid_sprockets'>sprockets</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_joined_extnames'>joined_extnames</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.js</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='id identifier rubyid_sprockets'>sprockets</span><span class='period'>.</span><span class='id identifier rubyid_engines'>engines</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ext'>ext</span><span class='op'>|</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_ext'>ext</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>|</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_joined_extnames'>joined_extnames</span><span class='embexpr_end'>}</span><span class='tstring_content'>)*$</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stub_file-class_method">
+  
+    .<strong>stub_file</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_stub_file'>stub_file</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_stubbed_files'>stubbed_files</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stubbed_files-class_method">
+  
+    .<strong>stubbed_files</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 133</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_stubbed_files'>stubbed_files</span>
+  <span class='ivar'>@stubbed_files</span> <span class='op'>||=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="evaluate-instance_method">
+  
+    #<strong>evaluate</strong>(context, locals, &amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_evaluate'>evaluate</span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_locals'>locals</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>super</span> <span class='kw'>unless</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='op'>::</span><span class='const'>Sprockets</span><span class='op'>::</span><span class='const'>Context</span>
+
+  <span class='ivar'>@sprockets</span> <span class='op'>=</span> <span class='id identifier rubyid_sprockets'>sprockets</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span>
+
+  <span class='comment'># In Sprockets 3 logical_path has an odd behavior when the filename is &quot;index&quot;
+</span>  <span class='comment'># thus we need to bake our own logical_path
+</span>  <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:filename</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_filename'>filename</span> <span class='op'>:</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_pathname'>pathname</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_root_path_regexp'>root_path_regexp</span> <span class='op'>=</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_root_path'>root_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_logical_path'>logical_path</span> <span class='op'>=</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>^</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root_path_regexp'>root_path_regexp</span><span class='embexpr_end'>}</span><span class='tstring_content'>/?(.*?)</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sprockets_extnames_regexp'>sprockets_extnames_regexp</span><span class='embexpr_end'>}</span><span class='regexp_end'>}</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_compiler_options'>compiler_options</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_compiler_options'>compiler_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>file:</span> <span class='id identifier rubyid_logical_path'>logical_path</span><span class='rparen'>)</span>
+
+  <span class='comment'># Opal will be loaded immediately to as the runtime redefines some crucial
+</span>  <span class='comment'># methods such that need to be implemented as soon as possible:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># E.g. It forwards .toString() to .$to_s() for Opal objects including Array.
+</span>  <span class='comment'>#      If .$to_s() is not implemented and some other lib is loaded before
+</span>  <span class='comment'>#      corelib/* .toString results in an `undefined is not a function` error.
+</span>  <span class='id identifier rubyid_compiler_options'>compiler_options</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='label'>requirable:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_logical_path'>logical_path</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>opal</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='id identifier rubyid_compiler'>compiler</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Compiler.html" title="Opal::Compiler (class)">Compiler</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Compiler.html#initialize-instance_method" title="Opal::Compiler#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_compiler_options'>compiler_options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_compile'>compile</span>
+
+  <span class='id identifier rubyid_process_requires'>process_requires</span><span class='lparen'>(</span><span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_requires'>requires</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_process_required_trees'>process_required_trees</span><span class='lparen'>(</span><span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_required_trees'>required_trees</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Config.html" title="Opal::Config (module)">Config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_source_map_enabled'>source_map_enabled</span>
+    <span class='id identifier rubyid_map_contents'>map_contents</span> <span class='op'>=</span> <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_source_map'>source_map</span><span class='period'>.</span><span class='id identifier rubyid_as_json'>as_json</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+    <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SourceMapServer.html" title="Opal::SourceMapServer (class)">SourceMapServer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_set_map_cache'><span class='object_link'><a href="SourceMapServer.html#set_map_cache-class_method" title="Opal::SourceMapServer.set_map_cache (method)">set_map_cache</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_sprockets'>sprockets</span><span class='comma'>,</span> <span class='id identifier rubyid_logical_path'>logical_path</span><span class='comma'>,</span> <span class='id identifier rubyid_map_contents'>map_contents</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process_required_trees-instance_method">
+  
+    #<strong>process_required_trees</strong>(required_trees, context)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Internal: Add files required with <code>require_tree</code> as asset dependencies.</p>
+
+<p>Mimics (v2) Sprockets::DirectiveProcessor#process_require_tree_directive</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process_required_trees'>process_required_trees</span><span class='lparen'>(</span><span class='id identifier rubyid_required_trees'>required_trees</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_required_trees'>required_trees</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+  <span class='comment'># This is the root dir of the logical path, we need this because
+</span>  <span class='comment'># the compiler gives us the path relative to the file&#39;s logical path.
+</span>  <span class='id identifier rubyid_dirname'>dirname</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='embexpr_beg'>#{</span><span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_logical_path'>logical_path</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Opal.html#REGEXP_END-constant" title="Opal::REGEXP_END (constant)">REGEXP_END</a></span></span><span class='embexpr_end'>}</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dirname'>dirname</span> <span class='op'>=</span> <span class='const'>Pathname</span><span class='lparen'>(</span><span class='id identifier rubyid_dirname'>dirname</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_required_trees'>required_trees</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_original_required_tree'>original_required_tree</span><span class='op'>|</span>
+    <span class='id identifier rubyid_required_tree'>required_tree</span> <span class='op'>=</span> <span class='const'>Pathname</span><span class='lparen'>(</span><span class='id identifier rubyid_original_required_tree'>original_required_tree</span><span class='rparen'>)</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_required_tree'>required_tree</span><span class='period'>.</span><span class='id identifier rubyid_relative?'>relative?</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>require_tree argument must be a relative path: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_required_tree'>required_tree</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_required_tree'>required_tree</span> <span class='op'>=</span> <span class='id identifier rubyid_dirname'>dirname</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_required_tree'>required_tree</span><span class='rparen'>)</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_required_tree'>required_tree</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>require_tree argument must be a directory: </span><span class='embexpr_beg'>#{</span><span class='lbracket'>[</span><span class='id identifier rubyid_original_required_tree'>original_required_tree</span><span class='comma'>,</span> <span class='id identifier rubyid_required_tree'>required_tree</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_depend_on'>depend_on</span> <span class='id identifier rubyid_required_tree'>required_tree</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+    <span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span>
+
+    <span class='id identifier rubyid_processor'>processor</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Sprockets</span><span class='op'>::</span><span class='const'>DirectiveProcessor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='id identifier rubyid_processor'>processor</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@dirname</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_processor'>processor</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@environment</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_processor'>processor</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:expand_relative_dirname</span><span class='comma'>,</span> <span class='symbol'>:require_tree</span><span class='comma'>,</span> <span class='id identifier rubyid_original_required_tree'>original_required_tree</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_absolute_paths'>absolute_paths</span> <span class='op'>=</span> <span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:stat_sorted_tree_with_dependencies</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:first</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_absolute_paths'>absolute_paths</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
+      <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>Pathname</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_pathname'>pathname</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_relative_path_from'>relative_path_from</span><span class='lparen'>(</span><span class='id identifier rubyid_dirname'>dirname</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='id identifier rubyid_file'>file</span>  <span class='kw'>then</span> <span class='kw'>next</span>
+      <span class='kw'>elsif</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span> <span class='kw'>then</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_depend_on'>depend_on</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+      <span class='kw'>else</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_require_asset'>require_asset</span><span class='lparen'>(</span><span class='id identifier rubyid_pathname'>pathname</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process_requires-instance_method">
+  
+    #<strong>process_requires</strong>(requires, context)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 75</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process_requires'>process_requires</span><span class='lparen'>(</span><span class='id identifier rubyid_requires'>requires</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_requires'>requires</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_required'>required</span><span class='op'>|</span>
+    <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='id identifier rubyid_required'>required</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='id identifier rubyid_sprockets_extnames_regexp'>sprockets_extnames_regexp</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_require_asset'>require_asset</span> <span class='id identifier rubyid_required'>required</span> <span class='kw'>unless</span> <span class='id identifier rubyid_stubbed_files'>stubbed_files</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_required'>required</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sprockets_extnames_regexp-instance_method">
+  
+    #<strong>sprockets_extnames_regexp</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sprockets_extnames_regexp'>sprockets_extnames_regexp</span>
+  <span class='ivar'>@sprockets_extnames_regexp</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_sprockets_extnames_regexp'>sprockets_extnames_regexp</span><span class='lparen'>(</span><span class='ivar'>@sprockets</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stubbed_files-instance_method">
+  
+    #<strong>stubbed_files</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/processor.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stubbed_files'>stubbed_files</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_stubbed_files'>stubbed_files</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 03/13/18 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.9 (ruby-2.5.0).
+</div>
+
+    </div>
+  </body>
+</html>

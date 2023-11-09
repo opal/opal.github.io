@@ -1,0 +1,135 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>WebAssembly and advanced regular expressions with Opal</title>
+
+  <link href="/assets/application-915b7e3cafe6e192dee011fa09837b2af85b7e1de3dbb52fd1413d46dd2dca0e.css" rel="stylesheet" />
+  <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+  <script src="/assets/application-74994a7410818947c294a5f44b8f7916d5e1c773e93a5a2c83db9c06d516fd80.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
+
+  <!-- Algolia -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="blog blog_2021 blog_2021_06 blog_2021_06_26 blog_2021_06_26_webassembly-and-advanced-regexp-with-opal blog_2021_06_26_webassembly-and-advanced-regexp-with-opal_index">
+  <nav class='navbar navbar-default opal-nav' role='navigation'>
+<div class='container'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+<img height='22' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' style='margin-top:-10%;' width='22'>
+Opal
+</a>
+<button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+</div>
+<div class='navbar-collapse collapse' id='opal-navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href='/try'>
+<i class='ion-ios-compose'></i>
+Try
+</a>
+</li>
+<li>
+<a href='/blog'>
+<i class='ion-ios-chatboxes'></i>
+Blog
+</a>
+</li>
+<li>
+<a href='/docs'>
+<i class='ion-ios-copy'></i>
+Documentation
+</a>
+</li>
+<li>
+<a href='/libraries'>
+<i class='ion-map'></i>
+Libraries
+</a>
+</li>
+<li>
+<a href='https://github.com/opal/opal#readme'>
+<i class='ion-social-github'></i>
+GitHub
+</a>
+</li>
+<li>
+<a href='https://rubygems.org/gems/opal/versions/1.8.1' style='opacity: 0.5;'>
+v1.8.1
+</a>
+</li>
+</ul>
+<ul class='nav navbar-right'>
+<li class='search-bar'>
+<form id='search-form'>
+<input placeholder='Search docs &amp; guides' type='search'>
+<button title='Clear the search query.' type='reset'>
+&times;
+</button>
+</form>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+
+  <div class="container">
+      <div class="container col-sm-8">
+    <div class='blog-title'>
+<h1>
+<a href='/blog'>The Opal Blog</a>
+</h1>
+</div>
+
+    <article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href=''>
+WebAssembly and advanced regular expressions with Opal
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by Interscript
+<br>
+June 26, 2021
+</div>
+</header>
+<div class='blog-post-body'>
+<p><em>(This is a guest-post from the people at <a href="https://github.com/interscript/interscript">Interscript</a>, featuring an in-depth account of the work done around building a web-assebly bridge and compiling Onigmo for Opal)</em></p>&#x000A;&#x000A;<hr>&#x000A;&#x000A;<p>At <a href="https://github.com/riboseinc">Ribose Inc</a> we develop <a href="https://github.com/interscript/interscript">Interscript</a>, an open source Ruby implementation of interoperable transliteration schemes from ALA-LC, BGN/PCGN, ICAO, ISO, UN (by UNGEGN) and many, many other script conversion system authorities. The goal of this project is to achieve interoperable transliteration schemes allowing quality comparisons.</p>&#x000A;&#x000A;<p>We decided to port our software to JavaScript using Opal (the Ruby to JavaScript compiler), so it can be also used in web browsers and Node environments. The problem is - Opal translates Ruby regular expressions (upon which we rely quite heavily) to JavaScript almost verbatim. This made our ported codebase incompatible on principle, so we searched for a better solution.</p>&#x000A;&#x000A;<p>Unfortunately, Regexp is basically something like a programming language that has more than a dozen of incompatible implementations - even across the web browsers. For instance, we need lookbehind assertions, but even if there is a new standard in ECMAScript which adds lookbehind assertions, Safari doesn&#39;t implement that.</p>&#x000A;&#x000A;<p>Given all this context let&#39;s dive into how we ported the original Ruby Regexp engine to the browser!</p>&#x000A;&#x000A;<div id="continue-reading"></div>&#x000A;&#x000A;<h2 id="onigmo">Onigmo</h2>&#x000A;&#x000A;<p>We started by trying to compile Onigmo with WebAssembly.</p>&#x000A;&#x000A;<p>Onigmo is a Regexp engine that is used by Ruby. It is a fork of Oniguruma, which is also in use by PHP and a few more programming languages. Fortunately, it&#39;s possible to compile it to a static WebAssembly module which can be interfaced with the JavaScript land.</p>&#x000A;&#x000A;<p>We tried compiling Onigmo using a simple handcrafted libc with no memory management&#x000A;so as to reduce the size, but this plan backfired, and rightfully so!</p>&#x000A;&#x000A;<p>Now we use <a href="https://github.com/WebAssembly/wasi-libc">wasi-libc</a>. WASI stands for WebAssembly System Interface, and is designed to provide &quot;a wide array of POSIX-compatible C APIs&quot;.</p>&#x000A;&#x000A;<p>The library is made to be able to work with both wasi-libc and the handcrafted libc, but use of wasi-libc is highly encouraged. As we are concerned about the output size of the resulting WASM binaries, we chose not to use Emscripten, just the upstream LLVM/Clang and its WASM target.</p>&#x000A;&#x000A;<h2 id="opal-webassembly">Opal-WebAssembly</h2>&#x000A;&#x000A;<p>After getting Onigmo, we noted, that the WebAssembly interface doesn&#39;t map 100% between C and JS. We can&#39;t pass strings verbatim and we need to do memory management (think: pointers). Is there a better solution for that than writing an Opal library to interface WebAssembly libraries?</p>&#x000A;&#x000A;<p>The library is divided in two parts: there&#39;s a simple WebAssembly interface and there&#39;s a Ruby-FFI compatible binding that works on everything memory related and brings the C functions to seamlessly work with the Ruby (Opal actually) workflow.</p>&#x000A;&#x000A;<p>The library has advanced beyond just being usable for this project. It should be quite&#x000A;compatible with Ruby-FFI allowing C API bindings across all Ruby implementations. There&#x000A;are some minor incompatibilities though.</p>&#x000A;&#x000A;<p>Ruby-FFI assumes a shared memory model. WebAssembly has different memory spaces for a&#x000A;calling process and each library (think about something like a segmented memory). This makes some assumptions false.</p>&#x000A;&#x000A;<p>For instance, for the following code, we don&#39;t know which memory space to use:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="no">FFI</span><span class="o">::</span><span class="no">MemoryPointer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:uint8</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>&#x000A;</code></pre></div>&#x000A;<p>This requires us to use a special syntax, like:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="no">LibraryName</span><span class="p">.</span><span class="nf">context</span> <span class="k">do</span>&#x000A;  <span class="no">FFI</span><span class="o">::</span><span class="no">MemoryPointer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:uint8</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre></div>&#x000A;<p>This context call makes it clear that we want this memory to be alocated in the&#x000A;&quot;LibraryName&quot; space.</p>&#x000A;&#x000A;<p>Another thing is that a call like the following:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="no">FFI</span><span class="o">::</span><span class="no">MemoryPointer</span><span class="p">.</span><span class="nf">from_string</span><span class="p">(</span><span class="s2">"Test string"</span><span class="p">)</span>&#x000A;</code></pre></div>&#x000A;<p>Would not allocate the memory, but share the memory between the calling process and&#x000A;the library. In Opal-WebAssembly we must allocate the memory, as sharing is not an option in the WASM model. Now, another issue comes into play. In regular Ruby a call similar to this should allocate the memory and clear it later, once the object is destroyed. In our case, we can&#39;t really access JavaScript&#39;s GC. This means we always need to free the memory ourselves.</p>&#x000A;&#x000A;<p>Due to some Opal inadequacies, we can&#39;t interface floating-point fields in structs. This doesn&#39;t happen in Onigmo, but if needed in the future, a pack/unpack implementation for those will be needed.</p>&#x000A;&#x000A;<p>Chromium browser doesn&#39;t allow us to load WebAssembly modules larger than 4KB synchronously. This means that we had to implement some methods for awaiting the load. This also means, that in the browser we can&#39;t use the code in a following way:</p>&#x000A;<div class="highlight"><pre class="highlight html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'file.js'</span><span class="nt">&gt;&lt;/script&gt;</span>&#x000A;<span class="nt">&lt;script&gt;</span>&#x000A;  <span class="nx">Opal</span><span class="p">.</span><span class="nx">Library</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>&#x000A;<span class="nt">&lt;/script&gt;</span>&#x000A;</code></pre></div>&#x000A;<p>This approach works in Node and possibly in other browsers, but Chromium requires us to&#x000A;use promises:</p>&#x000A;<div class="highlight"><pre class="highlight html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'file.js'</span><span class="nt">&gt;&lt;/script&gt;</span>&#x000A;<span class="nt">&lt;script&gt;</span>&#x000A;  <span class="nx">Opal</span><span class="p">.</span><span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">$wait_for</span><span class="p">(</span><span class="dl">"</span><span class="s2">library-wasm</span><span class="dl">"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>&#x000A;    <span class="nx">Opal</span><span class="p">.</span><span class="nx">Library</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>&#x000A;  <span class="p">});</span>&#x000A;<span class="nt">&lt;/script&gt;</span>&#x000A;</code></pre></div>&#x000A;<p>There are certain assumptions of how a library should be loaded on Opal side - the FFI library creation depends on the WebAssembly module being already loaded, so we need to either move those definitions to a wait_for block or move require directives, like so:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="no">WebAssembly</span><span class="p">.</span><span class="nf">wait_for</span> <span class="s2">"onigmo/onigmo-wasm"</span> <span class="k">do</span>&#x000A;  <span class="nb">require</span> <span class="s1">'interscript'</span>&#x000A;  <span class="nb">require</span> <span class="s1">'my_application_logic'</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre></div>&#x000A;<p><em>The source for opal-webassembly is available at https://github.com/interscript/opal-webassembly.</em></p>&#x000A;&#x000A;<h2 id="opal-onigmo">Opal-Onigmo</h2>&#x000A;&#x000A;<p>After having a nice library to bind with WebAssembly modules, writing an individual binding was very easy and the resulting code looks (in my opinion) very cool.</p>&#x000A;&#x000A;<p>Our initial plan assumed upstreaming the code later on. I don&#39;t think it will be&#x000A;possible or healthy. This library should stay as a separate gem for a couple of reasons.</p>&#x000A;&#x000A;<p>First is that due to the memory issues, we aren&#39;t able to make it work as a drop-in&#x000A;replacement. We need to manually call an <code>#ffi_free</code> method. Eg:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="n">re</span> <span class="o">=</span> <span class="no">Onigmo</span><span class="o">::</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"ab+"</span><span class="p">)</span>&#x000A;<span class="c1"># use the regular expression</span>&#x000A;<span class="n">re</span><span class="p">.</span><span class="nf">ffi_free</span> <span class="c1"># free it afterwards and not use it anymore</span>&#x000A;</code></pre></div>&#x000A;<p>At early stages our implementation of Opal-Onigmo we didn&#39;t consider the memory a&#x000A;problem. When hit with a real world scenario, we found out, that it&#39;s a severe issue and&#x000A;needs to be dealt with. As far as we know, the library doesn&#39;t leak any memory if the&#x000A;regular expression memory is managed correctly.</p>&#x000A;&#x000A;<p>The second is that after all, we don&#39;t really have a way of caching the compiled Regexps.&#x000A;Furthermore, Onigmo compiled with WASM may not be as performant as the highly optimized JS&#x000A;regexp engine. In this case it&#39;s much better to leave it as a drop-in replacement for&#x000A;those who need more correctness.</p>&#x000A;&#x000A;<p>Opal-Onigmo doesn&#39;t implement all the methods for Ruby Regexp, it was mostly meant for&#x000A;completion of the Interscript project, but can be extended beyond. It implements a few&#x000A;methods it needs to implement for String (this is just an option - you need to load&#x000A;onigmo/core_ext manually), but most of the existing ones work without a problem. We&#x000A;implemented a <code>Regexp.exec</code> (JavaScript) method, and the rest of Opal happened to mostly&#x000A;interface with it. At the current time we know that <code>String#split</code> won&#39;t &quot;just&quot; work, but&#x000A;<code>String#{index,rindex,partition,rpartition}</code> should.</p>&#x000A;&#x000A;<p>Opal-Onigmo depends on the strings being coded as UTF-16. There are two reasons to that:</p>&#x000A;&#x000A;<ol>&#x000A;<li>Opal includes methods for getting the binary form of strings in various encodings,&#x000A;but only methods for UTF-16 are valid for characters beyond the Basic Multilingual&#x000A;Plane (Unicode 0x0000 to 0xffff) which are used in 2 maps.</li>&#x000A;<li>JavaScript uses UTF-16 strings internally.</li>&#x000A;</ol>&#x000A;&#x000A;<p><em>The source for opal-onigmo is available at https://github.com/interscript/opal-onigmo.</em></p>&#x000A;&#x000A;<h2 id="interscript">Interscript</h2>&#x000A;&#x000A;<p>Using Opal-Onigmo we made it so that it passes <em>all</em> the tests (not counting transliterating Thai scripts which ultimately depends on an external process, which relies on machine learning). To optimize it, we use Opal-Onigmo <em>only</em> when the regexp&#x000A;is a more complex regexp, otherwise we fall back to an (ultimately faster) JavaScript regexp engine:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">mkregexp</span><span class="p">(</span><span class="n">regexpstring</span><span class="p">)</span>&#x000A;  <span class="vi">@cache</span> <span class="o">||=</span> <span class="p">{}</span>&#x000A;  <span class="k">if</span> <span class="n">s</span> <span class="o">=</span> <span class="vi">@cache</span><span class="p">[</span><span class="n">regexpstring</span><span class="p">]</span>&#x000A;    <span class="k">if</span> <span class="n">s</span><span class="p">.</span><span class="nf">class</span> <span class="o">==</span> <span class="no">Onigmo</span><span class="o">::</span><span class="no">Regexp</span>&#x000A;      <span class="c1"># Opal-Onigmo stores a variable "lastIndex" mimicking the JS</span>&#x000A;      <span class="c1"># global regexp. If we want to reuse it, we need to reset it.</span>&#x000A;      <span class="n">s</span><span class="p">.</span><span class="nf">reset</span>&#x000A;    <span class="k">else</span>&#x000A;      <span class="n">s</span>&#x000A;    <span class="k">end</span>&#x000A;  <span class="k">else</span>&#x000A;    <span class="c1"># JS regexp is more performant than Onigmo. Let's use the JS</span>&#x000A;    <span class="c1"># regexp wherever possible, but use Onigmo where we must.</span>&#x000A;    <span class="c1"># Let's allow those characters to happen for the regexp to be</span>&#x000A;    <span class="c1"># considered compatible: ()|.*+?{} ** BUT NOT (? **.</span>&#x000A;    <span class="k">if</span> <span class="sr">/[\\$^\[\]]|\(\?/</span><span class="p">.</span><span class="nf">match?</span><span class="p">(</span><span class="n">regexpstring</span><span class="p">)</span>&#x000A;      <span class="c1"># Ruby caches its regexps internally. We can't GC. We could</span>&#x000A;      <span class="c1"># think about freeing them, but we really can't, because they</span>&#x000A;      <span class="c1"># may be in use.</span>&#x000A;      <span class="vi">@cache</span><span class="p">[</span><span class="n">regexpstring</span><span class="p">]</span> <span class="o">=</span> <span class="no">Onigmo</span><span class="o">::</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">regexpstring</span><span class="p">)</span>&#x000A;    <span class="k">else</span>&#x000A;      <span class="vi">@cache</span><span class="p">[</span><span class="n">regexpstring</span><span class="p">]</span> <span class="o">=</span> <span class="no">Regexp</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">regexpstring</span><span class="p">)</span>&#x000A;    <span class="k">end</span>&#x000A;  <span class="k">end</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre></div>&#x000A;<p>It also never frees the regexps (see a previous note about #ffi_free), because we never know if a Regexp won&#39;t be in use later on (and the Regexps are actually cached in a Hash for performance reasons). The issue about dangling Regexps can be worked out in the future, but the JS API will need to change again. We would need to do something like:</p>&#x000A;<div class="highlight"><pre class="highlight html"><code>Opal.Interscript.$with_a_map("map-name", function() {&#x000A;  // do some work with a map&#x000A;});&#x000A;</code></pre></div>&#x000A;<p>This call would at the beginning allocate all the Regexps needed, and at the end, free&#x000A;them all. The good news is that we would be able to somehow integrate loading transliteration maps from the network (along with dependencies) with such a construct.</p>&#x000A;&#x000A;<h2 id="the-future">The future</h2>&#x000A;&#x000A;<p>Post writing this article we noted that JavaScript actually does implement a construct that would work like a destructor, allowing us to free the allocated memory dynamically. Unfortunately, that&#39;s the latest ECMAScript addition, which means there are still environments that don&#39;t support it (Safari) and there is one that needs an explicit flag (Node 13+).</p>&#x000A;&#x000A;<p>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry</p>&#x000A;&#x000A;<p>We could use it to implement some parts of ObjectSpace of Ruby and then use it in opal-webassembly to free memory on demand.</p>&#x000A;&#x000A;<h2 id="afterwords">Afterwords</h2>&#x000A;&#x000A;<p>This article was written long before it was published. Since then, Interscript was rewritten to a totally different architecture and doesn&#39;t use Opal anymore. We don&#39;t use Regexps directly anymore, but we created a higher-level (Ruby) DSL to describe the transliteration process that we compile directly to a highly-optimized pure Ruby/JavaScript code (and it can be extended to other languages as well). Ribose Inc still uses Opal in other projects, for example to build <a href="https://github.com/plurimath/latexmath">Latexmath</a>, a library that converts LaTeX math expressions to MathML, as a JavaScript library. We also contribute fixes back to the upstream Opal project.</p>&#x000A;&#x000A;<p>For the Opal project, all this effort serves as an interesting experiment to establish further guidelines should we decide to increase Regexp compatibility in the future and can serve as a useful tool for anyone wanting to port his Ruby codebase with a heavy regexp use to JavaScript. It should also facilitate porting libraries that use Ruby-FFI currently.</p>&#x000A;&#x000A;<p>The libraries we created are available under a 2-clause BSD license in the following repositories:</p>&#x000A;&#x000A;<ul>&#x000A;<li>https://github.com/interscript/Onigmo - Onigmo port to WebAssembly</li>&#x000A;<li>https://github.com/interscript/opal-onigmo - the Onigmo interface to Opal</li>&#x000A;<li>https://github.com/interscript/opal-webassembly - the FFI-like interface to Opal, using WebAssembly</li>&#x000A;<li>https://github.com/interscript/interscript/tree/v1 - the obsolete v1 branch of Interscript that used Opal and Opal-Onigmo</li>&#x000A;</ul>&#x000A;</div>
+</article>
+
+  </div>
+
+  </div>
+
+  <footer>
+  <a href="/license"><i class="ion-unlocked"></i> License</a> ·
+  <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
+</footer>
+
+
+  <script>
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)?.parentElement.classList.add("active")
+  </script>
+
+  <!-- Algolia -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: 'cf08db1eca77cb92ca34e24a86430bcb',
+      indexName: 'opalrb',
+      inputSelector: '#search-form input[type="search"]',
+      debug: false // Set debug to true if you want to inspect the dropdown
+    });
+  </script>
+</body>
+</html>

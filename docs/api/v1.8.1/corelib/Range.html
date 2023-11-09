@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Range
+  
+    &mdash; corelib (Opal v1.8.1)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Range";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">Range</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Range
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Range</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="Enumerable.html" title="Enumerable (module)">Enumerable</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/opal/corelib/range.rb<span class="defines">,<br />
+  opal/opal/corelib/marshal/write_buffer.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#begin-instance_method" title="#begin (instance method)">#<strong>begin</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute begin.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#end-instance_method" title="#end (instance method)">#<strong>end</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute end.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%25-instance_method" title="#% (instance method)">#<strong>%</strong>(n)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#===-instance_method" title="#=== (instance method)">#<strong>===</strong>(value)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#__marshal__-instance_method" title="#__marshal__ (instance method)">#<strong>__marshal__</strong>(buffer)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bsearch-instance_method" title="#bsearch (instance method)">#<strong>bsearch</strong>(&amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#count-instance_method" title="#count (instance method)">#<strong>count</strong>(&amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cover%3F-instance_method" title="#cover? (instance method)">#<strong>cover?</strong>(value)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">#<strong>each</strong> {|current| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#eql%3F-instance_method" title="#eql? (instance method)">#<strong>eql?</strong>(other)  &#x21d2; Boolean </a>
+    
+
+    
+      (also: #==)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exclude_end%3F-instance_method" title="#exclude_end? (instance method)">#<strong>exclude_end?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#first-instance_method" title="#first (instance method)">#<strong>first</strong>(n = undefined)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hash-instance_method" title="#hash (instance method)">#<strong>hash</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#include%3F-instance_method" title="#include? (instance method)">#<strong>include?</strong>(val)  &#x21d2; Boolean </a>
+    
+
+    
+      (also: #member?)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(first, last, exclude = false)  &#x21d2; Range </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Range.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">#<strong>inspect</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#last-instance_method" title="#last (instance method)">#<strong>last</strong>(n = undefined)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#marshal_load-instance_method" title="#marshal_load (instance method)">#<strong>marshal_load</strong>(args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max-instance_method" title="#max (instance method)">#<strong>max</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>FIXME: currently hardcoded to assume range holds numerics.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#min-instance_method" title="#min (instance method)">#<strong>min</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">#<strong>size</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#step-instance_method" title="#step (instance method)">#<strong>step</strong>(n = undefined)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_a-instance_method" title="#to_a (instance method)">#<strong>to_a</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Enumerable.html" title="Enumerable (module)">Enumerable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Enumerable.html#all%3F-instance_method" title="Enumerable#all? (method)">#all?</a></span>, <span class='object_link'><a href="Enumerable.html#any%3F-instance_method" title="Enumerable#any? (method)">#any?</a></span>, <span class='object_link'><a href="Enumerable.html#chunk-instance_method" title="Enumerable#chunk (method)">#chunk</a></span>, <span class='object_link'><a href="Enumerable.html#chunk_while-instance_method" title="Enumerable#chunk_while (method)">#chunk_while</a></span>, <span class='object_link'><a href="Enumerable.html#collect-instance_method" title="Enumerable#collect (method)">#collect</a></span>, <span class='object_link'><a href="Enumerable.html#collect_concat-instance_method" title="Enumerable#collect_concat (method)">#collect_concat</a></span>, <span class='object_link'><a href="Enumerable.html#compact-instance_method" title="Enumerable#compact (method)">#compact</a></span>, <span class='object_link'><a href="Enumerable.html#cycle-instance_method" title="Enumerable#cycle (method)">#cycle</a></span>, <span class='object_link'><a href="Enumerable.html#detect-instance_method" title="Enumerable#detect (method)">#detect</a></span>, <span class='object_link'><a href="Enumerable.html#drop-instance_method" title="Enumerable#drop (method)">#drop</a></span>, <span class='object_link'><a href="Enumerable.html#drop_while-instance_method" title="Enumerable#drop_while (method)">#drop_while</a></span>, <span class='object_link'><a href="Enumerable.html#each_cons-instance_method" title="Enumerable#each_cons (method)">#each_cons</a></span>, <span class='object_link'><a href="Enumerable.html#each_entry-instance_method" title="Enumerable#each_entry (method)">#each_entry</a></span>, <span class='object_link'><a href="Enumerable.html#each_slice-instance_method" title="Enumerable#each_slice (method)">#each_slice</a></span>, <span class='object_link'><a href="Enumerable.html#each_with_index-instance_method" title="Enumerable#each_with_index (method)">#each_with_index</a></span>, <span class='object_link'><a href="Enumerable.html#each_with_object-instance_method" title="Enumerable#each_with_object (method)">#each_with_object</a></span>, <span class='object_link'><a href="Enumerable.html#entries-instance_method" title="Enumerable#entries (method)">#entries</a></span>, <span class='object_link'><a href="Enumerable.html#enumerator_size-instance_method" title="Enumerable#enumerator_size (method)">#enumerator_size</a></span>, <span class='object_link'><a href="Enumerable.html#filter_map-instance_method" title="Enumerable#filter_map (method)">#filter_map</a></span>, <span class='object_link'><a href="Enumerable.html#find_all-instance_method" title="Enumerable#find_all (method)">#find_all</a></span>, <span class='object_link'><a href="Enumerable.html#find_index-instance_method" title="Enumerable#find_index (method)">#find_index</a></span>, <span class='object_link'><a href="Enumerable.html#grep-instance_method" title="Enumerable#grep (method)">#grep</a></span>, <span class='object_link'><a href="Enumerable.html#grep_v-instance_method" title="Enumerable#grep_v (method)">#grep_v</a></span>, <span class='object_link'><a href="Enumerable.html#group_by-instance_method" title="Enumerable#group_by (method)">#group_by</a></span>, <span class='object_link'><a href="Enumerable.html#inject-instance_method" title="Enumerable#inject (method)">#inject</a></span>, <span class='object_link'><a href="Enumerable.html#lazy-instance_method" title="Enumerable#lazy (method)">#lazy</a></span>, <span class='object_link'><a href="Enumerable.html#max_by-instance_method" title="Enumerable#max_by (method)">#max_by</a></span>, <span class='object_link'><a href="Enumerable.html#min_by-instance_method" title="Enumerable#min_by (method)">#min_by</a></span>, <span class='object_link'><a href="Enumerable.html#minmax-instance_method" title="Enumerable#minmax (method)">#minmax</a></span>, <span class='object_link'><a href="Enumerable.html#minmax_by-instance_method" title="Enumerable#minmax_by (method)">#minmax_by</a></span>, <span class='object_link'><a href="Enumerable.html#none%3F-instance_method" title="Enumerable#none? (method)">#none?</a></span>, <span class='object_link'><a href="Enumerable.html#one%3F-instance_method" title="Enumerable#one? (method)">#one?</a></span>, <span class='object_link'><a href="Enumerable.html#partition-instance_method" title="Enumerable#partition (method)">#partition</a></span>, <span class='object_link'><a href="Enumerable.html#reject-instance_method" title="Enumerable#reject (method)">#reject</a></span>, <span class='object_link'><a href="Enumerable.html#reverse_each-instance_method" title="Enumerable#reverse_each (method)">#reverse_each</a></span>, <span class='object_link'><a href="Enumerable.html#slice_after-instance_method" title="Enumerable#slice_after (method)">#slice_after</a></span>, <span class='object_link'><a href="Enumerable.html#slice_before-instance_method" title="Enumerable#slice_before (method)">#slice_before</a></span>, <span class='object_link'><a href="Enumerable.html#slice_when-instance_method" title="Enumerable#slice_when (method)">#slice_when</a></span>, <span class='object_link'><a href="Enumerable.html#sort-instance_method" title="Enumerable#sort (method)">#sort</a></span>, <span class='object_link'><a href="Enumerable.html#sort_by-instance_method" title="Enumerable#sort_by (method)">#sort_by</a></span>, <span class='object_link'><a href="Enumerable.html#sum-instance_method" title="Enumerable#sum (method)">#sum</a></span>, <span class='object_link'><a href="Enumerable.html#take-instance_method" title="Enumerable#take (method)">#take</a></span>, <span class='object_link'><a href="Enumerable.html#take_while-instance_method" title="Enumerable#take_while (method)">#take_while</a></span>, <span class='object_link'><a href="Enumerable.html#tally-instance_method" title="Enumerable#tally (method)">#tally</a></span>, <span class='object_link'><a href="Enumerable.html#to_h-instance_method" title="Enumerable#to_h (method)">#to_h</a></span>, <span class='object_link'><a href="Enumerable.html#to_set-instance_method" title="Enumerable#to_set (method)">#to_set</a></span>, <span class='object_link'><a href="Enumerable.html#uniq-instance_method" title="Enumerable#uniq (method)">#uniq</a></span>, <span class='object_link'><a href="Enumerable.html#zip-instance_method" title="Enumerable#zip (method)">#zip</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(first, last, exclude = false)  &#x21d2; <tt><span class='object_link'><a href="" title="Range (class)">Range</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of Range.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_first'>first</span><span class='comma'>,</span> <span class='id identifier rubyid_last'>last</span><span class='comma'>,</span> <span class='id identifier rubyid_exclude'>exclude</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="NameError.html" title="NameError (class)">NameError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;initialize&#39; called twice</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@begin</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bad value for range</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_first'>first</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_last'>last</span> <span class='op'>||</span> <span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='ivar'>@begin</span> <span class='op'>=</span> <span class='id identifier rubyid_first'>first</span>
+  <span class='ivar'>@end</span>   <span class='op'>=</span> <span class='id identifier rubyid_last'>last</span>
+  <span class='ivar'>@excl</span>  <span class='op'>=</span> <span class='id identifier rubyid_exclude'>exclude</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="begin-instance_method">
+  
+    #<strong>begin</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute begin.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='kw'>begin</span>
+  <span class='ivar'>@begin</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="end-instance_method">
+  
+    #<strong>end</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute end.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='kw'>end</span>
+  <span class='ivar'>@end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="%-instance_method">
+  
+    #<strong>%</strong>(n)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+326
+327
+328
+329
+330
+331
+332</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 326</span>
+
+<span class='kw'>def</span> <span class='op'>%</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span><span class='rparen'>)</span>
+    <span class='op'>::</span><span class='const'><span class='object_link'><a href="Enumerator.html" title="Enumerator (class)">Enumerator</a></span></span><span class='op'>::</span><span class='const'>ArithmeticSequence</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='comma'>,</span> <span class='symbol'>:%</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="===-instance_method">
+  
+    #<strong>===</strong>(value)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='op'>===</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>value.$$is_range</span><span class='tstring_end'>`</span></span>
+  <span class='id identifier rubyid_cover?'>cover?</span> <span class='id identifier rubyid_value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="__marshal__-instance_method">
+  
+    #<strong>__marshal__</strong>(buffer)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/write_buffer.rb', line 152</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid___marshal__'>__marshal__</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_save_link'>save_link</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write_extends'>write_extends</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_append'>append</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>o</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_append_symbol'>append_symbol</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write_fixnum'>write_fixnum</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_append_symbol'>append_symbol</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>excl</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_exclude_end?'>exclude_end?</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_append_symbol'>append_symbol</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>begin</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_append_symbol'>append_symbol</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>end</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bsearch-instance_method">
+  
+    #<strong>bsearch</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 334</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bsearch'>bsearch</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:bsearch</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+
+  <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>is_infinite(self) &amp;&amp; (self.begin.$$is_number || self.end.$$is_number)</span><span class='tstring_end'>`</span></span>
+    <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="NotImplementedError.html" title="NotImplementedError (class)">NotImplementedError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can&#39;t #bsearch an infinite range</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>unless</span> <span class='backtick'>`</span><span class='tstring_content'>self.begin.$$is_number &amp;&amp; self.end.$$is_number</span><span class='tstring_end'>`</span></span>
+    <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can&#39;t do binary search for </span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_bsearch'>bsearch</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="count-instance_method">
+  
+    #<strong>count</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='backtick'>`</span><span class='tstring_content'>is_infinite(self)</span><span class='tstring_end'>`</span></span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span><span class='op'>::</span><span class='const'>INFINITY</span>
+  <span class='kw'>end</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cover?-instance_method">
+  
+    #<strong>cover?</strong>(value)  &#x21d2; <tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cover?'>cover?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_compare'>compare</span> <span class='op'>=</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span> <span class='tlambeg'>{</span>
+    <span class='id identifier rubyid_a'>a</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span> <span class='op'>||</span> <span class='int'>1</span>
+  <span class='rbrace'>}</span>
+
+  <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>value.$$is_range</span><span class='tstring_end'>`</span></span>
+    <span class='id identifier rubyid_val_begin'>val_begin</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span>
+    <span class='id identifier rubyid_val_end'>val_end</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span>
+    <span class='id identifier rubyid_val_excl'>val_excl</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_exclude_end?'>exclude_end?</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@begin</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_val_begin'>val_begin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span> <span class='op'>||</span>
+       <span class='lparen'>(</span><span class='ivar'>@end</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_val_end'>val_end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span> <span class='op'>||</span>
+       <span class='lparen'>(</span><span class='id identifier rubyid_val_begin'>val_begin</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_val_end'>val_end</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_compare'>compare</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_val_begin'>val_begin</span><span class='comma'>,</span> <span class='id identifier rubyid_val_end'>val_end</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_then'>then</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_val_excl'>val_excl</span> <span class='op'>?</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&gt;=</span> <span class='int'>0</span> <span class='op'>:</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='op'>||</span>
+       <span class='lparen'>(</span><span class='id identifier rubyid_val_begin'>val_begin</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_cover?'>cover?</span><span class='lparen'>(</span><span class='id identifier rubyid_val_begin'>val_begin</span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='kw'>false</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>=</span> <span class='id identifier rubyid_compare'>compare</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@end</span><span class='comma'>,</span> <span class='id identifier rubyid_val_end'>val_end</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>&gt;=</span> <span class='int'>0</span> <span class='kw'>if</span> <span class='ivar'>@excl</span> <span class='op'>==</span> <span class='id identifier rubyid_val_excl'>val_excl</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='kw'>if</span> <span class='ivar'>@excl</span>
+    <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>&gt;=</span> <span class='int'>0</span>
+
+    <span class='id identifier rubyid_val_max'>val_max</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
+    <span class='kw'>return</span> <span class='op'>!</span><span class='id identifier rubyid_val_max'>val_max</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_compare'>compare</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_val_max'>val_max</span><span class='comma'>,</span> <span class='ivar'>@end</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='ivar'>@begin</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_compare'>compare</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@begin</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_end_cmp'>end_cmp</span> <span class='op'>=</span> <span class='id identifier rubyid_compare'>compare</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='ivar'>@end</span><span class='rparen'>)</span>
+  <span class='ivar'>@excl</span> <span class='op'>?</span> <span class='id identifier rubyid_end_cmp'>end_cmp</span> <span class='op'>&lt;</span> <span class='int'>0</span> <span class='op'>:</span> <span class='id identifier rubyid_end_cmp'>end_cmp</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each-instance_method">
+  
+    #<strong>each</strong> {|current| ... } &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>current</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_size'>size</span> <span class='rbrace'>}</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var i, limit;
+
+    if (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_number &amp;&amp; </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_number) {
+      if (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='embexpr_end'>}</span><span class='tstring_content'> % 1 !== 0 || </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_content'> % 1 !== 0) {
+        </span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can&#39;t iterate from Float</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      }
+
+      for (i = </span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='embexpr_end'>}</span><span class='tstring_content'>, limit = </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_content'> + </span><span class='embexpr_beg'>#{</span><span class='ivar'>@excl</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='int'>1</span><span class='embexpr_end'>}</span><span class='tstring_content'>; i &lt; limit; i++) {
+        block(i);
+      }
+
+      return self;
+    }
+
+    if (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_string &amp;&amp; </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_string) {
+      </span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_upto'>upto</span><span class='lparen'>(</span><span class='ivar'>@end</span><span class='comma'>,</span> <span class='ivar'>@excl</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      return self;
+    }
+  </span><span class='tstring_end'>}</span></span>
+
+  <span class='id identifier rubyid_current'>current</span> <span class='op'>=</span> <span class='ivar'>@begin</span>
+  <span class='id identifier rubyid_last'>last</span>    <span class='op'>=</span> <span class='ivar'>@end</span>
+
+  <span class='kw'>unless</span> <span class='id identifier rubyid_current'>current</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:succ</span><span class='rparen'>)</span>
+    <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can&#39;t iterate from </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_current'>current</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>while</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_current'>current</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_last'>last</span><span class='rparen'>)</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_current'>current</span>
+
+    <span class='id identifier rubyid_current'>current</span> <span class='op'>=</span> <span class='id identifier rubyid_current'>current</span><span class='period'>.</span><span class='id identifier rubyid_succ'>succ</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>yield</span> <span class='id identifier rubyid_current'>current</span> <span class='kw'>if</span> <span class='op'>!</span><span class='ivar'>@excl</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_current'>current</span> <span class='op'>==</span> <span class='id identifier rubyid_last'>last</span>
+
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="eql?-instance_method">
+  
+    #<strong>eql?</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='==-instance_method'>==</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122
+123
+124
+125
+126</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Range (class)">Range</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_other'>other</span>
+
+  <span class='ivar'>@excl</span> <span class='op'>===</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_exclude_end?'>exclude_end?</span> <span class='op'>&amp;&amp;</span>
+    <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+    <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="exclude_end?-instance_method">
+  
+    #<strong>exclude_end?</strong>  &#x21d2; <tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 128</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_exclude_end?'>exclude_end?</span>
+  <span class='ivar'>@excl</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="first-instance_method">
+  
+    #<strong>first</strong>(n = undefined)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+132
+133
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 132</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_first'>first</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_undefined'>undefined</span><span class='rparen'>)</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="RangeError.html" title="RangeError (class)">RangeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cannot get the minimum of beginless range</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>return</span> <span class='ivar'>@begin</span> <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>n == null</span><span class='tstring_end'>`</span></span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hash-instance_method">
+  
+    #<strong>hash</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+362
+363
+364</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 362</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
+  <span class='lbracket'>[</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Range (class)">Range</a></span></span><span class='comma'>,</span> <span class='ivar'>@begin</span><span class='comma'>,</span> <span class='ivar'>@end</span><span class='comma'>,</span> <span class='ivar'>@excl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="include?-instance_method">
+  
+    #<strong>include?</strong>(val)  &#x21d2; <tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='member?-instance_method'>member?</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 138</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>self.begin.$$is_number || self.end.$$is_number</span><span class='tstring_end'>`</span></span> <span class='op'>||</span>
+     <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Time.html" title="Time (class)">Time</a></span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Time.html" title="Time (class)">Time</a></span></span><span class='rparen'>)</span> <span class='op'>||</span>
+     <span class='op'>::</span><span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_try_convert'><span class='object_link'><a href="Integer.html#try_convert-class_method" title="Integer.try_convert (method)">try_convert</a></span></span><span class='lparen'>(</span><span class='ivar'>@begin</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_try_convert'><span class='object_link'><a href="Integer.html#try_convert-class_method" title="Integer.try_convert (method)">try_convert</a></span></span><span class='lparen'>(</span><span class='ivar'>@end</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_cover?'>cover?</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>self.begin.$$is_string || self.end.$$is_string</span><span class='tstring_end'>`</span></span>
+    <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>self.begin.$$is_string &amp;&amp; self.end.$$is_string</span><span class='tstring_end'>`</span></span>
+      <span class='kw'>return</span> <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_upto'>upto</span><span class='lparen'>(</span><span class='ivar'>@end</span><span class='comma'>,</span> <span class='ivar'>@excl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>==</span> <span class='id identifier rubyid_val'>val</span> <span class='rbrace'>}</span>
+    <span class='kw'>elsif</span> <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>=</span> <span class='id identifier rubyid_val'>val</span> <span class='op'>&lt;=&gt;</span> <span class='ivar'>@end</span>
+      <span class='kw'>return</span> <span class='op'>!</span><span class='id identifier rubyid_cmp'>cmp</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@excl</span> <span class='op'>?</span> <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>&lt;</span> <span class='int'>0</span> <span class='op'>:</span> <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>&lt;=</span> <span class='int'>0</span><span class='rparen'>)</span>
+    <span class='kw'>elsif</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>=</span> <span class='ivar'>@begin</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_val'>val</span>
+      <span class='kw'>return</span> <span class='op'>!</span><span class='id identifier rubyid_cmp'>cmp</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cmp'>cmp</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># invoke Enumerable#include?
+</span>  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    #<strong>inspect</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+352
+353
+354</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 352</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='ivar'>@excl</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="last-instance_method">
+  
+    #<strong>last</strong>(n = undefined)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163
+164
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 161</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_last'>last</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_undefined'>undefined</span><span class='rparen'>)</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="RangeError.html" title="RangeError (class)">RangeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cannot get the maximum of endless range</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>return</span> <span class='ivar'>@end</span> <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>n == null</span><span class='tstring_end'>`</span></span>
+  <span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="marshal_load-instance_method">
+  
+    #<strong>marshal_load</strong>(args)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+356
+357
+358
+359
+360</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 356</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_marshal_load'>marshal_load</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='ivar'>@begin</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:begin</span><span class='rbracket'>]</span>
+  <span class='ivar'>@end</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:end</span><span class='rbracket'>]</span>
+  <span class='ivar'>@excl</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:excl</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="max-instance_method">
+  
+    #<strong>max</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>FIXME: currently hardcoded to assume range holds numerics</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_max'>max</span>
+  <span class='kw'>if</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="RangeError.html" title="RangeError (class)">RangeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cannot get the maximum of endless range</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>super</span>
+  <span class='kw'>elsif</span> <span class='op'>!</span><span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@begin</span> <span class='op'>&gt;</span> <span class='ivar'>@end</span> <span class='op'>||</span>
+                         <span class='ivar'>@excl</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@begin</span> <span class='op'>==</span> <span class='ivar'>@end</span><span class='rparen'>)</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>else</span>
+    <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='ivar'>@excl</span><span class='embexpr_end'>}</span><span class='tstring_content'> ? </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_content'> - 1 : </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_end'>`</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="min-instance_method">
+  
+    #<strong>min</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 181</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_min'>min</span>
+  <span class='kw'>if</span> <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="RangeError.html" title="RangeError (class)">RangeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cannot get the minimum of beginless range</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>super</span>
+  <span class='kw'>elsif</span> <span class='op'>!</span><span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@begin</span> <span class='op'>&gt;</span> <span class='ivar'>@end</span> <span class='op'>||</span>
+                       <span class='ivar'>@excl</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@begin</span> <span class='op'>==</span> <span class='ivar'>@end</span><span class='rparen'>)</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@begin</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="size-instance_method">
+  
+    #<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 194</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var b = this.begin, e = this.end;
+
+    // If begin is Numeric
+    if (</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='backtick'>`</span><span class='tstring_content'>b</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      // If end is Numeric
+      if (</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='backtick'>`</span><span class='tstring_content'>e</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+        // Calculating size based on whether range is exclusive or inclusive
+        var size = </span><span class='embexpr_beg'>#{</span><span class='backtick'>`</span><span class='tstring_content'>e</span><span class='tstring_end'>`</span></span> <span class='op'>-</span> <span class='backtick'>`</span><span class='tstring_content'>b</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        if (size &lt; 0) {
+          return 0;
+        }
+        if (!this.excl) {
+          size += 1;
+        }
+        return (</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span> <span class='op'>===</span> <span class='backtick'>`</span><span class='tstring_content'>b</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'> || </span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span> <span class='op'>===</span> <span class='backtick'>`</span><span class='tstring_content'>e</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>) ? Math.floor(size) : size;
+      }
+      // If end is nil
+      else if (e === nil) {
+        return Infinity;
+      }
+    }
+    // If begin is nil
+    else if (b === nil) {
+      // If end is Numeric
+      if (</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='backtick'>`</span><span class='tstring_content'>e</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+        return Infinity;
+      }
+    }
+
+    // If neither begin nor end is Numeric
+    return nil;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="step-instance_method">
+  
+    #<strong>step</strong>(n = undefined)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 230</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_undefined'>undefined</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    function coerceStepSize() {
+      if (n == null) {
+        n = 1;
+      }
+      else if (!n.$$is_number) {
+        n = </span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Opal.html" title="Opal (module)">Opal</a></span></span><span class='period'>.</span><span class='id identifier rubyid_coerce_to!'><span class='object_link'><a href="Opal.html#coerce_to!-class_method" title="Opal.coerce_to! (method)">coerce_to!</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='comma'>,</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span><span class='comma'>,</span> <span class='symbol'>:to_int</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      }
+
+      if (n &lt; 0) {
+        </span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>step can&#39;t be negative</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      } else if (n === 0) {
+        </span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>step can&#39;t be 0</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      }
+    }
+
+    function enumeratorSize() {
+      if (!</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:succ</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+        return nil;
+      }
+
+      if (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_string &amp;&amp; </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_string) {
+        return nil;
+      }
+
+      if (n % 1 === 0) {
+        return </span><span class='embexpr_beg'>#{</span><span class='lparen'>(</span><span class='id identifier rubyid_size'>size</span> <span class='op'>/</span> <span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ceil'>ceil</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      } else {
+        // n is a float
+        var begin = self.begin, end = self.end,
+            abs = Math.abs, floor = Math.floor,
+            err = (abs(begin) + abs(end) + abs(end - begin)) / abs(n) * </span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span><span class='op'>::</span><span class='const'>EPSILON</span><span class='embexpr_end'>}</span><span class='tstring_content'>,
+            size;
+
+        if (err &gt; 0.5) {
+          err = 0.5;
+        }
+
+        if (self.excl) {
+          size = floor((end - begin) / n - err);
+          if (size * n + begin &lt; end) {
+            size++;
+          }
+        } else {
+          size = floor((end - begin) / n + err) + 1
+        }
+
+        return size;
+      }
+    }
+  </span><span class='tstring_end'>}</span></span>
+
+  <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+       <span class='lparen'>(</span><span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+       <span class='op'>!</span><span class='lparen'>(</span><span class='ivar'>@begin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
+
+      <span class='kw'>return</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="Enumerator.html" title="Enumerator (class)">Enumerator</a></span></span><span class='op'>::</span><span class='const'>ArithmeticSequence</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='comma'>,</span> <span class='symbol'>:step</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:step</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span> <span class='kw'>do</span>
+        <span class='backtick'>%x{</span><span class='tstring_content'>
+          coerceStepSize();
+          return enumeratorSize();
+        </span><span class='tstring_end'>}</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='backtick'>`</span><span class='tstring_content'>coerceStepSize()</span><span class='tstring_end'>`</span></span>
+
+  <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>self.begin.$$is_number &amp;&amp; self.end.$$is_number</span><span class='tstring_end'>`</span></span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_current'>current</span> <span class='op'>=</span> <span class='ivar'>@begin</span> <span class='op'>+</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='id identifier rubyid_n'>n</span>
+      <span class='kw'>if</span> <span class='ivar'>@excl</span>
+        <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_current'>current</span> <span class='op'>&gt;=</span> <span class='ivar'>@end</span>
+      <span class='kw'>elsif</span> <span class='id identifier rubyid_current'>current</span> <span class='op'>&gt;</span> <span class='ivar'>@end</span>
+        <span class='kw'>break</span>
+      <span class='kw'>end</span>
+      <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_current'>current</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='backtick'>%x{</span><span class='tstring_content'>
+      if (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_string &amp;&amp; </span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span><span class='embexpr_end'>}</span><span class='tstring_content'>.$$is_string &amp;&amp; n % 1 !== 0) {
+        </span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>no implicit conversion to float from string</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+      }
+    </span><span class='tstring_end'>}</span></span>
+    <span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_idx'>idx</span><span class='op'>|</span>
+      <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_idx'>idx</span> <span class='op'>%</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_a-instance_method">
+  
+    #<strong>to_a</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="Kernel.html" title="Kernel (module)">Kernel</a></span></span><span class='period'>.</span><span class='id identifier rubyid_raise'><span class='object_link'><a href="Kernel.html#raise-instance_method" title="Kernel#raise (method)">raise</a></span></span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cannot convert endless range to an array</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='backtick'>`</span><span class='tstring_content'>is_infinite(self)</span><span class='tstring_end'>`</span></span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    #<strong>to_s</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+348
+349
+350</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/range.rb', line 348</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'><span class='object_link'><a href="top-level-namespace.html#to_s-class_method" title="::to_s (method)">to_s</a></span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@begin</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='ivar'>@excl</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='ivar'>@end</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 11/09/23 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.34 (ruby-2.7.5).
+</div>
+
+    </div>
+  </body>
+</html>

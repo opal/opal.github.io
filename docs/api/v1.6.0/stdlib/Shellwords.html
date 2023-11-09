@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Shellwords
+  
+    &mdash; stdlib (Opal v1.6.0)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Shellwords";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index (S)</a> &raquo;
+    
+    
+    <span class="title">Shellwords</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Shellwords
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/stdlib/shellwords.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>== Manipulates strings like the UNIX Bourne shell</p>
+
+<p>This module manipulates strings according to the word parsing rules
+of the UNIX Bourne shell.</p>
+
+<p>The shellwords() function was originally a port of shellwords.pl,
+but modified to conform to the Shell &amp; Utilities volume of the IEEE
+Std 1003.1-2008, 2016 Edition [1].</p>
+
+<p>=== Usage</p>
+
+<p>You can use Shellwords to parse a string into a Bourne shell friendly Array.</p>
+
+<p>require &#39;shellwords&#39;</p>
+
+<p>argv = Shellwords.split(&#39;three blind &quot;mice&quot;&#39;)
+  argv #=&gt; [&quot;three&quot;, &quot;blind&quot;, &quot;mice&quot;]</p>
+
+<p>Once you&#39;ve required Shellwords, you can use the #split alias
+String#shellsplit.</p>
+
+<p>argv = &quot;see how they run&quot;.shellsplit
+  argv #=&gt; [&quot;see&quot;, &quot;how&quot;, &quot;they&quot;, &quot;run&quot;]</p>
+
+<p>They treat quotes as special characters, so an unmatched quote will
+cause an ArgumentError.</p>
+
+<p>argv = &quot;they all ran after the farmer&#39;s wife&quot;.shellsplit
+       #=&gt; ArgumentError: Unmatched quote: ...</p>
+
+<p>Shellwords also provides methods that do the opposite.
+Shellwords.escape, or its alias, String#shellescape, escapes
+shell metacharacters in a string for use in a command line.</p>
+
+<p>filename = &quot;special&#39;s.txt&quot;</p>
+
+<p>system(&quot;cat -- #filenamefilename.shellescape&quot;)
+  # runs &quot;cat -- special\&#39;s.txt&quot;</p>
+
+<p>Note the &#39;--&#39;.  Without it, cat(1) will treat the following argument
+as a command line option if it starts with &#39;-&#39;.  It is guaranteed
+that Shellwords.escape converts a string to a form that a Bourne
+shell will parse back to the original string, but it is the
+programmer&#39;s responsibility to make sure that passing an arbitrary
+argument to a command does no harm.</p>
+
+<p>Shellwords also comes with a core extension for Array, Array#shelljoin.</p>
+
+<p>dir = &quot;Funny GIFs&quot;
+  argv = %W[ls -lta -- #dir]
+  system(argv.shelljoin + &quot; | less&quot;)
+  # runs &quot;ls -lta -- Funny\ GIFs | less&quot;</p>
+
+<p>You can use this method to build a complete command line out of an
+array of arguments.</p>
+
+<p>=== Authors</p>
+
+<ul>
+<li>Wakou Aoyama</li>
+<li>Akinori MUSHA <a href="mailto:knu@iDaemons.org">knu@iDaemons.org</a></li>
+</ul>
+
+<p>=== Contact</p>
+
+<ul>
+<li>Akinori MUSHA <a href="mailto:knu@iDaemons.org">knu@iDaemons.org</a> (current maintainer)</li>
+</ul>
+
+<p>=== Resources</p>
+
+<p>1: Std 1003.1-2008, 2016 Edition, the Shell &amp; Utilities volume[<a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/contents.html">http://pubs.opengroup.org/onlinepubs/9699919799/utilities/contents.html</a>]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shellescape-class_method" title="shellescape (class method)">.<strong>shellescape</strong>(str)  &#x21d2; Object </a>
+    
+
+    
+      (also: escape)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Escapes a string so that it can be safely used in a Bourne shell command line.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shelljoin-class_method" title="shelljoin (class method)">.<strong>shelljoin</strong>(array)  &#x21d2; Object </a>
+    
+
+    
+      (also: join)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds a command line string from an argument list, +array+.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shellsplit-class_method" title="shellsplit (class method)">.<strong>shellsplit</strong>(line)  &#x21d2; Object </a>
+    
+
+    
+      (also: split)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Splits a string into an array of tokens in the same way the UNIX Bourne shell does.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shellwords-class_method" title="shellwords (class method)">.<strong>shellwords</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Splits a string into an array of tokens in the same way the UNIX Bourne shell does.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="shellescape-class_method">
+  
+    .<strong>shellescape</strong>(str)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='escape-class_method'>escape</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Escapes a string so that it can be safely used in a Bourne shell
+command line.  +str+ can be a non-string object that responds to
++to_s+.</p>
+
+<p>Note that a resulted string should be used unquoted and is not
+intended for use in double quotes nor in single quotes.</p>
+
+<p>argv = Shellwords.escape(&quot;It&#39;s better to give than to receive&quot;)
+  argv #=&gt; &quot;It\&#39;s\ better\ to\ give\ than\ to\ receive&quot;</p>
+
+<p>String#shellescape is a shorthand for this function.</p>
+
+<p>argv = &quot;It&#39;s better to give than to receive&quot;.shellescape
+  argv #=&gt; &quot;It\&#39;s\ better\ to\ give\ than\ to\ receive&quot;</p>
+
+<p># Search files in lib for method definitions
+  pattern = &quot;^[ \t]*def &quot;
+  open(&quot;| grep -Ern -e #patternpattern.shellescape lib&quot;) { |grep|
+    grep.each_line { |line|
+      file, lineno, matched_line = line.split(&#39;:&#39;, 3)
+      # ...
+    }
+  }</p>
+
+<p>It is the caller&#39;s responsibility to encode the string in the right
+encoding for the shell environment where this string is used.</p>
+
+<p>Multibyte characters are treated as multibyte characters, not as bytes.</p>
+
+<p>Returns an empty quoted String if +str+ has a length of zero.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/shellwords.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shellescape'>shellescape</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_str'>str</span> <span class='op'>=</span> <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+  <span class='comment'># An empty argument will be skipped, so return empty quotes.
+</span>  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;&#39;</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span> <span class='kw'>if</span> <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+  <span class='id identifier rubyid_str'>str</span> <span class='op'>=</span> <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+
+  <span class='comment'># Treat multibyte characters as is.  It is the caller&#39;s responsibility
+</span>  <span class='comment'># to encode the string in the right encoding for the shell
+</span>  <span class='comment'># environment.
+</span>  <span class='id identifier rubyid_str'>str</span> <span class='op'>=</span> <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[^A-Za-z0-9_\-.,:+\/@\n]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\\\\\&amp;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+  <span class='comment'># A LF cannot be escaped with a backslash because a backslash + LF
+</span>  <span class='comment'># combo is regarded as a line continuation and simply ignored.
+</span>  <span class='id identifier rubyid_str'>str</span> <span class='op'>=</span> <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\n</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;\n&#39;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_str'>str</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shelljoin-class_method">
+  
+    .<strong>shelljoin</strong>(array)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='join-class_method'>join</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Builds a command line string from an argument list, +array+.</p>
+
+<p>All elements are joined into a single string with fields separated by a
+space, where each element is escaped for the Bourne shell and stringified
+using +to_s+.</p>
+
+<p>ary = [&quot;There&#39;s&quot;, &quot;a&quot;, &quot;time&quot;, &quot;and&quot;, &quot;place&quot;, &quot;for&quot;, &quot;everything&quot;]
+  argv = Shellwords.join(ary)
+  argv #=&gt; &quot;There\&#39;s a time and place for everything&quot;</p>
+
+<p>Array#shelljoin is a shortcut for this function.</p>
+
+<p>ary = [&quot;Don&#39;t&quot;, &quot;rock&quot;, &quot;the&quot;, &quot;boat&quot;]
+  argv = ary.shelljoin
+  argv #=&gt; &quot;Don\&#39;t rock the boat&quot;</p>
+
+<p>You can also mix non-string objects in the elements as allowed in Array#join.</p>
+
+<p>output = <code>#{[&#39;ps&#39;, &#39;-p&#39;, $$].shelljoin}</code></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+194
+195
+196</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/shellwords.rb', line 194</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shelljoin'>shelljoin</span><span class='lparen'>(</span><span class='id identifier rubyid_array'>array</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_array'>array</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span> <span class='id identifier rubyid_shellescape'>shellescape</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shellsplit-class_method">
+  
+    .<strong>shellsplit</strong>(line)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='split-class_method'>split</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Splits a string into an array of tokens in the same way the UNIX
+Bourne shell does.</p>
+
+<p>argv = Shellwords.split(&#39;here are &quot;two words&quot;&#39;)
+  argv #=&gt; [&quot;here&quot;, &quot;are&quot;, &quot;two words&quot;]</p>
+
+<p>Note, however, that this is not a command line parser.  Shell
+metacharacters except for the single and double quotes and
+backslash are not treated as such.</p>
+
+<p>argv = Shellwords.split(&#39;ruby my_prog.rb | less&#39;)
+  argv #=&gt; [&quot;ruby&quot;, &quot;my_prog.rb&quot;, &quot;|&quot;, &quot;less&quot;]</p>
+
+<p>String#shellsplit is a shortcut for this function.</p>
+
+<p>argv = &#39;here are &quot;two words&quot;&#39;.shellsplit
+  argv #=&gt; [&quot;here&quot;, &quot;are&quot;, &quot;two words&quot;]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/shellwords.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shellsplit'>shellsplit</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_line'>line</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='comment'># Somehow this is needed for the JS regexp engine
+</span>  <span class='id identifier rubyid_words'>words</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_field'>field</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\s*(?:([^\s\\\&#39;\&quot;]+)|&#39;([^\&#39;]*)&#39;|&quot;((?:[^\&quot;\\]|\\.)*)&quot;|(\\.?)|(\S))(\r?\n?\Z|\s)?</span><span class='regexp_end'>/m</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='comma'>,</span> <span class='id identifier rubyid_sq'>sq</span><span class='comma'>,</span> <span class='id identifier rubyid_dq'>dq</span><span class='comma'>,</span> <span class='id identifier rubyid_esc'>esc</span><span class='comma'>,</span> <span class='id identifier rubyid_garbage'>garbage</span><span class='comma'>,</span> <span class='id identifier rubyid_sep'>sep</span><span class='rparen'>)</span><span class='op'>|</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unmatched quote: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_garbage'>garbage</span>
+    <span class='comment'># 2.2.3 Double-Quotes:
+</span>    <span class='comment'>#
+</span>    <span class='comment'>#   The &lt;backslash&gt; shall retain its special meaning as an
+</span>    <span class='comment'>#   escape character only when followed by one of the following
+</span>    <span class='comment'>#   characters when considered special:
+</span>    <span class='comment'>#
+</span>    <span class='comment'>#   $ ` &quot; \ &lt;newline&gt;
+</span>    <span class='id identifier rubyid_field'>field</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span> <span class='op'>||</span> <span class='id identifier rubyid_sq'>sq</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_dq'>dq</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_dq'>dq</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\\([$`&quot;\\\n])</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_esc'>esc</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\\(.)</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_sep'>sep</span>
+      <span class='id identifier rubyid_words'>words</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_field'>field</span>
+      <span class='id identifier rubyid_field'>field</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_words'>words</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shellwords-class_method">
+  
+    .<strong>shellwords</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Splits a string into an array of tokens in the same way the UNIX
+Bourne shell does.</p>
+
+<p>argv = Shellwords.split(&#39;here are &quot;two words&quot;&#39;)
+  argv #=&gt; [&quot;here&quot;, &quot;are&quot;, &quot;two words&quot;]</p>
+
+<p>Note, however, that this is not a command line parser.  Shell
+metacharacters except for the single and double quotes and
+backslash are not treated as such.</p>
+
+<p>argv = Shellwords.split(&#39;ruby my_prog.rb | less&#39;)
+  argv #=&gt; [&quot;ruby&quot;, &quot;my_prog.rb&quot;, &quot;|&quot;, &quot;less&quot;]</p>
+
+<p>String#shellsplit is a shortcut for this function.</p>
+
+<p>argv = &#39;here are &quot;two words&quot;&#39;.shellsplit
+  argv #=&gt; [&quot;here&quot;, &quot;are&quot;, &quot;two words&quot;]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/shellwords.rb', line 110</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shellsplit'>shellsplit</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_line'>line</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='comment'># Somehow this is needed for the JS regexp engine
+</span>  <span class='id identifier rubyid_words'>words</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_field'>field</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\s*(?:([^\s\\\&#39;\&quot;]+)|&#39;([^\&#39;]*)&#39;|&quot;((?:[^\&quot;\\]|\\.)*)&quot;|(\\.?)|(\S))(\r?\n?\Z|\s)?</span><span class='regexp_end'>/m</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='comma'>,</span> <span class='id identifier rubyid_sq'>sq</span><span class='comma'>,</span> <span class='id identifier rubyid_dq'>dq</span><span class='comma'>,</span> <span class='id identifier rubyid_esc'>esc</span><span class='comma'>,</span> <span class='id identifier rubyid_garbage'>garbage</span><span class='comma'>,</span> <span class='id identifier rubyid_sep'>sep</span><span class='rparen'>)</span><span class='op'>|</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unmatched quote: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_garbage'>garbage</span>
+    <span class='comment'># 2.2.3 Double-Quotes:
+</span>    <span class='comment'>#
+</span>    <span class='comment'>#   The &lt;backslash&gt; shall retain its special meaning as an
+</span>    <span class='comment'>#   escape character only when followed by one of the following
+</span>    <span class='comment'>#   characters when considered special:
+</span>    <span class='comment'>#
+</span>    <span class='comment'>#   $ ` &quot; \ &lt;newline&gt;
+</span>    <span class='id identifier rubyid_field'>field</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span> <span class='op'>||</span> <span class='id identifier rubyid_sq'>sq</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_dq'>dq</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_dq'>dq</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\\([$`&quot;\\\n])</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_esc'>esc</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\\(.)</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_sep'>sep</span>
+      <span class='id identifier rubyid_words'>words</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_field'>field</span>
+      <span class='id identifier rubyid_field'>field</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_words'>words</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 11/24/22 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.28 (ruby-2.7.5).
+</div>
+
+    </div>
+  </body>
+</html>

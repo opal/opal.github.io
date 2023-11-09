@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Math
+  
+    &mdash; stdlib (Opal v0.6.3)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Math";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index (M)</a> &raquo;
+    
+    
+    <span class="title">Math</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Math
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  <dl>
+      <dt>Extended by:</dt>
+      <dd><span class='object_link'><a href="" title="Math (module)">Math</a></span></dd>
+  </dl>
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="" title="Math (module)">Math</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/stdlib/math.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  <dl class="constants">
+    
+      <dt id="E-constant" class="">E =
+        
+      </dt>
+      <dd><pre class="code"><span class='backtick'>`</span><span class='tstring_content'>Math.E</span><span class='tstring_end'>`</span></span></pre></dd>
+    
+      <dt id="PI-constant" class="">PI =
+        
+      </dt>
+      <dd><pre class="code"><span class='backtick'>`</span><span class='tstring_content'>Math.PI</span><span class='tstring_end'>`</span></span></pre></dd>
+    
+  </dl>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#acos-instance_method" title="#acos (instance method)">#<strong>acos</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#acosh-instance_method" title="#acosh (instance method)">#<strong>acosh</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#asin-instance_method" title="#asin (instance method)">#<strong>asin</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#asinh-instance_method" title="#asinh (instance method)">#<strong>asinh</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#atan-instance_method" title="#atan (instance method)">#<strong>atan</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#atan2-instance_method" title="#atan2 (instance method)">#<strong>atan2</strong>(x, y)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#atanh-instance_method" title="#atanh (instance method)">#<strong>atanh</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cbrt-instance_method" title="#cbrt (instance method)">#<strong>cbrt</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: reimplement this when unavailable.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cos-instance_method" title="#cos (instance method)">#<strong>cos</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cosh-instance_method" title="#cosh (instance method)">#<strong>cosh</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#erf-instance_method" title="#erf (instance method)">#<strong>erf</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#erfc-instance_method" title="#erfc (instance method)">#<strong>erfc</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exp-instance_method" title="#exp (instance method)">#<strong>exp</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#frexp-instance_method" title="#frexp (instance method)">#<strong>frexp</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamma-instance_method" title="#gamma (instance method)">#<strong>gamma</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hypot-instance_method" title="#hypot (instance method)">#<strong>hypot</strong>(x, y)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ldexp-instance_method" title="#ldexp (instance method)">#<strong>ldexp</strong>(flt, int)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lgamma-instance_method" title="#lgamma (instance method)">#<strong>lgamma</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#log-instance_method" title="#log (instance method)">#<strong>log</strong>(num, base = E, method = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#log10-instance_method" title="#log10 (instance method)">#<strong>log10</strong>(num)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#log2-instance_method" title="#log2 (instance method)">#<strong>log2</strong>(num)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sin-instance_method" title="#sin (instance method)">#<strong>sin</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sinh-instance_method" title="#sinh (instance method)">#<strong>sinh</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sqrt-instance_method" title="#sqrt (instance method)">#<strong>sqrt</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tan-instance_method" title="#tan (instance method)">#<strong>tan</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tanh-instance_method" title="#tanh (instance method)">#<strong>tanh</strong>(x)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="acos-instance_method">
+  
+    #<strong>acos</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_acos'>acos</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    x = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (x &lt; -1 || x &gt; 1) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span></span><span class='comma'>,</span> <span class='symbol'>:acos</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.acos(x);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="acosh-instance_method">
+  
+    #<strong>acosh</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_acosh'>acosh</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.acosh(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="asin-instance_method">
+  
+    #<strong>asin</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_asin'>asin</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    x = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (x &lt; -1 || x &gt; 1) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span></span><span class='comma'>,</span> <span class='symbol'>:asin</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.asin(x);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="asinh-instance_method">
+  
+    #<strong>asinh</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_asinh'>asinh</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.asinh(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="atan-instance_method">
+  
+    #<strong>atan</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_atan'>atan</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.atan(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="atan2-instance_method">
+  
+    #<strong>atan2</strong>(x, y)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_atan2'>atan2</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.atan2(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="atanh-instance_method">
+  
+    #<strong>atanh</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_atanh'>atanh</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    x = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (x &lt; -1 || x &gt; 1) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span></span><span class='comma'>,</span> <span class='symbol'>:atanh</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.atanh(x);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cbrt-instance_method">
+  
+    #<strong>cbrt</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: reimplement this when unavailable</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 128</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cbrt'>cbrt</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>`</span><span class='tstring_content'>Math.cbrt(x)</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cos-instance_method">
+  
+    #<strong>cos</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+132
+133
+134
+135
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 132</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cos'>cos</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.cos(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cosh-instance_method">
+  
+    #<strong>cosh</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+150
+151
+152
+153
+154
+155
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 150</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cosh'>cosh</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.cosh(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="erf-instance_method">
+  
+    #<strong>erf</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 160</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_erf'>erf</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="erfc-instance_method">
+  
+    #<strong>erfc</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 164</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_erfc'>erfc</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="exp-instance_method">
+  
+    #<strong>exp</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_exp'>exp</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.exp(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="frexp-instance_method">
+  
+    #<strong>frexp</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 178</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_frexp'>frexp</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamma-instance_method">
+  
+    #<strong>gamma</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+182
+183
+184</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 182</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamma'>gamma</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hypot-instance_method">
+  
+    #<strong>hypot</strong>(x, y)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 194</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hypot'>hypot</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.hypot(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ldexp-instance_method">
+  
+    #<strong>ldexp</strong>(flt, int)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 208</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ldexp'>ldexp</span><span class='lparen'>(</span><span class='id identifier rubyid_flt'>flt</span><span class='comma'>,</span> <span class='id identifier rubyid_int'>int</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="lgamma-instance_method">
+  
+    #<strong>lgamma</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+212
+213
+214</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 212</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lgamma'>lgamma</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="log-instance_method">
+  
+    #<strong>log</strong>(num, base = E, method = nil)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 216</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#E-constant" title="Math::E (constant)">E</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_base'>base</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    num  = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_num'>num</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    base = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (num &lt; 0) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span> <span class='op'>||</span> <span class='symbol'>:log</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    num = Math.log(num);
+
+    if (base != Math.E) {
+      num /= Math.log(base);
+    }
+
+    return num
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="log10-instance_method">
+  
+    #<strong>log10</strong>(num)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_log10'>log10</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    num = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_num'>num</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (num &lt; 0) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span></span><span class='comma'>,</span> <span class='symbol'>:log2</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.log10(num);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="log2-instance_method">
+  
+    #<strong>log2</strong>(num)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 266</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_log2'>log2</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    num = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_num'>num</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (num &lt; 0) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span></span><span class='comma'>,</span> <span class='symbol'>:log2</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.log2(num);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sin-instance_method">
+  
+    #<strong>sin</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+287
+288
+289
+290
+291
+292
+293
+294
+295</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 287</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.sin(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sinh-instance_method">
+  
+    #<strong>sinh</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+305
+306
+307
+308
+309
+310
+311
+312
+313</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 305</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sinh'>sinh</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.sinh(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sqrt-instance_method">
+  
+    #<strong>sqrt</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 315</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    x = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (x &lt; 0) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Math/DomainError.html" title="Math::DomainError (class)">DomainError</a></span></span><span class='comma'>,</span> <span class='symbol'>:log2</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.sqrt(x);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="tan-instance_method">
+  
+    #<strong>tan</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+331
+332
+333
+334
+335
+336
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 331</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_tan'>tan</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.tan(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="tanh-instance_method">
+  
+    #<strong>tanh</strong>(x)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+357
+358
+359
+360
+361
+362
+363
+364
+365</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/math.rb', line 357</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_tanh'>tanh</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'>Opal</span><span class='period'>.</span><span class='id identifier rubyid_type_error'>type_error</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='const'>Float</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    return Math.tanh(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 03/13/18 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.9 (ruby-2.5.0).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Opal::Rewriters::InlineArgs::Initializer
+  
+    &mdash; lib (Opal v1.0.4)
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Opal::Rewriters::InlineArgs::Initializer";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../../../_index.html">Index (I)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Opal.html" title="Opal (module)">Opal</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Rewriters.html" title="Opal::Rewriters (module)">Rewriters</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../InlineArgs.html" title="Opal::Rewriters::InlineArgs (class)">InlineArgs</a></span></span>
+     &raquo; 
+    <span class="title">Initializer</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Opal::Rewriters::InlineArgs::Initializer
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Base.html" title="Opal::Rewriters::Base (class)">Base</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Parser::AST::Processor</li>
+          
+            <li class="next"><span class='object_link'><a href="../Base.html" title="Opal::Rewriters::Base (class)">Base</a></span></li>
+          
+            <li class="next">Opal::Rewriters::InlineArgs::Initializer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/lib/opal/rewriters/inline_args.rb</dd>
+  </dl>
+  
+</div>
+
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="STEPS-constant" class="">STEPS =
+          
+        </dt>
+        <dd><pre class="code"><span class='qsymbols_beg'>%i[</span><span class='words_sep'>
+  </span><span class='tstring_content'>extract_blockarg</span><span class='words_sep'>
+  </span><span class='tstring_content'>initialize_shadowargs</span><span class='words_sep'>
+  </span><span class='tstring_content'>extract_args</span><span class='words_sep'>
+
+  </span><span class='tstring_content'>prepare_post_args</span><span class='words_sep'>
+  </span><span class='tstring_content'>prepare_kwargs</span><span class='words_sep'>
+
+  </span><span class='tstring_content'>extract_optargs</span><span class='words_sep'>
+  </span><span class='tstring_content'>extract_restarg</span><span class='words_sep'>
+  </span><span class='tstring_content'>extract_post_args</span><span class='words_sep'>
+
+  </span><span class='tstring_content'>extract_kwargs</span><span class='words_sep'>
+  </span><span class='tstring_content'>extract_kwoptargs</span><span class='words_sep'>
+  </span><span class='tstring_content'>extract_kwrestarg</span><span class='words_sep'>
+</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="../Base.html" title="Opal::Rewriters::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Base.html#DUMMY_LOCATION-constant" title="Opal::Rewriters::Base::DUMMY_LOCATION (constant)">Base::DUMMY_LOCATION</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialization-instance_method" title="#initialization (instance method)">#<strong>initialization</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute initialization.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inline-instance_method" title="#inline (instance method)">#<strong>inline</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute inline.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../Base.html" title="Opal::Rewriters::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Base.html#current_node-instance_method" title="Opal::Rewriters::Base#current_node (method)">#current_node</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#args_to_keep-instance_method" title="#args_to_keep (instance method)">#<strong>args_to_keep</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_args-instance_method" title="#extract_args (instance method)">#<strong>extract_args</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_blockarg-instance_method" title="#extract_blockarg (instance method)">#<strong>extract_blockarg</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_kwargs-instance_method" title="#extract_kwargs (instance method)">#<strong>extract_kwargs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_kwoptargs-instance_method" title="#extract_kwoptargs (instance method)">#<strong>extract_kwoptargs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_kwrestarg-instance_method" title="#extract_kwrestarg (instance method)">#<strong>extract_kwrestarg</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_optargs-instance_method" title="#extract_optargs (instance method)">#<strong>extract_optargs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_post_args-instance_method" title="#extract_post_args (instance method)">#<strong>extract_post_args</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_restarg-instance_method" title="#extract_restarg (instance method)">#<strong>extract_restarg</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(args, type:)  &#x21d2; Initializer </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Initializer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize_shadowargs-instance_method" title="#initialize_shadowargs (instance method)">#<strong>initialize_shadowargs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prepare_kwargs-instance_method" title="#prepare_kwargs (instance method)">#<strong>prepare_kwargs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prepare_post_args-instance_method" title="#prepare_post_args (instance method)">#<strong>prepare_post_args</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Base.html" title="Opal::Rewriters::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Base.html#append_to_body-instance_method" title="Opal::Rewriters::Base#append_to_body (method)">#append_to_body</a></span>, <span class='object_link'><a href="../Base.html#begin_with_stmts-instance_method" title="Opal::Rewriters::Base#begin_with_stmts (method)">#begin_with_stmts</a></span>, <span class='object_link'><a href="../Base.html#error-instance_method" title="Opal::Rewriters::Base#error (method)">#error</a></span>, <span class='object_link'><a href="../Base.html#prepend_to_body-instance_method" title="Opal::Rewriters::Base#prepend_to_body (method)">#prepend_to_body</a></span>, <span class='object_link'><a href="../Base.html#process-instance_method" title="Opal::Rewriters::Base#process (method)">#process</a></span>, <span class='object_link'><a href="../Base.html#s-instance_method" title="Opal::Rewriters::Base#s (method)">#s</a></span>, <span class='object_link'><a href="../Base.html#s-class_method" title="Opal::Rewriters::Base.s (method)">s</a></span>, <span class='object_link'><a href="../Base.html#stmts_of-instance_method" title="Opal::Rewriters::Base#stmts_of (method)">#stmts_of</a></span></p>
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(args, type:)  &#x21d2; <tt><span class='object_link'><a href="" title="Opal::Rewriters::InlineArgs::Initializer (class)">Initializer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of Initializer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='label'>type:</span><span class='rparen'>)</span>
+  <span class='ivar'>@args</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Arguments.html" title="Opal::Rewriters::Arguments (class)">Arguments</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Arguments.html#initialize-instance_method" title="Opal::Rewriters::Arguments#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_children'>children</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@inline</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@initialization</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='ivar'>@type</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='ivar'>@underscore_found</span> <span class='op'>=</span> <span class='kw'>false</span>
+
+  <span class='const'><span class='object_link'><a href="#STEPS-constant" title="Opal::Rewriters::InlineArgs::Initializer::STEPS (constant)">STEPS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_step'>step</span><span class='op'>|</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_step'>step</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@initialization</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+    <span class='ivar'>@initialization</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:begin</span><span class='comma'>,</span> <span class='op'>*</span><span class='ivar'>@initialization</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@initialization</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="initialization-instance_method">
+  
+    #<strong>initialization</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute initialization.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialization'>initialization</span>
+  <span class='ivar'>@initialization</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="inline-instance_method">
+  
+    #<strong>inline</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute inline.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inline'>inline</span>
+  <span class='ivar'>@inline</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="args_to_keep-instance_method">
+  
+    #<strong>args_to_keep</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+214
+215
+216</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 214</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_args_to_keep'>args_to_keep</span>
+  <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_postargs'>postargs</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_args-instance_method">
+  
+    #<strong>extract_args</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_args'>extract_args</span>
+  <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='ivar'>@type</span> <span class='op'>==</span> <span class='symbol'>:iter</span>
+      <span class='comment'># block args are not required,
+</span>      <span class='comment'># so we neeed to tell compiler that required args
+</span>      <span class='comment'># must be initialized with nil-s
+</span>      <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:initialize_iter_arg</span><span class='rparen'>)</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_children'>children</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:_</span>
+        <span class='kw'>if</span> <span class='ivar'>@underscore_found</span>
+          <span class='comment'># for proc { |_, _| _ }.call(1, 2) result must be 1
+</span>          <span class='comment'># here we convert all underscore args starting from the 2nd
+</span>          <span class='comment'># to a &quot;fake&quot; arg
+</span>          <span class='id identifier rubyid_arg'>arg</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:fake_arg</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+        <span class='ivar'>@underscore_found</span> <span class='op'>=</span> <span class='kw'>true</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='comment'># required inline def argument like &#39;def m(req)&#39;
+</span>      <span class='comment'># no initialization is required
+</span>    <span class='kw'>end</span>
+    <span class='ivar'>@inline</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_blockarg-instance_method">
+  
+    #<strong>extract_blockarg</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_blockarg'>extract_blockarg</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span> <span class='op'>=</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_blockarg'>blockarg</span><span class='rparen'>)</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_blockarg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_kwargs-instance_method">
+  
+    #<strong>extract_kwargs</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 164</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_kwargs'>extract_kwargs</span>
+  <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_kwarg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_kwoptargs-instance_method">
+  
+    #<strong>extract_kwoptargs</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 170</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_kwoptargs'>extract_kwoptargs</span>
+  <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_kwoptargs'>kwoptargs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_kwoptarg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_kwrestarg-instance_method">
+  
+    #<strong>extract_kwrestarg</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+176
+177
+178
+179
+180</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 176</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_kwrestarg'>extract_kwrestarg</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span> <span class='op'>=</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_kwrestarg'>kwrestarg</span><span class='rparen'>)</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_kwrestarg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_optargs-instance_method">
+  
+    #<strong>extract_optargs</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 190</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_optargs'>extract_optargs</span>
+  <span class='id identifier rubyid_has_post_args'>has_post_args</span> <span class='op'>=</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_has_post_args?'>has_post_args?</span>
+  <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_optargs'>optargs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_has_post_args'>has_post_args</span>
+      <span class='comment'># optional post argument like &#39;def m(opt = 1, a)&#39;
+</span>      <span class='id identifier rubyid_arg_name'>arg_name</span><span class='comma'>,</span> <span class='id identifier rubyid_default_value'>default_value</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_arg'>arg</span>
+      <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_post_optarg</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_arg_name'>arg_name</span><span class='comma'>,</span> <span class='id identifier rubyid_default_value'>default_value</span><span class='comma'>,</span> <span class='id identifier rubyid_args_to_keep'>args_to_keep</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='ivar'>@inline</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:fake_arg</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='comment'># optional inline argument like &#39;def m(a, opt = 1)&#39;
+</span>      <span class='ivar'>@inline</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:arg</span><span class='rparen'>)</span>
+      <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_optarg</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_post_args-instance_method">
+  
+    #<strong>extract_post_args</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+182
+183
+184
+185
+186
+187
+188</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 182</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_post_args'>extract_post_args</span>
+  <span class='comment'># post arguments must be extracted with an offset
+</span>  <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_postargs'>postargs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_post_arg</span><span class='rparen'>)</span>
+    <span class='ivar'>@inline</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:fake_arg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_restarg-instance_method">
+  
+    #<strong>extract_restarg</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+206
+207
+208
+209
+210
+211
+212</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 206</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_restarg'>extract_restarg</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span> <span class='op'>=</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_restarg'>restarg</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_arg_name'>arg_name</span> <span class='op'>=</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_children'>children</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:extract_restarg</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_arg_name'>arg_name</span><span class='comma'>,</span> <span class='id identifier rubyid_args_to_keep'>args_to_keep</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='ivar'>@inline</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:fake_arg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="initialize_shadowargs-instance_method">
+  
+    #<strong>initialize_shadowargs</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize_shadowargs'>initialize_shadowargs</span>
+  <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_shadowargs'>shadowargs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:initialize_shadowarg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prepare_kwargs-instance_method">
+  
+    #<strong>prepare_kwargs</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 151</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_prepare_kwargs'>prepare_kwargs</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_has_any_kwargs?'>has_any_kwargs?</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_can_inline_kwargs?'>can_inline_kwargs?</span>
+    <span class='ivar'>@inline</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:arg</span><span class='comma'>,</span> <span class='symbol'>:&#39;$kwargs&#39;</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:extract_kwargs</span><span class='rparen'>)</span>
+    <span class='ivar'>@inline</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:fake_arg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:ensure_kwargs_are_kwargs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prepare_post_args-instance_method">
+  
+    #<strong>prepare_post_args</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/rewriters/inline_args.rb', line 145</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_prepare_post_args'>prepare_post_args</span>
+  <span class='kw'>if</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_has_post_args?'>has_post_args?</span>
+    <span class='ivar'>@initialization</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:prepare_post_args</span><span class='comma'>,</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 02/27/21 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.26 (ruby-2.7.2).
+</div>
+
+    </div>
+  </body>
+</html>

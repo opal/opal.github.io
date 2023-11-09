@@ -1,0 +1,4231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Opal::Compiler
+  
+    &mdash; lib (Opal v1.3.1)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Opal::Compiler";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span>
+     &raquo; 
+    <span class="title">Compiler</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Opal::Compiler
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Opal::Compiler</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/lib/opal/compiler.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p><span class='object_link'><a href="" title="Opal::Compiler (class)">Compiler</a></span> is the main class used to compile ruby to javascript code.
+This class uses <span class='object_link'><a href="Parser.html" title="Opal::Parser (module)">Parser</a></span> to gather the sexp syntax tree for the ruby
+code, and then uses Node to step through the sexp to generate valid
+javascript.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'>Compiler</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Opal::Compiler#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ruby code</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_compile'><span class='object_link'><a href="#compile-instance_method" title="Opal::Compiler#compile (method)">compile</a></span></span>
+<span class='comment'># =&gt; &quot;javascript code&quot;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Accessing result</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_compiler'>compiler</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'>Compiler</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Opal::Compiler#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ruby_code</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_compile'>compile</span>
+<span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span> <span class='comment'># =&gt; &quot;javascript code&quot;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Source Maps</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_compiler'>compiler</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'>Compiler</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Opal::Compiler#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_compile'>compile</span>
+<span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_source_map'>source_map</span> <span class='comment'># =&gt; #&lt;SourceMap:&gt;</span></code></pre>
+    
+  </div>
+
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="INDENT-constant" class="">INDENT =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Generated code gets indented with two spaces on each scope</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>  </span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="COMPARE-constant" class="">COMPARE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>All compare method nodes - used to optimize performance of
+math comparisons</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='qwords_beg'>%w[</span><span class='tstring_content'>&lt;</span><span class='words_sep'> </span><span class='tstring_content'>&gt;</span><span class='words_sep'> </span><span class='tstring_content'>&lt;=</span><span class='words_sep'> </span><span class='tstring_content'>&gt;=</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#case_stmt-instance_method" title="#case_stmt (instance method)">#<strong>case_stmt</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Current case_stmt.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#comments-instance_method" title="#comments (instance method)">#<strong>comments</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Comments from the source code.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#eof_content-instance_method" title="#eof_content (instance method)">#<strong>eof_content</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Any content in <strong>END</strong> special construct.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fragments-instance_method" title="#fragments (instance method)">#<strong>fragments</strong>  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>All [Opal::Fragment] used to produce result.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#magic_comments-instance_method" title="#magic_comments (instance method)">#<strong>magic_comments</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Magic comment flags extracted from the leading comments.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#result-instance_method" title="#result (instance method)">#<strong>result</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The compiled ruby code.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scope-instance_method" title="#scope (instance method)">#<strong>scope</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Current scope.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compiler_option-class_method" title="compiler_option (class method)">.<strong>compiler_option</strong>(name, config = {})  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Defines a compiler option.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#module_name-class_method" title="module_name (class method)">.<strong>module_name</strong>(path)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#arity_check%3F-instance_method" title="#arity_check? (instance method)">#<strong>arity_check?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>adds an arity check to every method definition.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#async_await-instance_method" title="#async_await (instance method)">#<strong>async_await</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Enable async/await support and optionally enable auto-await.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#async_await_before_typecasting-instance_method" title="#async_await_before_typecasting (instance method)">#<strong>async_await_before_typecasting</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Enable async/await support and optionally enable auto-await.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#async_await_set_to_regexp-instance_method" title="#async_await_set_to_regexp (instance method)">#<strong>async_await_set_to_regexp</strong>(set)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#autoloads-instance_method" title="#autoloads (instance method)">#<strong>autoloads</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>An array of things (requires, trees) which don&#39;t need to success in loading compile-time.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile-instance_method" title="#compile (instance method)">#<strong>compile</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Compile some ruby code to a string.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dynamic_require_severity-instance_method" title="#dynamic_require_severity (instance method)">#<strong>dynamic_require_severity</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>how to handle dynamic requires (:error, :warning, :ignore).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#enable_source_location%3F-instance_method" title="#enable_source_location? (instance method)">#<strong>enable_source_location?</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Adds source_location for every method definition.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#error-instance_method" title="#error (instance method)">#<strong>error</strong>(msg, line = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>This is called when a parsing/processing error occurs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#esm%3F-instance_method" title="#esm? (instance method)">#<strong>esm?</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Wrap compiler result as self contained ES6 module.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#file-instance_method" title="#file (instance method)">#<strong>file</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The filename to use for compiling this code.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fragment-instance_method" title="#fragment (instance method)">#<strong>fragment</strong>(str, scope, sexp = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#freezing%3F-instance_method" title="#freezing? (instance method)">#<strong>freezing?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handle_block_given_call-instance_method" title="#handle_block_given_call (instance method)">#<strong>handle_block_given_call</strong>(sexp)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handlers-instance_method" title="#handlers (instance method)">#<strong>handlers</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#helper-instance_method" title="#helper (instance method)">#<strong>helper</strong>(name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Use the given helper.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#helpers-instance_method" title="#helpers (instance method)">#<strong>helpers</strong>  &#x21d2; Set&lt;Symbol&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Any helpers required by this file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#in_case-instance_method" title="#in_case (instance method)">#<strong>in_case</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#in_while-instance_method" title="#in_while (instance method)">#<strong>in_while</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Used when we enter a while statement.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#in_while%3F-instance_method" title="#in_while? (instance method)">#<strong>in_while?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns true if the parser is curently handling a while sexp, false otherwise.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#indent-instance_method" title="#indent (instance method)">#<strong>indent</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>To keep code blocks nicely indented, this will yield a block after adding an extra layer of indent, and then returning the resulting code after reverting the indent.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(source, options = {})  &#x21d2; Compiler </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Compiler.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inline_operators%3F-instance_method" title="#inline_operators? (instance method)">#<strong>inline_operators?</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>are operators compiled inline.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#irb%3F-instance_method" title="#irb? (instance method)">#<strong>irb?</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>compile top level local vars with support for irb style vars.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#marshal_dump-instance_method" title="#marshal_dump (instance method)">#<strong>marshal_dump</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Marshalling for cache shortpath.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#marshal_load-instance_method" title="#marshal_load (instance method)">#<strong>marshal_load</strong>(src)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#method_calls-instance_method" title="#method_calls (instance method)">#<strong>method_calls</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Method calls made in this file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#method_missing%3F-instance_method" title="#method_missing? (instance method)">#<strong>method_missing?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>adds method stubs for all used methods in file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#operator_helpers-instance_method" title="#operator_helpers (instance method)">#<strong>operator_helpers</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Operator helpers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#option_value-instance_method" title="#option_value (instance method)">#<strong>option_value</strong>(name, config)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Fetches and memoizes the value for an option.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">#<strong>parse</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_comments%3F-instance_method" title="#parse_comments? (instance method)">#<strong>parse_comments?</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Adds comments for every method definition.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parser_indent-instance_method" title="#parser_indent (instance method)">#<strong>parser_indent</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Instances of <code>Scope</code> can use this to determine the current scope indent.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process-instance_method" title="#process (instance method)">#<strong>process</strong>(sexp, level = :expr)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Process the given sexp by creating a node instance, based on its type, and compiling it to fragments.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#re_raise_with_location-instance_method" title="#re_raise_with_location (instance method)">#<strong>re_raise_with_location</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#requirable%3F-instance_method" title="#requirable? (instance method)">#<strong>requirable?</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prepare the code for future requires.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#required_trees-instance_method" title="#required_trees (instance method)">#<strong>required_trees</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>An array of trees required in this file (typically by calling #require_tree).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#requires-instance_method" title="#requires (instance method)">#<strong>requires</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>An array of requires used in this file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#returns-instance_method" title="#returns (instance method)">#<strong>returns</strong>(sexp)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The last sexps in method bodies, for example, need to be returned in the compiled javascript.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#s-instance_method" title="#s (instance method)">#<strong>s</strong>(type, *children)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Create a new sexp using the given parts.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source_map-instance_method" title="#source_map (instance method)">#<strong>source_map</strong>  &#x21d2; Opal::SourceMap </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a source map that can be used in the browser to map back to original ruby code.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unique_temp-instance_method" title="#unique_temp (instance method)">#<strong>unique_temp</strong>(name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Used to generate a unique id name per file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#use_strict%3F-instance_method" title="#use_strict? (instance method)">#<strong>use_strict?</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Enables JavaScript&#39;s strict mode (i.e., adds &#39;use strict&#39;; statement).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#warning-instance_method" title="#warning (instance method)">#<strong>warning</strong>(msg, line = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>This is called when a parsing/processing warning occurs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#with_temp-instance_method" title="#with_temp (instance method)">#<strong>with_temp</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Temporary varibales will be needed from time to time in the generated code, and this method will assign (or reuse) on while the block is yielding, and queue it back up once it is finished.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(source, options = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Opal::Compiler (class)">Compiler</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of Compiler.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 220</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@source</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span>
+  <span class='ivar'>@indent</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@unique</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@comments</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@case_stmt</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@option_values</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@magic_comments</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="case_stmt-instance_method">
+  
+    #<strong>case_stmt</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Current case_stmt</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 209</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_case_stmt'>case_stmt</span>
+  <span class='ivar'>@case_stmt</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="comments-instance_method">
+  
+    #<strong>comments</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Comments from the source code</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+215
+216
+217</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 215</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_comments'>comments</span>
+  <span class='ivar'>@comments</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="eof_content-instance_method">
+  
+    #<strong>eof_content</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Any content in <strong>END</strong> special construct</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+212
+213
+214</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 212</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_eof_content'>eof_content</span>
+  <span class='ivar'>@eof_content</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="fragments-instance_method">
+  
+    #<strong>fragments</strong>  &#x21d2; <tt>Array</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns all [Opal::Fragment] used to produce result.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>all [Opal::Fragment] used to produce result</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+203
+204
+205</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 203</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fragments'>fragments</span>
+  <span class='ivar'>@fragments</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="magic_comments-instance_method">
+  
+    #<strong>magic_comments</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Magic comment flags extracted from the leading comments</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+218
+219
+220</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 218</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_magic_comments'>magic_comments</span>
+  <span class='ivar'>@magic_comments</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="result-instance_method">
+  
+    #<strong>result</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns The compiled ruby code.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The compiled ruby code</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+200
+201
+202</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 200</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='ivar'>@result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="scope=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="scope-instance_method">
+  
+    #<strong>scope</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Current scope</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 206</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_scope'>scope</span>
+  <span class='ivar'>@scope</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="compiler_option-class_method">
+  
+    .<strong>compiler_option</strong>(name, config = {})  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Defines a compiler option.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>as:</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>default:</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>magic_comment:</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_compiler_option'>compiler_option</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_method_name'>method_name</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:as</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='id identifier rubyid_method_name'>method_name</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_option_value'>option_value</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="module_name-class_method">
+  
+    .<strong>module_name</strong>(path)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_module_name'>module_name</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='rparen'>)</span>
+  <span class='const'>Pathname</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_cleanpath'>cleanpath</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="arity_check?-instance_method">
+  
+    #<strong>arity_check?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>adds an arity check to every method definition</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 115</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:arity_check</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:arity_check?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="async_await-instance_method">
+  
+    #<strong>async_await</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Enable async/await support and optionally enable auto-await.</p>
+
+<p>Use either true, false, an Array of Symbols, a String containing names
+to auto-await separated by a comma or a Regexp.</p>
+
+<p>Auto-await awaits provided methods by default as if .<strong>await</strong> was added to
+them automatically.</p>
+
+<p>By default, the support is disabled (set to false).</p>
+
+<p>If the config value is not set to false, any calls to #<strong>await</strong> will be
+translated to ES8 await keyword which makes the scope return a Promise
+and a containing scope will be async (instead of a value, it will return
+a Promise).</p>
+
+<p>If the config value is an array, or a String separated by a comma,
+auto-await is also enabled.</p>
+
+<p>A member of this collection can contain a wildcard character * in which
+case all methods containing a given substring will be awaited.</p>
+
+<p>It can be used as a magic comment, examples:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># await: true
+</span><span class='comment'># await: *await*
+</span><span class='comment'># await: *await*, sleep, gets
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 197</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:await</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:async_await</span><span class='comma'>,</span> <span class='label'>magic_comment:</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="async_await_before_typecasting-instance_method">
+  
+    #<strong>async_await_before_typecasting</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Enable async/await support and optionally enable auto-await.</p>
+
+<p>Use either true, false, an Array of Symbols, a String containing names
+to auto-await separated by a comma or a Regexp.</p>
+
+<p>Auto-await awaits provided methods by default as if .<strong>await</strong> was added to
+them automatically.</p>
+
+<p>By default, the support is disabled (set to false).</p>
+
+<p>If the config value is not set to false, any calls to #<strong>await</strong> will be
+translated to ES8 await keyword which makes the scope return a Promise
+and a containing scope will be async (instead of a value, it will return
+a Promise).</p>
+
+<p>If the config value is an array, or a String separated by a comma,
+auto-await is also enabled.</p>
+
+<p>A member of this collection can contain a wildcard character * in which
+case all methods containing a given substring will be awaited.</p>
+
+<p>It can be used as a magic comment, examples:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># await: true
+</span><span class='comment'># await: *await*
+</span><span class='comment'># await: *await*, sleep, gets
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+297</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 297</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:await</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:async_await</span><span class='comma'>,</span> <span class='label'>magic_comment:</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="async_await_set_to_regexp-instance_method">
+  
+    #<strong>async_await_set_to_regexp</strong>(set)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+317
+318
+319
+320
+321</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 317</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_async_await_set_to_regexp'>async_await_set_to_regexp</span><span class='lparen'>(</span><span class='id identifier rubyid_set'>set</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_set'>set</span> <span class='op'>=</span> <span class='id identifier rubyid_set'>set</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\*</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.*?</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_set'>set</span> <span class='op'>=</span> <span class='id identifier rubyid_set'>set</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>|</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_set'>set</span><span class='embexpr_end'>}</span><span class='tstring_content'>)$</span><span class='regexp_end'>/</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="autoloads-instance_method">
+  
+    #<strong>autoloads</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>An array of things (requires, trees) which don&#39;t need to success in
+loading compile-time.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+482
+483
+484</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 482</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_autoloads'>autoloads</span>
+  <span class='ivar'>@autoloads</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compile-instance_method">
+  
+    #<strong>compile</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Compile some ruby code to a string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>javascript code</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+234
+235
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 234</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compile'>compile</span>
+  <span class='id identifier rubyid_parse'>parse</span>
+
+  <span class='ivar'>@fragments</span> <span class='op'>=</span> <span class='id identifier rubyid_re_raise_with_location'>re_raise_with_location</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='ivar'>@sexp</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@fragments</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_fragment'>fragment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:newline</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='ivar'>@fragments</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='period'>.</span><span class='id identifier rubyid_end_with?'>end_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+  <span class='ivar'>@result</span> <span class='op'>=</span> <span class='ivar'>@fragments</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:code</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dynamic_require_severity-instance_method">
+  
+    #<strong>dynamic_require_severity</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>how to handle dynamic requires (:error, :warning, :ignore)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 133</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:dynamic_require_severity</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='symbol'>:ignore</span><span class='comma'>,</span> <span class='label'>valid_values:</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>error</span><span class='words_sep'> </span><span class='tstring_content'>warning</span><span class='words_sep'> </span><span class='tstring_content'>ignore</span><span class='tstring_end'>]</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="enable_source_location?-instance_method">
+  
+    #<strong>enable_source_location?</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Adds source_location for every method definition</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+155</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 155</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:enable_source_location</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:enable_source_location?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="error-instance_method">
+  
+    #<strong>error</strong>(msg, line = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>This is called when a parsing/processing error occurs. This
+method simply appends the filename and curent line number onto
+the message and raises it.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+326
+327
+328
+329
+330</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 326</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_error'>error</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_error'>error</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SyntaxError.html" title="Opal::SyntaxError (class)">SyntaxError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OpalBacktraceLocation.html" title="Opal::OpalBacktraceLocation (class)">OpalBacktraceLocation</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="OpalBacktraceLocation.html#initialize-instance_method" title="Opal::OpalBacktraceLocation#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_error'>error</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="esm?-instance_method">
+  
+    #<strong>esm?</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Wrap compiler result as self contained ES6 module</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 143</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:esm</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:esm?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="file-instance_method">
+  
+    #<strong>file</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The filename to use for compiling this code. Used for <strong>FILE</strong> directives
+as well as finding relative require()</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 101</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:file</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(file)</span><span class='tstring_end'>&#39;</span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fragment-instance_method">
+  
+    #<strong>fragment</strong>(str, scope, sexp = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+365
+366
+367</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 365</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fragment'>fragment</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_sexp'>sexp</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="Fragment.html" title="Opal::Fragment (class)">Fragment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Fragment.html#initialize-instance_method" title="Opal::Fragment#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="freezing?-instance_method">
+  
+    #<strong>freezing?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'></div></div>
+<p>stubs out #freeze and #frozen?</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 123</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:freezing</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:freezing?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="handle_block_given_call-instance_method">
+  
+    #<strong>handle_block_given_call</strong>(sexp)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 567</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handle_block_given_call'>handle_block_given_call</span><span class='lparen'>(</span><span class='id identifier rubyid_sexp'>sexp</span><span class='rparen'>)</span>
+  <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_uses_block!'>uses_block!</span>
+  <span class='kw'>if</span> <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_block_name'>block_name</span>
+    <span class='id identifier rubyid_fragment'>fragment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_block_name'>block_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> !== nil)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='lparen'>(</span><span class='id identifier rubyid_scope'>scope</span> <span class='op'>=</span> <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_find_parent_def'>find_parent_def</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_block_name'>block_name</span>
+    <span class='id identifier rubyid_fragment'>fragment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_block_name'>block_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> !== nil)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_fragment'>fragment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>false</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='comma'>,</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="handlers-instance_method">
+  
+    #<strong>handlers</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+465
+466
+467</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 465</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handlers'>handlers</span>
+  <span class='ivar'>@handlers</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Nodes.html" title="Opal::Nodes (module)">Nodes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Nodes/Base.html" title="Opal::Nodes::Base (class)">Base</a></span></span><span class='period'>.</span><span class='id identifier rubyid_handlers'><span class='object_link'><a href="Nodes/Base.html#handlers-class_method" title="Opal::Nodes::Base.handlers (method)">handlers</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="helper-instance_method">
+  
+    #<strong>helper</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Use the given helper</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+400
+401
+402</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 400</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_helper'>helper</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_helpers'>helpers</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_name'>name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="helpers-instance_method">
+  
+    #<strong>helpers</strong>  &#x21d2; <tt>Set&lt;Symbol&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Any helpers required by this file. Used by Nodes::Top to reference
+runtime helpers that are needed. These are used to minify resulting
+javascript by keeping a reference to helpers used.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Set&lt;Symbol&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+281
+282
+283
+284
+285</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 281</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_helpers'>helpers</span>
+  <span class='ivar'>@helpers</span> <span class='op'>||=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_magic_comments'>magic_comments</span><span class='lbracket'>[</span><span class='symbol'>:helpers</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='rbrace'>}</span>
+  <span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="in_case-instance_method">
+  
+    #<strong>in_case</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+439
+440
+441
+442
+443
+444
+445</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 439</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_in_case'>in_case</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_old'>old</span> <span class='op'>=</span> <span class='ivar'>@case_stmt</span>
+  <span class='ivar'>@case_stmt</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='kw'>yield</span>
+  <span class='ivar'>@case_stmt</span> <span class='op'>=</span> <span class='id identifier rubyid_old'>old</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="in_while-instance_method">
+  
+    #<strong>in_while</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Used when we enter a while statement. This pushes onto the current
+scope&#39;s while stack so we know how to handle break, next etc.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+431
+432
+433
+434
+435
+436
+437</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 431</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_in_while'>in_while</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='ivar'>@while_loop</span> <span class='op'>=</span> <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_push_while'>push_while</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>yield</span>
+  <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_pop_while'>pop_while</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="in_while?-instance_method">
+  
+    #<strong>in_while?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns true if the parser is curently handling a while sexp,
+false otherwise.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+449
+450
+451</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 449</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_in_while?'>in_while?</span>
+  <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_in_while?'>in_while?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="indent-instance_method">
+  
+    #<strong>indent</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>To keep code blocks nicely indented, this will yield a block after
+adding an extra layer of indent, and then returning the resulting
+code after reverting the indent.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+407
+408
+409
+410
+411
+412
+413
+414
+415</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 407</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_indent'>indent</span>
+  <span class='id identifier rubyid_indent'>indent</span> <span class='op'>=</span> <span class='ivar'>@indent</span>
+  <span class='ivar'>@indent</span> <span class='op'>+=</span> <span class='const'><span class='object_link'><a href="#INDENT-constant" title="Opal::Compiler::INDENT (constant)">INDENT</a></span></span>
+  <span class='ivar'>@space</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='ivar'>@indent</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='kw'>yield</span>
+  <span class='ivar'>@indent</span> <span class='op'>=</span> <span class='id identifier rubyid_indent'>indent</span>
+  <span class='ivar'>@space</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='ivar'>@indent</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_res'>res</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inline_operators?-instance_method">
+  
+    #<strong>inline_operators?</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>are operators compiled inline</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 148</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:inline_operators</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:inline_operators?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="irb?-instance_method">
+  
+    #<strong>irb?</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>compile top level local vars with support for irb style vars</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 128</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:irb</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:irb?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="marshal_dump-instance_method">
+  
+    #<strong>marshal_dump</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Marshalling for cache shortpath</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+579
+580
+581
+582
+583</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 579</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_marshal_dump'>marshal_dump</span>
+  <span class='lbracket'>[</span><span class='ivar'>@options</span><span class='comma'>,</span> <span class='ivar'>@option_values</span><span class='comma'>,</span> <span class='ivar'>@source_map</span> <span class='op'>||=</span> <span class='id identifier rubyid_source_map'>source_map</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='comma'>,</span>
+   <span class='ivar'>@magic_comments</span><span class='comma'>,</span> <span class='ivar'>@result</span><span class='comma'>,</span>
+   <span class='ivar'>@required_trees</span><span class='comma'>,</span> <span class='ivar'>@requires</span><span class='comma'>,</span> <span class='ivar'>@autoloads</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="marshal_load-instance_method">
+  
+    #<strong>marshal_load</strong>(src)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+585
+586
+587
+588
+589</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 585</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_marshal_load'>marshal_load</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='rparen'>)</span>
+  <span class='ivar'>@options</span><span class='comma'>,</span> <span class='ivar'>@option_values</span><span class='comma'>,</span> <span class='ivar'>@source_map</span><span class='comma'>,</span>
+  <span class='ivar'>@magic_comments</span><span class='comma'>,</span> <span class='ivar'>@result</span><span class='comma'>,</span>
+  <span class='ivar'>@required_trees</span><span class='comma'>,</span> <span class='ivar'>@requires</span><span class='comma'>,</span> <span class='ivar'>@autoloads</span> <span class='op'>=</span> <span class='id identifier rubyid_src'>src</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="method_calls-instance_method">
+  
+    #<strong>method_calls</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Method calls made in this file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+293
+294
+295</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 293</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_method_calls'>method_calls</span>
+  <span class='ivar'>@method_calls</span> <span class='op'>||=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="method_missing?-instance_method">
+  
+    #<strong>method_missing?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>adds method stubs for all used methods in file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 108</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:method_missing</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:method_missing?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="operator_helpers-instance_method">
+  
+    #<strong>operator_helpers</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Operator helpers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+288
+289
+290</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 288</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_operator_helpers'>operator_helpers</span>
+  <span class='ivar'>@operator_helpers</span> <span class='op'>||=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="option_value-instance_method">
+  
+    #<strong>option_value</strong>(name, config)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Fetches and memoizes the value for an option.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_option_value'>option_value</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='ivar'>@option_values</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='ivar'>@option_values</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span> <span class='id identifier rubyid_name'>name</span>
+
+  <span class='id identifier rubyid_default_value'>default_value</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbol'>:default</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_valid_values'>valid_values</span>  <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbol'>:valid_values</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_magic_comment'>magic_comment</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='symbol'>:magic_comment</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_default_value'>default_value</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_magic_comment'>magic_comment</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@magic_comments</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='ivar'>@magic_comments</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_valid_values'>valid_values</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_valid_values'>valid_values</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span>
+      <span class='const'>ArgumentError</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>invalid value </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> for option </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> \
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(valid values: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_valid_values'>valid_values</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+    <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@option_values</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse-instance_method">
+  
+    #<strong>parse</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 243</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span>
+  <span class='ivar'>@buffer</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parser.html" title="Opal::Parser (module)">Parser</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parser/SourceBuffer.html" title="Opal::Parser::SourceBuffer (class)">SourceBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='ivar'>@buffer</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='ivar'>@source</span>
+
+  <span class='ivar'>@parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parser.html" title="Opal::Parser (module)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_default_parser'><span class='object_link'><a href="Parser.html#default_parser-class_method" title="Opal::Parser.default_parser (method)">default_parser</a></span></span>
+
+  <span class='id identifier rubyid_sexp'>sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_comments'>comments</span><span class='comma'>,</span> <span class='id identifier rubyid_tokens'>tokens</span> <span class='op'>=</span> <span class='id identifier rubyid_re_raise_with_location'>re_raise_with_location</span> <span class='lbrace'>{</span> <span class='ivar'>@parser</span><span class='period'>.</span><span class='id identifier rubyid_tokenize'>tokenize</span><span class='lparen'>(</span><span class='ivar'>@buffer</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_kind'>kind</span> <span class='op'>=</span> <span class='kw'>case</span>
+         <span class='kw'>when</span> <span class='id identifier rubyid_requirable?'>requirable?</span>
+           <span class='symbol'>:require</span>
+         <span class='kw'>when</span> <span class='id identifier rubyid_eval?'>eval?</span>
+           <span class='symbol'>:eval</span>
+         <span class='kw'>else</span>
+           <span class='symbol'>:main</span>
+         <span class='kw'>end</span>
+
+  <span class='ivar'>@sexp</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:top</span><span class='comma'>,</span> <span class='id identifier rubyid_sexp'>sexp</span> <span class='op'>||</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:nil</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_meta'>meta</span><span class='lbracket'>[</span><span class='symbol'>:kind</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_kind'>kind</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@comments</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Parser</span><span class='op'>::</span><span class='const'>Source</span><span class='op'>::</span><span class='const'>Comment</span><span class='period'>.</span><span class='id identifier rubyid_associate_locations'>associate_locations</span><span class='lparen'>(</span><span class='id identifier rubyid_sexp'>sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_comments'>comments</span><span class='rparen'>)</span>
+  <span class='ivar'>@magic_comments</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="MagicComments.html" title="Opal::MagicComments (module)">MagicComments</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="MagicComments.html#parse-class_method" title="Opal::MagicComments.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_sexp'>sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_comments'>comments</span><span class='rparen'>)</span>
+  <span class='ivar'>@eof_content</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="EofContent.html" title="Opal::EofContent (class)">EofContent</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="EofContent.html#initialize-instance_method" title="Opal::EofContent#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_tokens'>tokens</span><span class='comma'>,</span> <span class='ivar'>@source</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_eof'><span class='object_link'><a href="EofContent.html#eof-instance_method" title="Opal::EofContent#eof (method)">eof</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_comments?-instance_method">
+  
+    #<strong>parse_comments?</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Adds comments for every method definition</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 165</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:parse_comments</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:parse_comments?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parser_indent-instance_method">
+  
+    #<strong>parser_indent</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Instances of <code>Scope</code> can use this to determine the current
+scope indent. The indent is used to keep generated code easily
+readable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+354
+355
+356</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 354</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parser_indent'>parser_indent</span>
+  <span class='ivar'>@indent</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process-instance_method">
+  
+    #<strong>process</strong>(sexp, level = :expr)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Process the given sexp by creating a node instance, based on its type,
+and compiling it to fragments.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+455
+456
+457
+458
+459
+460
+461
+462
+463</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 455</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_sexp'>sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='symbol'>:expr</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_fragment'>fragment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_scope'>scope</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_handler'>handler</span> <span class='op'>=</span> <span class='id identifier rubyid_handlers'>handlers</span><span class='lbracket'>[</span><span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_handler'>handler</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_sexp'>sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_level'>level</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_compile_to_fragments'>compile_to_fragments</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_error'>error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unsupported sexp: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="re_raise_with_location-instance_method">
+  
+    #<strong>re_raise_with_location</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 332</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_re_raise_with_location'>re_raise_with_location</span>
+  <span class='kw'>yield</span>
+<span class='kw'>rescue</span> <span class='const'>StandardError</span><span class='comma'>,</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SyntaxError.html" title="Opal::SyntaxError (class)">SyntaxError</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
+  <span class='id identifier rubyid_opal_location'>opal_location</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='period'>.</span><span class='id identifier rubyid_opal_location_from_error'><span class='object_link'><a href="../Opal.html#opal_location_from_error-class_method" title="Opal.opal_location_from_error (method)">opal_location_from_error</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_error'>error</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_opal_location'>opal_location</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span>
+  <span class='id identifier rubyid_opal_location'>opal_location</span><span class='period'>.</span><span class='id identifier rubyid_label'>label</span> <span class='op'>||=</span> <span class='ivar'>@source</span><span class='period'>.</span><span class='id identifier rubyid_lines'>lines</span><span class='lbracket'>[</span><span class='id identifier rubyid_opal_location'>opal_location</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>-</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
+  <span class='id identifier rubyid_new_error'>new_error</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SyntaxError.html" title="Opal::SyntaxError (class)">SyntaxError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new_error'>new_error</span><span class='period'>.</span><span class='id identifier rubyid_set_backtrace'>set_backtrace</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='period'>.</span><span class='id identifier rubyid_add_opal_location_to_error'><span class='object_link'><a href="../Opal.html#add_opal_location_to_error-class_method" title="Opal.add_opal_location_to_error (method)">add_opal_location_to_error</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opal_location'>opal_location</span><span class='comma'>,</span> <span class='id identifier rubyid_new_error'>new_error</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_new_error'>new_error</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="requirable?-instance_method">
+  
+    #<strong>requirable?</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Prepare the code for future requires</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 138</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:requirable</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:requirable?</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="required_trees-instance_method">
+  
+    #<strong>required_trees</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>An array of trees required in this file
+(typically by calling #require_tree)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+476
+477
+478</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 476</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_required_trees'>required_trees</span>
+  <span class='ivar'>@required_trees</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="requires-instance_method">
+  
+    #<strong>requires</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>An array of requires used in this file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+470
+471
+472</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 470</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_requires'>requires</span>
+  <span class='ivar'>@requires</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="returns-instance_method">
+  
+    #<strong>returns</strong>(sexp)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The last sexps in method bodies, for example, need to be returned
+in the compiled javascript. Due to syntax differences between
+javascript any ruby, some sexps need to be handled specially. For
+example, <code>if</code> statemented cannot be returned in javascript, so
+instead the &quot;truthy&quot; and &quot;falsy&quot; parts of the if statement both
+need to be returned instead.</p>
+
+<p>Sexps that need to be returned are passed to this method, and the
+alterned/new sexps are returned and should be used instead. Most
+sexps can just be added into a <code>s(:return) sexp</code>, so that is the
+default action if no special case is required.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 497</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_sexp'>sexp</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_returns'>returns</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:nil</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_sexp'>sexp</span>
+
+  <span class='kw'>case</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
+  <span class='kw'>when</span> <span class='symbol'>:undef</span>
+    <span class='comment'># undef :method_name always returns nil
+</span>    <span class='id identifier rubyid_returns'>returns</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:begin</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_sexp'>sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:nil</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:break</span><span class='comma'>,</span> <span class='symbol'>:next</span><span class='comma'>,</span> <span class='symbol'>:redo</span><span class='comma'>,</span> <span class='symbol'>:retry</span>
+    <span class='id identifier rubyid_sexp'>sexp</span>
+  <span class='kw'>when</span> <span class='symbol'>:yield</span>
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:returnable_yield</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:when</span>
+    <span class='op'>*</span><span class='id identifier rubyid_when_sexp'>when_sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_then_sexp'>then_sexp</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_sexp'>sexp</span>
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='id identifier rubyid_when_sexp'>when_sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_then_sexp'>then_sexp</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:rescue</span>
+    <span class='id identifier rubyid_body_sexp'>body_sexp</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_resbodies'>resbodies</span><span class='comma'>,</span> <span class='id identifier rubyid_else_sexp'>else_sexp</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_sexp'>sexp</span>
+
+    <span class='id identifier rubyid_resbodies'>resbodies</span> <span class='op'>=</span> <span class='id identifier rubyid_resbodies'>resbodies</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_resbody'>resbody</span><span class='op'>|</span>
+      <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_resbody'>resbody</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_else_sexp'>else_sexp</span>
+      <span class='id identifier rubyid_else_sexp'>else_sexp</span> <span class='op'>=</span> <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_else_sexp'>else_sexp</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span>
+      <span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span>
+        <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_body_sexp'>body_sexp</span><span class='rparen'>)</span><span class='comma'>,</span>
+        <span class='op'>*</span><span class='id identifier rubyid_resbodies'>resbodies</span><span class='comma'>,</span>
+        <span class='id identifier rubyid_else_sexp'>else_sexp</span>
+      <span class='rbracket'>]</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:resbody</span>
+    <span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_lvar'>lvar</span><span class='comma'>,</span> <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_sexp'>sexp</span>
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_lvar'>lvar</span><span class='comma'>,</span> <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:ensure</span>
+    <span class='id identifier rubyid_rescue_sexp'>rescue_sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_ensure_body'>ensure_body</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_sexp'>sexp</span>
+    <span class='id identifier rubyid_sexp'>sexp</span> <span class='op'>=</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_rescue_sexp'>rescue_sexp</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_ensure_body'>ensure_body</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:js_return</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_sexp'>sexp</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:begin</span><span class='comma'>,</span> <span class='symbol'>:kwbegin</span>
+    <span class='comment'># Wrapping last expression with s(:js_return, ...)
+</span>    <span class='op'>*</span><span class='id identifier rubyid_rest'>rest</span><span class='comma'>,</span> <span class='id identifier rubyid_last'>last</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_sexp'>sexp</span>
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='id identifier rubyid_rest'>rest</span><span class='comma'>,</span> <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_last'>last</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:while</span><span class='comma'>,</span> <span class='symbol'>:until</span><span class='comma'>,</span> <span class='symbol'>:while_post</span><span class='comma'>,</span> <span class='symbol'>:until_post</span>
+    <span class='id identifier rubyid_sexp'>sexp</span>
+  <span class='kw'>when</span> <span class='symbol'>:return</span><span class='comma'>,</span> <span class='symbol'>:js_return</span><span class='comma'>,</span> <span class='symbol'>:returnable_yield</span>
+    <span class='id identifier rubyid_sexp'>sexp</span>
+  <span class='kw'>when</span> <span class='symbol'>:xstr</span>
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:js_return</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_children'>children</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:if</span>
+    <span class='id identifier rubyid_cond'>cond</span><span class='comma'>,</span> <span class='id identifier rubyid_true_body'>true_body</span><span class='comma'>,</span> <span class='id identifier rubyid_false_body'>false_body</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_sexp'>sexp</span>
+    <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span>
+      <span class='kw'>nil</span><span class='comma'>,</span> <span class='lbracket'>[</span>
+        <span class='id identifier rubyid_cond'>cond</span><span class='comma'>,</span>
+        <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_true_body'>true_body</span><span class='rparen'>)</span><span class='comma'>,</span>
+        <span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_false_body'>false_body</span><span class='rparen'>)</span>
+      <span class='rbracket'>]</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='symbol'>:send</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_children'>children</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:debugger</span>
+      <span class='comment'># debugger is a statement, so it doesn&#39;t return a value
+</span>      <span class='comment'># and returning it is invalid. Therefore we update it
+</span>      <span class='comment'># to do `debugger; return nil`.
+</span>      <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:begin</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_sexp'>sexp</span><span class='comma'>,</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:js_return</span><span class='comma'>,</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:nil</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_sexp'>sexp</span><span class='period'>.</span><span class='id identifier rubyid_updated'>updated</span><span class='lparen'>(</span><span class='symbol'>:js_return</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_sexp'>sexp</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="s-instance_method">
+  
+    #<strong>s</strong>(type, *children)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Create a new sexp using the given parts. Even though this just
+returns an array, it must be used incase the internal structure
+of sexps does change.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+361
+362
+363</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 361</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_children'>children</span><span class='rparen'>)</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AST.html" title="Opal::AST (module)">AST</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AST/Node.html" title="Opal::AST::Node (class)">Node</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_children'>children</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="source_map-instance_method">
+  
+    #<strong>source_map</strong>  &#x21d2; <tt><span class='object_link'><a href="SourceMap.html" title="Opal::SourceMap (module)">Opal::SourceMap</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a source map that can be used in the browser to map back to
+original ruby code.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>source_file</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>optional source_file to reference ruby source</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="SourceMap.html" title="Opal::SourceMap (module)">Opal::SourceMap</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+271
+272
+273
+274</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 271</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_source_map'>source_map</span>
+  <span class='comment'># We only use @source_map if compiler is cached.
+</span>  <span class='ivar'>@source_map</span> <span class='op'>||</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SourceMap.html" title="Opal::SourceMap (module)">SourceMap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SourceMap/File.html" title="Opal::SourceMap::File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="SourceMap/File.html#initialize-instance_method" title="Opal::SourceMap::File#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@fragments</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='ivar'>@source</span><span class='comma'>,</span> <span class='ivar'>@result</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unique_temp-instance_method">
+  
+    #<strong>unique_temp</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Used to generate a unique id name per file. These are used
+mainly to name method bodies for methods that use blocks.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 371</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unique_temp'>unique_temp</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
+           <span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;=&gt;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$lt_eq_gt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>===</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$eq_eq_eq</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>==</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$eq_eq</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>=~</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$eq_tilde</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>!~</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$excl_tilde</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>!=</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$not_eq</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;=</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$lt_eq</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&gt;=</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$gt_eq</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>=</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$eq</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$ques</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>!</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$excl</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$slash</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$percent</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>+</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$plus</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$minus</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$lt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$gt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+           <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[^\w\$]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_unique'>unique</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='ivar'>@unique</span> <span class='op'>+=</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>$</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>$</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_unique'>unique</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="use_strict?-instance_method">
+  
+    #<strong>use_strict?</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Enables JavaScript&#39;s strict mode (i.e., adds &#39;use strict&#39;; statement)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+160</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 160</span>
+
+<span class='id identifier rubyid_compiler_option'>compiler_option</span> <span class='symbol'>:use_strict</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as:</span> <span class='symbol'>:use_strict?</span><span class='comma'>,</span> <span class='label'>magic_comment:</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="warning-instance_method">
+  
+    #<strong>warning</strong>(msg, line = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>This is called when a parsing/processing warning occurs. This
+method simply appends the filename and curent line number onto
+the message and issues a warning.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+347
+348
+349</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 347</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_warning'>warning</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>warning: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_msg'>msg</span><span class='embexpr_end'>}</span><span class='tstring_content'> -- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_line'>line</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="with_temp-instance_method">
+  
+    #<strong>with_temp</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Temporary varibales will be needed from time to time in the
+generated code, and this method will assign (or reuse) on
+while the block is yielding, and queue it back up once it is
+finished. Variables are queued once finished with to save the
+numbers of variables needed at runtime.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+422
+423
+424
+425
+426
+427</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/compiler.rb', line 422</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_with_temp'>with_temp</span>
+  <span class='id identifier rubyid_tmp'>tmp</span> <span class='op'>=</span> <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_new_temp'>new_temp</span>
+  <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='kw'>yield</span> <span class='id identifier rubyid_tmp'>tmp</span>
+  <span class='ivar'>@scope</span><span class='period'>.</span><span class='id identifier rubyid_queue_temp'>queue_temp</span> <span class='id identifier rubyid_tmp'>tmp</span>
+  <span class='id identifier rubyid_res'>res</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 11/03/21 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.26 (ruby-2.7.4).
+</div>
+
+    </div>
+  </body>
+</html>

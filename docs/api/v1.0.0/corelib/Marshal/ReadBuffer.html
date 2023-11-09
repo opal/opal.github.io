@@ -1,0 +1,2857 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Marshal::ReadBuffer
+  
+    &mdash; corelib (Opal v1.0.0)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Marshal::ReadBuffer";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Marshal.html" title="Marshal (module)">Marshal</a></span></span>
+     &raquo; 
+    <span class="title">ReadBuffer</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Marshal::ReadBuffer
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Marshal::ReadBuffer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/opal/corelib/marshal/read_buffer.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#buffer-instance_method" title="#buffer (instance method)">#<strong>buffer</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute buffer.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">#<strong>index</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute index.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#object_cache-instance_method" title="#object_cache (instance method)">#<strong>object_cache</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute object_cache.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#symbols_cache-instance_method" title="#symbols_cache (instance method)">#<strong>symbols_cache</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute symbols_cache.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#version-instance_method" title="#version (instance method)">#<strong>version</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute version.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(input)  &#x21d2; ReadBuffer </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of ReadBuffer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#length-instance_method" title="#length (instance method)">#<strong>length</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>(cache: true)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_array-instance_method" title="#read_array (instance method)">#<strong>read_array</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns an array from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_bignum-instance_method" title="#read_bignum (instance method)">#<strong>read_bignum</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns Bignum from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_byte-instance_method" title="#read_byte (instance method)">#<strong>read_byte</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_cached_object-instance_method" title="#read_cached_object (instance method)">#<strong>read_cached_object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads an object that was cached previously by its link.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_cached_symbol-instance_method" title="#read_cached_symbol (instance method)">#<strong>read_cached_symbol</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads a symbol that was previously cache by its link.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_char-instance_method" title="#read_char (instance method)">#<strong>read_char</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_class-instance_method" title="#read_class (instance method)">#<strong>read_class</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a Class from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_extended_object-instance_method" title="#read_extended_object (instance method)">#<strong>read_extended_object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads an object that was dynamically extended before marshaling like.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_fixnum-instance_method" title="#read_fixnum (instance method)">#<strong>read_fixnum</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a fixnum from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_float-instance_method" title="#read_float (instance method)">#<strong>read_float</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns Float from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_hash-instance_method" title="#read_hash (instance method)">#<strong>read_hash</strong>(cache: true)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a hash from an input stream Sometimes hash shouldn&#39;t  be cached using an internal object cache, for a:  + hash of instance variables  + hash of struct attributes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_hashdef-instance_method" title="#read_hashdef (instance method)">#<strong>read_hashdef</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a hash with default value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_module-instance_method" title="#read_module (instance method)">#<strong>read_module</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a Module from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_object-instance_method" title="#read_object (instance method)">#<strong>read_object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns an abstract object from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_primitive_with_ivars-instance_method" title="#read_primitive_with_ivars (instance method)">#<strong>read_primitive_with_ivars</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads a primitive object with instance variables (classes that have their own marshalling rules, like Array/Hash/Regexp/etc).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_regexp-instance_method" title="#read_regexp (instance method)">#<strong>read_regexp</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns Regexp from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_string-instance_method" title="#read_string (instance method)">#<strong>read_string</strong>(cache: true)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a string from an input stream Sometimes string shouldn&#39;t be cached using an internal object cache, for a:  + class/module name  + string representation of float  + string representation of regexp.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_struct-instance_method" title="#read_struct (instance method)">#<strong>read_struct</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a Struct from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_symbol-instance_method" title="#read_symbol (instance method)">#<strong>read_symbol</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and returns a symbol from an input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_user_class-instance_method" title="#read_user_class (instance method)">#<strong>read_user_class</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads and User Class (instance of String/Regexp/Array/Hash subclass).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_user_defined-instance_method" title="#read_user_defined (instance method)">#<strong>read_user_defined</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads a &#39;User Defined&#39; object that has &#39;_dump/self._load&#39; methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_user_marshal-instance_method" title="#read_user_marshal (instance method)">#<strong>read_user_marshal</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads a &#39;User Marshal&#39; object that has &#39;marshal_dump/marshal_load&#39; methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#safe_const_get-instance_method" title="#safe_const_get (instance method)">#<strong>safe_const_get</strong>(const_name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a constant by passed const_name,  re-raises Marshal-specific error when it&#39;s missing.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(input)  &#x21d2; <tt><span class='object_link'><a href="" title="Marshal::ReadBuffer (class)">ReadBuffer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of ReadBuffer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>
+  <span class='ivar'>@buffer</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>stringToBytes(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>`</span></span>
+  <span class='ivar'>@index</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_major'>major</span> <span class='op'>=</span> <span class='id identifier rubyid_read_byte'>read_byte</span>
+  <span class='id identifier rubyid_minor'>minor</span> <span class='op'>=</span> <span class='id identifier rubyid_read_byte'>read_byte</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_major'>major</span> <span class='op'>!=</span> <span class='const'><span class='object_link'><a href="../Marshal.html#MAJOR_VERSION-constant" title="Marshal::MAJOR_VERSION (constant)">MAJOR_VERSION</a></span></span> <span class='op'>||</span> <span class='id identifier rubyid_minor'>minor</span> <span class='op'>!=</span> <span class='const'><span class='object_link'><a href="../Marshal.html#MINOR_VERSION-constant" title="Marshal::MINOR_VERSION (constant)">MINOR_VERSION</a></span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>incompatible marshal file format (can&#39;t be read)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@version</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_major'>major</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_minor'>minor</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@object_cache</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@symbols_cache</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@ivars</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="buffer-instance_method">
+  
+    #<strong>buffer</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute buffer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_buffer'>buffer</span>
+  <span class='ivar'>@buffer</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="index-instance_method">
+  
+    #<strong>index</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute index</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
+  <span class='ivar'>@index</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="object_cache-instance_method">
+  
+    #<strong>object_cache</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute object_cache</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_object_cache'>object_cache</span>
+  <span class='ivar'>@object_cache</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="symbols_cache-instance_method">
+  
+    #<strong>symbols_cache</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute symbols_cache</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_symbols_cache'>symbols_cache</span>
+  <span class='ivar'>@symbols_cache</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="version-instance_method">
+  
+    #<strong>version</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute version</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_version'>version</span>
+  <span class='ivar'>@version</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="length-instance_method">
+  
+    #<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_length'>length</span>
+  <span class='ivar'>@buffer</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
+  
+    #<strong>read</strong>(cache: true)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='id identifier rubyid_read_char'>read_char</span>
+  <span class='comment'># The first character indicates the type of the object
+</span>  <span class='kw'>case</span> <span class='id identifier rubyid_code'>code</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>nil</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>T</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>true</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>F</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>false</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>i</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_fixnum'>read_fixnum</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>f</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_float'>read_float</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>l</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_bignum'>read_bignum</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_string'>read_string</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_symbol'>read_symbol</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_cached_symbol'>read_cached_symbol</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>[</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_array'>read_array</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>{</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_hash'>read_hash</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>}</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_hashdef'>read_hashdef</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_regexp'>read_regexp</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>S</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_struct'>read_struct</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>c</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_class'>read_class</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>m</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_module'>read_module</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>o</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_object'>read_object</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_cached_object'>read_cached_object</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>e</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_extended_object'>read_extended_object</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>I</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_primitive_with_ivars'>read_primitive_with_ivars</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_user_class'>read_user_class</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>u</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_user_defined'>read_user_defined</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>U</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_read_user_marshal'>read_user_marshal</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>M</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../NotImplementedError.html" title="NotImplementedError (class)">NotImplementedError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ModuleOld type cannot be demarshaled yet</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># read_module_old
+</span>  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>d</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../NotImplementedError.html" title="NotImplementedError (class)">NotImplementedError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Data type cannot be demarshaled</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dump format error</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_array-instance_method">
+  
+    #<strong>read_array</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns an array from an input stream</p>
+
+<p>is encoded as
+  &#39;[&#39;, 3, 100, 200, 300</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='lbracket'>[</span><span class='int'>100</span><span class='comma'>,</span> <span class='int'>200</span><span class='comma'>,</span> <span class='int'>300</span><span class='rbracket'>]</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 243</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_array'>read_array</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_read_fixnum'>read_fixnum</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (length &gt; 0) {
+      while (result.length &lt; length) {
+        result.push(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read'>read</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+      }
+    }
+
+    return result;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_bignum-instance_method">
+  
+    #<strong>read_bignum</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns Bignum from an input stream</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 172</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_bignum'>read_bignum</span>
+  <span class='id identifier rubyid_sign'>sign</span> <span class='op'>=</span> <span class='id identifier rubyid_read_char'>read_char</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span> <span class='op'>?</span> <span class='op'>-</span><span class='int'>1</span> <span class='op'>:</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_size'>size</span> <span class='op'>=</span> <span class='id identifier rubyid_read_fixnum'>read_fixnum</span> <span class='op'>*</span> <span class='int'>2</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>...</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_exp'>exp</span><span class='op'>|</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>+=</span> <span class='id identifier rubyid_read_char'>read_char</span><span class='period'>.</span><span class='id identifier rubyid_ord'>ord</span> <span class='op'>*</span> <span class='int'>2</span><span class='op'>**</span><span class='lparen'>(</span><span class='id identifier rubyid_exp'>exp</span> <span class='op'>*</span> <span class='int'>8</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>*</span> <span class='id identifier rubyid_sign'>sign</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_byte-instance_method">
+  
+    #<strong>read_byte</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102
+103
+104
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 100</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_byte'>read_byte</span>
+  <span class='kw'>if</span> <span class='ivar'>@index</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_length'>length</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>marshal data too short</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='ivar'>@buffer</span><span class='lbracket'>[</span><span class='ivar'>@index</span><span class='rbracket'>]</span>
+  <span class='ivar'>@index</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_cached_object-instance_method">
+  
+    #<strong>read_cached_object</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads an object that was cached previously by its link</p>
+
+<p>is encoded as
+  [obj1, @1, obj2, @2, obj3, @3]</p>
+
+<p>NOTE: array itself is cached as @0, that&#39;s why obj1 is cached a @1, obj2 is @2, etc.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_obj1'>obj1</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../BasicObject.html#initialize-instance_method" title="BasicObject#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_obj2'>obj2</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../BasicObject.html#initialize-instance_method" title="BasicObject#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_obj3'>obj3</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../BasicObject.html#initialize-instance_method" title="BasicObject#initialize (method)">new</a></span></span>
+<span class='lbracket'>[</span><span class='id identifier rubyid_obj1'>obj1</span><span class='comma'>,</span> <span class='id identifier rubyid_obj1'>obj1</span><span class='comma'>,</span> <span class='id identifier rubyid_obj2'>obj2</span><span class='comma'>,</span> <span class='id identifier rubyid_obj2'>obj2</span><span class='comma'>,</span> <span class='id identifier rubyid_obj3'>obj3</span><span class='comma'>,</span> <span class='id identifier rubyid_obj3'>obj3</span><span class='rbracket'>]</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+421
+422
+423</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 421</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_cached_object'>read_cached_object</span>
+  <span class='id identifier rubyid_object_cache'>object_cache</span><span class='lbracket'>[</span><span class='id identifier rubyid_read_fixnum'>read_fixnum</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_cached_symbol-instance_method">
+  
+    #<strong>read_cached_symbol</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads a symbol that was previously cache by its link</p>
+
+<p>Is encoded as
+  &#39;[&#39;, 6, :a, @0, :b, @1, :c, @2</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='lbracket'>[</span><span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:b</span><span class='comma'>,</span> <span class='symbol'>:b</span><span class='comma'>,</span> <span class='symbol'>:c</span><span class='comma'>,</span> <span class='symbol'>:c</span><span class='rbracket'>]</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+232
+233
+234</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 232</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_cached_symbol'>read_cached_symbol</span>
+  <span class='id identifier rubyid_symbols_cache'>symbols_cache</span><span class='lbracket'>[</span><span class='id identifier rubyid_read_fixnum'>read_fixnum</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_char-instance_method">
+  
+    #<strong>read_char</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_char'>read_char</span>
+  <span class='backtick'>`</span><span class='tstring_content'>String.fromCharCode(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read_byte'>read_byte</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_class-instance_method">
+  
+    #<strong>read_class</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a Class from an input stream</p>
+
+<p>is encoded as
+  &#39;c&#39;, &#39;String&#39;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+345
+346
+347
+348
+349
+350
+351
+352
+353</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 345</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_class'>read_class</span>
+  <span class='id identifier rubyid_klass_name'>klass_name</span> <span class='op'>=</span> <span class='id identifier rubyid_read_string'>read_string</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="../Class.html" title="Class (class)">Class</a></span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> does not refer to a Class</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_extended_object-instance_method">
+  
+    #<strong>read_extended_object</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads an object that was dynamically extended before marshaling like</p>
+
+<p>is encoded as
+  &#39;e&#39;, :M2, :M1, obj</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'>M1</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Module.html" title="Module (class)">Module</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Module.html#initialize-instance_method" title="Module#initialize (method)">new</a></span></span>
+<span class='const'>M2</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Module.html" title="Module (class)">Module</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Module.html#initialize-instance_method" title="Module#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../BasicObject.html#initialize-instance_method" title="BasicObject#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_extend'>extend</span><span class='lparen'>(</span><span class='const'>M1</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_extend'>extend</span><span class='lparen'>(</span><span class='const'>M2</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_obj'>obj</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439
+440
+441
+442</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 437</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_extended_object'>read_extended_object</span>
+  <span class='id identifier rubyid_mod'>mod</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_read'>read</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span>
+  <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_extend'>extend</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_object'>object</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_fixnum-instance_method">
+  
+    #<strong>read_fixnum</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a fixnum from an input stream</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_fixnum'>read_fixnum</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var x, i, c = (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read_byte'>read_byte</span><span class='embexpr_end'>}</span><span class='tstring_content'> ^ 128) - 128;
+    if (c === 0) {
+      return 0;
+    }
+
+    if (c &gt; 0) {
+      if (4 &lt; c &amp;&amp; c &lt; 128) {
+        return c - 5;
+      }
+      x = 0;
+      for (i = 0; i &lt; c; i++) {
+        x |= (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read_byte'>read_byte</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;&lt; (8*i));
+      }
+    } else {
+      if (-129 &lt; c &amp;&amp; c &lt; -4) {
+        return c + 5;
+      }
+
+      c = -c;
+      x = -1;
+
+      for (i = 0; i &lt; c; i++) {
+        x &amp;= ~(0xff &lt;&lt; (8*i));
+        x |= (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read_byte'>read_byte</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;&lt; (8*i));
+      }
+    }
+
+    return x;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_float-instance_method">
+  
+    #<strong>read_float</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns Float from an input stream</p>
+
+<p>Is encoded as
+  &#39;f&#39;, &#39;123.456&#39;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='float'>123.456</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 155</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_float'>read_float</span>
+  <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_read_string'>read_string</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nan</span><span class='tstring_end'>&#39;</span></span>
+             <span class='float'>0.0</span> <span class='op'>/</span> <span class='int'>0</span>
+           <span class='kw'>elsif</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>inf</span><span class='tstring_end'>&#39;</span></span>
+             <span class='float'>1.0</span> <span class='op'>/</span> <span class='int'>0</span>
+           <span class='kw'>elsif</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-inf</span><span class='tstring_end'>&#39;</span></span>
+             <span class='op'>-</span><span class='float'>1.0</span> <span class='op'>/</span> <span class='int'>0</span>
+           <span class='kw'>else</span>
+             <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+           <span class='kw'>end</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_hash-instance_method">
+  
+    #<strong>read_hash</strong>(cache: true)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a hash from an input stream
+Sometimes hash shouldn&#39;t  be cached using
+an internal object cache, for a:</p>
+
+<ul>
+<li>hash of instance variables</li>
+<li>hash of struct attributes</li>
+</ul>
+
+<p>is encoded as
+  &#39;{&#39;, 2, 100, 200, 300, 400</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='lbrace'>{</span><span class='int'>100</span> <span class='op'>=&gt;</span> <span class='int'>200</span><span class='comma'>,</span> <span class='int'>300</span> <span class='op'>=&gt;</span> <span class='int'>400</span><span class='rbrace'>}</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 269</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_hash'>read_hash</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_cache'>cache</span>
+    <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_read_fixnum'>read_fixnum</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (length &gt; 0) {
+      var key, value, i;
+      for (i = 0; i &lt; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'>; i++) {
+        key = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read'>read</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        value = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read'>read</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='backtick'>`</span><span class='tstring_content'>key</span><span class='tstring_end'>`</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>value</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      }
+    }
+    return result;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_hashdef-instance_method">
+  
+    #<strong>read_hashdef</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a hash with default value</p>
+
+<p>is encoded as
+  &#39;}&#39;, 1, 100, 200, :default</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Hash.html" title="Hash (class)">Hash</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Hash.html#initialize-instance_method" title="Hash#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='symbol'>:default</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'><span class='object_link'><a href="../Hash.html#merge-instance_method" title="Hash#merge (method)">merge</a></span></span><span class='lparen'>(</span><span class='int'>100</span> <span class='op'>=&gt;</span> <span class='int'>200</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+297
+298
+299
+300
+301
+302</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 297</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_hashdef'>read_hashdef</span>
+  <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='id identifier rubyid_read_hash'>read_hash</span>
+  <span class='id identifier rubyid_default_value'>default_value</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span>
+  <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='id identifier rubyid_default_value'>default_value</span>
+  <span class='id identifier rubyid_hash'>hash</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_module-instance_method">
+  
+    #<strong>read_module</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a Module from an input stream</p>
+
+<p>is encoded as
+  &#39;m&#39;, &#39;Kernel&#39;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Kernel.html" title="Kernel (module)">Kernel</a></span></span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+362
+363
+364
+365
+366
+367
+368
+369
+370</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 362</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_module'>read_module</span>
+  <span class='id identifier rubyid_mod_name'>mod_name</span> <span class='op'>=</span> <span class='id identifier rubyid_read_string'>read_string</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_mod_name'>mod_name</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="../Module.html" title="Module (class)">Module</a></span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_mod_name'>mod_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> does not refer to a Module</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_object-instance_method">
+  
+    #<strong>read_object</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns an abstract object from an input stream</p>
+
+<p>is encoded as
+  &#39;o&#39;, :Object, =&gt; 100</p>
+
+<p>The only exception is a Range class (and its subclasses)
+For some reason in MRI isntances of this class have instance variables</p>
+
+<ul>
+<li>begin</li>
+<li>end</li>
+<li>excl
+without &#39;@&#39; perfix.</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../BasicObject.html#initialize-instance_method" title="BasicObject#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@ivar</span><span class='comma'>,</span> <span class='int'>100</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_obj'>obj</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 388</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_object'>read_object</span>
+  <span class='id identifier rubyid_klass_name'>klass_name</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_allocate'>allocate</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_object'>object</span>
+
+  <span class='id identifier rubyid_ivars'>ivars</span> <span class='op'>=</span> <span class='id identifier rubyid_read_hash'>read_hash</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ivars'>ivars</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='comment'># MRI allows an object to have ivars that do not start from &#39;@&#39;
+</span>      <span class='comment'># https://github.com/ruby/ruby/blob/ab3a40c1031ff3a0535f6bcf26de40de37dbb1db/range.c#L1225
+</span>      <span class='backtick'>`</span><span class='tstring_content'>object[name] = value</span><span class='tstring_end'>`</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_object'>object</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_primitive_with_ivars-instance_method">
+  
+    #<strong>read_primitive_with_ivars</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads a primitive object with instance variables
+(classes that have their own marshalling rules, like Array/Hash/Regexp/etc)</p>
+
+<p>is encoded as
+  &#39;I&#39;, [100, 200, 300], =&gt; value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_arr'>arr</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>100</span><span class='comma'>,</span> <span class='int'>200</span><span class='comma'>,</span> <span class='int'>300</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_arr'>arr</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@ivar</span><span class='comma'>,</span> <span class='symbol'>:value</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_arr'>arr</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 454</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_primitive_with_ivars'>read_primitive_with_ivars</span>
+  <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span>
+
+  <span class='id identifier rubyid_primitive_ivars'>primitive_ivars</span> <span class='op'>=</span> <span class='id identifier rubyid_read_hash'>read_hash</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_primitive_ivars'>primitive_ivars</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>new String(object)</span><span class='tstring_end'>`</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_primitive_ivars'>primitive_ivars</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>E</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_object'>object</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_regexp-instance_method">
+  
+    #<strong>read_regexp</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns Regexp from an input stream</p>
+
+<p>is encoded as
+  &#39;/&#39;, &#39;regexp&#39;, r.options.chr</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>regexp</span><span class='regexp_end'>/mix</span></span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+311
+312
+313
+314
+315
+316
+317
+318</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 311</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_regexp'>read_regexp</span>
+  <span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='id identifier rubyid_read_string'>read_string</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_read_byte'>read_byte</span>
+
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Regexp.html" title="Regexp (class)">Regexp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Regexp.html#new-class_method" title="Regexp.new (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_string-instance_method">
+  
+    #<strong>read_string</strong>(cache: true)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a string from an input stream
+Sometimes string shouldn&#39;t be cached using
+an internal object cache, for a:</p>
+
+<ul>
+<li>class/module name</li>
+<li>string representation of float</li>
+<li>string representation of regexp</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 191</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_string'>read_string</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_read_fixnum'>read_fixnum</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var i, result = &#39;&#39;;
+
+    for (i = 0; i &lt; length; i++) {
+      result += </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read_char'>read_char</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    if (cache) {
+      self.object_cache.push(result);
+    }
+
+    return result;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_struct-instance_method">
+  
+    #<strong>read_struct</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a Struct from an input stream</p>
+
+<p>is encoded as
+  &#39;S&#39;, :Point, =&gt; 100, :y =&gt; 200</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'>Point</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Struct.html" title="Struct (class)">Struct</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Struct.html#new-class_method" title="Struct.new (method)">new</a></span></span><span class='lparen'>(</span><span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:y</span><span class='rparen'>)</span>
+<span class='const'>Point</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>100</span><span class='comma'>,</span> <span class='int'>200</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+328
+329
+330
+331
+332
+333
+334
+335
+336</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 328</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_struct'>read_struct</span>
+  <span class='id identifier rubyid_klass_name'>klass_name</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_read_hash'>read_hash</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_values_at'>values_at</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_symbol-instance_method">
+  
+    #<strong>read_symbol</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and returns a symbol from an input stream</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 210</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_symbol'>read_symbol</span>
+  <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_read_fixnum'>read_fixnum</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var i, result = &#39;&#39;;
+
+    for (i = 0; i &lt; length; i++) {
+      result += </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_read_char'>read_char</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    self.symbols_cache.push(result);
+
+    return result;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_user_class-instance_method">
+  
+    #<strong>read_user_class</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads and User Class (instance of String/Regexp/Array/Hash subclass)</p>
+
+<p>is encoded as
+  &#39;C&#39;, :UserArray, [100, 200, 300]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'>UserArray</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Class.html" title="Class (class)">Class</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Class.html#new-class_method" title="Class.new (method)">new</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span></span><span class='rparen'>)</span>
+<span class='const'>UserArray</span><span class='lbracket'>[</span><span class='int'>100</span><span class='comma'>,</span> <span class='int'>200</span><span class='comma'>,</span> <span class='int'>300</span><span class='rbracket'>]</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 480</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_user_class'>read_user_class</span>
+  <span class='id identifier rubyid_klass_name'>klass_name</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_klass'>klass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../Hash.html" title="Hash (class)">Hash</a></span></span>
+             <span class='id identifier rubyid_klass'>klass</span><span class='lbracket'>[</span><span class='id identifier rubyid_value'>value</span><span class='rbracket'>]</span>
+           <span class='kw'>else</span>
+             <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+           <span class='kw'>end</span>
+
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_user_defined-instance_method">
+  
+    #<strong>read_user_defined</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads a &#39;User Defined&#39; object that has &#39;_dump/self._load&#39; methods</p>
+
+<p>is encoded as
+  &#39;u&#39;, :UserDefined, &#39;_dumped&#39;</p>
+
+<p>To load it back UserDefined._load&#39; must be used.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>UserDefined</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid__dump'>_dump</span><span class='lparen'>(</span><span class='id identifier rubyid_level'>level</span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_dumped</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='const'>UserDefined</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 511</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_user_defined'>read_user_defined</span>
+  <span class='id identifier rubyid_klass_name'>klass_name</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_read_string'>read_string</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid__load'>_load</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_user_marshal-instance_method">
+  
+    #<strong>read_user_marshal</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads a &#39;User Marshal&#39; object that has &#39;marshal_dump/marshal_load&#39; methods</p>
+
+<p>is encoded as
+  &#39;U&#39;, :UserMarshal, [100, 200]</p>
+
+<p>To load it back <code>UserMarshal.allocate</code> and <code>UserMarshal#marshal_load</code> must be called</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>UserMarshal</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../Struct.html" title="Struct (class)">Struct</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Struct.html#new-class_method" title="Struct.new (method)">new</a></span></span><span class='lparen'>(</span><span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:b</span><span class='rparen'>)</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_marshal_dump'>marshal_dump</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_marshal_load'>marshal_load</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='const'>UserMarshal</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>100</span><span class='comma'>,</span> <span class='int'>200</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 541</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_user_marshal'>read_user_marshal</span>
+  <span class='id identifier rubyid_klass_name'>klass_name</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_klass_name'>klass_name</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_allocate'>allocate</span>
+  <span class='ivar'>@object_cache</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_result'>result</span>
+
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='label'>cache:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_marshal_load'>marshal_load</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="safe_const_get-instance_method">
+  
+    #<strong>safe_const_get</strong>(const_name)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a constant by passed const_name,
+ re-raises Marshal-specific error when it&#39;s missing</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+556
+557
+558
+559
+560</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/read_buffer.rb', line 556</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_safe_const_get'>safe_const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_const_name'>const_name</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_const_name'>const_name</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../NameError.html" title="NameError (class)">NameError</a></span></span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>undefined class/module </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_const_name'>const_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 05/12/19 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.9 (ruby-2.6.2).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Opal 1.2</title>
+
+  <link href="/assets/application-915b7e3cafe6e192dee011fa09837b2af85b7e1de3dbb52fd1413d46dd2dca0e.css" rel="stylesheet" />
+  <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+  <script src="/assets/application-74994a7410818947c294a5f44b8f7916d5e1c773e93a5a2c83db9c06d516fd80.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
+
+  <!-- Algolia -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="blog blog_2021 blog_2021_08 blog_2021_08_09 blog_2021_08_09_opal-1-2 blog_2021_08_09_opal-1-2_index">
+  <nav class='navbar navbar-default opal-nav' role='navigation'>
+<div class='container'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+<img height='22' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' style='margin-top:-10%;' width='22'>
+Opal
+</a>
+<button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+</div>
+<div class='navbar-collapse collapse' id='opal-navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href='/try'>
+<i class='ion-ios-compose'></i>
+Try
+</a>
+</li>
+<li>
+<a href='/blog'>
+<i class='ion-ios-chatboxes'></i>
+Blog
+</a>
+</li>
+<li>
+<a href='/docs'>
+<i class='ion-ios-copy'></i>
+Documentation
+</a>
+</li>
+<li>
+<a href='/libraries'>
+<i class='ion-map'></i>
+Libraries
+</a>
+</li>
+<li>
+<a href='https://github.com/opal/opal#readme'>
+<i class='ion-social-github'></i>
+GitHub
+</a>
+</li>
+<li>
+<a href='https://rubygems.org/gems/opal/versions/1.8.1' style='opacity: 0.5;'>
+v1.8.1
+</a>
+</li>
+</ul>
+<ul class='nav navbar-right'>
+<li class='search-bar'>
+<form id='search-form'>
+<input placeholder='Search docs &amp; guides' type='search'>
+<button title='Clear the search query.' type='reset'>
+&times;
+</button>
+</form>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+
+  <div class="container">
+      <div class="container col-sm-8">
+    <div class='blog-title'>
+<h1>
+<a href='/blog'>The Opal Blog</a>
+</h1>
+</div>
+
+    <article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href=''>
+Opal 1.2
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne
+<br>
+August 09, 2021
+</div>
+</header>
+<div class='blog-post-body'>
+<p>After about 11 years of development we are proud to announce the Opal 1.2 release!</p>&#x000A;&#x000A;<p>Opal is a Ruby to JavaScript compiler, Ruby runtime and an idiomatic Ruby API for interfacing Browser/Node/<code>anything that uses JS</code>.</p>&#x000A;&#x000A;<h2 id="notable-new-features">Notable new features</h2>&#x000A;&#x000A;<h3 id="full-ruby-3-0-support-almost">Full Ruby 3.0 support! (almost)</h3>&#x000A;&#x000A;<p>We missed a blog post about Opal 1.1, which was released with a preliminary support for Ruby 3.0 features, but Opal 1.2 finalizes this support. Let me update you about them!</p>&#x000A;&#x000A;<p><em>An interesting thing is that you can still run older versions of Ruby on the backend, but use the new Ruby 3.0 features when writing Opal code for your frontend.</em></p>&#x000A;&#x000A;<div id="continue-reading"></div>&#x000A;&#x000A;<h4 id="end-less-method-definition-opal-1-1">End-less method definition (Opal 1.1)</h4>&#x000A;&#x000A;<p>No more writing code like this:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">ten</span>&#x000A;  <span class="mi">10</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre></div>&#x000A;<p>Write it in one line!</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">ten</span> <span class="o">=</span> <span class="mi">10</span>&#x000A;</code></pre></div>&#x000A;<h4 id="beginless-and-endless-ranges-opal-1-2">Beginless and endless ranges (Opal 1.2)</h4>&#x000A;&#x000A;<p>While those were introduced in earlier Ruby versions (2.6, 2.7), we didn&#39;t have those, and now we do! You can absolutely call <code>a[1..]</code> instead of <code>a[1..-1]</code> now!</p>&#x000A;&#x000A;<h4 id="numblocks-opal-1-1">Numblocks (Opal 1.1)</h4>&#x000A;&#x000A;<p>Also a Ruby 2.7 feature. Personally, I don&#39;t like this syntax. Nevertheless, you can use it in Opal now!</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="nf">map</span> <span class="p">{</span> <span class="n">_1</span> <span class="o">**</span> <span class="mi">2</span> <span class="p">}</span>&#x000A;</code></pre></div>&#x000A;<h4 id="argument-forwarding-support-def-a-b-end-opal-1-1">Argument forwarding support <code>def a(...); b(...); end</code> (Opal 1.1)</h4>&#x000A;&#x000A;<p>We support 3.0 level of argument forwarding. No more writing code like</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>&#x000A;  <span class="vi">@arg1</span><span class="p">,</span> <span class="vi">@arg2</span> <span class="o">=</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span>&#x000A;  <span class="no">Klass</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:begin</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre></div>&#x000A;<p>...when you can write it like this:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>&#x000A;  <span class="vi">@arg1</span><span class="p">,</span> <span class="vi">@arg2</span> <span class="o">=</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span>&#x000A;  <span class="no">Klass</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:begin</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre></div>&#x000A;<h4 id="pattern-matching-opal-1-2">Pattern matching (Opal 1.2)</h4>&#x000A;&#x000A;<p>We support 3.0 level of pattern matching. All kinds of patterns have been fully implemented, including the find pattern.</p>&#x000A;&#x000A;<p>Pattern matching is optional, if you want to use it, you will need to add <code>require &quot;corelib/pattern_matching&quot;</code> to your application.</p>&#x000A;&#x000A;<p><em>Do note, that the find pattern (<code>[1, 2, 3, &quot;needle&quot;, 4] =&gt; [*, String =&gt; a, *]</code> to _find</em> String and save it to a local variable <code>a</code>) and one-line <code>1 in a</code> syntax are deemed experimental in Ruby 3.0 and may change their behavior in the future_</p>&#x000A;&#x000A;<h4 id="methods">Methods</h4>&#x000A;&#x000A;<p>There are quite a lot of new methods, some of which got introduced in Ruby 3.0, some earlier.</p>&#x000A;&#x000A;<p>Opal 1.2:&#x000A;- <code>{Random,SecureRandom}#{hex,base64,urlsafe_base64,uuid,random_float,random_number,alphanumeric}</code>&#x000A;- <code>String#{+@,-@}</code>&#x000A;- <code>Hash#except!</code>&#x000A;- <code>{Array,Hash,Struct}#{deconstruct,deconstruct_keys}</code></p>&#x000A;&#x000A;<p>Opal 1.1:&#x000A;- <code>Array#{difference,intersection,union}</code>&#x000A;- <code>Enumerable#{filter_map,tally}</code>&#x000A;- <code>Kernel#then</code>&#x000A;- <code>{Proc,Method}#{&lt;&lt;,&gt;&gt;}</code>&#x000A;- <code>Integer#to_d</code></p>&#x000A;&#x000A;<h4 id="breaking-changes">Breaking changes</h4>&#x000A;&#x000A;<p>Since Opal 1.2, we now follow the Ruby 3.0 semantics for <code>Array#{to_a,slice,[],uniq,*,difference,-,intersection,&amp;,union,|}</code> and therefore those don&#39;t return an Array subclass anymore, but simply an Array.</p>&#x000A;&#x000A;<h4 id="what-isnt-there">What isn&#39;t there</h4>&#x000A;&#x000A;<p><a href="https://github.com/opal/opal/issues/2241">We are still using keyword arguments in the Ruby 2.6 style</a>. We want the future releases to warn on the incompatibilities, just like Ruby 2.7 did, to provide a smooth migration curve.</p>&#x000A;&#x000A;<p>Ractor isn&#39;t implemented and likely won&#39;t be anytime soon. JavaScript has a very different threading model to Ruby.</p>&#x000A;&#x000A;<h3 id="objectspace-finalizer-support-and-objectspace-weakmap-implementation-opal-1-2"><code>ObjectSpace</code> finalizer support and <code>ObjectSpace::WeakMap</code> implementation (Opal 1.2)</h3>&#x000A;&#x000A;<p>A destructor in Ruby? And also in a niche JavaScript Ruby implementation? Yes!</p>&#x000A;&#x000A;<p><em>You need to do `require &quot;corelib/object</em>space&quot;` to use those features._</p>&#x000A;&#x000A;<h3 id="begin-end-while-opal-1-2"><code>begin ... end while ...</code> (Opal 1.2)</h3>&#x000A;&#x000A;<p>Matz doesn&#39;t like this feature as it is inconsistent with how other Ruby postfix flow control constructs work. But it looks similar to <code>do { ... } while(...)</code> - and this is how it works. Now, also in Opal!</p>&#x000A;&#x000A;<h3 id="native-promises-opal-1-2-experimental">Native Promises (Opal 1.2 - experimental)</h3>&#x000A;&#x000A;<p>When Opal was first conceived, JavaScript didn&#39;t have Promises (or they weren&#39;t so universally supported), so we made our own. Now, that Promises in JavaScript are a big thing, well integrated into the language, we made a new kind of Promise (<code>PromiseV2</code>), that <em>bridges</em> the native JavaScript promise and is (mostly) compatible with the current Opal Promise (later called <code>PromiseV1</code>).</p>&#x000A;&#x000A;<p>By <em>bridges</em> I mean that conversion between JavaScript and Opal values is seamless. Just as you can pass numbers, strings or arrays between those two ecosystems, <code>Promise</code>s (only <code>PromiseV2</code>) will join that pack now.</p>&#x000A;&#x000A;<p>There are some slight incompatibilities which is why we include both versions, and <code>PromiseV2</code> is defined as experimental. This allows us to state, that it&#39;s behavior may change in the future (until deemed un-experimental). This is so also to foster a discussion about how to best support <code>async/await</code> in the next release.</p>&#x000A;&#x000A;<p><em>There&#39;s a (mostly done) CoffeeScript approach to async/await <a href="https://github.com/opal/opal/pull/2221">available as a patch</a> (not in the 1.2 release though), but we may as well take a different approach.</em></p>&#x000A;&#x000A;<p>To use <code>PromiseV2</code>, <code>require &quot;promise/v2&quot;</code> and call <code>PromiseV2</code>.</p>&#x000A;&#x000A;<p><code>Promise</code> will become aliased to <code>PromiseV2</code> instead of how it&#39;s currently aliased to <code>PromiseV1</code> in Opal 2.0. You can <code>require &quot;promise/v1&quot;</code> and call <code>PromiseV1</code> if you are certain that you want to stay with the old Promise. <a href="https://github.com/opal/opal/issues/2231">We will take a similar approach to redesigning other APIs</a> (like <code>NativeV2</code>, <code>BufferV2</code>, etc.) in the upcoming minor releases.</p>&#x000A;&#x000A;<p><em>The libraries in our ecosystem will soon be updated to use <code>PromiseV2</code> if it&#39;s loaded instead of the <code>PromiseV1</code>. Do note, that <code>PromiseV1</code> and <code>PromiseV2</code> aren&#39;t to be mixed together, in your application you should pick one or the other. We suggest using Promises in your libraries this way:</em></p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="k">module</span> <span class="nn">YourApp</span>&#x000A;  <span class="no">Promise</span> <span class="o">=</span> <span class="k">defined?</span><span class="p">(</span><span class="no">PromiseV2</span><span class="p">)</span> <span class="p">?</span> <span class="no">PromiseV2</span> <span class="p">:</span> <span class="no">Promise</span>&#x000A;&#x000A;  <span class="k">def</span> <span class="nf">using_promise</span>&#x000A;    <span class="no">Promise</span><span class="p">.</span><span class="nf">value</span><span class="p">(</span><span class="kp">true</span><span class="p">).</span><span class="nf">then</span> <span class="k">do</span>&#x000A;      <span class="o">...</span>&#x000A;    <span class="k">end</span>&#x000A;  <span class="k">end</span>&#x000A;<span class="k">end</span>&#x000A;</code></pre></div>&#x000A;<h2 id="other-changes-and-statistics">Other changes and statistics</h2>&#x000A;&#x000A;<h3 id="performance">Performance</h3>&#x000A;&#x000A;<p>Based on the statistics we made, Opal (both the runtime and the compiler) used to decrease in performance the more compatible with Ruby it became. This is not the case this time, we made quite a lot of performance improvements in this release. Opal 1.2 is more performant than 1.1 for many real world uses, and similar in performance to Opal 1.0. We will try to continue this trend in the future releases.</p>&#x000A;&#x000A;<h3 id="issues">Issues</h3>&#x000A;&#x000A;<p>Opal 1.2 is mostly a bugfix release. We fixed a lot of long-standing bugs. Maybe it&#39;s time to try Opal again? Here we have a chart:</p>&#x000A;&#x000A;<p><a href="/blog/2021/08/09/opal-1-2/issues-chart.png"><img src="/blog/2021/08/09/opal-1-2/issues-chart.png" alt="Issues chart" /></a></p>&#x000A;&#x000A;<h2 id="roadmap">Roadmap</h2>&#x000A;&#x000A;<p>We didn&#39;t fully meet the expectations of the roadmap as described in the Opal 1.0 post. Better than postpone the Opal 1.1 release, we decided to release what we have (and we had quite a lot).</p>&#x000A;&#x000A;<p>We have partially accomplished the code minification with an external (and experimental) <a href="https://github.com/hmdne/opal-optimizer">opal-optimizer gem</a>.</p>&#x000A;&#x000A;<p>There are solutions for Webpack integration, but those aren&#39;t upstream. We want to gladly invite anyone interested to contribute during the Opal 1.3 development phase which we mainly want to dedicate towards accomplishment of that goal.</p>&#x000A;&#x000A;<p>Opal 2.0 will hide Ruby methods behind a (JavaScript) symbol wall increasing compatibility with JavaScript libraries.</p>&#x000A;&#x000A;<p><code>String</code> are still immutable, (<code>Regexp</code>s are still somewhat incompatible)[https://opalrb.com/blog/2021/06/26/webassembly-and-advanced-regexp-with-opal/], asynchronous methods can&#39;t be implemented in a Ruby synchronous style. Those features we plan for Opal 2.0 or later on, as they will require a lot of changes.</p>&#x000A;&#x000A;<h2 id="ecosystem">Ecosystem</h2>&#x000A;&#x000A;<p>All Gems from the opal-* namespace are compatible with the Opal 1.2 release. The new opal-browser version is up for a release soon, until then, we recommend you use the <code>master</code> branch!</p>&#x000A;&#x000A;<p>From the outside of the core ecosystem, we have seen quite a lot of development, there are at least a few very interesting things that were done using Opal:</p>&#x000A;&#x000A;<ul>&#x000A;<li><a href="https://github.com/AndyObtiva/glimmer-dsl-opal">Glimmer DSL for Opal</a> - an (experimental) platform-agnostic (web with Opal, desktop with SWT or Tk) toolkit for graphical applications. Write once, run anywhere!</li>&#x000A;<li><a href="https://18xx.games">18xx.games</a> - a website where you can play async or real-time 18xx games</li>&#x000A;<li><a href="https://hyperstack.org/">Hyperstack</a> - a well documented and stable Ruby DSL for wrapping React and ReactRouter as well as any JavaScript library or component. No need to learn JavaScript!</li>&#x000A;</ul>&#x000A;&#x000A;<h2 id="conclusion">Conclusion</h2>&#x000A;&#x000A;<p>If you are unsure yet, Opal doesn&#39;t just <em>feel</em> like Ruby, it <em>IS</em> Ruby. It is absolutely possible to create a website with pure Ruby and not a single line of JavaScript (and a good performance!). In the advent of solutions like Hotwire, Opal goes a step higher and allows you to create fully isomorphic websites (with a fully fledged support for human language alike DSLs). Forget context switches from JavaScript, TypeScript, or even CoffeeScript to Ruby when you develop a feature, it&#39;s all Ruby!</p>&#x000A;&#x000A;<p><em>If you are daring, you can even hook up the Opal compiler - written in a very clean Ruby - to add macro facilities to accommodate your application!</em></p>&#x000A;</div>
+</article>
+
+  </div>
+
+  </div>
+
+  <footer>
+  <a href="/license"><i class="ion-unlocked"></i> License</a> ·
+  <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
+</footer>
+
+
+  <script>
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)?.parentElement.classList.add("active")
+  </script>
+
+  <!-- Algolia -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: 'cf08db1eca77cb92ca34e24a86430bcb',
+      indexName: 'opalrb',
+      inputSelector: '#search-form input[type="search"]',
+      debug: false // Set debug to true if you want to inspect the dropdown
+    });
+  </script>
+</body>
+</html>

@@ -6,10 +6,10 @@
 
   <title>Try Opal: Browser compiler and REPL</title>
 
-  <link href="/assets/application-9db9bab64149be06d09e3390c1f7e70d7a98cfcf86f32f8e777c14fcac0ccb27.css" rel="stylesheet" />
+  <link href="/assets/application-915b7e3cafe6e192dee011fa09837b2af85b7e1de3dbb52fd1413d46dd2dca0e.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-  <script src="/assets/application-ebc9a3fff8eae3470a6b7b27753a921aceae8d2254be48253cd1e932e9081355.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+  <script src="/assets/application-74994a7410818947c294a5f44b8f7916d5e1c773e93a5a2c83db9c06d516fd80.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
 Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
 
   <!-- Algolia -->
@@ -62,8 +62,8 @@ GitHub
 </a>
 </li>
 <li>
-<a href='https://rubygems.org/gems/opal/versions/1.1.1' style='opacity: 0.5;'>
-v1.1.1
+<a href='https://rubygems.org/gems/opal/versions/1.8.1' style='opacity: 0.5;'>
+v1.8.1
 </a>
 </li>
 </ul>
@@ -83,9 +83,9 @@ v1.1.1
 
 
   <div class="container">
-    <script src="/assets/load-parser-c2d7983d1e75bd693a8ce042740f23164970071da2fad2c9acffafcd2b4a94be.js" async="async" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+    <script src="/assets/load-parser-2f3ba30138edaf9916f78766b8388e4d31bf513da551ef96326e75a3e2a26dd3.js" async="async" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
 Opal.require(&quot;load-parser&quot;);;console.log('loaded load-parser')"></script>
-<script src="/assets/try-5477aabb9c68ff9317f8b76c1d857bbed128362f77d3cc95851b3a45fad1c575.js" async="async" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+<script src="/assets/try-be06c51740f19e9ba0c35fdc4c49457e10319b2d3c769911818d9866e87cd107.js" async="async" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
 Opal.require(&quot;try&quot;);;console.log('loaded try')"></script>
 
 <div class="page-header">
@@ -116,7 +116,7 @@ Opal.require(&quot;try&quot;);;console.log('loaded try')"></script>
   <div class="col-md-12">
     <summary><a href="#" class="btn disabled">Compiled Javascript <small>(click to expand)</small></a></summary>
     <p></p>
-    <div id="viewer" class="well" style="padding:0; height: 10rem; overflow: auto" onclick="$(this).css('height', '400px')">
+    <div id="viewer" class="well" style="padding:0; height: 10rem; overflow: auto" onclick="this.style.height = '400px'">
     </div>
   </div>
 </div>
@@ -131,8 +131,7 @@ Opal.require(&quot;try&quot;);;console.log('loaded try')"></script>
 
 
   <script>
-    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)
-      .parentElement.classList.add("active")
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)?.parentElement.classList.add("active")
   </script>
 
   <!-- Algolia -->

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Racc
+  
+    &mdash; stdlib (Opal v1.8.0.beta1)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Racc";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">Racc</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Racc
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/stdlib/racc/parser.rb<span class="defines">,<br />
+  opal/stdlib/racc/parser.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Racc is a LALR(1) parser generator.
+It is written in Ruby itself, and generates Ruby programs.</p>
+
+<p>== Command-line Reference</p>
+
+<pre class="code ruby"><code class="ruby">racc [-o&lt;var&gt;filename&lt;/var&gt;] [--output-file=&lt;var&gt;filename&lt;/var&gt;]
+     [-e&lt;var&gt;rubypath&lt;/var&gt;] [--embedded=&lt;var&gt;rubypath&lt;/var&gt;]
+     [-v] [--verbose]
+     [-O&lt;var&gt;filename&lt;/var&gt;] [--log-file=&lt;var&gt;filename&lt;/var&gt;]
+     [-g] [--debug]
+     [-E] [--embedded]
+     [-l] [--no-line-convert]
+     [-c] [--line-convert-all]
+     [-a] [--no-omit-actions]
+     [-C] [--check-only]
+     [-S] [--output-status]
+     [--version] [--copyright] [--help] &lt;var&gt;grammarfile&lt;/var&gt;
+</code></pre>
+
+<p>[+filename+]
+  Racc grammar file. Any extension is permitted.
+[-o+outfile+, --output-file=+outfile+]
+  A filename for output. default is &lt;+filename+&gt;.tab.rb
+[-O+filename+, --log-file=+filename+]
+  Place logging output in file +filename+.
+  Default log file name is &lt;+filename+&gt;.output.
+[-e+rubypath+, --executable=+rubypath+]
+  output executable file(mode 755). where +path+ is the Ruby interpreter.
+[-v, --verbose]
+  verbose mode. create +filename+.output file, like yacc&#39;s y.output file.
+[-g, --debug]
+  add debug code to parser class. To display debugging information,
+  use this &#39;-g&#39; option and set @yydebug true in parser class.
+[-E, --embedded]
+  Output parser which doesn&#39;t need runtime files (racc/parser.rb).
+[-C, --check-only]
+  Check syntax of racc grammar file and quit.
+[-S, --output-status]
+  Print messages time to time while compiling.
+[-l, --no-line-convert]
+  turns off line number converting.
+[-c, --line-convert-all]
+  Convert line number of actions, inner, header and footer.
+[-a, --no-omit-actions]
+  Call all actions, even if an action is empty.
+[--version]
+  print Racc version and quit.
+[--copyright]
+  Print copyright and quit.
+[--help]
+  Print usage and quit.</p>
+
+<p>== Generating Parser Using Racc</p>
+
+<p>To compile Racc grammar file, simply type:</p>
+
+<p>$ racc parse.y</p>
+
+<p>This creates Ruby script file &quot;parse.tab.y&quot;. The -o option can change the output filename.</p>
+
+<p>== Writing A Racc Grammar File</p>
+
+<p>If you want your own parser, you have to write a grammar file.
+A grammar file contains the name of your parser class, grammar for the parser,
+user code, and anything else.
+When writing a grammar file, yacc&#39;s knowledge is helpful.
+If you have not used yacc before, Racc is not too difficult.</p>
+
+<p>Here&#39;s an example Racc grammar file.</p>
+
+<p>class Calcparser
+  rule
+    target: exp { print val[0] }</p>
+
+<pre class="code ruby"><code class="ruby">exp: exp &#39;+&#39; exp
+   | exp &#39;*&#39; exp
+   | &#39;(&#39; exp &#39;)&#39;
+   | NUMBER
+</code></pre>
+
+<p>end</p>
+
+<p>Racc grammar files resemble yacc files.
+But (of course), this is Ruby code.
+yacc&#39;s $$ is the &#39;result&#39;, $0, $1... is
+an array called &#39;val&#39;, and $-1, $-2... is an array called &#39;_values&#39;.</p>
+
+<p>See the File Reference[rdoc-ref:lib/racc/rdoc/grammar.en.rdoc] for
+more information on grammar files.</p>
+
+<p>== Parser</p>
+
+<p>Then you must prepare the parse entry method. There are two types of
+parse methods in Racc, Racc::Parser#do_parse and Racc::Parser#yyparse</p>
+
+<p>Racc::Parser#do_parse is simple.</p>
+
+<p>It&#39;s yyparse() of yacc, and Racc::Parser#next_token is yylex().
+This method must returns an array like [TOKENSYMBOL, ITS_VALUE].
+EOF is [false, false].
+(TOKENSYMBOL is a Ruby symbol (taken from String#intern) by default.
+If you want to change this, see the grammar reference.</p>
+
+<p>Racc::Parser#yyparse is little complicated, but useful.
+It does not use Racc::Parser#next_token, instead it gets tokens from any iterator.</p>
+
+<p>For example, <code>yyparse(obj, :scan)</code> causes
+calling +obj#scan+, and you can return tokens by yielding them from +obj#scan+.</p>
+
+<p>== Debugging</p>
+
+<p>When debugging, &quot;-v&quot; or/and the &quot;-g&quot; option is helpful.</p>
+
+<p>&quot;-v&quot; creates verbose log file (.output).
+&quot;-g&quot; creates a &quot;Verbose Parser&quot;.
+Verbose Parser prints the internal status when parsing.
+But it&#39;s <em>not</em> automatic.
+You must use -g option and set +@yydebug+ to +true+ in order to get output.
+-g option only creates the verbose parser.</p>
+
+<p>=== Racc reported syntax error.</p>
+
+<p>Isn&#39;t there too many &quot;end&quot;?
+grammar of racc file is changed in v0.10.</p>
+
+<p>Racc does not use &#39;%&#39; mark, while yacc uses huge number of &#39;%&#39; marks..</p>
+
+<p>=== Racc reported &quot;XXXX conflicts&quot;.</p>
+
+<p>Try &quot;racc -v xxxx.y&quot;.
+It causes producing racc&#39;s internal log file, xxxx.output.</p>
+
+<p>=== Generated parsers does not work correctly</p>
+
+<p>Try &quot;racc -g xxxx.y&quot;.
+This command let racc generate &quot;debugging parser&quot;.
+Then set @yydebug=true in your parser.
+It produces a working log of your parser.</p>
+
+<p>== Re-distributing Racc runtime</p>
+
+<p>A parser, which is created by Racc, requires the Racc runtime module;
+racc/parser.rb.</p>
+
+<p>Ruby 1.8.x comes with Racc runtime module,
+you need NOT distribute Racc runtime files.</p>
+
+<p>If you want to include the Racc runtime module with your parser.
+This can be done by using &#39;-E&#39; option:</p>
+
+<p>$ racc -E -omyparser.rb myparser.y</p>
+
+<p>This command creates myparser.rb which `includes&#39; Racc runtime.
+Only you must do is to distribute your parser file (myparser.rb).</p>
+
+<p>Note: parser.rb is LGPL, but your parser is not.
+Your own parser is completely yours.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Racc/ParseError.html" title="Racc::ParseError (class)">ParseError</a></span>, <span class='object_link'><a href="Racc/Parser.html" title="Racc::Parser (class)">Parser</a></span>
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="Racc_No_Extensions-constant" class="">Racc_No_Extensions =
+          <div class="docstring">
+  <div class="discussion">
+    <p>:nodoc:</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='kw'>false</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+
+
+</div>
+
+      <div id="footer">
+  Generated on 10/12/23 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.28 (ruby-2.7.5).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: __JS__::Opal
+  
+    &mdash; corelib (Opal v1.5.1)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "__JS__::Opal";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../_index.html">Index (O)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../__JS__.html" title="__JS__ (module)">__JS__</a></span></span>
+     &raquo; 
+    <span class="title">Opal</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: __JS__::Opal
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/opal/corelib/runtime.js.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>This module is just a placeholder for showing the documentation of the
+internal JavaScript runtime. The methods you&#39;ll find defined below
+are actually JavaScript functions attached to the <code>Opal</code> global object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_get_name-class_method" title="const_get_name (class method)">.<strong>const_get_name</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Get the constant in the scope of the current cref.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_lookup_ancestors-class_method" title="const_lookup_ancestors (class method)">.<strong>const_lookup_ancestors</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Walk up the ancestors chain looking for the constant.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_lookup_nesting-class_method" title="const_lookup_nesting (class method)">.<strong>const_lookup_nesting</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Walk up the nesting array looking for the constant.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_lookup_Object-class_method" title="const_lookup_Object (class method)">.<strong>const_lookup_Object</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Walk up Object&#39;s ancestors chain looking for the constant, but only if cref is missing or a module.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_missing-class_method" title="const_missing (class method)">.<strong>const_missing</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Call const_missing if nothing else worked.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_dummy_iclass-class_method" title="create_dummy_iclass (class method)">.<strong>create_dummy_iclass</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Dummy iclass doesn&#39;t receive updates when the module gets a new method.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#top_define_method-class_method" title="top_define_method (class method)">.<strong>top_define_method</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Foward calls to define_method on the top object to Object.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="const_get_name-class_method">
+  
+    .<strong>const_get_name</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Get the constant in the scope of the current cref</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_get_name'>const_get_name</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function const_get_name(cref, name) {
+     if (cref) {
+       if (cref.$$const[name] != null) { return cref.$$const[name]; }
+       if (cref.$$autoload &amp;&amp; cref.$$autoload[name]) {
+         return handle_autoload(cref, name);
+       }
+     }
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="const_lookup_ancestors-class_method">
+  
+    .<strong>const_lookup_ancestors</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Walk up the ancestors chain looking for the constant</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_lookup_ancestors'>const_lookup_ancestors</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function const_lookup_ancestors(cref, name) {
+     var i, ii, ancestors;
+   
+     if (cref == null) return;
+   
+     ancestors = Opal.ancestors(cref);
+   
+     for (i = 0, ii = ancestors.length; i &lt; ii; i++) {
+       if (ancestors[i].$$const &amp;&amp; $has_own.call(ancestors[i].$$const, name)) {
+         return ancestors[i].$$const[name];
+       } else if (ancestors[i].$$autoload &amp;&amp; ancestors[i].$$autoload[name]) {
+         return handle_autoload(ancestors[i], name);
+       }
+     }
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="const_lookup_nesting-class_method">
+  
+    .<strong>const_lookup_nesting</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Walk up the nesting array looking for the constant</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_lookup_nesting'>const_lookup_nesting</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function const_lookup_nesting(nesting, name) {
+     var i, ii, constant;
+   
+     if (nesting.length === 0) return;
+   
+     // If the nesting is not empty the constant is looked up in its elements
+     // and in order. The ancestors of those elements are ignored.
+     for (i = 0, ii = nesting.length; i &lt; ii; i++) {
+       constant = nesting[i].$$const[name];
+       if (constant != null) {
+         return constant;
+       } else if (nesting[i].$$autoload &amp;&amp; nesting[i].$$autoload[name]) {
+         return handle_autoload(nesting[i], name);
+       }
+     }
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="const_lookup_Object-class_method">
+  
+    .<strong>const_lookup_Object</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Walk up Object&#39;s ancestors chain looking for the constant,
+but only if cref is missing or a module.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_lookup_Object'>const_lookup_Object</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function const_lookup_Object(cref, name) {
+     if (cref == null || cref.$$is_module) {
+       return const_lookup_ancestors(_Object, name);
+     }
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="const_missing-class_method">
+  
+    .<strong>const_missing</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Call const_missing if nothing else worked</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_missing'>const_missing</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function const_missing(cref, name, skip_missing) {
+     if (!skip_missing) {
+       return (cref || _Object).$const_missing(name);
+     }
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_dummy_iclass-class_method">
+  
+    .<strong>create_dummy_iclass</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Dummy iclass doesn&#39;t receive updates when the module gets a new method.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_dummy_iclass'>create_dummy_iclass</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function create_dummy_iclass(module) {
+     var iclass = {},
+         proto = module.$$prototype;
+   
+     if (proto.hasOwnProperty(&#39;$$dummy&#39;)) {
+       proto = proto.$$define_methods_on;
+     }
+   
+     var props = Object.getOwnPropertyNames(proto),
+         length = props.length, i;
+   
+     for (i = 0; i &lt; length; i++) {
+       var prop = props[i];
+       $prop(iclass, prop, proto[prop]);
+     }
+   
+     $prop(iclass, &#39;$$iclass&#39;, true);
+     $prop(iclass, &#39;$$module&#39;, module);
+   
+     return iclass;
+   }
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="top_define_method-class_method">
+  
+    .<strong>top_define_method</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Foward calls to define_method on the top object to Object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/runtime.js.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_top_define_method'>top_define_method</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+<span class='heredoc_beg'>&lt;&lt;-JAVASCRIPT</span>
+<span class='tstring_content'>   function top_define_method() {
+     var args = Opal.slice.call(arguments);
+     var block = top_define_method.$$p;
+     delete top_define_method.$$p;
+     return Opal.send(_Object, &#39;define_method&#39;, args, block)
+   };
+</span><span class='heredoc_end'>JAVASCRIPT
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 07/20/22 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.26 (ruby-2.7.5).
+</div>
+
+    </div>
+  </body>
+</html>

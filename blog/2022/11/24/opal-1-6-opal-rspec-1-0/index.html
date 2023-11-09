@@ -1,0 +1,135 @@
+<!doctype html>
+<html style="background-color: #f5f5f5; min-height: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Opal 1.6 and Opal-RSpec 1.0</title>
+
+  <link href="/assets/application-915b7e3cafe6e192dee011fa09837b2af85b7e1de3dbb52fd1413d46dd2dca0e.css" rel="stylesheet" />
+  <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+  <script src="/assets/application-74994a7410818947c294a5f44b8f7916d5e1c773e93a5a2c83db9c06d516fd80.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
+
+  <!-- Algolia -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="blog blog_2022 blog_2022_11 blog_2022_11_24 blog_2022_11_24_opal-1-6-opal-rspec-1-0 blog_2022_11_24_opal-1-6-opal-rspec-1-0_index">
+  <nav class='navbar navbar-default opal-nav' role='navigation'>
+<div class='container'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+<img height='22' src='https://secure.gravatar.com/avatar/88298620949a6534d403da2e356c9339?s=420&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png' style='margin-top:-10%;' width='22'>
+Opal
+</a>
+<button class='navbar-toggle' data-target='#opal-navbar' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+</div>
+<div class='navbar-collapse collapse' id='opal-navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href='/try'>
+<i class='ion-ios-compose'></i>
+Try
+</a>
+</li>
+<li>
+<a href='/blog'>
+<i class='ion-ios-chatboxes'></i>
+Blog
+</a>
+</li>
+<li>
+<a href='/docs'>
+<i class='ion-ios-copy'></i>
+Documentation
+</a>
+</li>
+<li>
+<a href='/libraries'>
+<i class='ion-map'></i>
+Libraries
+</a>
+</li>
+<li>
+<a href='https://github.com/opal/opal#readme'>
+<i class='ion-social-github'></i>
+GitHub
+</a>
+</li>
+<li>
+<a href='https://rubygems.org/gems/opal/versions/1.8.1' style='opacity: 0.5;'>
+v1.8.1
+</a>
+</li>
+</ul>
+<ul class='nav navbar-right'>
+<li class='search-bar'>
+<form id='search-form'>
+<input placeholder='Search docs &amp; guides' type='search'>
+<button title='Clear the search query.' type='reset'>
+&times;
+</button>
+</form>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+
+  <div class="container">
+      <div class="container col-sm-8">
+    <div class='blog-title'>
+<h1>
+<a href='/blog'>The Opal Blog</a>
+</h1>
+</div>
+
+    <article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href=''>
+Opal 1.6 and Opal-RSpec 1.0
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne, elia, janbiedermann
+<br>
+November 24, 2022
+</div>
+</header>
+<div class='blog-post-body'>
+<p>We are happy to announce that Opal 1.6 and Opal-RSpec 1.0 are out!</p>&#x000A;&#x000A;<p>Opal is a Ruby (3.1) to JavaScript (ES5) compiler allowing you to write frontend code in pure Ruby and have it translated to clean and efficient JavaScript. It also includes a highly compatible core library that includes all the methods you&#39;ve come to love. All this with a robust support of source maps, so you can debug Ruby code, not JavaScript in your Web Console. It can be used both to create websites entirely in Ruby (using <a href="https://github.com/opal/opal-browser">Opal-Browser</a>, or <a href="https://opalrb.com/libraries/">ports of known JavaScript libraries</a>) and to port existing Ruby libraries to JavaScript, to be ran both in Node.JS and in web browsers (and other JavaScript environments).</p>&#x000A;&#x000A;<p>Opal-RSpec is an Opal port of <a href="https://rspec.info/">RSpec</a>, a well known Ruby testing tool, allowing you to easily test your Ruby applications in browser and in Node, just like you can do so with MRI.</p>&#x000A;&#x000A;<p>This release of Opal is focused primarily on improving upon MRI compatibility. We now fully support freezing and also we now have a new robust and hackable control flow instruction handling implementation (think: <code>break</code>, <code>next</code>, <code>return</code>...). Also, Windows support has been improved and Opal gained a parallel compile support - significantly improving compile times on multicore systems. In addition, the <code>await</code> subsystem is no longer experimental.</p>&#x000A;&#x000A;<p>Try it now on <a href="https://opalrb.com/try">opalrb.com/try</a>, or get started instantly with no further steps required (except for installing Ruby):</p>&#x000A;<div class="highlight"><pre class="highlight plaintext"><code>gem install opal&#x000A;# Try either of the following examples:&#x000A;opal -e 'puts "Hello world!"'&#x000A;opal -ce 'puts "Hello world!"' &gt; hello_world.js; node hello_world.js&#x000A;opal -OcEe 'puts "Hello world!"'&#x000A;# Or run it in a web browser:&#x000A;bundle init&#x000A;bundle add opal-browser puma&#x000A;bundle add rack -v '&lt; 3'&#x000A;bundle exec opal -Rserver -qopal-browser -rbrowser -e '$document.write("Hello world!")'&#x000A;</code></pre></div>&#x000A;<div id="continue-reading"></div>&#x000A;&#x000A;<h2 id="freeze">Freeze</h2>&#x000A;&#x000A;<p>There are a couple of features that we wouldn&#39;t think Opal would be able to support with the current approach of transpiling Ruby code to JavaScript. The most known one is mutable strings, which we can&#39;t easily support, because we rely on a notion of sharing the same type between the Ruby and JavaScript environment (and JavaScript has immutable strings...).</p>&#x000A;&#x000A;<p>One of those features is freezing. Thanks to @janbiedermann, we now have a robust freezing system across the codebase, using carefully crafted <code>Object.seal</code> statements. With this you can harden your codebase to ensure that JavaScript libraries don&#39;t mess with your objects and that you are using the Ruby gems in Opal correctly as well.</p>&#x000A;&#x000A;<p><em>We have working <a href="https://github.com/opal/opal/pull/2358">proof-of-concept patches</a> to make mutable strings work, but they still need some time to mature...</em></p>&#x000A;&#x000A;<h2 id="robust-control-flow-instructions-system-aka-closure-tracking">Robust control flow instructions system (aka closure tracking)</h2>&#x000A;&#x000A;<p>Most of the time Opal gets control flow instructions (namely: <code>break</code>, <code>next</code>, <code>return</code>, <code>redo</code>, <code>retry</code>) correctly. Many Ruby gems can work with Opal verbatim, perhaps just needing easy adjustments due to our lack of mutable strings. But sometimes, for unknown reasons, we can get a <code>break</code> wrong and have no easy answer why a Gem doesn&#39;t work. Well, no more.</p>&#x000A;&#x000A;<p>Introducing closure tracking: we did a refactor of our codebase, moving (unifying and heavily improving) all the control flow instructions logic in <a href="https://github.com/opal/opal/blob/master/lib/opal/nodes/closure.rb">a single 250 line file</a>. Doing this, allowed us to easily close 4 old issues and get many more <a href="https://github.com/ruby/mspec">MSpec</a> <a href="https://github.com/ruby/spec">Ruby Specs</a> passing.</p>&#x000A;&#x000A;<p>We are aware that this is still not perfect and perhaps we haven&#39;t covered some edge cases. But the simplification of the code will easily allow us to improve upon those in the future.</p>&#x000A;&#x000A;<p><em>If you update your code to Opal 1.6, you may encounter some issues if you relied on old behavior</em></p>&#x000A;&#x000A;<h2 id="windows-improvements">Windows improvements</h2>&#x000A;&#x000A;<p>For those of you, that use Windows as your development platform, we have prepared a lot of bugfixes to support all the development tools we provide. Also the compiler and generated source maps treat Windows line endings correctly. We also now run full test suites on Windows machines to ensure Opal remains fully working on Windows in the future.</p>&#x000A;&#x000A;<h2 id="runtime-performance">Runtime performance</h2>&#x000A;&#x000A;<p>There will be a significant performance improvement for code or DSLs that use a lot of blocks.</p>&#x000A;&#x000A;<h2 id="parallel-compilation-aka-prefork">Parallel compilation (aka prefork)</h2>&#x000A;&#x000A;<p>In this release we introduce parallel compilation for <code>Opal::Builder</code>, which will cause our Ruby process to fork a number (3/4 of your CPU core count by default) of processes that will compile every file of your application in parallel.</p>&#x000A;&#x000A;<p>Until recently, it used to be a big problem with Opal, that compile times were slow. Because a large part of the Opal core and standard libraries are also written in Ruby, those are also needed to be compiled with your application. We used to do most of our Opal application development using Sprockets, which supported caching (albeit with some unfortunate bugs and caveats...) and since Opal 1.3 we have a robust caching support everywhere, without needing Sprockets.</p>&#x000A;&#x000A;<p>Truth be told, Sprockets is now moving to maintenance mode and so is Opal-Sprockets (we are still committed to supporting it, because we understand it&#39;s widely used in production). In the meantime we are focusing on <code>Opal::Builder</code>, which is an alternative implementation for building JavaScript files from our Ruby code. This is the class that is used by the <code>opal</code> CLI command, but also <code>Opal::SimpleServer</code> and also it can be used directly to compile your JavaScript inside a <code>Rakefile</code>.</p>&#x000A;&#x000A;<p><em>This feature doesn&#39;t work on Windows due to a lack of support for forking... Also it doesn&#39;t work in JavaScript environments, for the same reason... But due to a pluggable nature of this subsystem, it should be feasible to implement the same thing using some other approach on those platforms.</em></p>&#x000A;&#x000A;<h2 id="opal-rspec-1-0">Opal-RSpec 1.0</h2>&#x000A;&#x000A;<p>Opal-RSpec has been updated to now use the latest RSpec version. A huge part of Opal-RSpec has been rewritten. We now support diffs and provide a source fragment. We also now have a robust support for async tests - <a href="https://opalrb.com/docs/guides/v1.5.1/async">either using promises, or using await facility of Opal</a>. This also means there&#39;s a slight incompatibility, because we need to use <code>PromiseV2</code> not <code>PromiseV1</code> (which as of yet is still a default <code>Promise</code> implementation).</p>&#x000A;&#x000A;<p>We have decided to break compatibility with anything lesser than Opal v1.6 - if you still depend on an older Opal version, you can keep using Opal-RSpec v0.8 and we will still accept patches for this version.</p>&#x000A;&#x000A;<p><em>Please take a look at the <a href="https://github.com/opal/opal-rspec/blob/master/README.md">README</a> to take note of other incompatible changes since v0.8.</em></p>&#x000A;&#x000A;<h2 id="conclusion">Conclusion</h2>&#x000A;&#x000A;<p>As always this version brings a lot of other bug fixes and small improvements, please have a look at the full changelog. If you want to know more, have questions, or want to start contributing, please <a href="https://slack.opalrb.com">join the Slack channel</a> and ask around, we&#39;re always happy to welcome new people to the community!</p>&#x000A;&#x000A;<hr>&#x000A;&#x000A;<h3 id="resources-opal">Resources (Opal)</h3>&#x000A;&#x000A;<ul>&#x000A;<li><a href="https://github.com/opal/opal/releases/tag/v1.6.0">Changelog for v1.6.0</a></li>&#x000A;<li><a href="https://github.com/opal/opal/compare/v1.5.1...v1.6.0">List of commits</a> / <a href="https://github.com/opal/opal/compare/v1.5.1...v1.6.0.diff">raw diff</a></li>&#x000A;<li><a href="https://opalrb.com">Updated website</a></li>&#x000A;<li><a href="http://opalrb.com/docs/">Documentation</a></li>&#x000A;</ul>&#x000A;&#x000A;<h3 id="resources-opal-rspec">Resources (Opal-RSpec)</h3>&#x000A;&#x000A;<ul>&#x000A;<li><a href="https://github.com/opal/opal-rspec">Opal-RSpec</a></li>&#x000A;<li><a href="https://github.com/opal/opal-rspec/blob/master/README.md">README</a></li>&#x000A;</ul>&#x000A;</div>
+</article>
+
+  </div>
+
+  </div>
+
+  <footer>
+  <a href="/license"><i class="ion-unlocked"></i> License</a> ·
+  <a href="https://github.com/opal/opal/graphs/contributors"><i class="ion-fork-repo"></i> Contributors</a>
+</footer>
+
+
+  <script>
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)?.parentElement.classList.add("active")
+  </script>
+
+  <!-- Algolia -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: 'cf08db1eca77cb92ca34e24a86430bcb',
+      indexName: 'opalrb',
+      inputSelector: '#search-form input[type="search"]',
+      debug: false // Set debug to true if you want to inspect the dropdown
+    });
+  </script>
+</body>
+</html>

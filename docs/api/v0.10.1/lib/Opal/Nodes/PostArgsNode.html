@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Opal::Nodes::PostArgsNode
+  
+    &mdash; lib (Opal v0.10.1)
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Opal::Nodes::PostArgsNode";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Opal.html" title="Opal (module)">Opal</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Nodes.html" title="Opal::Nodes (module)">Nodes</a></span></span>
+     &raquo; 
+    <span class="title">PostArgsNode</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Opal::Nodes::PostArgsNode
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Base.html" title="Opal::Nodes::Base (class)">Base</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Base.html" title="Opal::Nodes::Base (class)">Base</a></span></li>
+          
+            <li class="next">Opal::Nodes::PostArgsNode</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/lib/opal/nodes/args/post_args.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Node responsible for extracting post-splat args</p>
+
+<ol>
+<li><p>There can be some arguments after the splat, this is why this node exist.
+In this case if:
+a. JS arguments length &gt; args sexp length - then our splat has some items
+   and we know how many of them should come to splat
+b. JS arguments length &lt; args sexp length - then our splat is blank</p></li>
+<li><p>Super important:
+a) optional arg always goes BEFORE the rest arg
+b) optional args always appear in the sequence (i.e. you can&#39;t have def m(a=1,b,c=1))
+c) precedence order:
+    1. required arg (norm arg, mlhs arg)
+    2. optional argument (optarg)
+    3. splat/rest argument (restarg)
+These statements simplify everything, keep them in mind.</p></li>
+<li><p>post_args here <em>always</em> have the same structure:</p>
+
+<ol>
+<li>list of required arguments (only for mlhs, can be blank)</li>
+<li>list of optargs (only for post-args, can be blank)</li>
+<li>restarg (for both mlhs/post-args, can be nil)</li>
+<li>list of required args (for both mlhs/post-args, can be blank)</li>
+</ol></li>
+</ol>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Helpers.html" title="Opal::Nodes::Helpers (module)">Helpers</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Helpers.html#BASIC_IDENTIFIER_RULES-constant" title="Opal::Nodes::Helpers::BASIC_IDENTIFIER_RULES (constant)">Helpers::BASIC_IDENTIFIER_RULES</a></span>, <span class='object_link'><a href="Helpers.html#ES3_RESERVED_WORD_EXCLUSIVE-constant" title="Opal::Nodes::Helpers::ES3_RESERVED_WORD_EXCLUSIVE (constant)">Helpers::ES3_RESERVED_WORD_EXCLUSIVE</a></span>, <span class='object_link'><a href="Helpers.html#ES51_RESERVED_WORD-constant" title="Opal::Nodes::Helpers::ES51_RESERVED_WORD (constant)">Helpers::ES51_RESERVED_WORD</a></span>, <span class='object_link'><a href="Helpers.html#IMMUTABLE_PROPS-constant" title="Opal::Nodes::Helpers::IMMUTABLE_PROPS (constant)">Helpers::IMMUTABLE_PROPS</a></span>, <span class='object_link'><a href="Helpers.html#PROTO_SPECIAL_METHODS-constant" title="Opal::Nodes::Helpers::PROTO_SPECIAL_METHODS (constant)">Helpers::PROTO_SPECIAL_METHODS</a></span>, <span class='object_link'><a href="Helpers.html#PROTO_SPECIAL_PROPS-constant" title="Opal::Nodes::Helpers::PROTO_SPECIAL_PROPS (constant)">Helpers::PROTO_SPECIAL_PROPS</a></span>, <span class='object_link'><a href="Helpers.html#RESERVED_FUNCTION_NAMES-constant" title="Opal::Nodes::Helpers::RESERVED_FUNCTION_NAMES (constant)">Helpers::RESERVED_FUNCTION_NAMES</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kwargs-instance_method" title="#kwargs (instance method)">#<strong>kwargs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>kwargs contains the list of all post-kw* arguments all of them can be processed in the first oder.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#optargs-instance_method" title="#optargs (instance method)">#<strong>optargs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>optargs contains the list of optarg arguments all of them must be populated depending on the &quot;arguments.length&quot; if we have enough arguments - we fill them, if not - we populate it with its default value For post-args: can be provided from   def m(a=1, *b)   post-args = [(:optarg, :a, (:int, 1)), (:restarg, :b)]   optargs = [(:optarg, :a, (:int, 1))] For mlhs: always blank.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#required_left_args-instance_method" title="#required_left_args (instance method)">#<strong>required_left_args</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>required_left_args contains the list of required post args like normarg or mlhs For post-args: always blank (post args always start with optarg/restarg) For mlhs: can be provided from   mlhs = (a, b, c)   required_left_args = [(:arg, :a), (:arg, :b)].</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#required_right_args-instance_method" title="#required_right_args (instance method)">#<strong>required_right_args</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>required_right_args contains the list of required post args like normarg and mlhs arg For post-args: can be provided from   def m(a=1,*b,c)   post-args = [(:optarg, :a, (:int, 1)), (:restarg, :b), (:arg, :c)]   required_right_args = [(:arg, :c)] For mlhs: can be provided from   (*a, b)   required_right_args = [(:arg, :b)].</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#restarg-instance_method" title="#restarg (instance method)">#<strong>restarg</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>returns a restarg sexp if we have enough &quot;arguments&quot; - we fill it if not - we populate it with &quot;[]&quot; For post-args: can be provided from   def m(a=1, *b)   post-args = [(:optarg, :a, (:int, 1)), (:restarg, :b)]   restarg (:restarg, :b).</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Base.html" title="Opal::Nodes::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#compiler-instance_method" title="Opal::Nodes::Base#compiler (method)">#compiler</a></span>, <span class='object_link'><a href="Base.html#type-instance_method" title="Opal::Nodes::Base#type (method)">#type</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile-instance_method" title="#compile (instance method)">#<strong>compile</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile_optarg-instance_method" title="#compile_optarg (instance method)">#<strong>compile_optarg</strong>(optarg)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile_required_arg-instance_method" title="#compile_required_arg (instance method)">#<strong>compile_required_arg</strong>(arg)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile_restarg-instance_method" title="#compile_restarg (instance method)">#<strong>compile_restarg</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_arguments-instance_method" title="#extract_arguments (instance method)">#<strong>extract_arguments</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_blank_restarg-instance_method" title="#extract_blank_restarg (instance method)">#<strong>extract_blank_restarg</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_restarg-instance_method" title="#extract_restarg (instance method)">#<strong>extract_restarg</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>  &#x21d2; PostArgsNode </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of PostArgsNode.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kwargs_sexp-instance_method" title="#kwargs_sexp (instance method)">#<strong>kwargs_sexp</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Opal::Nodes::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#add_gvar-instance_method" title="Opal::Nodes::Base#add_gvar (method)">#add_gvar</a></span>, <span class='object_link'><a href="Base.html#add_ivar-instance_method" title="Opal::Nodes::Base#add_ivar (method)">#add_ivar</a></span>, <span class='object_link'><a href="Base.html#add_local-instance_method" title="Opal::Nodes::Base#add_local (method)">#add_local</a></span>, <span class='object_link'><a href="Base.html#add_temp-instance_method" title="Opal::Nodes::Base#add_temp (method)">#add_temp</a></span>, <span class='object_link'><a href="Base.html#children-class_method" title="Opal::Nodes::Base.children (method)">children</a></span>, <span class='object_link'><a href="Base.html#children-instance_method" title="Opal::Nodes::Base#children (method)">#children</a></span>, <span class='object_link'><a href="Base.html#compile_to_fragments-instance_method" title="Opal::Nodes::Base#compile_to_fragments (method)">#compile_to_fragments</a></span>, <span class='object_link'><a href="Base.html#error-instance_method" title="Opal::Nodes::Base#error (method)">#error</a></span>, <span class='object_link'><a href="Base.html#expr-instance_method" title="Opal::Nodes::Base#expr (method)">#expr</a></span>, <span class='object_link'><a href="Base.html#expr%3F-instance_method" title="Opal::Nodes::Base#expr? (method)">#expr?</a></span>, <span class='object_link'><a href="Base.html#expr_or_nil-instance_method" title="Opal::Nodes::Base#expr_or_nil (method)">#expr_or_nil</a></span>, <span class='object_link'><a href="Base.html#fragment-instance_method" title="Opal::Nodes::Base#fragment (method)">#fragment</a></span>, <span class='object_link'><a href="Base.html#handle-class_method" title="Opal::Nodes::Base.handle (method)">handle</a></span>, <span class='object_link'><a href="Base.html#handlers-class_method" title="Opal::Nodes::Base.handlers (method)">handlers</a></span>, <span class='object_link'><a href="Base.html#has_rescue_else%3F-instance_method" title="Opal::Nodes::Base#has_rescue_else? (method)">#has_rescue_else?</a></span>, <span class='object_link'><a href="Base.html#helper-instance_method" title="Opal::Nodes::Base#helper (method)">#helper</a></span>, <span class='object_link'><a href="Base.html#in_ensure-instance_method" title="Opal::Nodes::Base#in_ensure (method)">#in_ensure</a></span>, <span class='object_link'><a href="Base.html#in_ensure%3F-instance_method" title="Opal::Nodes::Base#in_ensure? (method)">#in_ensure?</a></span>, <span class='object_link'><a href="Base.html#in_while%3F-instance_method" title="Opal::Nodes::Base#in_while? (method)">#in_while?</a></span>, <span class='object_link'><a href="Base.html#process-instance_method" title="Opal::Nodes::Base#process (method)">#process</a></span>, <span class='object_link'><a href="Base.html#push-instance_method" title="Opal::Nodes::Base#push (method)">#push</a></span>, <span class='object_link'><a href="Base.html#recv-instance_method" title="Opal::Nodes::Base#recv (method)">#recv</a></span>, <span class='object_link'><a href="Base.html#recv%3F-instance_method" title="Opal::Nodes::Base#recv? (method)">#recv?</a></span>, <span class='object_link'><a href="Base.html#s-instance_method" title="Opal::Nodes::Base#s (method)">#s</a></span>, <span class='object_link'><a href="Base.html#scope-instance_method" title="Opal::Nodes::Base#scope (method)">#scope</a></span>, <span class='object_link'><a href="Base.html#stmt-instance_method" title="Opal::Nodes::Base#stmt (method)">#stmt</a></span>, <span class='object_link'><a href="Base.html#stmt%3F-instance_method" title="Opal::Nodes::Base#stmt? (method)">#stmt?</a></span>, <span class='object_link'><a href="Base.html#truthy_optimize%3F-class_method" title="Opal::Nodes::Base.truthy_optimize? (method)">truthy_optimize?</a></span>, <span class='object_link'><a href="Base.html#unshift-instance_method" title="Opal::Nodes::Base#unshift (method)">#unshift</a></span>, <span class='object_link'><a href="Base.html#while_loop-instance_method" title="Opal::Nodes::Base#while_loop (method)">#while_loop</a></span>, <span class='object_link'><a href="Base.html#with_temp-instance_method" title="Opal::Nodes::Base#with_temp (method)">#with_temp</a></span>, <span class='object_link'><a href="Base.html#wrap-instance_method" title="Opal::Nodes::Base#wrap (method)">#wrap</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Helpers.html" title="Opal::Nodes::Helpers (module)">Helpers</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Helpers.html#current_indent-instance_method" title="Opal::Nodes::Helpers#current_indent (method)">#current_indent</a></span>, <span class='object_link'><a href="Helpers.html#empty_line-instance_method" title="Opal::Nodes::Helpers#empty_line (method)">#empty_line</a></span>, <span class='object_link'><a href="Helpers.html#indent-instance_method" title="Opal::Nodes::Helpers#indent (method)">#indent</a></span>, <span class='object_link'><a href="Helpers.html#ivar-instance_method" title="Opal::Nodes::Helpers#ivar (method)">#ivar</a></span>, <span class='object_link'><a href="Helpers.html#js_falsy-instance_method" title="Opal::Nodes::Helpers#js_falsy (method)">#js_falsy</a></span>, <span class='object_link'><a href="Helpers.html#js_truthy-instance_method" title="Opal::Nodes::Helpers#js_truthy (method)">#js_truthy</a></span>, <span class='object_link'><a href="Helpers.html#js_truthy_optimize-instance_method" title="Opal::Nodes::Helpers#js_truthy_optimize (method)">#js_truthy_optimize</a></span>, <span class='object_link'><a href="Helpers.html#line-instance_method" title="Opal::Nodes::Helpers#line (method)">#line</a></span>, <span class='object_link'><a href="Helpers.html#lvar_to_js-instance_method" title="Opal::Nodes::Helpers#lvar_to_js (method)">#lvar_to_js</a></span>, <span class='object_link'><a href="Helpers.html#mid_to_jsid-instance_method" title="Opal::Nodes::Helpers#mid_to_jsid (method)">#mid_to_jsid</a></span>, <span class='object_link'><a href="Helpers.html#property-instance_method" title="Opal::Nodes::Helpers#property (method)">#property</a></span>, <span class='object_link'><a href="Helpers.html#valid_ivar_name%3F-instance_method" title="Opal::Nodes::Helpers#valid_ivar_name? (method)">#valid_ivar_name?</a></span>, <span class='object_link'><a href="Helpers.html#valid_name%3F-instance_method" title="Opal::Nodes::Helpers#valid_name? (method)">#valid_name?</a></span>, <span class='object_link'><a href="Helpers.html#variable-instance_method" title="Opal::Nodes::Helpers#variable (method)">#variable</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Opal::Nodes::PostArgsNode (class)">PostArgsNode</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of PostArgsNode</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
+
+  <span class='ivar'>@kwargs</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@required_left_args</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@optargs</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@restarg</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@required_right_args</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="kwargs-instance_method">
+  
+    #<strong>kwargs</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>kwargs contains the list of all post-kw* arguments
+all of them can be processed in the first oder</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_kwargs'>kwargs</span>
+  <span class='ivar'>@kwargs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="optargs-instance_method">
+  
+    #<strong>optargs</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>optargs contains the list of optarg arguments
+all of them must be populated depending on the &quot;arguments.length&quot;
+if we have enough arguments - we fill them,
+if not - we populate it with its default value
+For post-args: can be provided from
+  def m(a=1, *b)
+  post-args = [(:optarg, :a, (:int, 1)), (:restarg, :b)]
+  optargs = [(:optarg, :a, (:int, 1))]
+For mlhs: always blank</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_optargs'>optargs</span>
+  <span class='ivar'>@optargs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="required_left_args-instance_method">
+  
+    #<strong>required_left_args</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>required_left_args contains the list of required post args
+like normarg or mlhs
+For post-args: always blank (post args always start with optarg/restarg)
+For mlhs: can be provided from
+  mlhs = (a, b, c)
+  required_left_args = [(:arg, :a), (:arg, :b)]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_required_left_args'>required_left_args</span>
+  <span class='ivar'>@required_left_args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="required_right_args-instance_method">
+  
+    #<strong>required_right_args</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>required_right_args contains the list of required post args
+like normarg and mlhs arg
+For post-args: can be provided from
+  def m(a=1,*b,c)
+  post-args = [(:optarg, :a, (:int, 1)), (:restarg, :b), (:arg, :c)]
+  required_right_args = [(:arg, :c)]
+For mlhs: can be provided from
+  (*a, b)
+  required_right_args = [(:arg, :b)]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_required_right_args'>required_right_args</span>
+  <span class='ivar'>@required_right_args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="restarg-instance_method">
+  
+    #<strong>restarg</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>returns a restarg sexp
+if we have enough &quot;arguments&quot; - we fill it
+if not - we populate it with &quot;[]&quot;
+For post-args: can be provided from
+  def m(a=1, *b)
+  post-args = [(:optarg, :a, (:int, 1)), (:restarg, :b)]
+  restarg (:restarg, :b)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_restarg'>restarg</span>
+  <span class='ivar'>@restarg</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="compile-instance_method">
+  
+    #<strong>compile</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compile'>compile</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_children'>children</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+  <span class='id identifier rubyid_old_working_arguments'>old_working_arguments</span> <span class='op'>=</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@sexp</span><span class='period'>.</span><span class='id identifier rubyid_meta'>meta</span><span class='lbracket'>[</span><span class='symbol'>:js_source</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_js_source'>js_source</span> <span class='op'>=</span> <span class='ivar'>@sexp</span><span class='period'>.</span><span class='id identifier rubyid_meta'>meta</span><span class='lbracket'>[</span><span class='symbol'>:js_source</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_js_source'>js_source</span><span class='embexpr_end'>}</span><span class='tstring_content'>_args</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_js_source'>js_source</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>arguments</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$post_args</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_add_temp'>add_temp</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span><span class='embexpr_end'>}</span><span class='tstring_content'> = Opal.slice.call(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_js_source'>js_source</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_inline_args'>inline_args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_js_source'>js_source</span><span class='embexpr_end'>}</span><span class='tstring_content'>.length);</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_extract_arguments'>extract_arguments</span>
+
+  <span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_kwargs_sexp'>kwargs_sexp</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_required_left_args'>required_left_args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='id identifier rubyid_compile_required_arg'>compile_required_arg</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_optargs'>optargs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_optarg'>optarg</span><span class='op'>|</span>
+    <span class='id identifier rubyid_compile_optarg'>compile_optarg</span><span class='lparen'>(</span><span class='id identifier rubyid_optarg'>optarg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_compile_restarg'>compile_restarg</span>
+
+  <span class='id identifier rubyid_required_right_args'>required_right_args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='id identifier rubyid_compile_required_arg'>compile_required_arg</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span> <span class='op'>=</span> <span class='id identifier rubyid_old_working_arguments'>old_working_arguments</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compile_optarg-instance_method">
+  
+    #<strong>compile_optarg</strong>(optarg)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compile_optarg'>compile_optarg</span><span class='lparen'>(</span><span class='id identifier rubyid_optarg'>optarg</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_var_name'>var_name</span> <span class='op'>=</span> <span class='id identifier rubyid_variable'>variable</span><span class='lparen'>(</span><span class='id identifier rubyid_optarg'>optarg</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_add_temp'>add_temp</span> <span class='id identifier rubyid_var_name'>var_name</span>
+
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>if (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_required_right_args'>required_right_args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span><span class='embexpr_end'>}</span><span class='tstring_content'>.length) {</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_indent'>indent</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_var_name'>var_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span><span class='embexpr_end'>}</span><span class='tstring_content'>.splice(0,1)[0];</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_optarg'>optarg</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compile_required_arg-instance_method">
+  
+    #<strong>compile_required_arg</strong>(arg)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compile_required_arg'>compile_required_arg</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compile_restarg-instance_method">
+  
+    #<strong>compile_restarg</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 160</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compile_restarg'>compile_restarg</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_restarg'>restarg</span>
+
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>if (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_required_right_args'>required_right_args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span><span class='embexpr_end'>}</span><span class='tstring_content'>.length) {</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_indent'>indent</span> <span class='kw'>do</span>
+      <span class='comment'># there are some items coming to the splat, extracting them
+</span>      <span class='id identifier rubyid_extract_restarg'>extract_restarg</span>
+    <span class='kw'>end</span>
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>} else {</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_indent'>indent</span> <span class='kw'>do</span>
+      <span class='comment'># splat is empty
+</span>      <span class='id identifier rubyid_extract_blank_restarg'>extract_blank_restarg</span>
+    <span class='kw'>end</span>
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_arguments-instance_method">
+  
+    #<strong>extract_arguments</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_arguments'>extract_arguments</span>
+  <span class='id identifier rubyid_found_opt_or_rest'>found_opt_or_rest</span> <span class='op'>=</span> <span class='kw'>false</span>
+
+  <span class='id identifier rubyid_children'>children</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+    <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_meta'>meta</span><span class='lbracket'>[</span><span class='symbol'>:post</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+    <span class='kw'>case</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
+    <span class='kw'>when</span> <span class='symbol'>:kwarg</span><span class='comma'>,</span> <span class='symbol'>:kwoptarg</span><span class='comma'>,</span> <span class='symbol'>:kwrestarg</span>
+      <span class='ivar'>@kwargs</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span>
+    <span class='kw'>when</span> <span class='symbol'>:restarg</span>
+      <span class='ivar'>@restarg</span> <span class='op'>=</span> <span class='id identifier rubyid_arg'>arg</span>
+      <span class='id identifier rubyid_found_opt_or_rest'>found_opt_or_rest</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>when</span> <span class='symbol'>:optarg</span>
+      <span class='ivar'>@optargs</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span>
+      <span class='id identifier rubyid_found_opt_or_rest'>found_opt_or_rest</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>when</span> <span class='symbol'>:arg</span><span class='comma'>,</span> <span class='symbol'>:mlhs</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_found_opt_or_rest'>found_opt_or_rest</span>
+        <span class='ivar'>@required_right_args</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span>
+      <span class='kw'>else</span>
+        <span class='ivar'>@required_left_args</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_arg'>arg</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_blank_restarg-instance_method">
+  
+    #<strong>extract_blank_restarg</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+187
+188
+189
+190
+191
+192
+193</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 187</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_blank_restarg'>extract_blank_restarg</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_restarg'>restarg</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_var_name'>var_name</span> <span class='op'>=</span> <span class='id identifier rubyid_variable'>variable</span><span class='lparen'>(</span><span class='id identifier rubyid_restarg'>restarg</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_add_temp'>add_temp</span> <span class='id identifier rubyid_var_name'>var_name</span>
+    <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_var_name'>var_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> = [];</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_restarg-instance_method">
+  
+    #<strong>extract_restarg</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 176</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_restarg'>extract_restarg</span>
+  <span class='id identifier rubyid_extract_code'>extract_code</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span><span class='embexpr_end'>}</span><span class='tstring_content'>.splice(0, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_working_arguments'>working_arguments</span><span class='embexpr_end'>}</span><span class='tstring_content'>.length - </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_required_right_args'>required_right_args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'>);</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_restarg'>restarg</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_var_name'>var_name</span> <span class='op'>=</span> <span class='id identifier rubyid_variable'>variable</span><span class='lparen'>(</span><span class='id identifier rubyid_restarg'>restarg</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_add_temp'>add_temp</span> <span class='id identifier rubyid_var_name'>var_name</span>
+    <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_var_name'>var_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_extract_code'>extract_code</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_line'>line</span> <span class='id identifier rubyid_extract_code'>extract_code</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="kwargs_sexp-instance_method">
+  
+    #<strong>kwargs_sexp</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+195
+196
+197</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/args/post_args.rb', line 195</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_kwargs_sexp'>kwargs_sexp</span>
+  <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:post_kwargs</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 03/13/18 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.9 (ruby-2.5.0).
+</div>
+
+    </div>
+  </body>
+</html>

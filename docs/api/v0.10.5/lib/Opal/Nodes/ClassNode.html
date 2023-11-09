@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Opal::Nodes::ClassNode
+  
+    &mdash; lib (Opal v0.10.5)
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Opal::Nodes::ClassNode";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Opal.html" title="Opal (module)">Opal</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Nodes.html" title="Opal::Nodes (module)">Nodes</a></span></span>
+     &raquo; 
+    <span class="title">ClassNode</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Opal::Nodes::ClassNode
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="ModuleNode.html" title="Opal::Nodes::ModuleNode (class)">ModuleNode</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Base.html" title="Opal::Nodes::Base (class)">Base</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="ScopeNode.html" title="Opal::Nodes::ScopeNode (class)">ScopeNode</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="ModuleNode.html" title="Opal::Nodes::ModuleNode (class)">ModuleNode</a></span></li>
+          
+            <li class="next">Opal::Nodes::ClassNode</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/lib/opal/nodes/class.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Helpers.html" title="Opal::Nodes::Helpers (module)">Helpers</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Helpers.html#BASIC_IDENTIFIER_RULES-constant" title="Opal::Nodes::Helpers::BASIC_IDENTIFIER_RULES (constant)">Helpers::BASIC_IDENTIFIER_RULES</a></span>, <span class='object_link'><a href="Helpers.html#ES3_RESERVED_WORD_EXCLUSIVE-constant" title="Opal::Nodes::Helpers::ES3_RESERVED_WORD_EXCLUSIVE (constant)">Helpers::ES3_RESERVED_WORD_EXCLUSIVE</a></span>, <span class='object_link'><a href="Helpers.html#ES51_RESERVED_WORD-constant" title="Opal::Nodes::Helpers::ES51_RESERVED_WORD (constant)">Helpers::ES51_RESERVED_WORD</a></span>, <span class='object_link'><a href="Helpers.html#IMMUTABLE_PROPS-constant" title="Opal::Nodes::Helpers::IMMUTABLE_PROPS (constant)">Helpers::IMMUTABLE_PROPS</a></span>, <span class='object_link'><a href="Helpers.html#PROTO_SPECIAL_METHODS-constant" title="Opal::Nodes::Helpers::PROTO_SPECIAL_METHODS (constant)">Helpers::PROTO_SPECIAL_METHODS</a></span>, <span class='object_link'><a href="Helpers.html#PROTO_SPECIAL_PROPS-constant" title="Opal::Nodes::Helpers::PROTO_SPECIAL_PROPS (constant)">Helpers::PROTO_SPECIAL_PROPS</a></span>, <span class='object_link'><a href="Helpers.html#RESERVED_FUNCTION_NAMES-constant" title="Opal::Nodes::Helpers::RESERVED_FUNCTION_NAMES (constant)">Helpers::RESERVED_FUNCTION_NAMES</a></span></p>
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="ScopeNode.html" title="Opal::Nodes::ScopeNode (class)">ScopeNode</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ScopeNode.html#block_name-instance_method" title="Opal::Nodes::ScopeNode#block_name (method)">#block_name</a></span>, <span class='object_link'><a href="ScopeNode.html#catch_return-instance_method" title="Opal::Nodes::ScopeNode#catch_return (method)">#catch_return</a></span>, <span class='object_link'><a href="ScopeNode.html#defs-instance_method" title="Opal::Nodes::ScopeNode#defs (method)">#defs</a></span>, <span class='object_link'><a href="ScopeNode.html#gvars-instance_method" title="Opal::Nodes::ScopeNode#gvars (method)">#gvars</a></span>, <span class='object_link'><a href="ScopeNode.html#has_break-instance_method" title="Opal::Nodes::ScopeNode#has_break (method)">#has_break</a></span>, <span class='object_link'><a href="ScopeNode.html#ivars-instance_method" title="Opal::Nodes::ScopeNode#ivars (method)">#ivars</a></span>, <span class='object_link'><a href="ScopeNode.html#locals-instance_method" title="Opal::Nodes::ScopeNode#locals (method)">#locals</a></span>, <span class='object_link'><a href="ScopeNode.html#methods-instance_method" title="Opal::Nodes::ScopeNode#methods (method)">#methods</a></span>, <span class='object_link'><a href="ScopeNode.html#mid-instance_method" title="Opal::Nodes::ScopeNode#mid (method)">#mid</a></span>, <span class='object_link'><a href="ScopeNode.html#name-instance_method" title="Opal::Nodes::ScopeNode#name (method)">#name</a></span>, <span class='object_link'><a href="ScopeNode.html#parent-instance_method" title="Opal::Nodes::ScopeNode#parent (method)">#parent</a></span>, <span class='object_link'><a href="ScopeNode.html#rescue_else_sexp-instance_method" title="Opal::Nodes::ScopeNode#rescue_else_sexp (method)">#rescue_else_sexp</a></span>, <span class='object_link'><a href="ScopeNode.html#scope_name-instance_method" title="Opal::Nodes::ScopeNode#scope_name (method)">#scope_name</a></span>, <span class='object_link'><a href="ScopeNode.html#uses_super-instance_method" title="Opal::Nodes::ScopeNode#uses_super (method)">#uses_super</a></span>, <span class='object_link'><a href="ScopeNode.html#uses_zuper-instance_method" title="Opal::Nodes::ScopeNode#uses_zuper (method)">#uses_zuper</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Base.html" title="Opal::Nodes::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#compiler-instance_method" title="Opal::Nodes::Base#compiler (method)">#compiler</a></span>, <span class='object_link'><a href="Base.html#type-instance_method" title="Opal::Nodes::Base#type (method)">#type</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#body_code-instance_method" title="#body_code (instance method)">#<strong>body_code</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile-instance_method" title="#compile (instance method)">#<strong>compile</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#super_code-instance_method" title="#super_code (instance method)">#<strong>super_code</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ModuleNode.html" title="Opal::Nodes::ModuleNode (class)">ModuleNode</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ModuleNode.html#name_and_base-instance_method" title="Opal::Nodes::ModuleNode#name_and_base (method)">#name_and_base</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ScopeNode.html" title="Opal::Nodes::ScopeNode (class)">ScopeNode</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ScopeNode.html#add_arg-instance_method" title="Opal::Nodes::ScopeNode#add_arg (method)">#add_arg</a></span>, <span class='object_link'><a href="ScopeNode.html#add_proto_ivar-instance_method" title="Opal::Nodes::ScopeNode#add_proto_ivar (method)">#add_proto_ivar</a></span>, <span class='object_link'><a href="ScopeNode.html#add_scope_gvar-instance_method" title="Opal::Nodes::ScopeNode#add_scope_gvar (method)">#add_scope_gvar</a></span>, <span class='object_link'><a href="ScopeNode.html#add_scope_ivar-instance_method" title="Opal::Nodes::ScopeNode#add_scope_ivar (method)">#add_scope_ivar</a></span>, <span class='object_link'><a href="ScopeNode.html#add_scope_local-instance_method" title="Opal::Nodes::ScopeNode#add_scope_local (method)">#add_scope_local</a></span>, <span class='object_link'><a href="ScopeNode.html#add_scope_temp-instance_method" title="Opal::Nodes::ScopeNode#add_scope_temp (method)">#add_scope_temp</a></span>, <span class='object_link'><a href="ScopeNode.html#class%3F-instance_method" title="Opal::Nodes::ScopeNode#class? (method)">#class?</a></span>, <span class='object_link'><a href="ScopeNode.html#class_scope%3F-instance_method" title="Opal::Nodes::ScopeNode#class_scope? (method)">#class_scope?</a></span>, <span class='object_link'><a href="ScopeNode.html#def%3F-instance_method" title="Opal::Nodes::ScopeNode#def? (method)">#def?</a></span>, <span class='object_link'><a href="ScopeNode.html#def_in_class%3F-instance_method" title="Opal::Nodes::ScopeNode#def_in_class? (method)">#def_in_class?</a></span>, <span class='object_link'><a href="ScopeNode.html#find_parent_def-instance_method" title="Opal::Nodes::ScopeNode#find_parent_def (method)">#find_parent_def</a></span>, <span class='object_link'><a href="ScopeNode.html#get_super_chain-instance_method" title="Opal::Nodes::ScopeNode#get_super_chain (method)">#get_super_chain</a></span>, <span class='object_link'><a href="ScopeNode.html#has_local%3F-instance_method" title="Opal::Nodes::ScopeNode#has_local? (method)">#has_local?</a></span>, <span class='object_link'><a href="ScopeNode.html#has_rescue_else%3F-instance_method" title="Opal::Nodes::ScopeNode#has_rescue_else? (method)">#has_rescue_else?</a></span>, <span class='object_link'><a href="ScopeNode.html#has_temp%3F-instance_method" title="Opal::Nodes::ScopeNode#has_temp? (method)">#has_temp?</a></span>, <span class='object_link'><a href="ScopeNode.html#identify!-instance_method" title="Opal::Nodes::ScopeNode#identify! (method)">#identify!</a></span>, <span class='object_link'><a href="ScopeNode.html#identity-instance_method" title="Opal::Nodes::ScopeNode#identity (method)">#identity</a></span>, <span class='object_link'><a href="ScopeNode.html#in_ensure-instance_method" title="Opal::Nodes::ScopeNode#in_ensure (method)">#in_ensure</a></span>, <span class='object_link'><a href="ScopeNode.html#in_ensure%3F-instance_method" title="Opal::Nodes::ScopeNode#in_ensure? (method)">#in_ensure?</a></span>, <span class='object_link'><a href="ScopeNode.html#in_scope-instance_method" title="Opal::Nodes::ScopeNode#in_scope (method)">#in_scope</a></span>, <span class='object_link'><a href="ScopeNode.html#in_while%3F-instance_method" title="Opal::Nodes::ScopeNode#in_while? (method)">#in_while?</a></span>, <span class='object_link'><a href="ScopeNode.html#initialize-instance_method" title="Opal::Nodes::ScopeNode#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="ScopeNode.html#iter%3F-instance_method" title="Opal::Nodes::ScopeNode#iter? (method)">#iter?</a></span>, <span class='object_link'><a href="ScopeNode.html#module%3F-instance_method" title="Opal::Nodes::ScopeNode#module? (method)">#module?</a></span>, <span class='object_link'><a href="ScopeNode.html#new_temp-instance_method" title="Opal::Nodes::ScopeNode#new_temp (method)">#new_temp</a></span>, <span class='object_link'><a href="ScopeNode.html#next_temp-instance_method" title="Opal::Nodes::ScopeNode#next_temp (method)">#next_temp</a></span>, <span class='object_link'><a href="ScopeNode.html#pop_while-instance_method" title="Opal::Nodes::ScopeNode#pop_while (method)">#pop_while</a></span>, <span class='object_link'><a href="ScopeNode.html#proto-instance_method" title="Opal::Nodes::ScopeNode#proto (method)">#proto</a></span>, <span class='object_link'><a href="ScopeNode.html#push_while-instance_method" title="Opal::Nodes::ScopeNode#push_while (method)">#push_while</a></span>, <span class='object_link'><a href="ScopeNode.html#queue_temp-instance_method" title="Opal::Nodes::ScopeNode#queue_temp (method)">#queue_temp</a></span>, <span class='object_link'><a href="ScopeNode.html#sclass%3F-instance_method" title="Opal::Nodes::ScopeNode#sclass? (method)">#sclass?</a></span>, <span class='object_link'><a href="ScopeNode.html#to_vars-instance_method" title="Opal::Nodes::ScopeNode#to_vars (method)">#to_vars</a></span>, <span class='object_link'><a href="ScopeNode.html#top%3F-instance_method" title="Opal::Nodes::ScopeNode#top? (method)">#top?</a></span>, <span class='object_link'><a href="ScopeNode.html#uses_block!-instance_method" title="Opal::Nodes::ScopeNode#uses_block! (method)">#uses_block!</a></span>, <span class='object_link'><a href="ScopeNode.html#uses_block%3F-instance_method" title="Opal::Nodes::ScopeNode#uses_block? (method)">#uses_block?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Opal::Nodes::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#add_gvar-instance_method" title="Opal::Nodes::Base#add_gvar (method)">#add_gvar</a></span>, <span class='object_link'><a href="Base.html#add_ivar-instance_method" title="Opal::Nodes::Base#add_ivar (method)">#add_ivar</a></span>, <span class='object_link'><a href="Base.html#add_local-instance_method" title="Opal::Nodes::Base#add_local (method)">#add_local</a></span>, <span class='object_link'><a href="Base.html#add_temp-instance_method" title="Opal::Nodes::Base#add_temp (method)">#add_temp</a></span>, <span class='object_link'><a href="Base.html#children-instance_method" title="Opal::Nodes::Base#children (method)">#children</a></span>, <span class='object_link'><a href="Base.html#children-class_method" title="Opal::Nodes::Base.children (method)">children</a></span>, <span class='object_link'><a href="Base.html#compile_to_fragments-instance_method" title="Opal::Nodes::Base#compile_to_fragments (method)">#compile_to_fragments</a></span>, <span class='object_link'><a href="Base.html#error-instance_method" title="Opal::Nodes::Base#error (method)">#error</a></span>, <span class='object_link'><a href="Base.html#expr-instance_method" title="Opal::Nodes::Base#expr (method)">#expr</a></span>, <span class='object_link'><a href="Base.html#expr%3F-instance_method" title="Opal::Nodes::Base#expr? (method)">#expr?</a></span>, <span class='object_link'><a href="Base.html#expr_or_nil-instance_method" title="Opal::Nodes::Base#expr_or_nil (method)">#expr_or_nil</a></span>, <span class='object_link'><a href="Base.html#fragment-instance_method" title="Opal::Nodes::Base#fragment (method)">#fragment</a></span>, <span class='object_link'><a href="Base.html#handle-class_method" title="Opal::Nodes::Base.handle (method)">handle</a></span>, <span class='object_link'><a href="Base.html#handlers-class_method" title="Opal::Nodes::Base.handlers (method)">handlers</a></span>, <span class='object_link'><a href="Base.html#has_rescue_else%3F-instance_method" title="Opal::Nodes::Base#has_rescue_else? (method)">#has_rescue_else?</a></span>, <span class='object_link'><a href="Base.html#helper-instance_method" title="Opal::Nodes::Base#helper (method)">#helper</a></span>, <span class='object_link'><a href="Base.html#in_ensure-instance_method" title="Opal::Nodes::Base#in_ensure (method)">#in_ensure</a></span>, <span class='object_link'><a href="Base.html#in_ensure%3F-instance_method" title="Opal::Nodes::Base#in_ensure? (method)">#in_ensure?</a></span>, <span class='object_link'><a href="Base.html#in_while%3F-instance_method" title="Opal::Nodes::Base#in_while? (method)">#in_while?</a></span>, <span class='object_link'><a href="Base.html#initialize-instance_method" title="Opal::Nodes::Base#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Base.html#process-instance_method" title="Opal::Nodes::Base#process (method)">#process</a></span>, <span class='object_link'><a href="Base.html#push-instance_method" title="Opal::Nodes::Base#push (method)">#push</a></span>, <span class='object_link'><a href="Base.html#recv-instance_method" title="Opal::Nodes::Base#recv (method)">#recv</a></span>, <span class='object_link'><a href="Base.html#recv%3F-instance_method" title="Opal::Nodes::Base#recv? (method)">#recv?</a></span>, <span class='object_link'><a href="Base.html#s-instance_method" title="Opal::Nodes::Base#s (method)">#s</a></span>, <span class='object_link'><a href="Base.html#scope-instance_method" title="Opal::Nodes::Base#scope (method)">#scope</a></span>, <span class='object_link'><a href="Base.html#stmt-instance_method" title="Opal::Nodes::Base#stmt (method)">#stmt</a></span>, <span class='object_link'><a href="Base.html#stmt%3F-instance_method" title="Opal::Nodes::Base#stmt? (method)">#stmt?</a></span>, <span class='object_link'><a href="Base.html#truthy_optimize%3F-class_method" title="Opal::Nodes::Base.truthy_optimize? (method)">truthy_optimize?</a></span>, <span class='object_link'><a href="Base.html#unshift-instance_method" title="Opal::Nodes::Base#unshift (method)">#unshift</a></span>, <span class='object_link'><a href="Base.html#while_loop-instance_method" title="Opal::Nodes::Base#while_loop (method)">#while_loop</a></span>, <span class='object_link'><a href="Base.html#with_temp-instance_method" title="Opal::Nodes::Base#with_temp (method)">#with_temp</a></span>, <span class='object_link'><a href="Base.html#wrap-instance_method" title="Opal::Nodes::Base#wrap (method)">#wrap</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Helpers.html" title="Opal::Nodes::Helpers (module)">Helpers</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Helpers.html#current_indent-instance_method" title="Opal::Nodes::Helpers#current_indent (method)">#current_indent</a></span>, <span class='object_link'><a href="Helpers.html#empty_line-instance_method" title="Opal::Nodes::Helpers#empty_line (method)">#empty_line</a></span>, <span class='object_link'><a href="Helpers.html#indent-instance_method" title="Opal::Nodes::Helpers#indent (method)">#indent</a></span>, <span class='object_link'><a href="Helpers.html#ivar-instance_method" title="Opal::Nodes::Helpers#ivar (method)">#ivar</a></span>, <span class='object_link'><a href="Helpers.html#js_falsy-instance_method" title="Opal::Nodes::Helpers#js_falsy (method)">#js_falsy</a></span>, <span class='object_link'><a href="Helpers.html#js_truthy-instance_method" title="Opal::Nodes::Helpers#js_truthy (method)">#js_truthy</a></span>, <span class='object_link'><a href="Helpers.html#js_truthy_optimize-instance_method" title="Opal::Nodes::Helpers#js_truthy_optimize (method)">#js_truthy_optimize</a></span>, <span class='object_link'><a href="Helpers.html#line-instance_method" title="Opal::Nodes::Helpers#line (method)">#line</a></span>, <span class='object_link'><a href="Helpers.html#lvar_to_js-instance_method" title="Opal::Nodes::Helpers#lvar_to_js (method)">#lvar_to_js</a></span>, <span class='object_link'><a href="Helpers.html#mid_to_jsid-instance_method" title="Opal::Nodes::Helpers#mid_to_jsid (method)">#mid_to_jsid</a></span>, <span class='object_link'><a href="Helpers.html#property-instance_method" title="Opal::Nodes::Helpers#property (method)">#property</a></span>, <span class='object_link'><a href="Helpers.html#valid_ivar_name%3F-instance_method" title="Opal::Nodes::Helpers#valid_ivar_name? (method)">#valid_ivar_name?</a></span>, <span class='object_link'><a href="Helpers.html#valid_name%3F-instance_method" title="Opal::Nodes::Helpers#valid_name? (method)">#valid_name?</a></span>, <span class='object_link'><a href="Helpers.html#variable-instance_method" title="Opal::Nodes::Helpers#variable (method)">#variable</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="ScopeNode.html#initialize-instance_method" title="Opal::Nodes::ScopeNode#initialize (method)">Opal::Nodes::ScopeNode</a></span></p>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="body_code-instance_method">
+  
+    #<strong>body_code</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/class.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_body_code'>body_code</span>
+  <span class='id identifier rubyid_stmt'>stmt</span><span class='lparen'>(</span><span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_returns'>returns</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span> <span class='op'>||</span> <span class='id identifier rubyid_s'>s</span><span class='lparen'>(</span><span class='symbol'>:nil</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compile-instance_method">
+  
+    #<strong>compile</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/class.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compile'>compile</span>
+  <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='id identifier rubyid_name_and_base'>name_and_base</span>
+  <span class='id identifier rubyid_helper'>helper</span> <span class='symbol'>:klass</span>
+
+  <span class='id identifier rubyid_push'>push</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(function($base, $super) {</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  function $</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>(){};</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  var self = $</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'> = $klass($base, $super, &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;, $</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>);</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_in_scope'>in_scope</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
+    <span class='id identifier rubyid_add_temp'>add_temp</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_proto'>proto</span><span class='embexpr_end'>}</span><span class='tstring_content'> = self.$$proto</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_add_temp'>add_temp</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$scope = self.$$scope</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='id identifier rubyid_body_code'>body_code</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_body_code'>body_code</span>
+    <span class='id identifier rubyid_empty_line'>empty_line</span>
+
+    <span class='id identifier rubyid_line'>line</span> <span class='id identifier rubyid_scope'>scope</span><span class='period'>.</span><span class='id identifier rubyid_to_vars'>to_vars</span>
+    <span class='id identifier rubyid_line'>line</span> <span class='id identifier rubyid_body_code'>body_code</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_line'>line</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>})(</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_base'>base</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_super_code'>super_code</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="super_code-instance_method">
+  
+    #<strong>super_code</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/nodes/class.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_super_code'>super_code</span>
+  <span class='id identifier rubyid_sup'>sup</span> <span class='op'>?</span> <span class='id identifier rubyid_expr'>expr</span><span class='lparen'>(</span><span class='id identifier rubyid_sup'>sup</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>null</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 03/13/18 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.9 (ruby-2.5.0).
+</div>
+
+    </div>
+  </body>
+</html>

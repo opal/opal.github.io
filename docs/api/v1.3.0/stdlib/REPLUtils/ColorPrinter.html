@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: REPLUtils::ColorPrinter
+  
+    &mdash; stdlib (Opal v1.3.0)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "REPLUtils::ColorPrinter";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../REPLUtils.html" title="REPLUtils (module)">REPLUtils</a></span></span>
+     &raquo; 
+    <span class="title">ColorPrinter</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: REPLUtils::ColorPrinter
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../PP.html" title="PP (class)">PP</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../PrettyPrint.html" title="PrettyPrint (class)">PrettyPrint</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../PP.html" title="PP (class)">PP</a></span></li>
+          
+            <li class="next">REPLUtils::ColorPrinter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/stdlib/opal/replutils.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Slightly based on Pry&#39;s implementation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="TOKEN_COLORS-constant" class="">TOKEN_COLORS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Taken from CodeRay</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='label'>debug:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;37;44m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+
+  <span class='label'>annotation:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>attribute_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>attribute_value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>binary:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>char:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>char:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35;4m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>class_variable:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[36m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>color:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[32m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>comment:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;30m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>char:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[37m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[37m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>constant:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34;4m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>decorator:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>definition:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>directive:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>docstring:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>doctype:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>done:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;30;2m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>entity:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>error:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;37;41m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>exception:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>float:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>function:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>global_variable:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;32m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>hex:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;36m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>include:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>integer:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>imaginary:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>important:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>key:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>char:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>keyword:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[32m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>label:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>local_variable:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>namespace:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>octal:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>predefined:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[36m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>predefined_constant:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;36m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>predefined_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;32m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>preprocessor:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;36m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>pseudo_class:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>regexp:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>modifier:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>char:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>reserved:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[32m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>shell:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>char:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>escape:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>string:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>modifier:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>char:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;35m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>escape:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>symbol:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delimiter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;33m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>tag:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[32m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[36m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>variable:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[34m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+
+  <span class='label'>insert:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[42m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>insert:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;32;42m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>eyecatcher:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[102m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>delete:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[41m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>delete:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1;31;41m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>eyecatcher:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[101m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>change:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[44m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>change:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[37;44m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>head:</span> <span class='lbrace'>{</span>
+    <span class='label'>self:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[45m</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>filename:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[37;45m</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="NUMBER-constant" class="">NUMBER =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>[+-]?[0-9.]+(?:e[+-][0-9]+|i)?</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="REGEXP-constant" class="">REGEXP =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/.*?/[iesu]*</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="TOKEN_REGEXP-constant" class="">TOKEN_REGEXP =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(\s+|=&gt;|[@$:]?[a-z]\w+|[A-Z]\w+|</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#NUMBER-constant" title="REPLUtils::ColorPrinter::NUMBER (constant)">NUMBER</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>|</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#REGEXP-constant" title="REPLUtils::ColorPrinter::REGEXP (constant)">REGEXP</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>|&quot;.*?&quot;|#&lt;.*?[&gt; ]|.)</span><span class='regexp_end'>/</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../PrettyPrint.html" title="PrettyPrint (class)">PrettyPrint</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../PrettyPrint.html#genspace-instance_method" title="PrettyPrint#genspace (method)">#genspace</a></span>, <span class='object_link'><a href="../PrettyPrint.html#group_queue-instance_method" title="PrettyPrint#group_queue (method)">#group_queue</a></span>, <span class='object_link'><a href="../PrettyPrint.html#indent-instance_method" title="PrettyPrint#indent (method)">#indent</a></span>, <span class='object_link'><a href="../PrettyPrint.html#maxwidth-instance_method" title="PrettyPrint#maxwidth (method)">#maxwidth</a></span>, <span class='object_link'><a href="../PrettyPrint.html#newline-instance_method" title="PrettyPrint#newline (method)">#newline</a></span>, <span class='object_link'><a href="../PrettyPrint.html#output-instance_method" title="PrettyPrint#output (method)">#output</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#colorize-class_method" title="colorize (class method)">.<strong>colorize</strong>(str)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default-class_method" title="default (class method)">.<strong>default</strong>(obj, width = 79)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pp-class_method" title="pp (class method)">.<strong>pp</strong>(obj, output = $DEFAULT_OUTPUT, max_width = 79)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#token-class_method" title="token (class method)">.<strong>token</strong>(string, *name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tokenize-class_method" title="tokenize (class method)">.<strong>tokenize</strong>(str)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#text-instance_method" title="#text (instance method)">#<strong>text</strong>(str, max_width = str.length)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../PP.html" title="PP (class)">PP</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../PP.html#mcall-class_method" title="PP.mcall (method)">mcall</a></span>, <span class='object_link'><a href="../PP.html#singleline_pp-class_method" title="PP.singleline_pp (method)">singleline_pp</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../PP/PPMethods.html" title="PP::PPMethods (module)">PP::PPMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../PP/PPMethods.html#check_inspect_key-instance_method" title="PP::PPMethods#check_inspect_key (method)">#check_inspect_key</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#comma_breakable-instance_method" title="PP::PPMethods#comma_breakable (method)">#comma_breakable</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#guard_inspect_key-instance_method" title="PP::PPMethods#guard_inspect_key (method)">#guard_inspect_key</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#object_address_group-instance_method" title="PP::PPMethods#object_address_group (method)">#object_address_group</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#object_group-instance_method" title="PP::PPMethods#object_group (method)">#object_group</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#pop_inspect_key-instance_method" title="PP::PPMethods#pop_inspect_key (method)">#pop_inspect_key</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#pp-instance_method" title="PP::PPMethods#pp (method)">#pp</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#pp_hash-instance_method" title="PP::PPMethods#pp_hash (method)">#pp_hash</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#pp_object-instance_method" title="PP::PPMethods#pp_object (method)">#pp_object</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#push_inspect_key-instance_method" title="PP::PPMethods#push_inspect_key (method)">#push_inspect_key</a></span>, <span class='object_link'><a href="../PP/PPMethods.html#seplist-instance_method" title="PP::PPMethods#seplist (method)">#seplist</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../PrettyPrint.html" title="PrettyPrint (class)">PrettyPrint</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../PrettyPrint.html#break_outmost_groups-instance_method" title="PrettyPrint#break_outmost_groups (method)">#break_outmost_groups</a></span>, <span class='object_link'><a href="../PrettyPrint.html#breakable-instance_method" title="PrettyPrint#breakable (method)">#breakable</a></span>, <span class='object_link'><a href="../PrettyPrint.html#current_group-instance_method" title="PrettyPrint#current_group (method)">#current_group</a></span>, <span class='object_link'><a href="../PrettyPrint.html#fill_breakable-instance_method" title="PrettyPrint#fill_breakable (method)">#fill_breakable</a></span>, <span class='object_link'><a href="../PrettyPrint.html#flush-instance_method" title="PrettyPrint#flush (method)">#flush</a></span>, <span class='object_link'><a href="../PrettyPrint.html#format-class_method" title="PrettyPrint.format (method)">format</a></span>, <span class='object_link'><a href="../PrettyPrint.html#group-instance_method" title="PrettyPrint#group (method)">#group</a></span>, <span class='object_link'><a href="../PrettyPrint.html#group_sub-instance_method" title="PrettyPrint#group_sub (method)">#group_sub</a></span>, <span class='object_link'><a href="../PrettyPrint.html#initialize-instance_method" title="PrettyPrint#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../PrettyPrint.html#nest-instance_method" title="PrettyPrint#nest (method)">#nest</a></span>, <span class='object_link'><a href="../PrettyPrint.html#singleline_format-class_method" title="PrettyPrint.singleline_format (method)">singleline_format</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="../PrettyPrint.html#initialize-instance_method" title="PrettyPrint#initialize (method)">PrettyPrint</a></span></p>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="colorize-class_method">
+  
+    .<strong>colorize</strong>(str)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/opal/replutils.rb', line 242</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_colorize'>colorize</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_tokens'>tokens</span> <span class='op'>=</span> <span class='id identifier rubyid_tokenize'>tokenize</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_tokens'>tokens</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_tok'>tok</span><span class='op'>|</span>
+    <span class='kw'>case</span> <span class='id identifier rubyid_tok'>tok</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^[0-9+-]</span><span class='regexp_end'>/</span></span>
+      <span class='kw'>if</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[.e]</span><span class='regexp_end'>/</span></span> <span class='op'>=~</span> <span class='id identifier rubyid_tok'>tok</span>
+        <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:float</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:integer</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^&quot;</span><span class='regexp_end'>/</span></span>
+      <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:string</span><span class='comma'>,</span> <span class='symbol'>:self</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^:</span><span class='regexp_end'>/</span></span>
+      <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:symbol</span><span class='comma'>,</span> <span class='symbol'>:self</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^[A-Z]</span><span class='regexp_end'>/</span></span>
+      <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:constant</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^#&lt;</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>=</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:keyword</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\/.</span><span class='regexp_end'>/</span></span>
+      <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:regexp</span><span class='comma'>,</span> <span class='symbol'>:self</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>true</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>false</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nil</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_tok'>tok</span><span class='comma'>,</span> <span class='symbol'>:predefined_constant</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_tok'>tok</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="default-class_method">
+  
+    .<strong>default</strong>(obj, width = 79)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+213
+214
+215
+216
+217</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/opal/replutils.rb', line 213</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_default'>default</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_width'>width</span> <span class='op'>=</span> <span class='int'>79</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_pager'>pager</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../StringIO.html" title="StringIO (class)">StringIO</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../StringIO.html#initialize-instance_method" title="StringIO#initialize (method)">new</a></span></span>
+  <span class='id identifier rubyid_pp'>pp</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_pager'>pager</span><span class='comma'>,</span> <span class='id identifier rubyid_width'>width</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_pager'>pager</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pp-class_method">
+  
+    .<strong>pp</strong>(obj, output = $DEFAULT_OUTPUT, max_width = 79)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+219
+220
+221
+222
+223
+224</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/opal/replutils.rb', line 219</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_pp'>pp</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='gvar'>$DEFAULT_OUTPUT</span><span class='comma'>,</span> <span class='id identifier rubyid_max_width'>max_width</span> <span class='op'>=</span> <span class='int'>79</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_queue'>queue</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="REPLUtils::ColorPrinter (class)">ColorPrinter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../PrettyPrint.html#initialize-instance_method" title="PrettyPrint#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_output'>output</span><span class='comma'>,</span> <span class='id identifier rubyid_max_width'>max_width</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_queue'>queue</span><span class='period'>.</span><span class='id identifier rubyid_guard_inspect_key'>guard_inspect_key</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_queue'>queue</span><span class='period'>.</span><span class='id identifier rubyid_pp'>pp</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_queue'>queue</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
+  <span class='id identifier rubyid_output'>output</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="token-class_method">
+  
+    .<strong>token</strong>(string, *name)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+230
+231
+232</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/opal/replutils.rb', line 230</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_token'>token</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="#TOKEN_COLORS-constant" title="REPLUtils::ColorPrinter::TOKEN_COLORS (constant)">TOKEN_COLORS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_string'>string</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[0m</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="tokenize-class_method">
+  
+    .<strong>tokenize</strong>(str)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+238
+239
+240</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/opal/replutils.rb', line 238</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_tokenize'>tokenize</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TOKEN_REGEXP-constant" title="REPLUtils::ColorPrinter::TOKEN_REGEXP (constant)">TOKEN_REGEXP</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:first</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="text-instance_method">
+  
+    #<strong>text</strong>(str, max_width = str.length)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+226
+227
+228</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/stdlib/opal/replutils.rb', line 226</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_text'>text</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_max_width'>max_width</span> <span class='op'>=</span> <span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="REPLUtils::ColorPrinter (class)">ColorPrinter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_colorize'><span class='object_link'><a href="#colorize-class_method" title="REPLUtils::ColorPrinter.colorize (method)">colorize</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_max_width'>max_width</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 10/27/21 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.26 (ruby-2.7.2).
+</div>
+
+    </div>
+  </body>
+</html>

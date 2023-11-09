@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Rational
+  
+    &mdash; corelib (Opal v1.2.0)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Rational";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">Rational</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Rational
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></li>
+          
+            <li class="next">Rational</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/opal/corelib/rational.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#convert-class_method" title="convert (class method)">.<strong>convert</strong>(num, den)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reduce-class_method" title="reduce (class method)">.<strong>reduce</strong>(num, den)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#*-instance_method" title="#* (instance method)">#<strong>*</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#**-instance_method" title="#** (instance method)">#<strong>**</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%2B-instance_method" title="#+ (instance method)">#<strong>+</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#--instance_method" title="#- (instance method)">#<strong>-</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%2F-instance_method" title="#/ (instance method)">#<strong>/</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+      (also: #divide, #quo)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#<=>-instance_method" title="#&lt;=&gt; (instance method)">#<strong>&lt;=&gt;</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#==-instance_method" title="#== (instance method)">#<strong>==</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#abs-instance_method" title="#abs (instance method)">#<strong>abs</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ceil-instance_method" title="#ceil (instance method)">#<strong>ceil</strong>(precision = 0)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#coerce-instance_method" title="#coerce (instance method)">#<strong>coerce</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#denominator-instance_method" title="#denominator (instance method)">#<strong>denominator</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#floor-instance_method" title="#floor (instance method)">#<strong>floor</strong>(precision = 0)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hash-instance_method" title="#hash (instance method)">#<strong>hash</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(num, den)  &#x21d2; Rational </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Rational.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">#<strong>inspect</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#numerator-instance_method" title="#numerator (instance method)">#<strong>numerator</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rationalize-instance_method" title="#rationalize (instance method)">#<strong>rationalize</strong>(eps = undefined)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#round-instance_method" title="#round (instance method)">#<strong>round</strong>(precision = 0)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_f-instance_method" title="#to_f (instance method)">#<strong>to_f</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_i-instance_method" title="#to_i (instance method)">#<strong>to_i</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_r-instance_method" title="#to_r (instance method)">#<strong>to_r</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#truncate-instance_method" title="#truncate (instance method)">#<strong>truncate</strong>(precision = 0)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#with_precision-instance_method" title="#with_precision (instance method)">#<strong>with_precision</strong>(method, precision)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Numeric.html#%25-instance_method" title="Numeric#% (method)">#%</a></span>, <span class='object_link'><a href="Numeric.html#%2B@-instance_method" title="Numeric#+@ (method)">#+@</a></span>, <span class='object_link'><a href="Numeric.html#-@-instance_method" title="Numeric#-@ (method)">#-@</a></span>, <span class='object_link'><a href="Numeric.html#__coerced__-instance_method" title="Numeric#__coerced__ (method)">#__coerced__</a></span>, <span class='object_link'><a href="Numeric.html#abs2-instance_method" title="Numeric#abs2 (method)">#abs2</a></span>, <span class='object_link'><a href="Numeric.html#angle-instance_method" title="Numeric#angle (method)">#angle</a></span>, <span class='object_link'><a href="Numeric.html#clone-instance_method" title="Numeric#clone (method)">#clone</a></span>, <span class='object_link'><a href="Numeric.html#conj-instance_method" title="Numeric#conj (method)">#conj</a></span>, <span class='object_link'><a href="Numeric.html#div-instance_method" title="Numeric#div (method)">#div</a></span>, <span class='object_link'><a href="Numeric.html#divmod-instance_method" title="Numeric#divmod (method)">#divmod</a></span>, <span class='object_link'><a href="Numeric.html#dup-instance_method" title="Numeric#dup (method)">#dup</a></span>, <span class='object_link'><a href="Numeric.html#fdiv-instance_method" title="Numeric#fdiv (method)">#fdiv</a></span>, <span class='object_link'><a href="Numeric.html#finite%3F-instance_method" title="Numeric#finite? (method)">#finite?</a></span>, <span class='object_link'><a href="Numeric.html#i-instance_method" title="Numeric#i (method)">#i</a></span>, <span class='object_link'><a href="Numeric.html#imag-instance_method" title="Numeric#imag (method)">#imag</a></span>, <span class='object_link'><a href="Numeric.html#infinite%3F-instance_method" title="Numeric#infinite? (method)">#infinite?</a></span>, <span class='object_link'><a href="Numeric.html#integer%3F-instance_method" title="Numeric#integer? (method)">#integer?</a></span>, <span class='object_link'><a href="Numeric.html#negative%3F-instance_method" title="Numeric#negative? (method)">#negative?</a></span>, <span class='object_link'><a href="Numeric.html#nonzero%3F-instance_method" title="Numeric#nonzero? (method)">#nonzero?</a></span>, <span class='object_link'><a href="Numeric.html#polar-instance_method" title="Numeric#polar (method)">#polar</a></span>, <span class='object_link'><a href="Numeric.html#positive%3F-instance_method" title="Numeric#positive? (method)">#positive?</a></span>, <span class='object_link'><a href="Numeric.html#real-instance_method" title="Numeric#real (method)">#real</a></span>, <span class='object_link'><a href="Numeric.html#real%3F-instance_method" title="Numeric#real? (method)">#real?</a></span>, <span class='object_link'><a href="Numeric.html#rect-instance_method" title="Numeric#rect (method)">#rect</a></span>, <span class='object_link'><a href="Numeric.html#step-instance_method" title="Numeric#step (method)">#step</a></span>, <span class='object_link'><a href="Numeric.html#to_c-instance_method" title="Numeric#to_c (method)">#to_c</a></span>, <span class='object_link'><a href="Numeric.html#to_int-instance_method" title="Numeric#to_int (method)">#to_int</a></span>, <span class='object_link'><a href="Numeric.html#zero%3F-instance_method" title="Numeric#zero? (method)">#zero?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Comparable.html" title="Comparable (module)">Comparable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Comparable.html#<-instance_method" title="Comparable#&lt; (method)">#<</a></span>, <span class='object_link'><a href="Comparable.html#<=-instance_method" title="Comparable#&lt;= (method)">#<=</a></span>, <span class='object_link'><a href="Comparable.html#>-instance_method" title="Comparable#&gt; (method)">#></a></span>, <span class='object_link'><a href="Comparable.html#>=-instance_method" title="Comparable#&gt;= (method)">#>=</a></span>, <span class='object_link'><a href="Comparable.html#between%3F-instance_method" title="Comparable#between? (method)">#between?</a></span>, <span class='object_link'><a href="Comparable.html#clamp-instance_method" title="Comparable#clamp (method)">#clamp</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(num, den)  &#x21d2; <tt><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of Rational.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+  <span class='ivar'>@num</span> <span class='op'>=</span> <span class='id identifier rubyid_num'>num</span>
+  <span class='ivar'>@den</span> <span class='op'>=</span> <span class='id identifier rubyid_den'>den</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="convert-class_method">
+  
+    .<strong>convert</strong>(num, den)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_num'>num</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_den'>den</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cannot convert nil into Rational</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span> <span class='op'>&amp;&amp;</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_den'>den</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Complex.html" title="Complex (class)">Complex</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span>
+    <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='id identifier rubyid_num'>num</span><span class='period'>.</span><span class='id identifier rubyid_to_r'>to_r</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_den'>den</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_den'>den</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="Complex.html" title="Complex (class)">Complex</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_den'>den</span>
+    <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='id identifier rubyid_den'>den</span><span class='period'>.</span><span class='id identifier rubyid_to_r'>to_r</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_den'>den</span><span class='period'>.</span><span class='id identifier rubyid_equal?'>equal?</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="Opal.html" title="Opal (module)">Opal</a></span></span><span class='period'>.</span><span class='id identifier rubyid_coerce_to!'><span class='object_link'><a href="Opal.html#coerce_to!-class_method" title="Opal.coerce_to! (method)">coerce_to!</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='comma'>,</span> <span class='symbol'>:to_r</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_num'>num</span> <span class='op'>&amp;&amp;</span> <span class='const'><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_den'>den</span>
+    <span class='id identifier rubyid_num'>num</span> <span class='op'>/</span> <span class='id identifier rubyid_den'>den</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reduce-class_method">
+  
+    .<strong>reduce</strong>(num, den)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 4</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='id identifier rubyid_num'>num</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='id identifier rubyid_den'>den</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_den'>den</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="ZeroDivisionError.html" title="ZeroDivisionError (class)">ZeroDivisionError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>divided by 0</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_den'>den</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='op'>-</span><span class='id identifier rubyid_num'>num</span>
+    <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='op'>-</span><span class='id identifier rubyid_den'>den</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_den'>den</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_gcd'>gcd</span> <span class='op'>=</span> <span class='id identifier rubyid_num'>num</span><span class='period'>.</span><span class='id identifier rubyid_gcd'>gcd</span><span class='lparen'>(</span><span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span> <span class='op'>/</span> <span class='id identifier rubyid_gcd'>gcd</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span> <span class='op'>/</span> <span class='id identifier rubyid_gcd'>gcd</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="*-instance_method">
+  
+    #<strong>*</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='ivar'>@num</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span>
+    <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span>
+
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@num</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='comma'>,</span> <span class='ivar'>@den</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid___coerced__'>__coerced__</span> <span class='symbol'>:*</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="**-instance_method">
+  
+    #<strong>**</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 186</span>
+
+<span class='kw'>def</span> <span class='op'>**</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='kw'>if</span> <span class='kw'>self</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+      <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Float.html#INFINITY-constant" title="Float::INFINITY (constant)">INFINITY</a></span></span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+      <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@num</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span><span class='comma'>,</span> <span class='ivar'>@den</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+      <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@den</span><span class='op'>**</span><span class='op'>-</span><span class='id identifier rubyid_other'>other</span><span class='comma'>,</span> <span class='ivar'>@num</span><span class='op'>**</span><span class='op'>-</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='id identifier rubyid_to_f'>to_f</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>==</span> <span class='int'>0</span>
+      <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span> <span class='op'>==</span> <span class='int'>1</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+        <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@den</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span><span class='comma'>,</span> <span class='ivar'>@num</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@num</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span><span class='comma'>,</span> <span class='ivar'>@den</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>elsif</span> <span class='kw'>self</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="ZeroDivisionError.html" title="ZeroDivisionError (class)">ZeroDivisionError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>divided by 0</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_to_f'>to_f</span><span class='op'>**</span><span class='id identifier rubyid_other'>other</span>
+    <span class='kw'>end</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid___coerced__'>__coerced__</span> <span class='symbol'>:**</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="+-instance_method">
+  
+    #<strong>+</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='ivar'>@num</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span> <span class='op'>+</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span>
+    <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span>
+
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@num</span> <span class='op'>+</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>*</span> <span class='ivar'>@den</span><span class='comma'>,</span> <span class='ivar'>@den</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>+</span> <span class='id identifier rubyid_other'>other</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid___coerced__'>__coerced__</span> <span class='symbol'>:+</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="--instance_method">
+  
+    #<strong>-</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 125</span>
+
+<span class='kw'>def</span> <span class='op'>-</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='ivar'>@num</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span> <span class='op'>-</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span>
+    <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span>
+
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@num</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>*</span> <span class='ivar'>@den</span><span class='comma'>,</span> <span class='ivar'>@den</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid___coerced__'>__coerced__</span> <span class='symbol'>:-</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="/-instance_method">
+  
+    #<strong>/</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='divide-instance_method'>divide</span>, <span id='quo-instance_method'>quo</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 163</span>
+
+<span class='kw'>def</span> <span class='op'>/</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='ivar'>@num</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span>
+    <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span>
+
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>==</span> <span class='int'>0</span>
+      <span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>/</span> <span class='float'>0.0</span>
+    <span class='kw'>else</span>
+      <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@num</span><span class='comma'>,</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>/</span> <span class='id identifier rubyid_other'>other</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid___coerced__'>__coerced__</span> <span class='symbol'>:/</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="<=>-instance_method">
+  
+    #<strong>&lt;=&gt;</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='op'>&lt;=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='ivar'>@num</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span> <span class='op'>-</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span> <span class='op'>&lt;=&gt;</span> <span class='int'>0</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='ivar'>@num</span> <span class='op'>-</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&lt;=&gt;</span> <span class='int'>0</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other'>other</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid___coerced__'>__coerced__</span> <span class='symbol'>:&lt;=&gt;</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="==-instance_method">
+  
+    #<strong>==</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='ivar'>@num</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_numerator'>numerator</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@den</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_denominator'>denominator</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='ivar'>@num</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@den</span> <span class='op'>==</span> <span class='int'>1</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_other'>other</span> <span class='op'>==</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="abs-instance_method">
+  
+    #<strong>abs</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+222
+223
+224</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 222</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_abs'>abs</span>
+  <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='ivar'>@num</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span><span class='comma'>,</span> <span class='ivar'>@den</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ceil-instance_method">
+  
+    #<strong>ceil</strong>(precision = 0)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+226
+227
+228
+229
+230
+231
+232</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 226</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ceil'>ceil</span><span class='lparen'>(</span><span class='id identifier rubyid_precision'>precision</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_precision'>precision</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='lparen'>(</span><span class='op'>-</span><span class='lparen'>(</span><span class='op'>-</span><span class='ivar'>@num</span> <span class='op'>/</span> <span class='ivar'>@den</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ceil'>ceil</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_with_precision'>with_precision</span><span class='lparen'>(</span><span class='symbol'>:ceil</span><span class='comma'>,</span> <span class='id identifier rubyid_precision'>precision</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="coerce-instance_method">
+  
+    #<strong>coerce</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_coerce'>coerce</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_other'>other</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rbracket'>]</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_to_r'>to_r</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rbracket'>]</span>
+
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_other'>other</span><span class='comma'>,</span> <span class='id identifier rubyid_to_f'>to_f</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="denominator-instance_method">
+  
+    #<strong>denominator</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_denominator'>denominator</span>
+  <span class='ivar'>@den</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="floor-instance_method">
+  
+    #<strong>floor</strong>(precision = 0)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+236
+237
+238
+239
+240
+241
+242</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 236</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_floor'>floor</span><span class='lparen'>(</span><span class='id identifier rubyid_precision'>precision</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_precision'>precision</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='lparen'>(</span><span class='op'>-</span><span class='lparen'>(</span><span class='op'>-</span><span class='ivar'>@num</span> <span class='op'>/</span> <span class='ivar'>@den</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_floor'>floor</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_with_precision'>with_precision</span><span class='lparen'>(</span><span class='symbol'>:floor</span><span class='comma'>,</span> <span class='id identifier rubyid_precision'>precision</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hash-instance_method">
+  
+    #<strong>hash</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hash'>hash</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rational:</span><span class='embexpr_beg'>#{</span><span class='ivar'>@num</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='ivar'>@den</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    #<strong>inspect</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+248
+249
+250</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 248</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="numerator-instance_method">
+  
+    #<strong>numerator</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_numerator'>numerator</span>
+  <span class='ivar'>@num</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rationalize-instance_method">
+  
+    #<strong>rationalize</strong>(eps = undefined)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 254</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rationalize'>rationalize</span><span class='lparen'>(</span><span class='id identifier rubyid_eps'>eps</span> <span class='op'>=</span> <span class='id identifier rubyid_undefined'>undefined</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (arguments.length &gt; 1) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="ArgumentError.html" title="ArgumentError (class)">ArgumentError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>wrong number of arguments (</span><span class='embexpr_beg'>#{</span><span class='backtick'>`</span><span class='tstring_content'>arguments.length</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'> for 0..1)</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    if (eps == null) {
+      return self;
+    }
+
+    var e = </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_eps'>eps</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span><span class='embexpr_end'>}</span><span class='tstring_content'>,
+        a = </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span> <span class='op'>-</span> <span class='backtick'>`</span><span class='tstring_content'>e</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>,
+        b = </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span> <span class='op'>+</span> <span class='backtick'>`</span><span class='tstring_content'>e</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    var p0 = 0,
+        p1 = 1,
+        q0 = 1,
+        q1 = 0,
+        p2, q2;
+
+    var c, k, t;
+
+    while (true) {
+      c = </span><span class='embexpr_beg'>#{</span><span class='backtick'>`</span><span class='tstring_content'>a</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_ceil'>ceil</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+      if (</span><span class='embexpr_beg'>#{</span><span class='backtick'>`</span><span class='tstring_content'>c</span><span class='tstring_end'>`</span></span> <span class='op'>&lt;=</span> <span class='backtick'>`</span><span class='tstring_content'>b</span><span class='tstring_end'>`</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+        break;
+      }
+
+      k  = c - 1;
+      p2 = k * p1 + p0;
+      q2 = k * q1 + q0;
+      t  = </span><span class='embexpr_beg'>#{</span><span class='int'>1</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>b</span><span class='tstring_end'>`</span></span> <span class='op'>-</span> <span class='backtick'>`</span><span class='tstring_content'>k</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      b  = </span><span class='embexpr_beg'>#{</span><span class='int'>1</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>a</span><span class='tstring_end'>`</span></span> <span class='op'>-</span> <span class='backtick'>`</span><span class='tstring_content'>k</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      a  = t;
+
+      p0 = p1;
+      q0 = q1;
+      p1 = p2;
+      q1 = q2;
+    }
+
+    return </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>c * p1 + p0</span><span class='tstring_end'>`</span></span><span class='comma'>,</span> <span class='backtick'>`</span><span class='tstring_content'>c * q1 + q0</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="round-instance_method">
+  
+    #<strong>round</strong>(precision = 0)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 300</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='id identifier rubyid_precision'>precision</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_with_precision'>with_precision</span><span class='lparen'>(</span><span class='symbol'>:round</span><span class='comma'>,</span> <span class='id identifier rubyid_precision'>precision</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_precision'>precision</span> <span class='op'>==</span> <span class='int'>0</span>
+  <span class='kw'>return</span> <span class='int'>0</span> <span class='kw'>if</span> <span class='ivar'>@num</span> <span class='op'>==</span> <span class='int'>0</span>
+  <span class='kw'>return</span> <span class='ivar'>@num</span> <span class='kw'>if</span> <span class='ivar'>@den</span> <span class='op'>==</span> <span class='int'>1</span>
+
+  <span class='id identifier rubyid_num'>num</span> <span class='op'>=</span> <span class='ivar'>@num</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='op'>*</span> <span class='int'>2</span> <span class='op'>+</span> <span class='ivar'>@den</span>
+  <span class='id identifier rubyid_den'>den</span> <span class='op'>=</span> <span class='ivar'>@den</span> <span class='op'>*</span> <span class='int'>2</span>
+
+  <span class='id identifier rubyid_approx'>approx</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span> <span class='op'>/</span> <span class='id identifier rubyid_den'>den</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_truncate'>truncate</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@num</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+    <span class='op'>-</span><span class='id identifier rubyid_approx'>approx</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_approx'>approx</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_f-instance_method">
+  
+    #<strong>to_f</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+317
+318
+319</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 317</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_f'>to_f</span>
+  <span class='ivar'>@num</span> <span class='op'>/</span> <span class='ivar'>@den</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_i-instance_method">
+  
+    #<strong>to_i</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+321
+322
+323</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 321</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='id identifier rubyid_truncate'>truncate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_r-instance_method">
+  
+    #<strong>to_r</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+325
+326
+327</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 325</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_r'>to_r</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    #<strong>to_s</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+329
+330
+331</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 329</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'><span class='object_link'><a href="top-level-namespace.html#to_s-class_method" title="::to_s (method)">to_s</a></span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@num</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='ivar'>@den</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="truncate-instance_method">
+  
+    #<strong>truncate</strong>(precision = 0)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+333
+334
+335
+336
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 333</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_truncate'>truncate</span><span class='lparen'>(</span><span class='id identifier rubyid_precision'>precision</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_precision'>precision</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='ivar'>@num</span> <span class='op'>&lt;</span> <span class='int'>0</span> <span class='op'>?</span> <span class='id identifier rubyid_ceil'>ceil</span> <span class='op'>:</span> <span class='id identifier rubyid_floor'>floor</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_with_precision'>with_precision</span><span class='lparen'>(</span><span class='symbol'>:truncate</span><span class='comma'>,</span> <span class='id identifier rubyid_precision'>precision</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="with_precision-instance_method">
+  
+    #<strong>with_precision</strong>(method, precision)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/rational.rb', line 341</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_with_precision'>with_precision</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_precision'>precision</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>not an Integer</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span> <span class='op'>===</span> <span class='id identifier rubyid_precision'>precision</span>
+
+  <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='int'>10</span><span class='op'>**</span><span class='id identifier rubyid_precision'>precision</span>
+  <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='kw'>self</span> <span class='op'>*</span> <span class='id identifier rubyid_p'>p</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_precision'>precision</span> <span class='op'>&lt;</span> <span class='int'>1</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='id identifier rubyid_p'>p</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='kw'>else</span>
+    <span class='const'><span class='object_link'><a href="" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_p'>p</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 07/28/21 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.26 (ruby-2.7.2).
+</div>
+
+    </div>
+  </body>
+</html>

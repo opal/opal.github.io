@@ -6,10 +6,10 @@
 
   <title>Opal Blog</title>
 
-  <link href="/assets/application-9db9bab64149be06d09e3390c1f7e70d7a98cfcf86f32f8e777c14fcac0ccb27.css" rel="stylesheet" />
+  <link href="/assets/application-915b7e3cafe6e192dee011fa09837b2af85b7e1de3dbb52fd1413d46dd2dca0e.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-  <script src="/assets/application-ebc9a3fff8eae3470a6b7b27753a921aceae8d2254be48253cd1e932e9081355.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+  <script src="/assets/application-74994a7410818947c294a5f44b8f7916d5e1c773e93a5a2c83db9c06d516fd80.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
 Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
 
   <!-- Algolia -->
@@ -62,8 +62,8 @@ GitHub
 </a>
 </li>
 <li>
-<a href='https://rubygems.org/gems/opal/versions/1.1.1' style='opacity: 0.5;'>
-v1.1.1
+<a href='https://rubygems.org/gems/opal/versions/1.8.1' style='opacity: 0.5;'>
+v1.8.1
 </a>
 </li>
 </ul>
@@ -94,16 +94,171 @@ v1.1.1
 <article class='blog-post'>
 <header>
 <h2 class='blog-post-title'>
+<a href='/blog/2023/03/30/opal-won-fukuoka-ruby-award-for-outstanding-performance/'>
+Opal Won the Fukuoka Ruby Award 2023 for Outstanding Performance
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by elia, hmdne
+<br>
+March 30, 2023
+</div>
+</header>
+<div class='blog-post-body'>
+<p>Opal has recently won the prestigious <a href="https://www.digitalfukuoka.jp/topics/228?locale=ja">Fukuoka Ruby Award for Outstanding Performance in the 2023 edition</a>. This is a major achievement for the project and its developers, and it reflects the significant contributions that Opal has made to the Ruby programming language and its ecosystem.</p>&#x000A;&#x000A;<p>Opal is an open-source project that allows developers to write Ruby code and run it in the browser. It achieves this by compiling Ruby code into JavaScript, which can then be executed in a browser environment. This approach has many advantages, including the ability to reuse existing Ruby code and the ability to write web applications entirely in Ruby, without needing to use JavaScript at all.</p>&#x000A;&#x000A;<p>Opal has been around since 2011, and it has steadily gained popularity over the years. It is now widely used by Ruby developers who want to use Ruby on both the front-end and the back-end of their applications or who want to port their Ruby libraries to JavaScript.</p>&#x000A;&#x000A;<a href="/blog/2023/03/30/opal-won-fukuoka-ruby-award-for-outstanding-performance/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2023/01/06/opal-1-7-ruby-3-2/'>
+Opal 1.7, Ruby 3.2, --watch
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by elia
+<br>
+January 06, 2023
+</div>
+</header>
+<div class='blog-post-body'>
+<p>We&#39;re excited to announce the release of Opal v1.7! This release includes support for Ruby 3.2 and the ability to watch file changes with the <code>--watch</code> flag.</p>&#x000A;&#x000A;<h2 id="ruby-3-2-support">Ruby 3.2 Support</h2>&#x000A;&#x000A;<p>Opal v1.7 adds support for Ruby 3.2, the latest version of the Ruby programming language. This means that you can use most of the new features and improvements in Ruby 3.2 when writing your Opal code.</p>&#x000A;&#x000A;<h2 id="watching-file-changes-with-the-watch-flag">Watching File Changes with the <code>--watch</code> Flag</h2>&#x000A;&#x000A;<p>Opal v1.7 introduces the <code>--watch</code> flag, which allows you to automatically recompile your code whenever a file is changed. This is especially useful when working on larger projects, as it saves you the time and effort of manually recompiling your code every time you make a change.</p>&#x000A;&#x000A;<p>To use the <code>--watch</code> flag, simply pass it as an argument when running the <code>opal</code> command. For example:</p>&#x000A;<div class="highlight"><pre class="highlight shell"><code>opal <span class="nt">--output</span><span class="o">=</span>main.js <span class="nt">--watch</span> main.rb&#x000A;</code></pre></div>&#x000A;<p>This will start the Opal compiler and watch for any changes to the <code>main.rb</code> file. When a change is detected, the compiler will automatically recompile the code.</p>&#x000A;&#x000A;<p>We hope these new features will make it easier for you to write and debug your Opal code. As always, please report any issues or feedback on the Opal GitHub repository.</p>&#x000A;&#x000A;<p><em>If you work on macOS be sure to install v1.7.1 that includes a fix for reading the most updated content of watched files.</em></p>&#x000A;&#x000A;<h2 id="new-runners">New runners</h2>&#x000A;&#x000A;<p>Support was added for running code in Deno, Firefox, and Safari, if any of those is available on your box you can try them out by passing <code>--runner</code> with <code>safari</code>, <code>firefox</code>, or <code>deno</code>.</p>&#x000A;&#x000A;<p>Example:</p>&#x000A;<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span><span class="c"># Remember to enable "Allow Remote Automation" in Safari's Develop menu</span>&#x000A;<span class="nv">$ </span>opal:master ⤑ bin/opal <span class="nt">--runner</span><span class="o">=</span>safari <span class="nt">-ropal</span>/platform <span class="nt">-e</span> <span class="s2">"puts 'Hello from Webkit, heir of Konqueror!'"</span>                                                     ~/C/opal&#x000A;Connecting to localhost:9444...&#x000A;Connecting to localhost:9444...&#x000A;Connecting to localhost:9444...&#x000A;Hello from Webkit, heir of Konqueror!&#x000A;</code></pre></div>&#x000A;<hr>&#x000A;&#x000A;<h3 id="resources">Resources</h3>&#x000A;&#x000A;<ul>&#x000A;<li><a href="https://github.com/opal/opal/releases/tag/v1.7.0">Changelog for v1.7.0</a></li>&#x000A;<li><a href="https://github.com/opal/opal/compare/v1.6.1...v1.7.0">List of commits</a> / <a href="https://github.com/opal/opal/compare/v1.6.1...v1.7.0.diff">raw diff</a></li>&#x000A;<li><a href="https://opalrb.com">Updated website</a></li>&#x000A;<li><a href="http://opalrb.com/docs/">Documentation</a></li>&#x000A;</ul>&#x000A;</div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2022/11/24/opal-1-6-opal-rspec-1-0/'>
+Opal 1.6 and Opal-RSpec 1.0
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne, elia, janbiedermann
+<br>
+November 24, 2022
+</div>
+</header>
+<div class='blog-post-body'>
+<p>We are happy to announce that Opal 1.6 and Opal-RSpec 1.0 are out!</p>&#x000A;&#x000A;<p>Opal is a Ruby (3.1) to JavaScript (ES5) compiler allowing you to write frontend code in pure Ruby and have it translated to clean and efficient JavaScript. It also includes a highly compatible core library that includes all the methods you&#39;ve come to love. All this with a robust support of source maps, so you can debug Ruby code, not JavaScript in your Web Console. It can be used both to create websites entirely in Ruby (using <a href="https://github.com/opal/opal-browser">Opal-Browser</a>, or <a href="https://opalrb.com/libraries/">ports of known JavaScript libraries</a>) and to port existing Ruby libraries to JavaScript, to be ran both in Node.JS and in web browsers (and other JavaScript environments).</p>&#x000A;&#x000A;<p>Opal-RSpec is an Opal port of <a href="https://rspec.info/">RSpec</a>, a well known Ruby testing tool, allowing you to easily test your Ruby applications in browser and in Node, just like you can do so with MRI.</p>&#x000A;&#x000A;<p>This release of Opal is focused primarily on improving upon MRI compatibility. We now fully support freezing and also we now have a new robust and hackable control flow instruction handling implementation (think: <code>break</code>, <code>next</code>, <code>return</code>...). Also, Windows support has been improved and Opal gained a parallel compile support - significantly improving compile times on multicore systems. In addition, the <code>await</code> subsystem is no longer experimental.</p>&#x000A;&#x000A;<p>Try it now on <a href="https://opalrb.com/try">opalrb.com/try</a>, or get started instantly with no further steps required (except for installing Ruby):</p>&#x000A;<div class="highlight"><pre class="highlight plaintext"><code>gem install opal&#x000A;# Try either of the following examples:&#x000A;opal -e 'puts "Hello world!"'&#x000A;opal -ce 'puts "Hello world!"' &gt; hello_world.js; node hello_world.js&#x000A;opal -OcEe 'puts "Hello world!"'&#x000A;# Or run it in a web browser:&#x000A;bundle init&#x000A;bundle add opal-browser puma&#x000A;bundle add rack -v '&lt; 3'&#x000A;bundle exec opal -Rserver -qopal-browser -rbrowser -e '$document.write("Hello world!")'&#x000A;</code></pre></div>&#x000A;<a href="/blog/2022/11/24/opal-1-6-opal-rspec-1-0/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2022/04/13/opal-1-5/'>
+Opal 1.5: binding.irb in a web browser
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne, elia
+<br>
+April 13, 2022
+</div>
+</header>
+<div class='blog-post-body'>
+<p>We are happy to announce that Opal 1.5 is out!</p>&#x000A;&#x000A;<p>Opal is a Ruby (3.1) to JavaScript (ES5) compiler allowing you to write frontend code in pure Ruby and have it translated to clean and efficient JavaScript. It also includes a highly compatible core library that includes all the methods you&#39;ve come to love.</p>&#x000A;&#x000A;<p>This release is mostly focused on performance improvements. In fact, in our tests, we got a 2x performance bump for the Opal Ruby compiler running in V8! As always, we have some new features (<code>binding.irb</code>), some compatibility improvements and a bunch of bugfixes.</p>&#x000A;&#x000A;<p>Try it now on <a href="https://opalrb.com/try">opalrb.com/try</a>.</p>&#x000A;&#x000A;<a href="/blog/2022/04/13/opal-1-5/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2021/12/24/opal-1-4/'>
+Opal 1.4: Ruby 3.1, performance, and bundle size
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne
+<br>
+December 24, 2021
+</div>
+</header>
+<div class='blog-post-body'>
+<p>We are proud to announce an immediate availability of Opal 1.4!</p>&#x000A;&#x000A;<p>Opal is a Ruby to JavaScript (ES5) compiler allowing you to write frontend code in pure Ruby (and a lot more!).</p>&#x000A;&#x000A;<p>This version of Opal is about compatibility with Ruby 3.1 and lots of internal improvement around performance, code size, and readability of the generated code. Opal 1.3 was released just about 2 months ago, but we really wanted to get 3.1-level compatibility out around the time Ruby 3.1 is released this Christmas.</p>&#x000A;&#x000A;<p><em>As always, you don&#39;t need to run Opal with Ruby 3.1 to benefit from the 3.1-level features, Ruby 2.6 will do just fine :)</em></p>&#x000A;&#x000A;<a href="/blog/2021/12/24/opal-1-4/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2021/11/24/optimizing-opal-output-for-size/'>
+Optimizing Opal output for size
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne
+<br>
+November 24, 2021
+</div>
+</header>
+<div class='blog-post-body'>
+<p>Opal doesn&#39;t output the smallest code possible - that&#39;s not our goal. We want to output readable ES5 code and we have tools: JS minifiers&#x000A;(<a href="https://terser.org/">Terser</a> and <a href="https://developers.google.com/closure/compiler/">Google Closure Compiler</a>), and tree shaking utilities&#x000A;(<a href="https://github.com/hmdne/opal-optimizer">opal-optimizer</a>) to bring the code size down.</p>&#x000A;&#x000A;<p>JavaScript and Ruby certainly have some different semantics. Some things work similarly (like open classes), but some others don&#39;t - and those that don&#39;t&#x000A;require some boilerplate code. That not only reduces performance, but also increases load times, both crucial for JavaScript code.</p>&#x000A;&#x000A;<p>In this article we will particularly focus on Terser, since it&#39;s the most widely used tool for Opal post-processing. Can Terser find every nook and&#x000A;cranny and optimize the resulting code to the minimal JavaScript version possible? Unfortunately not. It doesn&#39;t have a knowledge about which&#x000A;statements can produce side effects and which don&#39;t. And so it only does the transformations that are semantically equivalent. But while compiling,&#x000A;we may know something more.</p>&#x000A;&#x000A;<a href="/blog/2021/11/24/optimizing-opal-output-for-size/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2021/11/03/opal-1-3/'>
+Opal 1.3
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne
+<br>
+November 03, 2021
+</div>
+</header>
+<div class='blog-post-body'>
+<p>We have released Opal v1.3.0 a week ago and today we are releasing Opal v1.3.1 containing a few last minute fixes. We plan Opal v1.3 to be supported with a best-effort principle for a longer term, backporting bugfixes.</p>&#x000A;&#x000A;<p>This is quite a big release with a special focus on developer tools and error reporting improvements.</p>&#x000A;&#x000A;<a href="/blog/2021/11/03/opal-1-3/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2021/08/09/opal-1-2/'>
+Opal 1.2
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by hmdne
+<br>
+August 09, 2021
+</div>
+</header>
+<div class='blog-post-body'>
+<p>After about 11 years of development we are proud to announce the Opal 1.2 release!</p>&#x000A;&#x000A;<p>Opal is a Ruby to JavaScript compiler, Ruby runtime and an idiomatic Ruby API for interfacing Browser/Node/<code>anything that uses JS</code>.</p>&#x000A;&#x000A;<h2 id="notable-new-features">Notable new features</h2>&#x000A;&#x000A;<h3 id="full-ruby-3-0-support-almost">Full Ruby 3.0 support! (almost)</h3>&#x000A;&#x000A;<p>We missed a blog post about Opal 1.1, which was released with a preliminary support for Ruby 3.0 features, but Opal 1.2 finalizes this support. Let me update you about them!</p>&#x000A;&#x000A;<p><em>An interesting thing is that you can still run older versions of Ruby on the backend, but use the new Ruby 3.0 features when writing Opal code for your frontend.</em></p>&#x000A;&#x000A;<a href="/blog/2021/08/09/opal-1-2/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
+<a href='/blog/2021/06/26/webassembly-and-advanced-regexp-with-opal/'>
+WebAssembly and advanced regular expressions with Opal
+</a>
+</h2>
+<div class='blog-post-meta'>
+Posted by Interscript
+<br>
+June 26, 2021
+</div>
+</header>
+<div class='blog-post-body'>
+<p><em>(This is a guest-post from the people at <a href="https://github.com/interscript/interscript">Interscript</a>, featuring an in-depth account of the work done around building a web-assebly bridge and compiling Onigmo for Opal)</em></p>&#x000A;&#x000A;<hr>&#x000A;&#x000A;<p>At <a href="https://github.com/riboseinc">Ribose Inc</a> we develop <a href="https://github.com/interscript/interscript">Interscript</a>, an open source Ruby implementation of interoperable transliteration schemes from ALA-LC, BGN/PCGN, ICAO, ISO, UN (by UNGEGN) and many, many other script conversion system authorities. The goal of this project is to achieve interoperable transliteration schemes allowing quality comparisons.</p>&#x000A;&#x000A;<p>We decided to port our software to JavaScript using Opal (the Ruby to JavaScript compiler), so it can be also used in web browsers and Node environments. The problem is - Opal translates Ruby regular expressions (upon which we rely quite heavily) to JavaScript almost verbatim. This made our ported codebase incompatible on principle, so we searched for a better solution.</p>&#x000A;&#x000A;<p>Unfortunately, Regexp is basically something like a programming language that has more than a dozen of incompatible implementations - even across the web browsers. For instance, we need lookbehind assertions, but even if there is a new standard in ECMAScript which adds lookbehind assertions, Safari doesn&#39;t implement that.</p>&#x000A;&#x000A;<p>Given all this context let&#39;s dive into how we ported the original Ruby Regexp engine to the browser!</p>&#x000A;&#x000A;<a href="/blog/2021/06/26/webassembly-and-advanced-regexp-with-opal/#continue-reading">continue reading…</a></div>
+</article>
+
+<article class='blog-post'>
+<header>
+<h2 class='blog-post-title'>
 <a href='/blog/2019/05/12/opal-1-0/'>
 Opal 1.0
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Elia Schito on 2019-05-12
+Posted by Elia Schito
+<br>
+May 12, 2019
 </div>
 </header>
 <div class='blog-post-body'>
-<p>Dear Opalists of the world,&#x000A;<br>the time has come, <strong>1.0 has been released</strong>!</p>&#x000A;&#x000A;<p>This is, of course, a really important milestone, one that I&#39;ve been waiting on for about seven years. I started advocating for releasing version 1.0 back in 2012 when Opal was still at version 0.3. After all, at that time I already had code in production, and according to <a href="https://semver.org">Semver</a> (which by then was still a new thing) that&#39;s one of the criteria for releasing 1.0:</p>&#x000A;&#x000A;<blockquote>&#x000A;<p>How do I know when to release 1.0.0?</p>&#x000A;&#x000A;<p>If your software is being used in production, it should probably already be 1.0.0. If you have a stable API on which users have come to depend, you should be 1.0.0. If you’re worrying a lot about backward compatibility, you should probably already be 1.0.0.</p>&#x000A;</blockquote>&#x000A;&#x000A;<p><em><a href="https://semver.org/#how-do-i-know-when-to-release-100">https://semver.org/#how-do-i-know-when-to-release-100</a></em></p>&#x000A;&#x000A;<p><strong>I was so proud and excited about this ability to use Ruby for frontend code!</strong> I was writing the logic for an in-page product filter and Ruby allowed me to solve the problem quickly, with its signature concise syntax, and leveraging the power of enumerable. That immensely reduced the lines of code I had to write and allowed me to concentrate on just the core of the problem.</p>&#x000A;&#x000A;<p>Many years have passed, and I&#39;m even more proud of the project that Opal has become, the maturity and the feature parity with MRI is astounding, the new features that are coming in version 1.0 are even more amazing, and the roadmap ahead <strong>makes Opal one of the best choices among compile-to-JS languages</strong>.</p>&#x000A;&#x000A;<hr>&#x000A;&#x000A;<p><em>Before diving into each new feature I&#39;d like to give immense credit for the MVP of this release, namely our good <a href="https://github.com/iliabylich">Ilia Bylich</a>! Without his unrelenting work and deep understanding of Ruby, we wouldn&#39;t be where we are. Thanks man!</em> 👏👏👏</p>&#x000A;&#x000A;<h2 id="notable-new-features">Notable New Features</h2>&#x000A;&#x000A;<a href="/blog/2019/05/12/opal-1-0/#continue-reading">continue reading…</a></div>
+<p>Dear Opalists of the world,&#x000A;<br>the time has come, <strong>1.0 has been released</strong>!</p>&#x000A;&#x000A;<p>This is, of course, a really important milestone, one that I&#39;ve been waiting on for about seven years. I started advocating for releasing version 1.0 back in 2012 when Opal was still at version 0.3. After all, at that time I already had code in production, and according to <a href="https://semver.org">Semver</a> (which by then was still a new thing) that&#39;s one of the criteria for releasing 1.0:</p>&#x000A;&#x000A;<blockquote>&#x000A;<p>How do I know when to release 1.0.0?</p>&#x000A;&#x000A;<p>If your software is being used in production, it should probably already be 1.0.0. If you have a stable API on which users have come to depend, you should be 1.0.0. If you’re worrying a lot about backward compatibility, you should probably already be 1.0.0.</p>&#x000A;</blockquote>&#x000A;&#x000A;<p><em><a href="https://semver.org/#how-do-i-know-when-to-release-100">https://semver.org/#how-do-i-know-when-to-release-100</a></em></p>&#x000A;&#x000A;<p><strong>I was so proud and excited about this ability to use Ruby for frontend code!</strong> I was writing the logic for an in-page product filter and Ruby allowed me to solve the problem quickly, with its signature concise syntax, and leveraging the power of enumerable. That immensely reduced the lines of code I had to write and allowed me to concentrate on just the core of the problem.</p>&#x000A;&#x000A;<p>Many years have passed, and I&#39;m even more proud of the project that Opal has become, the maturity and the feature parity with MRI is astounding, the new features that are coming in version 1.0 are even more amazing, and the roadmap ahead <strong>makes Opal one of the best choices among compile-to-JS languages</strong>.</p>&#x000A;&#x000A;<a href="/blog/2019/05/12/opal-1-0/#continue-reading">continue reading…</a></div>
 </article>
 
 <article class='blog-post'>
@@ -114,11 +269,13 @@ Opal-RSpec v0.7, has been finally released! ✨
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Elia Schito on 2019-02-05
+Posted by Elia Schito
+<br>
+February 05, 2019
 </div>
 </header>
 <div class='blog-post-body'>
-<p>It&#39;s been a deep work of refactoring and rewriting, adding specs and updating dependencies. Huge kudos to <a href="https://github.com/wied03">@wied03</a> for the foundational work and as usual to <a href="https://github.com/iliabylich">@iliabylich</a> for the laser sharp refactoring.</p>&#x000A;&#x000A;<p><em>For a full list of changes and updated instructions please checkout the <a href="https://github.com/opal/opal-rspec/blob/master/CHANGELOG.md#071---2019-02-04">Changelog</a> and the <a href="https://github.com/opal/opal-rspec#readme">Readme</a>.</em></p>&#x000A;&#x000A;<h3 id="new-opal-rspec-command">New <code>opal-rspec</code> command</h3>&#x000A;&#x000A;<p>A new CLI executable has been added with basic functionality to aid writing and running specs. Type <code>opal-rspec -h</code> for the complete list of options.</p>&#x000A;&#x000A;<p>One notable addition is the <code>--init</code> option that will help you initialize your project with opal-rspec.</p>&#x000A;&#x000A;<h3 id="new-folder-defaults">New folder defaults 📂</h3>&#x000A;&#x000A;<p>With this update I&#39;m also announcing the new standard paths for opal <code>lib/</code> and <code>spec/</code> folders, which are <code>lib-opal/</code> and <code>spec-opal</code>. This will avoid the confusion about the role of the two folders and make them nicely stay near they&#39;re MRI counterparts in your editor.</p>&#x000A;&#x000A;<p>In this spirit the <code>opal-rspec</code> command and all rake tasks will look for spec files in <code>spec-opal/</code>.</p>&#x000A;&#x000A;<p><strong>Note:</strong> those defaults are intended as the current best practice to organize an Opal project.</p>&#x000A;&#x000A;<hr>&#x000A;&#x000A;<p><em>🗓 More than a year has passed since the last post, if you missed Opal, that&#39;s because most of the news circulated on the <a href="https://slack.opalrb.com">Slack channel</a>, that&#39;s my fault! <strong>But rejoice! new posts are coming and the 1.0 release is around the corner</strong></em> 😄</p>&#x000A;&#x000A;<p><em>Link to the official chat updated on 2020/04/28.</em></p>&#x000A;</div>
+<p>It&#39;s been a deep work of refactoring and rewriting, adding specs and updating dependencies. Huge kudos to <a href="https://github.com/wied03">@wied03</a> for the foundational work and as usual to <a href="https://github.com/iliabylich">@iliabylich</a> for the laser sharp refactoring.</p>&#x000A;&#x000A;<p><em>For a full list of changes and updated instructions please checkout the <a href="https://github.com/opal/opal-rspec/blob/master/CHANGELOG.md#071---2019-02-04">Changelog</a> and the <a href="https://github.com/opal/opal-rspec#readme">Readme</a>.</em></p>&#x000A;&#x000A;<a href="/blog/2019/02/05/opal-rspec-0-7/#continue-reading">continue reading…</a></div>
 </article>
 
 <article class='blog-post'>
@@ -129,7 +286,9 @@ Opal 0.11.0: Parser gem, Safe navigator (&.), Random seed support, Constant look
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Elia Schito on 2017-12-20
+Posted by Elia Schito
+<br>
+December 20, 2017
 </div>
 </header>
 <div class='blog-post-body'>
@@ -144,7 +303,9 @@ Opal-RSpec 0.5: Newer RSpec version, improved Rake task, better documentation
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Brady Wied on 2016-07-19
+Posted by Brady Wied
+<br>
+July 19, 2016
 </div>
 </header>
 <div class='blog-post-body'>
@@ -159,7 +320,9 @@ Opal 0.10: Rack 2 compatibility, improved keyword argument support, better sourc
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Jared White on 2016-06-23
+Posted by Jared White
+<br>
+June 23, 2016
 </div>
 </header>
 <div class='blog-post-body'>
@@ -174,11 +337,13 @@ Opal 0.9: direct JS calls, console.rb, numeric updates, better reflection, and f
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Jared White on 2016-01-13
+Posted by Jared White
+<br>
+January 13, 2016
 </div>
 </header>
 <div class='blog-post-body'>
-<p>Opal is now officially on the 0.9.x release path, having just released <a href="https://github.com/opal/opal/compare/v0.8.1...v0.9.2">0.9.2</a>. Thanks to all the <a href="https://github.com/opal/opal/graphs/contributors?from=2015-04-30&amp;to=2016-01-13&amp;type=c">contributors to Opal</a>, especially over the holidays, and we&#39;re excited for what the new year will bring to the Opal community. Some highlights from the latest release:</p>&#x000A;&#x000A;<h3 id="direct-calling-of-javascript-methods">Direct calling of JavaScript methods</h3>&#x000A;&#x000A;<p>You can now make direct JavaScript method calls on native JS objects using the <code>recv.JS.method</code> syntax. Has support for method calls, final callback (as a block), property getter and setter (via <code>#[]</code> and <code>#[]=</code>), splats, JavaScript keywords (via the <code>::JS</code> module) and global functions (after <code>require &quot;js&quot;</code>).</p>&#x000A;&#x000A;<p>Some examples, first a simple method call:</p>&#x000A;<div class="highlight"><pre class="highlight ruby"><code><span class="c1"># javascript: foo.bar()</span>&#x000A;<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span>&#x000A;<span class="n">foo</span><span class="o">.</span><span class="no">JS</span><span class="p">.</span><span class="nf">bar</span><span class="p">()</span>&#x000A;</code></pre></div>&#x000A;<a href="/blog/2016/01/13/opal-0-9/#continue-reading">continue reading…</a></div>
+<p>Opal is now officially on the 0.9.x release path, having just released <a href="https://github.com/opal/opal/compare/v0.8.1...v0.9.2">0.9.2</a>. Thanks to all the <a href="https://github.com/opal/opal/graphs/contributors?from=2015-04-30&amp;to=2016-01-13&amp;type=c">contributors to Opal</a>, especially over the holidays, and we&#39;re excited for what the new year will bring to the Opal community. Some highlights from the latest release:</p>&#x000A;&#x000A;<h3 id="direct-calling-of-javascript-methods">Direct calling of JavaScript methods</h3>&#x000A;&#x000A;<p>You can now make direct JavaScript method calls on native JS objects using the <code>recv.JS.method</code> syntax. Has support for method calls, final callback (as a block), property getter and setter (via <code>#[]</code> and <code>#[]=</code>), splats, JavaScript keywords (via the <code>::JS</code> module) and global functions (after <code>require &quot;js&quot;</code>).</p>&#x000A;&#x000A;<a href="/blog/2016/01/13/opal-0-9/#continue-reading">continue reading…</a></div>
 </article>
 
 <article class='blog-post'>
@@ -189,7 +354,9 @@ Opal 0.7.0: require, kwargs, docs, testing, lots of fixes
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Elia Schito on 2015-02-02
+Posted by Elia Schito
+<br>
+February 02, 2015
 </div>
 </header>
 <div class='blog-post-body'>
@@ -204,7 +371,9 @@ Promises: Handling asynchronous code in Opal
 </a>
 </h2>
 <div class='blog-post-meta'>
-Posted by Adam Beynon on 2014-05-07
+Posted by Adam Beynon
+<br>
+May 07, 2014
 </div>
 </header>
 <div class='blog-post-body'>
@@ -223,8 +392,7 @@ Posted by Adam Beynon on 2014-05-07
 
 
   <script>
-    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)
-      .parentElement.classList.add("active")
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)?.parentElement.classList.add("active")
   </script>
 
   <!-- Algolia -->

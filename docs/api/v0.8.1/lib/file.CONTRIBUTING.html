@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: CONTRIBUTING
+  
+    &mdash; lib (Opal v0.8.1)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "CONTRIBUTING";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: CONTRIBUTING</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <iframe id="search_frame" src="file_list.html"></iframe>
+
+      <div id="content"><div id='filecontents'><h1>Contributing</h1>
+
+<p>This is the issue tracker for Opal. If you have a more general question about
+using opal (or related libraries) then use the
+<a href="http://groups.google.com/forum/#!forum/opalrb">google group for opal</a>, or the
+<a href="http://webchat.freenode.net/?channels=opal">#opal</a> irc channel on
+FreeNode.</p>
+
+<h2>Contributing</h2>
+
+<ol>
+<li><p>Before opening a new issue, search for previous discussions including closed
+ones. Add comments there if a similar issue is found.</p></li>
+<li><p>Please report the version on which the issue is found.</p></li>
+<li><p>Before sending pull requests make sure all tests run and pass (see below).</p></li>
+<li><p>Make sure to use a similar coding style to the rest of the code base. In ruby
+and javascript code we use 2 spaces (no tabs).</p></li>
+</ol>
+
+<h2>Quick Start</h2>
+
+<p>Fork <a href="https://github.com/opal/opal">https://github.com/opal/opal</a>, then clone the fork to your machine:</p>
+
+<pre class="code ruby"><code class="ruby">$ git clone git://github.com/&lt;Your GitHub Username&gt;/opal.git
+</code></pre>
+
+<p>Get dependencies:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle install
+</code></pre>
+
+<p>RubySpec related repos must be cloned as a git submodules:</p>
+
+<pre class="code ruby"><code class="ruby">$ git submodule update --init
+</code></pre>
+
+<p>Run the test suite:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle exec rake
+</code></pre>
+
+<p>You are now ready to make your first contribution to Opal! At a high level, your workflow will be to:</p>
+
+<ol>
+<li>Make changes to Opal source code</li>
+<li>Run the test suite to make sure it still passes</li>
+<li>Submit a pull request</li>
+</ol>
+
+<h2>Down The Rabbit Hole</h2>
+
+<p>Before making changes to Opal source, you need to understand a little about how the test suite works. Every spec that Opal test suite executes is listed in <code>spec/rubyspecs</code> file. Each line in that file is a path to either a spec file or a directory full of spec files. If it&#39;s a path to a directory, all spec files in that directory will be executed when you run the test suite. All paths are relative to the top-level <code>specs</code> directory. Let&#39;s follow one of these paths - <code>corelib/core/string/sub_spec</code> - and see where it goes.</p>
+
+<p>Navigating to <code>spec/corelib/core</code> directory, you see that it contains multiple sub-directories, usually named after the Ruby class or module. Drilling further down into <code>spec/corelib/core/string</code> you see all the spec files for the various <code>String</code> behaviors under test, usually named by a method name followed by <code>_spec.rb</code>. Opening <code>spec/corelib/core/string/sub_spec.rb</code> you finally see the code that checks the correctness of Opal&#39;s implementation of <code>String#sub</code> method&#39;s behavior.</p>
+
+<p>When you execute <code>$ bundle exec rake</code>, the code in this file is executed, along with all the other specs in the entire test suite. It&#39;s a good idea to run the entire test suite when you feel you reached a certain milestone in the course of making your changes (exactly what that means is up to you), and definitely do <code>$ bundle exec rake</code> before commiting your changes to make sure they have not introduced regressions or other unintended side effects.</p>
+
+<p>But you will want to run tests as often as possible, after every small change, and running the entire test suite will slow you down. You need to be able to execute a single spec that is concerned with the feature you are currently working on. To accomplish this, just add <code>PATTERN</code> to your spec invocation command, like this:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle exec rake mspec_node PATTERN=spec/corelib/core/string/sub_spec.rb
+</code></pre>
+
+<p>This will make sure that only <code>spec/corelib/core/string/sub_spec.rb</code> is run, and no other specs are executed.</p>
+
+<p>Another way to quickly validate ideas and play with your changes is to use <code>opal-repl</code>, a tool similar to <code>irb</code>. Running <code>opal-repl</code> drops you into an interactive environment with your current version of Opal loaded, including any changes you have made.</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle exec opal-repl
+&gt;&gt; 2 + 2
+=&gt; 4
+&gt;&gt; 
+</code></pre>
+
+<p>When quickly iterating on an idea, even <code>opal-repl</code> may feel a bit too heavy, because after making a change in Opal, you must <code>exit</code> from <code>opal-repl</code> and do <code>$ bundle exec opal-repl</code> again to load Opal with your latest changes. In this case, you can run <code>opal</code> with the <code>-e</code> option, which executes a piece of code you pass to it once, then returns to the shell. This means that in order to run it again after making another adjustment to Opal, all you have to do is hit the up arrow key on your keyboard and press the enter key. This is the fastest way to go from making a change in Opal to seeing its effect.</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle exec opal -e &quot;3.times {puts &#39;hello&#39;}&quot;
+hello
+hello
+hello
+$
+</code></pre>
+
+<p>Let&#39;s recap what we covered so far. <code>spec/rubyspecs</code> is the &quot;master list&quot; of all the specs that get executed when you do <code>$ bundle exec rake</code>. You know where to find individual specs, inspect them, and execute them selectively or in bulk. But how do you know which specs to work on? You may be tempted to compare the contents of one of the directories in <code>spec/corelib/core</code> with the list of paths in <code>spec/rubyspecs</code>, add the missing paths to the &quot;master list&quot;, run <code>$ bundle exec rake</code>, and start fixing the failures by implementing the missing features. However, chances are that as you are reading this, there are plenty of failing tests in the specs that are already listed in <code>spec/rubyspecs</code>. How can that be if <code>$ bundle exec rake</code> runs green? To understand this, you need to get acquainted with the concept of spec filters.</p>
+
+<p>There are two types of spec filters in the Opal project: <code>spec/filters/bugs</code> and <code>spec/filters/unsupported</code>. Both filters have the same effect: any spec failures that are noted inside any of the files inside of these directories are ignored when running the spec suite, i.e. they are not reported as failures. Even though their effect is the same, the purpose of <code>bugs</code> and <code>unsupported</code> filters is different. As the name suggests, <code>unsupported</code> filters list <em>permanent</em> failures, things that other Ruby implementations can do that Opal cannot and will never be able to do (by design and by virtue of being implemented on top of JavaScript running in the browser environment). <code>bugs</code> filters, on the other hand, are <em>temporary</em> failures, problems that need to be worked on. Problems that Opal needs your help with. Think of the <code>bugs</code> directory and the files contained within it as your &quot;TO DO&quot; list for contributing to Opal.</p>
+
+<p>Comment out any of the <code>fail</code> lines in any of the files in the <code>spec/filters/bugs</code> directory, run <code>$bundle exec rake</code>, and watch it fail. Make it pass and submit a pull request - that&#39;s all there is to it :) Happy hacking!</p>
+</div></div>
+
+      <div id="footer">
+  Generated on 12/09/15 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+    </div>
+  </body>
+</html>

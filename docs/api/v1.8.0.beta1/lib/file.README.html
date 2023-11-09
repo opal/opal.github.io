@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; lib (Opal v1.8.0.beta1)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="ws-a-node-js-websocket-library">ws: a Node.js WebSocket library</h1>
+
+<p><a href="https://www.npmjs.com/package/ws"><img src="https://img.shields.io/npm/v/ws.svg?logo=npm" alt="Version npm"></a>
+<a href="https://github.com/websockets/ws/actions?query=workflow%3ACI+branch%3Amaster"><img src="https://img.shields.io/github/workflow/status/websockets/ws/CI/master?label=CI&logo=github" alt="CI"></a>
+<a href="https://coveralls.io/github/websockets/ws"><img src="https://img.shields.io/coveralls/websockets/ws/master.svg?logo=coveralls" alt="Coverage Status"></a></p>
+
+<p>ws is a simple to use, blazing fast, and thoroughly tested WebSocket client and
+server implementation.</p>
+
+<p>Passes the quite extensive Autobahn test suite: <a href="http://websockets.github.io/ws/autobahn/servers/">server</a>,
+<a href="http://websockets.github.io/ws/autobahn/clients/">client</a>.</p>
+
+<p><strong>Note</strong>: This module does not work in the browser. The client in the docs is a
+reference to a back end with the role of a client in the WebSocket
+communication. Browser clients must use the native
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket"><code>WebSocket</code></a>
+object. To make the same code work seamlessly on Node.js and the browser, you
+can use one of the many wrappers available on npm, like
+<a href="https://github.com/heineiuo/isomorphic-ws">isomorphic-ws</a>.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+<li><a href="#protocol-support">Protocol support</a></li>
+<li><a href="#installing">Installing</a>
+
+<ul>
+<li><a href="#opt-in-for-performance">Opt-in for performance</a></li>
+</ul></li>
+<li><a href="#api-docs">API docs</a></li>
+<li><a href="#websocket-compression">WebSocket compression</a></li>
+<li><a href="#usage-examples">Usage examples</a>
+
+<ul>
+<li><a href="#sending-and-receiving-text-data">Sending and receiving text data</a></li>
+<li><a href="#sending-binary-data">Sending binary data</a></li>
+<li><a href="#simple-server">Simple server</a></li>
+<li><a href="#external-https-server">External HTTP/S server</a></li>
+<li><a href="#multiple-servers-sharing-a-single-https-server">Multiple servers sharing a single HTTP/S server</a></li>
+<li><a href="#client-authentication">Client authentication</a></li>
+<li><a href="#server-broadcast">Server broadcast</a></li>
+<li><a href="#echowebsocketorg-demo">echo.websocket.org demo</a></li>
+<li><a href="#use-the-nodejs-streams-api">Use the Node.js streams API</a></li>
+<li><a href="#other-examples">Other examples</a></li>
+</ul></li>
+<li><a href="#faq">FAQ</a>
+
+<ul>
+<li><a href="#how-to-get-the-ip-address-of-the-client">How to get the IP address of the client?</a></li>
+<li><a href="#how-to-detect-and-close-broken-connections">How to detect and close broken connections?</a></li>
+<li><a href="#how-to-connect-via-a-proxy">How to connect via a proxy?</a></li>
+</ul></li>
+<li><a href="#changelog">Changelog</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2 id="protocol-support">Protocol support</h2>
+
+<ul>
+<li><strong>HyBi drafts 07-12</strong> (Use the option <code>protocolVersion: 8</code>)</li>
+<li><strong>HyBi drafts 13-17</strong> (Current default, alternatively option
+<code>protocolVersion: 13</code>)</li>
+</ul>
+
+<h2 id="installing">Installing</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_npm'>npm</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_ws'>ws</span>
+</code></pre>
+
+<h3 id="opt-in-for-performance">Opt-in for performance</h3>
+
+<p>There are 2 optional modules that can be installed along side with the ws
+module. These modules are binary addons which improve certain operations.
+Prebuilt binaries are available for the most popular platforms so you don&#39;t
+necessarily need to have a C++ compiler installed on your machine.</p>
+
+<ul>
+<li><code>npm install --save-optional bufferutil</code>: Allows to efficiently perform
+operations such as masking and unmasking the data payload of the WebSocket
+frames.</li>
+<li><code>npm install --save-optional utf-8-validate</code>: Allows to efficiently check if a
+message contains valid UTF-8.</li>
+</ul>
+
+<h2 id="api-docs">API docs</h2>
+
+<p>See <a href="./doc/ws.md"><code>/doc/ws.md</code></a> for Node.js-like documentation of ws classes and
+utility functions.</p>
+
+<h2 id="websocket-compression">WebSocket compression</h2>
+
+<p>ws supports the <a href="https://tools.ietf.org/html/rfc7692">permessage-deflate extension</a> which enables
+the client and server to negotiate a compression algorithm and its parameters,
+and then selectively apply it to the data payloads of each WebSocket message.</p>
+
+<p>The extension is disabled by default on the server and enabled by default on the
+client. It adds a significant overhead in terms of performance and memory
+consumption so we suggest to enable it only if it is really needed.</p>
+
+<p>Note that Node.js has a variety of issues with high-performance compression,
+where increased concurrency, especially on Linux, can lead to <a href="https://github.com/nodejs/node/issues/8871">catastrophic
+memory fragmentation</a> and slow performance. If you intend to use
+permessage-deflate in production, it is worthwhile to set up a test
+representative of your workload and ensure Node.js/zlib will handle it with
+acceptable performance and memory usage.</p>
+
+<p>Tuning of permessage-deflate can be done via the options defined below. You can
+also use <code>zlibDeflateOptions</code> and <code>zlibInflateOptions</code>, which is passed directly
+into the creation of <a href="https://nodejs.org/api/zlib.html#zlib_zlib_createdeflateraw_options">raw deflate/inflate streams</a>.</p>
+
+<p>See <a href="https://github.com/websockets/ws/blob/master/doc/ws.md#new-websocketserveroptions-callback">the docs</a> for more options.</p>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const wss = new WebSocket.Server({
+  port: 8080,
+  perMessageDeflate: {
+    zlibDeflateOptions: {
+      // See zlib defaults.
+      chunkSize: 1024,
+      memLevel: 7,
+      level: 3
+    },
+    zlibInflateOptions: {
+      chunkSize: 10 * 1024
+    },
+    // Other options settable:
+    clientNoContextTakeover: true, // Defaults to negotiated value.
+    serverNoContextTakeover: true, // Defaults to negotiated value.
+    serverMaxWindowBits: 10, // Defaults to negotiated value.
+    // Below options specified as default values.
+    concurrencyLimit: 10, // Limits zlib concurrency for perf.
+    threshold: 1024 // Size (in bytes) below which messages
+    // should not be compressed.
+  }
+});
+</code></pre>
+
+<p>The client will only use the extension if it is supported and enabled on the
+server. To always disable the extension on the client set the
+<code>perMessageDeflate</code> option to <code>false</code>.</p>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const ws = new WebSocket(&#39;ws://www.host.com/path&#39;, {
+  perMessageDeflate: false
+});
+</code></pre>
+
+<h2 id="usage-examples">Usage examples</h2>
+
+<h3 id="sending-and-receiving-text-data">Sending and receiving text data</h3>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const ws = new WebSocket(&#39;ws://www.host.com/path&#39;);
+
+ws.on(&#39;open&#39;, function open() {
+  ws.send(&#39;something&#39;);
+});
+
+ws.on(&#39;message&#39;, function incoming(data) {
+  console.log(data);
+});
+</code></pre>
+
+<h3 id="sending-binary-data">Sending binary data</h3>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const ws = new WebSocket(&#39;ws://www.host.com/path&#39;);
+
+ws.on(&#39;open&#39;, function open() {
+  const array = new Float32Array(5);
+
+  for (var i = 0; i &lt; array.length; ++i) {
+    array[i] = i / 2;
+  }
+
+  ws.send(array);
+});
+</code></pre>
+
+<h3 id="simple-server">Simple server</h3>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on(&#39;connection&#39;, function connection(ws) {
+  ws.on(&#39;message&#39;, function incoming(message) {
+    console.log(&#39;received: %s&#39;, message);
+  });
+
+  ws.send(&#39;something&#39;);
+});
+</code></pre>
+
+<h3 id="external-http-s-server">External HTTP/S server</h3>
+
+<pre class="code js"><code class="js">const fs = require(&#39;fs&#39;);
+const https = require(&#39;https&#39;);
+const WebSocket = require(&#39;ws&#39;);
+
+const server = https.createServer({
+  cert: fs.readFileSync(&#39;/path/to/cert.pem&#39;),
+  key: fs.readFileSync(&#39;/path/to/key.pem&#39;)
+});
+const wss = new WebSocket.Server({ server });
+
+wss.on(&#39;connection&#39;, function connection(ws) {
+  ws.on(&#39;message&#39;, function incoming(message) {
+    console.log(&#39;received: %s&#39;, message);
+  });
+
+  ws.send(&#39;something&#39;);
+});
+
+server.listen(8080);
+</code></pre>
+
+<h3 id="multiple-servers-sharing-a-single-http-s-server">Multiple servers sharing a single HTTP/S server</h3>
+
+<pre class="code js"><code class="js">const http = require(&#39;http&#39;);
+const WebSocket = require(&#39;ws&#39;);
+const url = require(&#39;url&#39;);
+
+const server = http.createServer();
+const wss1 = new WebSocket.Server({ noServer: true });
+const wss2 = new WebSocket.Server({ noServer: true });
+
+wss1.on(&#39;connection&#39;, function connection(ws) {
+  // ...
+});
+
+wss2.on(&#39;connection&#39;, function connection(ws) {
+  // ...
+});
+
+server.on(&#39;upgrade&#39;, function upgrade(request, socket, head) {
+  const pathname = url.parse(request.url).pathname;
+
+  if (pathname === &#39;/foo&#39;) {
+    wss1.handleUpgrade(request, socket, head, function done(ws) {
+      wss1.emit(&#39;connection&#39;, ws, request);
+    });
+  } else if (pathname === &#39;/bar&#39;) {
+    wss2.handleUpgrade(request, socket, head, function done(ws) {
+      wss2.emit(&#39;connection&#39;, ws, request);
+    });
+  } else {
+    socket.destroy();
+  }
+});
+
+server.listen(8080);
+</code></pre>
+
+<h3 id="client-authentication">Client authentication</h3>
+
+<pre class="code js"><code class="js">const http = require(&#39;http&#39;);
+const WebSocket = require(&#39;ws&#39;);
+
+const server = http.createServer();
+const wss = new WebSocket.Server({ noServer: true });
+
+wss.on(&#39;connection&#39;, function connection(ws, request, client) {
+  ws.on(&#39;message&#39;, function message(msg) {
+    console.log(`Received message ${msg} from user ${client}`);
+  });
+});
+
+server.on(&#39;upgrade&#39;, function upgrade(request, socket, head) {
+  // This function is not defined on purpose. Implement it with your own logic.
+  authenticate(request, (err, client) =&gt; {
+    if (err || !client) {
+      socket.write(&#39;HTTP/1.1 401 Unauthorized\r\n\r\n&#39;);
+      socket.destroy();
+      return;
+    }
+
+    wss.handleUpgrade(request, socket, head, function done(ws) {
+      wss.emit(&#39;connection&#39;, ws, request, client);
+    });
+  });
+});
+
+server.listen(8080);
+</code></pre>
+
+<p>Also see the provided <a href="./examples/express-session-parse">example</a> using <code>express-session</code>.</p>
+
+<h3 id="server-broadcast">Server broadcast</h3>
+
+<p>A client WebSocket broadcasting to all connected WebSocket clients, including
+itself.</p>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on(&#39;connection&#39;, function connection(ws) {
+  ws.on(&#39;message&#39;, function incoming(data) {
+    wss.clients.forEach(function each(client) {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(data);
+      }
+    });
+  });
+});
+</code></pre>
+
+<p>A client WebSocket broadcasting to every other connected WebSocket clients,
+excluding itself.</p>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on(&#39;connection&#39;, function connection(ws) {
+  ws.on(&#39;message&#39;, function incoming(data) {
+    wss.clients.forEach(function each(client) {
+      if (client !== ws &amp;&amp; client.readyState === WebSocket.OPEN) {
+        client.send(data);
+      }
+    });
+  });
+});
+</code></pre>
+
+<h3 id="echo-websocket-org-demo">echo.websocket.org demo</h3>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const ws = new WebSocket(&#39;wss://echo.websocket.org/&#39;, {
+  origin: &#39;https://websocket.org&#39;
+});
+
+ws.on(&#39;open&#39;, function open() {
+  console.log(&#39;connected&#39;);
+  ws.send(Date.now());
+});
+
+ws.on(&#39;close&#39;, function close() {
+  console.log(&#39;disconnected&#39;);
+});
+
+ws.on(&#39;message&#39;, function incoming(data) {
+  console.log(`Roundtrip time: ${Date.now() - data} ms`);
+
+  setTimeout(function timeout() {
+    ws.send(Date.now());
+  }, 500);
+});
+</code></pre>
+
+<h3 id="use-the-node-js-streams-api">Use the Node.js streams API</h3>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const ws = new WebSocket(&#39;wss://echo.websocket.org/&#39;, {
+  origin: &#39;https://websocket.org&#39;
+});
+
+const duplex = WebSocket.createWebSocketStream(ws, { encoding: &#39;utf8&#39; });
+
+duplex.pipe(process.stdout);
+process.stdin.pipe(duplex);
+</code></pre>
+
+<h3 id="other-examples">Other examples</h3>
+
+<p>For a full example with a browser client communicating with a ws server, see the
+examples folder.</p>
+
+<p>Otherwise, see the test cases.</p>
+
+<h2 id="faq">FAQ</h2>
+
+<h3 id="how-to-get-the-ip-address-of-the-client">How to get the IP address of the client?</h3>
+
+<p>The remote IP address can be obtained from the raw socket.</p>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on(&#39;connection&#39;, function connection(ws, req) {
+  const ip = req.socket.remoteAddress;
+});
+</code></pre>
+
+<p>When the server runs behind a proxy like NGINX, the de-facto standard is to use
+the <code>X-Forwarded-For</code> header.</p>
+
+<pre class="code js"><code class="js">wss.on(&#39;connection&#39;, function connection(ws, req) {
+  const ip = req.headers[&#39;x-forwarded-for&#39;].split(&#39;,&#39;)[0].trim();
+});
+</code></pre>
+
+<h3 id="how-to-detect-and-close-broken-connections">How to detect and close broken connections?</h3>
+
+<p>Sometimes the link between the server and the client can be interrupted in a way
+that keeps both the server and the client unaware of the broken state of the
+connection (e.g. when pulling the cord).</p>
+
+<p>In these cases ping messages can be used as a means to verify that the remote
+endpoint is still responsive.</p>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+function noop() {}
+
+function heartbeat() {
+  this.isAlive = true;
+}
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on(&#39;connection&#39;, function connection(ws) {
+  ws.isAlive = true;
+  ws.on(&#39;pong&#39;, heartbeat);
+});
+
+const interval = setInterval(function ping() {
+  wss.clients.forEach(function each(ws) {
+    if (ws.isAlive === false) return ws.terminate();
+
+    ws.isAlive = false;
+    ws.ping(noop);
+  });
+}, 30000);
+
+wss.on(&#39;close&#39;, function close() {
+  clearInterval(interval);
+});
+</code></pre>
+
+<p>Pong messages are automatically sent in response to ping messages as required by
+the spec.</p>
+
+<p>Just like the server example above your clients might as well lose connection
+without knowing it. You might want to add a ping listener on your clients to
+prevent that. A simple implementation would be:</p>
+
+<pre class="code js"><code class="js">const WebSocket = require(&#39;ws&#39;);
+
+function heartbeat() {
+  clearTimeout(this.pingTimeout);
+
+  // Use `WebSocket#terminate()`, which immediately destroys the connection,
+  // instead of `WebSocket#close()`, which waits for the close timer.
+  // Delay should be equal to the interval at which your server
+  // sends out pings plus a conservative assumption of the latency.
+  this.pingTimeout = setTimeout(() =&gt; {
+    this.terminate();
+  }, 30000 + 1000);
+}
+
+const client = new WebSocket(&#39;wss://echo.websocket.org/&#39;);
+
+client.on(&#39;open&#39;, heartbeat);
+client.on(&#39;ping&#39;, heartbeat);
+client.on(&#39;close&#39;, function clear() {
+  clearTimeout(this.pingTimeout);
+});
+</code></pre>
+
+<h3 id="how-to-connect-via-a-proxy">How to connect via a proxy?</h3>
+
+<p>Use a custom <code>http.Agent</code> implementation like <a href="https://github.com/TooTallNate/node-https-proxy-agent">https-proxy-agent</a> or
+<a href="https://github.com/TooTallNate/node-socks-proxy-agent">socks-proxy-agent</a>.</p>
+
+<h2 id="changelog">Changelog</h2>
+
+<p>We&#39;re using the GitHub <a href="https://github.com/websockets/ws/releases">releases</a> for changelog entries.</p>
+
+<h2 id="license">License</h2>
+
+<p><a href="LICENSE">MIT</a></p>
+</div></div>
+
+      <div id="footer">
+  Generated on 10/12/23 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.28 (ruby-2.7.5).
+</div>
+
+    </div>
+  </body>
+</html>

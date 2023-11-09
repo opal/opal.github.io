@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Opal::ERB::Processor
+  
+    &mdash; lib (Opal v0.10.5)
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Opal::ERB::Processor";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Opal.html" title="Opal (module)">Opal</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../ERB.html" title="Opal::ERB (module)">ERB</a></span></span>
+     &raquo; 
+    <span class="title">Processor</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Opal::ERB::Processor
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Processor.html" title="Opal::Processor (class)">Processor</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Tilt::Template</li>
+          
+            <li class="next"><span class='object_link'><a href="../TiltTemplate.html" title="Opal::TiltTemplate (class)">TiltTemplate</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../Processor.html" title="Opal::Processor (class)">Processor</a></span></li>
+          
+            <li class="next">Opal::ERB::Processor</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/lib/opal/sprockets/erb.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#evaluate-instance_method" title="#evaluate (instance method)">#<strong>evaluate</strong>(context, locals, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize_engine-instance_method" title="#initialize_engine (instance method)">#<strong>initialize_engine</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Processor.html" title="Opal::Processor (class)">Processor</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Processor.html#cache_key-class_method" title="Opal::Processor.cache_key (method)">cache_key</a></span>, <span class='object_link'><a href="../Processor.html#process_required_trees-instance_method" title="Opal::Processor#process_required_trees (method)">#process_required_trees</a></span>, <span class='object_link'><a href="../Processor.html#process_requires-instance_method" title="Opal::Processor#process_requires (method)">#process_requires</a></span>, <span class='object_link'><a href="../Processor.html#reset_cache_key!-class_method" title="Opal::Processor.reset_cache_key! (method)">reset_cache_key!</a></span>, <span class='object_link'><a href="../Processor.html#sprockets_extnames_regexp-instance_method" title="Opal::Processor#sprockets_extnames_regexp (method)">#sprockets_extnames_regexp</a></span>, <span class='object_link'><a href="../Processor.html#sprockets_extnames_regexp-class_method" title="Opal::Processor.sprockets_extnames_regexp (method)">sprockets_extnames_regexp</a></span>, <span class='object_link'><a href="../Processor.html#stub_file-class_method" title="Opal::Processor.stub_file (method)">stub_file</a></span>, <span class='object_link'><a href="../Processor.html#stubbed_files-class_method" title="Opal::Processor.stubbed_files (method)">stubbed_files</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../TiltTemplate.html" title="Opal::TiltTemplate (class)">TiltTemplate</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../TiltTemplate.html#compiler_options-class_method" title="Opal::TiltTemplate.compiler_options (method)">compiler_options</a></span>, <span class='object_link'><a href="../TiltTemplate.html#compiler_options-instance_method" title="Opal::TiltTemplate#compiler_options (method)">#compiler_options</a></span>, <span class='object_link'><a href="../TiltTemplate.html#engine_initialized%3F-class_method" title="Opal::TiltTemplate.engine_initialized? (method)">engine_initialized?</a></span>, <span class='object_link'><a href="../TiltTemplate.html#inherited-class_method" title="Opal::TiltTemplate.inherited (method)">inherited</a></span>, <span class='object_link'><a href="../TiltTemplate.html#prepare-instance_method" title="Opal::TiltTemplate#prepare (method)">#prepare</a></span>, <span class='object_link'><a href="../TiltTemplate.html#version-class_method" title="Opal::TiltTemplate.version (method)">version</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="evaluate-instance_method">
+  
+    #<strong>evaluate</strong>(context, locals, &amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/erb.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_evaluate'>evaluate</span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_locals'>locals</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_compiler'>compiler</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Opal.html" title="Opal (module)">Opal</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../ERB.html" title="Opal::ERB (module)">ERB</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Compiler.html" title="Opal::ERB::Compiler (class)">Compiler</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Compiler.html#initialize-instance_method" title="Opal::ERB::Compiler#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@data</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_logical_path'>logical_path</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../Opal.html#REGEXP_START-constant" title="Opal::REGEXP_START (constant)">REGEXP_START</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>templates\/</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='ivar'>@data</span> <span class='op'>=</span> <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_prepared_source'>prepared_source</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="initialize_engine-instance_method">
+  
+    #<strong>initialize_engine</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/lib/opal/sprockets/erb.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize_engine'>initialize_engine</span>
+  <span class='kw'>super</span>
+  <span class='id identifier rubyid_require_template_library'>require_template_library</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>opal/erb</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 03/13/18 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.9 (ruby-2.5.0).
+</div>
+
+    </div>
+  </body>
+</html>

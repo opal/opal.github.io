@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Regexp
+  
+    &mdash; corelib (Opal v1.1.0)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Regexp";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">Regexp</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Regexp
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Regexp</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>opal/opal/corelib/regexp.rb<span class="defines">,<br />
+  opal/opal/corelib/marshal/write_buffer.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="IGNORECASE-constant" class="">IGNORECASE =
+          
+        </dt>
+        <dd><pre class="code"><span class='int'>1</span></pre></dd>
+      
+        <dt id="EXTENDED-constant" class="">EXTENDED =
+          
+        </dt>
+        <dd><pre class="code"><span class='int'>2</span></pre></dd>
+      
+        <dt id="MULTILINE-constant" class="">MULTILINE =
+          
+        </dt>
+        <dd><pre class="code"><span class='int'>4</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allocate-class_method" title="allocate (class method)">.<strong>allocate</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#escape-class_method" title="escape (class method)">.<strong>escape</strong>(string)  &#x21d2; Object </a>
+    
+
+    
+      (also: quote)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#last_match-class_method" title="last_match (class method)">.<strong>last_match</strong>(n = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-class_method" title="new (class method)">.<strong>new</strong>(regexp, options = undefined)  &#x21d2; Object </a>
+    
+
+    
+      (also: compile)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#union-class_method" title="union (class method)">.<strong>union</strong>(*parts)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#==-instance_method" title="#== (instance method)">#<strong>==</strong>(other)  &#x21d2; Object </a>
+    
+
+    
+      (also: #eql?)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#===-instance_method" title="#=== (instance method)">#<strong>===</strong>(string)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#=~-instance_method" title="#=~ (instance method)">#<strong>=~</strong>(string)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#__marshal__-instance_method" title="#__marshal__ (instance method)">#<strong>__marshal__</strong>(buffer)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#casefold%3F-instance_method" title="#casefold? (instance method)">#<strong>casefold?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">#<strong>inspect</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#match-instance_method" title="#match (instance method)">#<strong>match</strong>(string, pos = undefined, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#match%3F-instance_method" title="#match? (instance method)">#<strong>match?</strong>(string, pos = undefined)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">#<strong>options</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source-instance_method" title="#source (instance method)">#<strong>source</strong>  &#x21d2; Object </a>
+    
+
+    
+      (also: #to_s)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#~-instance_method" title="#~ (instance method)">#<strong>~</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="allocate-class_method">
+  
+    .<strong>allocate</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_allocate'>allocate</span>
+  <span class='id identifier rubyid_allocated'>allocated</span> <span class='op'>=</span> <span class='kw'>super</span>
+  <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_allocated'>allocated</span><span class='embexpr_end'>}</span><span class='tstring_content'>.uninitialized = true</span><span class='tstring_end'>`</span></span>
+  <span class='id identifier rubyid_allocated'>allocated</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="escape-class_method">
+  
+    .<strong>escape</strong>(string)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='quote-class_method'>quote</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='backtick'>`</span><span class='tstring_content'>Opal.escape_regexp(string)</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="last_match-class_method">
+  
+    .<strong>last_match</strong>(n = nil)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_last_match'>last_match</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='gvar'>$~</span>
+  <span class='kw'>else</span>
+    <span class='gvar'>$~</span><span class='lbracket'>[</span><span class='id identifier rubyid_n'>n</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new-class_method">
+  
+    .<strong>new</strong>(regexp, options = undefined)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='compile-class_method'>compile</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_regexp'>regexp</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_undefined'>undefined</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (regexp.$$is_regexp) {
+      return new RegExp(regexp);
+    }
+
+    regexp = </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Opal.html" title="Opal (module)">Opal</a></span></span><span class='period'>.</span><span class='id identifier rubyid_coerce_to!'><span class='object_link'><a href="Opal.html#coerce_to!-class_method" title="Opal.coerce_to! (method)">coerce_to!</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_regexp'>regexp</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='comma'>,</span> <span class='symbol'>:to_str</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+
+    if (regexp.charAt(regexp.length - 1) === &#39;\\&#39; &amp;&amp; regexp.charAt(regexp.length - 2) !== &#39;\\&#39;) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="RegexpError.html" title="RegexpError (class)">RegexpError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>too short escape sequence: /</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_regexp'>regexp</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+    }
+
+    if (options === undefined || </span><span class='embexpr_beg'>#{</span><span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>) {
+      return new RegExp(regexp);
+    }
+
+    if (options.$$is_number) {
+      var temp = &#39;&#39;;
+      if (</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#IGNORECASE-constant" title="Regexp::IGNORECASE (constant)">IGNORECASE</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'> &amp; options) { temp += &#39;i&#39;; }
+      if (</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#MULTILINE-constant" title="Regexp::MULTILINE (constant)">MULTILINE</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>  &amp; options) { temp += &#39;m&#39;; }
+      options = temp;
+    }
+    else {
+      options = &#39;i&#39;;
+    }
+
+    return new RegExp(regexp, options);
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="union-class_method">
+  
+    .<strong>union</strong>(*parts)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_union'>union</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_parts'>parts</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var is_first_part_array, quoted_validated, part, options, each_part_options;
+    if (parts.length == 0) {
+      return /(?!)/;
+    }
+    // return fast if there&#39;s only one element
+    if (parts.length == 1 &amp;&amp; parts[0].$$is_regexp) {
+      return parts[0];
+    }
+    // cover the 2 arrays passed as arguments case
+    is_first_part_array = parts[0].$$is_array;
+    if (parts.length &gt; 1 &amp;&amp; is_first_part_array) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>no implicit conversion of Array into String</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+    }
+    // deal with splat issues (related to https://github.com/opal/opal/issues/858)
+    if (is_first_part_array) {
+      parts = parts[0];
+    }
+    options = undefined;
+    quoted_validated = [];
+    for (var i=0; i &lt; parts.length; i++) {
+      part = parts[i];
+      if (part.$$is_string) {
+        quoted_validated.push(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>part</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+      }
+      else if (part.$$is_regexp) {
+        each_part_options = </span><span class='embexpr_beg'>#{</span><span class='backtick'>`</span><span class='tstring_content'>part</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        if (options != undefined &amp;&amp; options != each_part_options) {
+          </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>All expressions must use the same options</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+        }
+        options = each_part_options;
+        quoted_validated.push(&#39;(&#39;+part.source+&#39;)&#39;);
+      }
+      else {
+        quoted_validated.push(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>part</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_to_str'>to_str</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>);
+      }
+    }
+  </span><span class='tstring_end'>}</span></span>
+  <span class='comment'># Take advantage of logic that can parse options from JS Regex
+</span>  <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>quoted_validated</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>|</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='backtick'>`</span><span class='tstring_content'>options</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="==-instance_method">
+  
+    #<strong>==</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='eql?-instance_method'>eql?</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='backtick'>`</span><span class='tstring_content'>other instanceof RegExp &amp;&amp; self.toString() === other.toString()</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="===-instance_method">
+  
+    #<strong>===</strong>(string)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='op'>===</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='backtick'>`</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Opal.html" title="Opal (module)">Opal</a></span></span><span class='period'>.</span><span class='id identifier rubyid_coerce_to?'><span class='object_link'><a href="Opal.html#coerce_to%3F-class_method" title="Opal.coerce_to? (method)">coerce_to?</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='comma'>,</span> <span class='symbol'>:to_str</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> !== nil</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="=~-instance_method">
+  
+    #<strong>=~</strong>(string)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='op'>=~</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='gvar'>$~</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="__marshal__-instance_method">
+  
+    #<strong>__marshal__</strong>(buffer)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85
+86
+87
+88
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/marshal/write_buffer.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid___marshal__'>__marshal__</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_save_link'>save_link</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write_ivars_prefix'>write_ivars_prefix</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write_extends'>write_extends</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write_user_class'>write_user_class</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Regexp (class)">Regexp</a></span></span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_append'>append</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write_regexp'>write_regexp</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_write_ivars_suffix'>write_ivars_suffix</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="casefold?-instance_method">
+  
+    #<strong>casefold?</strong>  &#x21d2; <tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+273
+274
+275</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 273</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_casefold?'>casefold?</span>
+  <span class='backtick'>`</span><span class='tstring_content'>self.ignoreCase</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    #<strong>inspect</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 123</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='comment'># Use a regexp to extract the regular expression and the optional mode modifiers from the string.
+</span>  <span class='comment'># In the regular expression, escape any front slash (not already escaped) with a backslash.
+</span>  <span class='backtick'>%x{</span><span class='tstring_content'>
+    var regexp_format = /^\/(.*)\/([^\/]*)$/;
+    var value = self.toString();
+    var matches = regexp_format.exec(value);
+    if (matches) {
+      var regexp_pattern = matches[1];
+      var regexp_flags = matches[2];
+      var chars = regexp_pattern.split(&#39;&#39;);
+      var chars_length = chars.length;
+      var char_escaped = false;
+      var regexp_pattern_escaped = &#39;&#39;;
+      for (var i = 0; i &lt; chars_length; i++) {
+        var current_char = chars[i];
+        if (!char_escaped &amp;&amp; current_char == &#39;/&#39;) {
+          regexp_pattern_escaped = regexp_pattern_escaped.concat(&#39;\\&#39;);
+        }
+        regexp_pattern_escaped = regexp_pattern_escaped.concat(current_char);
+        if (current_char == &#39;\\&#39;) {
+          if (char_escaped) {
+            // does not over escape
+            char_escaped = false;
+          } else {
+            char_escaped = true;
+          }
+        } else {
+          char_escaped = false;
+        }
+      }
+      return &#39;/&#39; + regexp_pattern_escaped + &#39;/&#39; + regexp_flags;
+    } else {
+      return value;
+    }
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="match-instance_method">
+  
+    #<strong>match</strong>(string, pos = undefined, &amp;block)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 161</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_pos'>pos</span> <span class='op'>=</span> <span class='id identifier rubyid_undefined'>undefined</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (self.uninitialized) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>uninitialized Regexp</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+    }
+
+    if (pos === undefined) {
+      if (string === nil) return </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      var m = self.exec($coerce_to(string, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, &#39;to_str&#39;));
+      if (m) {
+        </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="MatchData.html" title="MatchData (class)">MatchData</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="MatchData.html#initialize-instance_method" title="MatchData#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>self</span><span class='tstring_end'>`</span></span><span class='comma'>,</span> <span class='backtick'>`</span><span class='tstring_content'>m</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        return block === nil ? </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span><span class='embexpr_end'>}</span><span class='tstring_content'> : </span><span class='embexpr_beg'>#{</span><span class='kw'>yield</span> <span class='gvar'>$~</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      } else {
+        return </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      }
+    }
+
+    pos = $coerce_to(pos, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, &#39;to_int&#39;);
+
+    if (string === nil) {
+      return </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+
+    string = $coerce_to(string, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, &#39;to_str&#39;);
+
+    if (pos &lt; 0) {
+      pos += string.length;
+      if (pos &lt; 0) {
+        return </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      }
+    }
+
+    // global RegExp maintains state, so not using self/this
+    var md, re = Opal.global_regexp(self);
+
+    while (true) {
+      md = re.exec(string);
+      if (md === null) {
+        return </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      }
+      if (md.index &gt;= pos) {
+        </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="MatchData.html" title="MatchData (class)">MatchData</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="MatchData.html#initialize-instance_method" title="MatchData#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='backtick'>`</span><span class='tstring_content'>re</span><span class='tstring_end'>`</span></span><span class='comma'>,</span> <span class='backtick'>`</span><span class='tstring_content'>md</span><span class='tstring_end'>`</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+        return block === nil ? </span><span class='embexpr_beg'>#{</span><span class='gvar'>$~</span><span class='embexpr_end'>}</span><span class='tstring_content'> : </span><span class='embexpr_beg'>#{</span><span class='kw'>yield</span> <span class='gvar'>$~</span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+      }
+      re.lastIndex = md.index + 1;
+    }
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="match?-instance_method">
+  
+    #<strong>match?</strong>(string, pos = undefined)  &#x21d2; <tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Boolean.html" title="Boolean (class)">Boolean</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 210</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_pos'>pos</span> <span class='op'>=</span> <span class='id identifier rubyid_undefined'>undefined</span><span class='rparen'>)</span>
+  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (self.uninitialized) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>uninitialized Regexp</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+    }
+
+    if (pos === undefined) {
+      return string === nil ? false : self.test($coerce_to(string, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, &#39;to_str&#39;));
+    }
+
+    pos = $coerce_to(pos, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, &#39;to_int&#39;);
+
+    if (string === nil) {
+      return false;
+    }
+
+    string = $coerce_to(string, </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="String.html" title="String (class)">String</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, &#39;to_str&#39;);
+
+    if (pos &lt; 0) {
+      pos += string.length;
+      if (pos &lt; 0) {
+        return false;
+      }
+    }
+
+    // global RegExp maintains state, so not using self/this
+    var md, re = Opal.global_regexp(self);
+
+    md = re.exec(string);
+    if (md === null || md.index &lt; pos) {
+      return false;
+    } else {
+      return true;
+    }
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="options-instance_method">
+  
+    #<strong>options</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 255</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='comment'># Flags would be nice to use with this, but still experimental - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/flags
+</span>  <span class='backtick'>%x{</span><span class='tstring_content'>
+    if (self.uninitialized) {
+      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="TypeError.html" title="TypeError (class)">TypeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>uninitialized Regexp</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>
+    }
+    var result = 0;
+    // should be supported in IE6 according to https://msdn.microsoft.com/en-us/library/7f5z26w4(v=vs.94).aspx
+    if (self.multiline) {
+      result |= </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#MULTILINE-constant" title="Regexp::MULTILINE (constant)">MULTILINE</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+    if (self.ignoreCase) {
+      result |= </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#IGNORECASE-constant" title="Regexp::IGNORECASE (constant)">IGNORECASE</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>;
+    }
+    return result;
+  </span><span class='tstring_end'>}</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="source-instance_method">
+  
+    #<strong>source</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='to_s-instance_method'>to_s</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_source'>source</span>
+  <span class='backtick'>`</span><span class='tstring_content'>self.source</span><span class='tstring_end'>`</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="~-instance_method">
+  
+    #<strong>~</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+247
+248
+249</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'opal/opal/corelib/regexp.rb', line 247</span>
+
+<span class='kw'>def</span> <span class='op'>~</span>
+  <span class='kw'>self</span> <span class='op'>=~</span> <span class='gvar'>$_</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on 02/27/21 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.26 (ruby-2.7.2).
+</div>
+
+    </div>
+  </body>
+</html>

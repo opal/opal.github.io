@@ -6,10 +6,10 @@
 
   <title>Opal: Ruby ♥︎ JavaScript</title>
 
-  <link href="/assets/application-9db9bab64149be06d09e3390c1f7e70d7a98cfcf86f32f8e777c14fcac0ccb27.css" rel="stylesheet" />
+  <link href="/assets/application-915b7e3cafe6e192dee011fa09837b2af85b7e1de3dbb52fd1413d46dd2dca0e.css" rel="stylesheet" />
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-  <script src="/assets/application-ebc9a3fff8eae3470a6b7b27753a921aceae8d2254be48253cd1e932e9081355.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
+  <script src="/assets/application-74994a7410818947c294a5f44b8f7916d5e1c773e93a5a2c83db9c06d516fd80.js" onload="Opal.loaded(typeof(OpalLoaded) === &quot;undefined&quot; ? [] : OpalLoaded);
 Opal.require(&quot;application&quot;);;console.log('loaded application')"></script>
 
   <!-- Algolia -->
@@ -62,8 +62,8 @@ GitHub
 </a>
 </li>
 <li>
-<a href='https://rubygems.org/gems/opal/versions/1.1.1' style='opacity: 0.5;'>
-v1.1.1
+<a href='https://rubygems.org/gems/opal/versions/1.8.1' style='opacity: 0.5;'>
+v1.8.1
 </a>
 </li>
 </ul>
@@ -124,8 +124,8 @@ v1.1.1
   <em>— @mistergibson <a href="https://gitter.im/opal/opal?at=5a652b8de014122650743f80">from Gitter, on Jan 22 2018</a></em>
   </div class="praise-item">
   <div class="praise-item">
-  <blockquote>Opal 0.11 is a blessing! Its a giant step forward to ruby on the client! Its just amazing what bugs i find in existing 0.10 code and do keep wondering, "How did this ever work at all?" I am amzed, fantastic 👍👍👍😄</blockquote>
-  <em>— @janbiedermann <a href="https://gitter.im/opal/opal?at=5a63763fce68c3bc74e0e07d">from Gitter, on Jan 20 2018</a></em>
+  <blockquote>[about Opal 1.7] Fantastic! No failing specs for [isomorfeus](https://github.com/isomorfeus/isomorfeus-project#readme), asset size reduced, performance a tiny bit improved too :+1:</blockquote>
+  <em>— @janbiedermann, on Dec 25th 2022</a></em>
   </div class="praise-item">
   <div class="praise-item">
   <blockquote>These guys are great. We have a large production app (www.catprint.com) that thanks to opal is 100% RUBY. The UI part is about 17K of opal code, using the hyperstack (www.hyperstack.org) framework.<br>
@@ -161,9 +161,8 @@ v1.1.1
 
 <h2 id="getting-started-rack">Getting Started: Rack</h2>
 
-<p>Add <code>opal</code> and <code>rack</code> to your <code>Gemfile</code>.</p>
-<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal'</span>
-<span class="n">gem</span> <span class="s1">'rack'</span>
+<p>Add <code>opal</code>, <code>rack</code> and <code>rackup</code> to your <code>Gemfile</code>.</p>
+<div class="highlight"><pre class="highlight shell"><code>bundle add opal rack rackup
 </code></pre></div>
 <p>Setup the Opal rack-app in your <code>config.ru</code> as follows:</p>
 <div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
@@ -194,7 +193,7 @@ v1.1.1
 <h2 id="getting-started-rails">Getting Started: Rails</h2>
 
 <p>Add <code>opal-rails</code> to your Rails app&#39;s <code>Gemfile</code>:</p>
-<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'opal-rails'</span>
+<div class="highlight"><pre class="highlight shell"><code>bundle add opal-rails
 </code></pre></div>
 <p>Rename <code>app/assets/javascripts/application.js</code> to <code>app/assets/javascripts/application.js.rb</code> and replace its contents with this code:</p>
 <div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'opal'</span>
@@ -280,8 +279,7 @@ node hello_world.js
 
 
   <script>
-    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)
-      .parentElement.classList.add("active")
+    document.querySelector(`a[href="${location.pathname.replace(/\/$/,'')}"]`)?.parentElement.classList.add("active")
   </script>
 
   <!-- Algolia -->
