@@ -17,9 +17,9 @@ system! "bundle exec middleman build --clean --verbose --no-parallel --bail --wa
 puts '~~~> Fetching updated docs...'
 FileUtils.mkpath 'build/docs'
 Dir.chdir 'docs' do
-  system! "git fetch --all --verbose"
+  system! "git fetch --refmap=+refs/heads/*:refs/remotes/origin/* --verbose origin gh-pages"
 end
 
 puts '~~~> Extracting updated docs...'
-system! "git archive --remote ./.git/modules/docs/ origin/gh-pages -o docs.tar"
+system! "git archive --remote ./docs/ origin/gh-pages -o docs.tar"
 system! "tar --verbose --directory build/docs -xf docs.tar"
