@@ -80,7 +80,7 @@ GEM
     nokogiri (1.15.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    opal (1.8.1)
+    opal (1.8.2)
       ast (>= 2.3.0)
       parser (~> 3.0, >= 3.0.3.2)
     opal-sprockets (1.0.3)
