@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: Readme
+  
+    &mdash; lib (Opal master)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Readme";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  <span class="title"><a href="/docs">Opal Docs</a></span>
+  
+    &raquo;
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: Readme</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="commander-js">Commander.js</h1>
+
+<p><a href="http://travis-ci.org/tj/commander.js"><img src="https://api.travis-ci.org/tj/commander.js.svg?branch=master" alt="Build Status"></a>
+<a href="https://www.npmjs.org/package/commander"><img src="http://img.shields.io/npm/v/commander.svg?style=flat" alt="NPM Version"></a>
+<a href="https://www.npmjs.org/package/commander"><img src="https://img.shields.io/npm/dm/commander.svg?style=flat" alt="NPM Downloads"></a>
+<a href="https://gitter.im/tj/commander.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/tj/commander.js"></a></p>
+
+<p>The complete solution for <a href="http://nodejs.org">node.js</a> command-line interfaces, inspired by Ruby&#39;s <a href="https://github.com/commander-rb/commander">commander</a>.<br>
+  <a href="http://tj.github.com/commander.js/">API documentation</a></p>
+
+<h2 id="installation">Installation</h2>
+
+<pre class="code ruby"><code class="ruby">$ npm install commander --save
+</code></pre>
+
+<h2 id="option-parsing">Option parsing</h2>
+
+<p>Options with commander are defined with the <code>.option()</code> method, also serving as documentation for the options. The example below parses args and options from <code>process.argv</code>, leaving remaining args as the <code>program.args</code> array which were not consumed by options.</p>
+
+<pre class="code js"><code class="js">#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require(&#39;commander&#39;);
+
+program
+  .version(&#39;0.1.0&#39;)
+  .option(&#39;-p, --peppers&#39;, &#39;Add peppers&#39;)
+  .option(&#39;-P, --pineapple&#39;, &#39;Add pineapple&#39;)
+  .option(&#39;-b, --bbq-sauce&#39;, &#39;Add bbq sauce&#39;)
+  .option(&#39;-c, --cheese [type]&#39;, &#39;Add the specified type of cheese [marble]&#39;, &#39;marble&#39;)
+  .parse(process.argv);
+
+console.log(&#39;you ordered a pizza with:&#39;);
+if (program.peppers) console.log(&#39;  - peppers&#39;);
+if (program.pineapple) console.log(&#39;  - pineapple&#39;);
+if (program.bbqSauce) console.log(&#39;  - bbq&#39;);
+console.log(&#39;  - %s cheese&#39;, program.cheese);
+</code></pre>
+
+<p>Short flags may be passed as a single arg, for example <code>-abc</code> is equivalent to <code>-a -b -c</code>. Multi-word options such as &quot;--template-engine&quot; are camel-cased, becoming <code>program.templateEngine</code> etc.</p>
+
+<h2 id="coercion">Coercion</h2>
+
+<pre class="code js"><code class="js">function range(val) {
+  return val.split(&#39;..&#39;).map(Number);
+}
+
+function list(val) {
+  return val.split(&#39;,&#39;);
+}
+
+function collect(val, memo) {
+  memo.push(val);
+  return memo;
+}
+
+function increaseVerbosity(v, total) {
+  return total + 1;
+}
+
+program
+  .version(&#39;0.1.0&#39;)
+  .usage(&#39;[options] &lt;file ...&gt;&#39;)
+  .option(&#39;-i, --integer &lt;n&gt;&#39;, &#39;An integer argument&#39;, parseInt)
+  .option(&#39;-f, --float &lt;n&gt;&#39;, &#39;A float argument&#39;, parseFloat)
+  .option(&#39;-r, --range &lt;a&gt;..&lt;b&gt;&#39;, &#39;A range&#39;, range)
+  .option(&#39;-l, --list &lt;items&gt;&#39;, &#39;A list&#39;, list)
+  .option(&#39;-o, --optional [value]&#39;, &#39;An optional value&#39;)
+  .option(&#39;-c, --collect [value]&#39;, &#39;A repeatable value&#39;, collect, [])
+  .option(&#39;-v, --verbose&#39;, &#39;A value that can be increased&#39;, increaseVerbosity, 0)
+  .parse(process.argv);
+
+console.log(&#39; int: %j&#39;, program.integer);
+console.log(&#39; float: %j&#39;, program.float);
+console.log(&#39; optional: %j&#39;, program.optional);
+program.range = program.range || [];
+console.log(&#39; range: %j..%j&#39;, program.range[0], program.range[1]);
+console.log(&#39; list: %j&#39;, program.list);
+console.log(&#39; collect: %j&#39;, program.collect);
+console.log(&#39; verbosity: %j&#39;, program.verbose);
+console.log(&#39; args: %j&#39;, program.args);
+</code></pre>
+
+<h2 id="regular-expression">Regular Expression</h2>
+
+<pre class="code js"><code class="js">program
+  .version(&#39;0.1.0&#39;)
+  .option(&#39;-s --size &lt;size&gt;&#39;, &#39;Pizza size&#39;, /^(large|medium|small)$/i, &#39;medium&#39;)
+  .option(&#39;-d --drink [drink]&#39;, &#39;Drink&#39;, /^(coke|pepsi|izze)$/i)
+  .parse(process.argv);
+
+console.log(&#39; size: %j&#39;, program.size);
+console.log(&#39; drink: %j&#39;, program.drink);
+</code></pre>
+
+<h2 id="variadic-arguments">Variadic arguments</h2>
+
+<p>The last argument of a command can be variadic, and only the last argument.  To make an argument variadic you have to
+ append <code>...</code> to the argument name.  Here is an example:</p>
+
+<pre class="code js"><code class="js">#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require(&#39;commander&#39;);
+
+program
+  .version(&#39;0.1.0&#39;)
+  .command(&#39;rmdir &lt;dir&gt; [otherDirs...]&#39;)
+  .action(function (dir, otherDirs) {
+    console.log(&#39;rmdir %s&#39;, dir);
+    if (otherDirs) {
+      otherDirs.forEach(function (oDir) {
+        console.log(&#39;rmdir %s&#39;, oDir);
+      });
+    }
+  });
+
+program.parse(process.argv);
+</code></pre>
+
+<p>An <code>Array</code> is used for the value of a variadic argument.  This applies to <code>program.args</code> as well as the argument passed
+ to your action as demonstrated above.</p>
+
+<h2 id="specify-the-argument-syntax">Specify the argument syntax</h2>
+
+<pre class="code js"><code class="js">#!/usr/bin/env node
+
+var program = require(&#39;commander&#39;);
+
+program
+  .version(&#39;0.1.0&#39;)
+  .arguments(&#39;&lt;cmd&gt; [env]&#39;)
+  .action(function (cmd, env) {
+     cmdValue = cmd;
+     envValue = env;
+  });
+
+program.parse(process.argv);
+
+if (typeof cmdValue === &#39;undefined&#39;) {
+   console.error(&#39;no command given!&#39;);
+   process.exit(1);
+}
+console.log(&#39;command:&#39;, cmdValue);
+console.log(&#39;environment:&#39;, envValue || &quot;no environment given&quot;);
+</code></pre>
+
+<p>Angled brackets (e.g. <code>&lt;cmd&gt;</code>) indicate required input. Square brackets (e.g. <code>[env]</code>) indicate optional input.</p>
+
+<h2 id="git-style-sub-commands">Git-style sub-commands</h2>
+
+<pre class="code js"><code class="js">// file: ./examples/pm
+var program = require(&#39;commander&#39;);
+
+program
+  .version(&#39;0.1.0&#39;)
+  .command(&#39;install [name]&#39;, &#39;install one or more packages&#39;)
+  .command(&#39;search [query]&#39;, &#39;search with optional query&#39;)
+  .command(&#39;list&#39;, &#39;list packages installed&#39;, {isDefault: true})
+  .parse(process.argv);
+</code></pre>
+
+<p>When <code>.command()</code> is invoked with a description argument, no <code>.action(callback)</code> should be called to handle sub-commands, otherwise there will be an error. This tells commander that you&#39;re going to use separate executables for sub-commands, much like <code>git(1)</code> and other popular tools.<br>
+The commander will try to search the executables in the directory of the entry script (like <code>./examples/pm</code>) with the name <code>program-command</code>, like <code>pm-install</code>, <code>pm-search</code>.</p>
+
+<p>Options can be passed with the call to <code>.command()</code>. Specifying <code>true</code> for <code>opts.noHelp</code> will remove the option from the generated help output. Specifying <code>true</code> for <code>opts.isDefault</code> will run the subcommand if no other subcommand is specified.</p>
+
+<p>If the program is designed to be installed globally, make sure the executables have proper modes, like <code>755</code>.</p>
+
+<h3 id="harmony"><code>--harmony</code></h3>
+
+<p>You can enable <code>--harmony</code> option in two ways:</p>
+
+<ul>
+<li>Use <code>#! /usr/bin/env node --harmony</code> in the sub-commands scripts. Note some os version don’t support this pattern.</li>
+<li>Use the <code>--harmony</code> option when call the command, like <code>node --harmony examples/pm publish</code>. The <code>--harmony</code> option will be preserved when spawning sub-command process.</li>
+</ul>
+
+<h2 id="automated-help">Automated --help</h2>
+
+<p>The help information is auto-generated based on the information commander already knows about your program, so the following <code>--help</code> info is for free:</p>
+
+<pre class="code ruby"><code class="ruby"> $ ./examples/pizza --help
+
+   Usage: pizza [options]
+
+   An application for pizzas ordering
+
+   Options:
+
+     -h, --help           output usage information
+     -V, --version        output the version number
+     -p, --peppers        Add peppers
+     -P, --pineapple      Add pineapple
+     -b, --bbq            Add bbq sauce
+     -c, --cheese &lt;type&gt;  Add the specified type of cheese [marble]
+     -C, --no-cheese      You do not want any cheese
+
+</code></pre>
+
+<h2 id="custom-help">Custom help</h2>
+
+<p>You can display arbitrary <code>-h, --help</code> information
+ by listening for &quot;--help&quot;. Commander will automatically
+ exit once you are done so that the remainder of your program
+ does not execute causing undesired behaviours, for example
+ in the following executable &quot;stuff&quot; will not output when
+ <code>--help</code> is used.</p>
+
+<pre class="code js"><code class="js">#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require(&#39;commander&#39;);
+
+program
+  .version(&#39;0.1.0&#39;)
+  .option(&#39;-f, --foo&#39;, &#39;enable some foo&#39;)
+  .option(&#39;-b, --bar&#39;, &#39;enable some bar&#39;)
+  .option(&#39;-B, --baz&#39;, &#39;enable some baz&#39;);
+
+// must be before .parse() since
+// node&#39;s emit() is immediate
+
+program.on(&#39;--help&#39;, function(){
+  console.log(&#39;  Examples:&#39;);
+  console.log(&#39;&#39;);
+  console.log(&#39;    $ custom-help --help&#39;);
+  console.log(&#39;    $ custom-help -h&#39;);
+  console.log(&#39;&#39;);
+});
+
+program.parse(process.argv);
+
+console.log(&#39;stuff&#39;);
+</code></pre>
+
+<p>Yields the following help output when <code>node script-name.js -h</code> or <code>node script-name.js --help</code> are run:</p>
+
+<pre class="code ruby"><code class="ruby">
+Usage: custom-help [options]
+
+Options:
+
+  -h, --help     output usage information
+  -V, --version  output the version number
+  -f, --foo      enable some foo
+  -b, --bar      enable some bar
+  -B, --baz      enable some baz
+
+Examples:
+
+  $ custom-help --help
+  $ custom-help -h
+
+</code></pre>
+
+<h2 id="outputhelp-cb">.outputHelp(cb)</h2>
+
+<p>Output help information without exiting.
+Optional callback cb allows post-processing of help text before it is displayed.</p>
+
+<p>If you want to display help by default (e.g. if no command was provided), you can use something like:</p>
+
+<pre class="code js"><code class="js">var program = require(&#39;commander&#39;);
+var colors = require(&#39;colors&#39;);
+
+program
+  .version(&#39;0.1.0&#39;)
+  .command(&#39;getstream [url]&#39;, &#39;get stream URL&#39;)
+  .parse(process.argv);
+
+  if (!process.argv.slice(2).length) {
+    program.outputHelp(make_red);
+  }
+
+function make_red(txt) {
+  return colors.red(txt); //display the help text in red on the console
+}
+</code></pre>
+
+<h2 id="help-cb">.help(cb)</h2>
+
+<p>Output help information and exit immediately.
+  Optional callback cb allows post-processing of help text before it is displayed.</p>
+
+<h2 id="examples">Examples</h2>
+
+<pre class="code js"><code class="js">var program = require(&#39;commander&#39;);
+
+program
+  .version(&#39;0.1.0&#39;)
+  .option(&#39;-C, --chdir &lt;path&gt;&#39;, &#39;change the working directory&#39;)
+  .option(&#39;-c, --config &lt;path&gt;&#39;, &#39;set config path. defaults to ./deploy.conf&#39;)
+  .option(&#39;-T, --no-tests&#39;, &#39;ignore test hook&#39;);
+
+program
+  .command(&#39;setup [env]&#39;)
+  .description(&#39;run setup commands for all envs&#39;)
+  .option(&quot;-s, --setup_mode [mode]&quot;, &quot;Which setup mode to use&quot;)
+  .action(function(env, options){
+    var mode = options.setup_mode || &quot;normal&quot;;
+    env = env || &#39;all&#39;;
+    console.log(&#39;setup for %s env(s) with %s mode&#39;, env, mode);
+  });
+
+program
+  .command(&#39;exec &lt;cmd&gt;&#39;)
+  .alias(&#39;ex&#39;)
+  .description(&#39;execute the given remote cmd&#39;)
+  .option(&quot;-e, --exec_mode &lt;mode&gt;&quot;, &quot;Which exec mode to use&quot;)
+  .action(function(cmd, options){
+    console.log(&#39;exec &quot;%s&quot; using %s mode&#39;, cmd, options.exec_mode);
+  }).on(&#39;--help&#39;, function() {
+    console.log(&#39;  Examples:&#39;);
+    console.log();
+    console.log(&#39;    $ deploy exec sequential&#39;);
+    console.log(&#39;    $ deploy exec async&#39;);
+    console.log();
+  });
+
+program
+  .command(&#39;*&#39;)
+  .action(function(env){
+    console.log(&#39;deploying &quot;%s&quot;&#39;, env);
+  });
+
+program.parse(process.argv);
+</code></pre>
+
+<p>More Demos can be found in the <a href="https://github.com/tj/commander.js/tree/master/examples">examples</a> directory.</p>
+
+<h2 id="license">License</h2>
+
+<p>MIT</p>
+</div></div>
+
+      <div id="footer">
+  Generated on 08/22/24 by
+  <!-- <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a> -->
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>
